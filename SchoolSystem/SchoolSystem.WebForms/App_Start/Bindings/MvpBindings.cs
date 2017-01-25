@@ -2,6 +2,12 @@
 using System.Linq;
 
 using Ninject.Modules;
+using WebFormsMvp;
+using SchoolSystem.WebForms.App_Start.Factories;
+using WebFormsMvp.Binder;
+using Ninject.Activation;
+using Ninject.Extensions.Factory;
+using Ninject;
 
 namespace SchoolSystem.WebForms.App_Start.Bindings
 {
