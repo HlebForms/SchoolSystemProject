@@ -361,6 +361,10 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\BindingsConfig.cs" />
+    <Compile Include="App_Start\Bindings\DataConfig.cs" />
+    <Compile Include="App_Start\Bindings\MvpBindings.cs" />
+    <Compile Include="App_Start\Bindings\ServicesModule.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -369,6 +373,8 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\Factories\IPresenterProvider.cs" />
+    <Compile Include="App_Start\Factories\WebFormsPresenterFactory.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectWeb.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />

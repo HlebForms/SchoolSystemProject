@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolSystem.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -16,7 +17,7 @@ namespace SchoolSystem.Data
 
         }
 
-        //public DbSet<Dummy> Dummy { get; set; } ...
+        public DbSet<Test> Test { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
