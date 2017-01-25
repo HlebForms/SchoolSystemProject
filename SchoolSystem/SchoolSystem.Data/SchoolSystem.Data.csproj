@@ -52,6 +52,7 @@
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="EfUnitOfWork.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\EfGenericRepository.cs" />
     <Compile Include="SchoolSystemDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

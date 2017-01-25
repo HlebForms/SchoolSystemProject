@@ -9,8 +9,6 @@ namespace SchoolSystem.Data.Models
 {
     public class Test : DbContext
     {
-
-
         public int Id { get; set; }
 
         public string Name { get; set; }
