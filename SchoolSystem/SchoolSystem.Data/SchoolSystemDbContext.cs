@@ -23,6 +23,7 @@ namespace SchoolSystem.Data
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
         }
 
     }
