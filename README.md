@@ -1,1 +1,1 @@
-# SchoolSystemProject
+# SchoolSystem
