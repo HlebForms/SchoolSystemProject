@@ -8,5 +8,7 @@ namespace SchoolSystem.Web.Services.Auth.Contracts
         bool RegisterUser(string username, string password, IOwinContext context);
 
         void AuthConfig(IAppBuilder app);
+
+        void LoginUser(string email, string password, IOwinContext context);
     }
 }
