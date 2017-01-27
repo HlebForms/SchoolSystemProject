@@ -73,7 +73,6 @@ namespace SchoolSystem.Web.Services.Auth
             // This doen't count login failures towards account lockout
             // To enable password failures to trigger lockout, change to shouldLockout: true
             var result = signinManager.PasswordSignIn(email, password, false, false);
-            //PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
         }
 
         public bool RegisterUser(string username, string password, IOwinContext context)
@@ -84,6 +83,11 @@ namespace SchoolSystem.Web.Services.Auth
             IdentityResult result = manager.Create(user, password);
 
             return result.Succeeded;
+        }
+       
+        public void LogoutUser(IOwinContext context)
+        {
+            context.Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
         }
     }
 }

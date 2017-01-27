@@ -2,10 +2,6 @@
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using SchoolSystem.WebForms.Models;
 using SchoolSystem.Data.Models;
 using SchoolSystem.WebForms.Account.Presenters;
 using WebFormsMvp.Web;

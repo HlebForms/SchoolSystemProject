@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Web;
-using System.Web.UI;
-//using Microsoft.AspNet.Identity;
-//using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using SchoolSystem.WebForms.Models;
 using SchoolSystem.WebForms.Account.Presenters;
 using WebFormsMvp;
 using WebFormsMvp.Web;
@@ -14,10 +9,11 @@ using SchoolSystem.WebForms.Account.Views.EventArguments;
 
 namespace SchoolSystem.WebForms.Account
 {
-    [PresenterBinding(typeof(LoginPresenter))]
-    public partial class Login : MvpPage<LoginModel>, ILogginView
+    [PresenterBinding(typeof(AuthenticationPresenter))]
+    public partial class Login : MvpPage<LoginModel>, IAuthenticationView
     {
-        public event EventHandler<LoginPageEventArgs> LoginUser;
+        public event EventHandler<AuhenticationEventArgs> LoginUser;
+        public event EventHandler<AuhenticationEventArgs> LogoutUser;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,7 +35,7 @@ namespace SchoolSystem.WebForms.Account
                 // Validate the user password
                 var owinCtx = Context.GetOwinContext();
                 var model = new LoginModel() { Email = this.Email.Text, Password = this.Password.Text };
-                var eventArgs = new LoginPageEventArgs(model, owinCtx);
+                var eventArgs = new AuhenticationEventArgs(model, owinCtx);
 
                 this.LoginUser(this, eventArgs);
 

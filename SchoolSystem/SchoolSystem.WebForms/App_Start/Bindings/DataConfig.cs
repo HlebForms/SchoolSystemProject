@@ -13,7 +13,7 @@ namespace SchoolSystem.WebForms.App_Start.Bindings
     {
         public override void Load()
         {
-            this.Bind<DbContext>().To<SchoolSystemDbContext>().InSingletonScope();
+            //this.Bind<DbContext>().To<SchoolSystemDbContext>().InSingletonScope();
             this.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
 
             this.Bind<Func<IUnitOfWork>>().ToMethod(ctx => () => ctx.Kernel.Get<EfUnitOfWork>());

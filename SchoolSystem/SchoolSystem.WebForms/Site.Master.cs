@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Security.Principal;
+﻿using Microsoft.AspNet.Identity;
+using SchoolSystem.WebForms.Account.Views;
+using System;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Microsoft.AspNet.Identity;
+using SchoolSystem.WebForms.Account.Models;
+using SchoolSystem.WebForms.Account.Views.EventArguments;
+using WebFormsMvp.Web;
+using WebFormsMvp;
+using SchoolSystem.WebForms.Account.Presenters;
 
 namespace SchoolSystem.WebForms
 {
@@ -72,10 +75,7 @@ namespace SchoolSystem.WebForms
 
         }
 
-        protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
-        {
-            Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-        }
+
     }
 
 }

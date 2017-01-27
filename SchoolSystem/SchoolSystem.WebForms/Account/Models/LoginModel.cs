@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Microsoft.Owin;
 
 namespace SchoolSystem.WebForms.Account.Models
 {
@@ -9,5 +6,7 @@ namespace SchoolSystem.WebForms.Account.Models
     {
         public string Email { get; set; }
         public string Password { get; set; }
+
+        public IOwinContext context { get; set; }
     }
 }
