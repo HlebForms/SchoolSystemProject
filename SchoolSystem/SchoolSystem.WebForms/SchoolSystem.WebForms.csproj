@@ -268,6 +268,7 @@
     </Compile>
     <Compile Include="Account\Views\EventArguments\RegistrationPageEventArgs.cs" />
     <Compile Include="Account\Views\IRegisterView.cs" />
+    <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BindingsConfig.cs" />
     <Compile Include="App_Start\Bindings\DataConfig.cs" />
     <Compile Include="App_Start\Bindings\MvpBindings.cs" />
@@ -287,7 +288,6 @@
     <Compile Include="App_Start\NinjectWeb.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

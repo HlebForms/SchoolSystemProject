@@ -1,6 +1,7 @@
 ﻿using Ninject.Modules;
 using SchoolSystem.Web.Services.Auth;
 using SchoolSystem.Web.Services.Auth.Contracts;
+using SchoolSystem.WebForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,8 @@ namespace SchoolSystem.WebForms.App_Start.Bindings
     {
         public override void Load()
         {
-            this.Bind<IAuthService>().To<AuthService>().InSingletonScope();
+            this.Bind<IAuthService>().To<AuthService>();
+            this.Bind<Startup>().ToSelf();
         }
     }
 }
