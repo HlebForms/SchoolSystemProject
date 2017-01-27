@@ -5,11 +5,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 
 namespace SchoolSystem.Data.Repositories
 {
     public class EfGenericRepository<T> : IRepository<T> where T : class
     {
+        public EfGenericRepository(DbContext context)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException("context");
+            }
+
+            this.Context = context;
+            this.DbSet = this.Context.Set<T>();
+        }
+
+        protected DbContext Context { get; private set; }
+
+        protected DbSet<T> DbSet { get; private set; }
+
         public IQueryable<T> All
         {
             get
@@ -20,47 +37,59 @@ namespace SchoolSystem.Data.Repositories
 
         public void Add(T entity)
         {
-            throw new NotImplementedException();
+            var entry = this.Context.Entry(entity);
+            entry.State = EntityState.Added;
+        }
+
+        public void AddOrUpdate(T entity)
+        {
+            this.Context.Set<T>().AddOrUpdate(entity);
         }
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            var entry = this.Context.Entry(entity);
+            entry.State = EntityState.Deleted;
         }
 
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return this.DbSet.ToList();
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filterExpression)
+        public IEnumerable<T1> GetAll<T1>(Expression<Func<T, bool>> filterExpression, Expression<Func<T, T1>> selectExpression)
         {
-            throw new NotImplementedException();
-        }
+            IQueryable<T> result = this.DbSet;
 
-        public IEnumerable<T> GetAll<T1>(Expression<Func<T, bool>> filterExpression, Expression<Func<T, T1>> sortExpression)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<T2> GetAll<T1, T2>(Expression<Func<T, bool>> filterExpression, Expression<Func<T, T1>> sortExpression, Expression<Func<T, T2>> selectExpression)
-        {
-            throw new NotImplementedException();
+            if (filterExpression != null)
+            {
+                result = result.Where(filterExpression);
+            }
+            if (selectExpression != null)
+            {
+                return result.Select(selectExpression).ToList();
+            }
+            else
+            {
+                return result.OfType<T1>().ToList();
+            }
         }
 
         public T GetById(object id)
         {
-            throw new NotImplementedException();
-        }
-
-        public T GetFirst(Expression<Func<T, bool>> filterExpression)
-        {
-            throw new NotImplementedException();
+            return this.DbSet.Find(id);
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            var entry = this.Context.Entry(entity);
+            entry.State = EntityState.Modified;
+        }
+
+        public T GetFirst(Expression<Func<T, bool>> filterExpression)
+        {
+            var foundEntity = this.DbSet.FirstOrDefault(filterExpression);
+            return foundEntity;
         }
     }
 }
