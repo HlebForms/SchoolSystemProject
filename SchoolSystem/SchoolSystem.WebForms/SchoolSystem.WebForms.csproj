@@ -373,6 +373,7 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\Factories\IPresenterProvider.cs" />
     <Compile Include="App_Start\Factories\WebFormsPresenterFactory.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -426,6 +427,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SchoolSystem.Data.Models\SchoolSystem.Data.Models.csproj">
+      <Project>{EA0DD209-F3AB-4C35-87E2-E947456D6F78}</Project>
+      <Name>SchoolSystem.Data.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolSystem.Data\SchoolSystem.Data.csproj">
       <Project>{B70B597E-506D-40A8-AA41-DB825675AEAA}</Project>
       <Name>SchoolSystem.Data</Name>

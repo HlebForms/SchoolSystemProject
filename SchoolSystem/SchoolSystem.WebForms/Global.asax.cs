@@ -16,11 +16,11 @@ namespace SchoolSystem.WebForms
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SchoolSystemDbContext, Configuration>());
 
-            var database = new SchoolSystemDbContext();
-            database.Database.CreateIfNotExists();
-
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<SchoolSystemDbContext, Configuration>());
+            //var database = new SchoolSystemDbContext();
+            //database.Database.CreateIfNotExists();
+            DbConfig.Initialize();
             // Ninject
             BindingsConfig.BindPresenterFactory();
         }

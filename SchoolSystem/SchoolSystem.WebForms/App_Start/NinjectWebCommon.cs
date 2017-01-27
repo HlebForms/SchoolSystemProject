@@ -11,6 +11,8 @@ namespace SchoolSystem.WebForms.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Bindings;
+    using Data.Contracts;
+    using Data;
 
     public static class NinjectWebCommon 
     {
@@ -67,6 +69,8 @@ namespace SchoolSystem.WebForms.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind(typeof(ISchoolSystemDBContext)).To(typeof(SchoolSystemDbContext));
+        
             kernel.Load(
                new MvpBindings(),
                new ServicesModule(),
