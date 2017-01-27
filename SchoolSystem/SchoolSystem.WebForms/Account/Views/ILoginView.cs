@@ -5,10 +5,8 @@ using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.Account.Views
 {
-    public interface IAuthenticationView : IView<LoginModel>
+    public interface ILoginView : IView<LoginModel>
     {
-        event EventHandler<AuhenticationEventArgs> LoginUser;
-
-        event EventHandler<AuhenticationEventArgs> LogoutUser;
+        event EventHandler<LoginPageEventtArgs> EventLoginUser;
     }
 }

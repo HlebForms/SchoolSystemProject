@@ -5,12 +5,8 @@ using Microsoft.Owin;
 using SchoolSystem.Data;
 using SchoolSystem.Data.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SchoolSystem.Web.Services.Auth.Managers
+namespace SchoolSystem.WebForms.Identity
 {
     public class ApplicationUserManager : UserManager<User>
     {

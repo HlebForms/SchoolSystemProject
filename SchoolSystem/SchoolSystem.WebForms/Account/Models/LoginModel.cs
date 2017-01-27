@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
 
 namespace SchoolSystem.WebForms.Account.Models
 {
@@ -8,5 +9,7 @@ namespace SchoolSystem.WebForms.Account.Models
         public string Password { get; set; }
 
         public IOwinContext context { get; set; }
+
+        public SignInStatus LoggedInStatus { get; set; }
     }
 }

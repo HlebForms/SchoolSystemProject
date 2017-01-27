@@ -55,6 +55,10 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -196,7 +200,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Navigation.ascx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -254,7 +257,7 @@
     </Compile>
     <Compile Include="Account\Models\LoginModel.cs" />
     <Compile Include="Account\Models\RegistrationModel.cs" />
-    <Compile Include="Account\Presenters\AuthenticationPresenter.cs" />
+    <Compile Include="Account\Presenters\LoginPresenter.cs" />
     <Compile Include="Account\Presenters\RegistrationPresenter.cs" />
     <Compile Include="Account\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -263,9 +266,9 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Views\EventArguments\AuhenticationEventArgs.cs" />
+    <Compile Include="Account\Views\EventArguments\LoginPageEventtArgs.cs" />
     <Compile Include="Account\Views\EventArguments\RegistrationPageEventArgs.cs" />
-    <Compile Include="Account\Views\IAuthenticationView.cs" />
+    <Compile Include="Account\Views\ILoginView.cs" />
     <Compile Include="Account\Views\IRegisterView.cs" />
     <Compile Include="App_Start\BindingsConfig.cs" />
     <Compile Include="App_Start\Bindings\DataConfig.cs" />
@@ -302,13 +305,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Navigation.ascx.cs">
-      <DependentUpon>Navigation.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Navigation.ascx.designer.cs">
-      <DependentUpon>Navigation.ascx</DependentUpon>
-    </Compile>
+    <Compile Include="Identity\ApplicationSignInManager.cs" />
+    <Compile Include="Identity\ApplicationUserManager.cs" />
+    <Compile Include="Identity\IdentityHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -344,10 +343,6 @@
     <ProjectReference Include="..\SchoolSystem.Data\SchoolSystem.Data.csproj">
       <Project>{B70B597E-506D-40A8-AA41-DB825675AEAA}</Project>
       <Name>SchoolSystem.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SchoolSystem.Web.Services\SchoolSystem.Web.Services.csproj">
-      <Project>{85342024-9A31-45A3-B8DC-9F7D09708BC1}</Project>
-      <Name>SchoolSystem.Web.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

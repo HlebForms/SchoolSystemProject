@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Microsoft.AspNet.Identity;
 
 namespace SchoolSystem.WebForms.Account.Models
 {
@@ -13,6 +10,6 @@ namespace SchoolSystem.WebForms.Account.Models
 
         public string ConfirmedPassword { get; set; }
 
-        public bool IsSuccessfullyRegistered { get; set; }
+        public IdentityResult Result { get; set; }
     }
 }

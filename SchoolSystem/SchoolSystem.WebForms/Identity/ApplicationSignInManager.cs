@@ -1,16 +1,11 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using SchoolSystem.Data.Models;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using SchoolSystem.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SchoolSystem.Web.Services.Auth.Managers
+namespace SchoolSystem.WebForms.Identity
 {
     public class ApplicationSignInManager : SignInManager<User, string>
     {

@@ -4,14 +4,14 @@ using System;
 
 namespace SchoolSystem.WebForms.Account.Views.EventArguments
 {
-    public class AuhenticationEventArgs : EventArgs
+    public class LoginPageEventtArgs : EventArgs
     {
-        public AuhenticationEventArgs()
+        public LoginPageEventtArgs()
         {
 
         }
 
-        public AuhenticationEventArgs(LoginModel model, IOwinContext ctx)
+        public LoginPageEventtArgs(LoginModel model, IOwinContext ctx)
         {
             this.Data = model;
             this.OwinCtx = ctx;

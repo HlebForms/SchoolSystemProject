@@ -86,10 +86,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auth\AuthService.cs" />
-    <Compile Include="Auth\Contracts\IAuthService.cs" />
-    <Compile Include="Auth\Managers\ApplicationSignInManager.cs" />
-    <Compile Include="Auth\Managers\ApplicationUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
