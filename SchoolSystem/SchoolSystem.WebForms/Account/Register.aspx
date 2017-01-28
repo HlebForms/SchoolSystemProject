@@ -11,11 +11,39 @@
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
+            <div class="form-group">
+                <asp:Label runat="server" AssociatedControlID="UserType" CssClass="col-md-2 control-label">Тип та потребителя</asp:Label>
+                <div class="col-md-10">
+                    <asp:DropDownList runat="server" ID="UserType" CssClass="form-control">
+                        <asp:ListItem Value="Admin" Text="Admin">Admin</asp:ListItem>
+                        <asp:ListItem Value="Teacher" Text="Teacher">Teacher</asp:ListItem>
+                        <asp:ListItem Value="Student" Text="Student">Student</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
                     CssClass="text-danger" ErrorMessage="The email field is required." />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="FirstNameTextBox" CssClass="col-md-2 control-label">Име</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="FirstNameTextBox" CssClass="form-control" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="FirstNameTextBox"
+                    CssClass="text-danger" ErrorMessage="Името не е валидно" />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="LastNameTextBox" CssClass="col-md-2 control-label">Фамилия</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="LastNameTextBox" CssClass="form-control" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="LastNameTextBox"
+                    CssClass="text-danger" ErrorMessage="Името не е валидно" />
             </div>
         </div>
         <div class="form-group">

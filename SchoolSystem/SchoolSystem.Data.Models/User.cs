@@ -15,6 +15,10 @@ namespace SchoolSystem.Data.Models
     {
         public virtual Teacher Teacher { get; set; }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
         public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

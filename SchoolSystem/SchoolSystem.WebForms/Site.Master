@@ -38,7 +38,6 @@
             </Scripts>
         </asp:ScriptManager>
 
-
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -47,23 +46,23 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+                    <a class="navbar-brand" runat="server" href="~/">Училищна система</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <li><a runat="server" href="~/">Начало</a></li>
+                        <li><a runat="server" href="~/About">За Училището</a></li>
+                        <li><a runat="server" href="~/Contact">Контакти</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                                <li><a runat="server" href="~/Account/Login">Вход</a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Здравей, <%: Context.User.Identity.GetUserName()  %> !</a></li>
                                 <li>
                                     <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                 </li>
@@ -78,9 +77,7 @@
                             <asp:RoleGroup Roles="Admin">
                                 <ContentTemplate>
                                     <ul class="nav navbar-nav">
-                                        <li><a runat="server" href="~/Account/Register">Register</a></li>
-                                        <li><a runat="server" href="~/Account/Register">Regiser teacher</a></li>
-                                        <li><a runat="server" href="~/Account/Register">Register</a></li>
+                                        <li><a runat="server" href="~/Account/Register">Регистрирай потребител</a></li>
                                     </ul>
                                 </ContentTemplate>
                             </asp:RoleGroup>
@@ -89,8 +86,8 @@
                             <asp:RoleGroup Roles="Teacher">
                                 <ContentTemplate>
                                     <ul class="nav navbar-nav">
-                                        <li><a runat="server" href="~/Account/Register">Classes</a></li>
-                                        <li><a runat="server" href="~/Account/Register">blalbal</a></li>
+                                        <li><a runat="server" href="#">Класове</a></li>
+                                        <li><a runat="server" href="#">Нещо друго</a></li>
                                     </ul>
                                 </ContentTemplate>
                             </asp:RoleGroup>
@@ -99,7 +96,7 @@
                             <asp:RoleGroup Roles="Student">
                                 <ContentTemplate>
                                     <ul class="nav navbar-nav">
-                                        <li><a runat="server" href="~/Account/Register">predmeti</a></li>
+                                        <li><a runat="server" href="#">Предмети</a></li>
                                     </ul>
                                 </ContentTemplate>
                             </asp:RoleGroup>
@@ -115,7 +112,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Developed by ХлебForms  </p>
             </footer>
         </div>
     </form>
