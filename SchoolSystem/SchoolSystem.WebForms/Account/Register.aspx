@@ -19,8 +19,7 @@
                     CssClass="form-control"
                     Width="285"
                     DataValueField="Id"
-                    DataTextField="Name"
-                    AppendDataBoundItems="true">
+                    DataTextField="Name">
                 </asp:DropDownList>
             </div>
         </div>
