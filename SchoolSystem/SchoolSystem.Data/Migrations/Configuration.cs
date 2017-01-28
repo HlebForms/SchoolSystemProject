@@ -20,7 +20,7 @@ namespace SchoolSystem.Data.Migrations
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(SchoolSystem.Data.SchoolSystemDbContext context)
+        protected override void Seed(SchoolSystemDbContext context)
         {
             this.RolesSeeder(context);
             this.UsersSeeder(context);
@@ -31,7 +31,7 @@ namespace SchoolSystem.Data.Migrations
             var roleStore = new RoleStore<IdentityRole>(context);
             var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-            var roleAdmin = new IdentityRole() { Name = AdminRole };
+            var roleAdmin = new IdentityRole() { Name = AdminRole};
             var roleTeacher = new IdentityRole() { Name = TeacherRole };
             var roleStudent = new IdentityRole() { Name = StudentRole };
 
@@ -60,7 +60,7 @@ namespace SchoolSystem.Data.Migrations
             {
                 var adminUser = new User { UserName = "admin@admin.com" };
 
-                userManager.Create(adminUser, "admin");
+                userManager.Create(adminUser, "admin123");
                 userManager.AddToRole(adminUser.Id, AdminRole);
             }
 
@@ -68,7 +68,7 @@ namespace SchoolSystem.Data.Migrations
             {
                 var teacherUser = new User { UserName = "teacher@teacher.com" };
 
-                userManager.Create(teacherUser, "teacher");
+                userManager.Create(teacherUser, "teacher123");
                 userManager.AddToRole(teacherUser.Id, TeacherRole);
             }
 
@@ -76,7 +76,7 @@ namespace SchoolSystem.Data.Migrations
             {
                 var studentUser = new User { UserName = "student@student.com" };
 
-                userManager.Create(studentUser, "student");
+                userManager.Create(studentUser, "student123");
                 userManager.AddToRole(studentUser.Id, StudentRole);
             }
         }
