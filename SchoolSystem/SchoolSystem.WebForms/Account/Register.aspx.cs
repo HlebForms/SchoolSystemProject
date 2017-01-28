@@ -15,22 +15,30 @@ namespace SchoolSystem.WebForms.Account
     [WebFormsMvp.PresenterBinding(typeof(RegistrationPresenter))]
     public partial class Register : MvpPage<RegistrationModel>, IRegisterView
     {
-        public event EventHandler<EventArgs> BindUserRoles;
+        public event EventHandler<EventArgs> EventBindUserRoles;
         public event EventHandler<RegistrationPageEventArgs> EventRegisterUser;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.BindUserRoles(this, e);
+            this.EventBindUserRoles(this, e);
             this.UserTypeDropDown.DataSource = this.Model.UserRoles;
             this.UserTypeDropDown.DataBind();
         }
 
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-            var model = new RegistrationModel() { Email = this.Email.Text, Password = this.Password.Text, ConfirmedPassword = this.ConfirmPassword.Text };
-
             var owinCtx = Context.GetOwinContext();
-            var eventArgs = new RegistrationPageEventArgs(model, owinCtx);
+            var eventArgs = new RegistrationPageEventArgs()
+            {
+                OwinCtx = owinCtx,
+                Email = this.Email.Text,
+                FirstName = this.FirstNameTextBox.Text,
+                LastName = this.LastNameTextBox.Text,
+                UserName = this.Email.Text,
+                UserType = this.UserTypeDropDown.SelectedItem.Text,
+                Password = this.Password.Text,
+                ConfirmedPassword = this.ConfirmPassword.Text
+            };
 
             EventRegisterUser(this, eventArgs);
 

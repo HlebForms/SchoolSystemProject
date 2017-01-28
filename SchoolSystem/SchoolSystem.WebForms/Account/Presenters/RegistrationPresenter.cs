@@ -27,7 +27,7 @@ namespace SchoolSystem.WebForms.Account.Presenters
             this.service = service;
 
             this.View.EventRegisterUser += RegisterUser;
-            this.View.BindUserRoles += BindUserRoles;
+            this.View.EventBindUserRoles += BindUserRoles;
         }
 
         private void BindUserRoles(object sender, EventArgs e)
@@ -39,9 +39,15 @@ namespace SchoolSystem.WebForms.Account.Presenters
         {
             var manager = e.OwinCtx.GetUserManager<ApplicationUserManager>();
 
-            var user = new User() { UserName = e.Model.Email, Email = e.Model.Email };
+            var user = new User()
+            {
+                Email = e.Email,
+                UserName = e.Email,
+                FirstName = e.FirstName,
+                LastName = e.LastName,
+            };
 
-            IdentityResult result = manager.Create(user, e.Model.Password);
+            IdentityResult result = manager.Create(user, e.Password);
 
             this.View.Model.Result = result;
         }

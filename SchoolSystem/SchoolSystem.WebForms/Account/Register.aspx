@@ -13,7 +13,6 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="UserTypeDropDown" CssClass="col-md-2 control-label">Тип та потребителя</asp:Label>
             <div class="col-md-10">
-
                 <asp:DropDownList
                     runat="server"
                     ID="UserTypeDropDown"
@@ -23,7 +22,6 @@
                     DataValueField="Id"
                     DataTextField="Name">
                 </asp:DropDownList>
-
             </div>
         </div>
         <div class="form-group">
