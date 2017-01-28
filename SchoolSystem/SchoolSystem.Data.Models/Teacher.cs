@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,27 +9,23 @@ namespace SchoolSystem.Data.Models
 {
     public class Teacher
     {
-        //private ICollection<User> users;
+        private ICollection<Subject> subjects;
 
-        //public Teacher()
-        //{
-        //    this.users = new HashSet<User>();
-        //}
+        public Teacher()
+        {
+            this.subjects = new HashSet<Subject>();
+        }
 
-
-        public int Id { get; set; }
-
-        public int UserId { get; set; }
-
+        [ForeignKey("User")]
+        public string Id { get; set; }
 
         public virtual User User { get; set; }
 
-        //public virtual ICollection<User> Users
-        //{
-        //    get { return this.users; }
-        //    set { this.users = value; }
-        //}
+        public virtual ICollection<Subject> Subjects
+        {
+            get { return this.subjects; }
 
-
+            set { this.subjects = value; }
+        }
     }
 }

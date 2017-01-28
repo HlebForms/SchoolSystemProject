@@ -13,10 +13,7 @@ namespace SchoolSystem.Data.Models
 {
     public class User : IdentityUser
     {
-        //public int TeacherId { get; set; }
-
-        //[ForeignKey("TeacherId")]
-        //public virtual Teacher Teacher { get; set; }
+        public virtual Teacher Teacher { get; set; }
 
         public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)
         {
