@@ -8,5 +8,7 @@ namespace SchoolSystem.WebForms.Account.Views
     public interface IRegisterView : IView<RegistrationModel>
     {
         event EventHandler<RegistrationPageEventArgs> EventRegisterUser;
+
+        event EventHandler<EventArgs> BindUserRoles;
     }
 }

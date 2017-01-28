@@ -343,6 +343,10 @@
       <Project>{B70B597E-506D-40A8-AA41-DB825675AEAA}</Project>
       <Name>SchoolSystem.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SchoolSystem.Web.Services\SchoolSystem.Web.Services.csproj">
+      <Project>{85342024-9A31-45A3-B8DC-9F7D09708BC1}</Project>
+      <Name>SchoolSystem.Web.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

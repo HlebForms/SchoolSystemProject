@@ -11,15 +11,19 @@
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
-            <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="UserType" CssClass="col-md-2 control-label">Тип та потребителя</asp:Label>
-                <div class="col-md-10">
-                    <asp:DropDownList runat="server" ID="UserType" CssClass="form-control">
-                        <asp:ListItem Value="Admin" Text="Admin">Admin</asp:ListItem>
-                        <asp:ListItem Value="Teacher" Text="Teacher">Teacher</asp:ListItem>
-                        <asp:ListItem Value="Student" Text="Student">Student</asp:ListItem>
-                    </asp:DropDownList>
-                </div>
+            <asp:Label runat="server" AssociatedControlID="UserTypeDropDown" CssClass="col-md-2 control-label">Тип та потребителя</asp:Label>
+            <div class="col-md-10">
+
+                <asp:DropDownList
+                    runat="server"
+                    ID="UserTypeDropDown"
+                    CssClass="form-control"
+                    Width="285"
+                    ItemType="IdentityRole"
+                    DataValueField="Id"
+                    DataTextField="Name">
+                </asp:DropDownList>
+
             </div>
         </div>
         <div class="form-group">
@@ -47,7 +51,7 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Password</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Парола</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
@@ -55,7 +59,7 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Confirm password</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Потвърди паролата</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
