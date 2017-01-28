@@ -22,7 +22,6 @@ namespace SchoolSystem.WebForms.Account
         {
             this.EventBindUserRoles(this, e);
             this.UserTypeDropDown.DataSource = this.Model.UserRoles;
-            this.UserTypeDropDown.DataBind();
         }
 
         protected void CreateUser_Click(object sender, EventArgs e)
@@ -53,6 +52,6 @@ namespace SchoolSystem.WebForms.Account
                 ErrorMessage.Text = result.Errors.FirstOrDefault();
             }
         }
-
+        
     }
 }

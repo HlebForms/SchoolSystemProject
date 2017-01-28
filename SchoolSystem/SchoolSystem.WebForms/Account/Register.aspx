@@ -11,16 +11,16 @@
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="UserTypeDropDown" CssClass="col-md-2 control-label">Тип та потребителя</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="UserTypeDropDown" CssClass="col-md-2 control-label">Тип на потребителя</asp:Label>
             <div class="col-md-10">
                 <asp:DropDownList
                     runat="server"
                     ID="UserTypeDropDown"
                     CssClass="form-control"
                     Width="285"
-                    ItemType="IdentityRole"
                     DataValueField="Id"
-                    DataTextField="Name">
+                    DataTextField="Name"
+                    AppendDataBoundItems="true">
                 </asp:DropDownList>
             </div>
         </div>
