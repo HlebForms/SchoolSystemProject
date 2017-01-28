@@ -44,11 +44,11 @@ namespace SchoolSystem.WebForms.Account.Presenters
                 Email = e.Email,
                 UserName = e.Email,
                 FirstName = e.FirstName,
-                LastName = e.LastName,
+                LastName = e.LastName
             };
 
             IdentityResult result = manager.Create(user, e.Password);
-
+            manager.AddToRole(user.Id, e.UserType);
             this.View.Model.Result = result;
         }
 

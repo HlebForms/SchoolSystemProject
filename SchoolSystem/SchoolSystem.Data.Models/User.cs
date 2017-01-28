@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
@@ -15,8 +16,12 @@ namespace SchoolSystem.Data.Models
     {
         public virtual Teacher Teacher { get; set; }
 
+        [MinLength(4)]
+        [MaxLength(20)]
         public string FirstName { get; set; }
 
+        [MinLength(4)]
+        [MaxLength(20)]
         public string LastName { get; set; }
 
         public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)
