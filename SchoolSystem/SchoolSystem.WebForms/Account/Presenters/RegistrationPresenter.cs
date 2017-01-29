@@ -57,7 +57,7 @@ namespace SchoolSystem.WebForms.Account.Presenters
             {
                 this.registrationService.CreateTeacher(user.Id, e.SubjectId);
             }
-            else if (e.UserType == UserType.Admin)
+            else if (e.UserType == UserType.Student)
             {
                 this.registrationService.CreateStudent(user.Id, e.ClassOfSudentsId);
             }

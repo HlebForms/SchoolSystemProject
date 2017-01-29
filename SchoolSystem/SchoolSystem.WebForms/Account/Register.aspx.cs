@@ -82,12 +82,12 @@ namespace SchoolSystem.WebForms.Account
         {
             var selectedRole = this.UserTypeDropDown.SelectedItem.Text;
 
-            if (selectedRole == UserType.Teacher)
+            if (selectedRole == UserType.Student)
             {
                 this.ClassContainer.Visible = !this.ClassContainer.Visible;
                 this.SubjectContainer.Visible = false;
             }
-            else if (selectedRole == UserType.Student)
+            else if (selectedRole == UserType.Teacher)
             {
                 this.SubjectContainer.Visible = !this.SubjectContainer.Visible;
                 this.ClassContainer.Visible = false;
