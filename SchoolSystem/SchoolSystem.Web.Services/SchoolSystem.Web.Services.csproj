@@ -86,9 +86,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IUserRolesDataService.cs" />
+    <Compile Include="Contracts\IRegistrationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserRolesDataService.cs" />
+    <Compile Include="RegistrationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -14,17 +14,17 @@ namespace SchoolSystem.WebForms.Account.Presenters
 {
     public class RegistrationPresenter : Presenter<IRegisterView>
     {
-        private readonly IUserRolesDataService service;
+        private readonly IRegistrationService registrationService;
 
-        public RegistrationPresenter(IRegisterView view, IUserRolesDataService service)
+        public RegistrationPresenter(IRegisterView view, IRegistrationService registrationService)
             : base(view)
         {
-            if (service == null)
+            if (registrationService == null)
             {
                 throw new ArgumentNullException("service");
             }
 
-            this.service = service;
+            this.registrationService = registrationService;
 
             this.View.EventRegisterUser += RegisterUser;
             this.View.EventBindUserRoles += BindUserRoles;
@@ -32,12 +32,16 @@ namespace SchoolSystem.WebForms.Account.Presenters
 
         private void BindUserRoles(object sender, EventArgs e)
         {
-            this.View.Model.UserRoles = this.service.GetAllUserRoles();
+            this.View.Model.UserRoles = this.registrationService.GetAllUserRoles();
         }
 
         private void RegisterUser(object sender, RegistrationPageEventArgs e)
         {
             var manager = e.OwinCtx.GetUserManager<ApplicationUserManager>();
+
+            //TODO: take the subjectID
+            int subjectId = 1;
+            int classId = 1;
 
             var user = new User()
             {
@@ -49,7 +53,16 @@ namespace SchoolSystem.WebForms.Account.Presenters
 
             IdentityResult result = manager.Create(user, e.Password);
             manager.AddToRole(user.Id, e.UserType);
-            ////////////////////
+
+            if (e.UserType == "Teacher")
+            {
+                this.registrationService.CreateTeacher(user.Id, subjectId);
+            }
+            else if (e.UserType == "Student")
+            {
+                this.registrationService.CreateStudent(user.Id, classId);
+            }
+
             this.View.Model.Result = result;
         }
 
