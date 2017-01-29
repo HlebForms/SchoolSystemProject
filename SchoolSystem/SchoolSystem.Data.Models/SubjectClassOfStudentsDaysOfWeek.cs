@@ -19,7 +19,6 @@ namespace SchoolSystem.Data.Models
         [Key, Column(Order = 2), ForeignKey("SubjectClassOfStudents")]
         public int ClassOfStudentsId { get; set; }
 
-
         public virtual DaysOfWeek DaysOfWeek { get; set; }
 
         public virtual SubjectClassOfStudents SubjectClassOfStudents { get; set; }

@@ -4,6 +4,7 @@ namespace SchoolSystem.Data.Migrations
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -30,13 +31,15 @@ namespace SchoolSystem.Data.Migrations
 
         private void ClassOfStudentsSeeder(SchoolSystemDbContext context)
         {
-            var subjects = context.Subjects.Select(x => x).ToList();
 
-            context.ClassOfStudents.Add(new ClassOfStudents()
+            context.ClassOfStudents.AddOrUpdate(new ClassOfStudents()
             {
                 Id = 1,
-                Name = "12а"
-             
+                Name = "12а",
+                SubjectClassOfStudents = new HashSet<SubjectClassOfStudents>()
+                {
+                    new SubjectClassOfStudents() { SubjectId = 1, ClassOfStudentsId = 1 }
+                }
             });
 
             context.SaveChanges();
@@ -44,13 +47,13 @@ namespace SchoolSystem.Data.Migrations
 
         private void SubjectSeeder(SchoolSystemDbContext context)
         {
-            context.Subjects.Add(new Subject()
+            context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 1,
                 Name = "Математика",
             });
 
-            context.Subjects.Add(new Subject()
+            context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 2,
                 Name = "ИТ"
@@ -104,7 +107,7 @@ namespace SchoolSystem.Data.Migrations
 
                 userManager.Create(teacherUser, "teacher123");
                 userManager.AddToRole(teacherUser.Id, TeacherRole);
-                context.Teachers.Add(new Teacher()
+                context.Teachers.AddOrUpdate(new Teacher()
                 {
                     Id = teacherUser.Id,
                     SubjectId = 1,
@@ -121,7 +124,7 @@ namespace SchoolSystem.Data.Migrations
                 userManager.Create(studentUser, "student123");
                 userManager.AddToRole(studentUser.Id, StudentRole);
 
-                context.Students.Add(new Student()
+                context.Students.AddOrUpdate(new Student()
                 {
                     Id = studentUser.Id,
                     ClassOfStudentsId = 1,
