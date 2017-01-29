@@ -31,6 +31,8 @@ namespace SchoolSystem.Data.Models
         [MaxLength(20)]
         public string LastName { get; set; }
 
+        public string AvatarPictureUrl { get; set; }
+
         public bool IsDeleted { get; set; } = false;
 
         public virtual ICollection<Newsfeed> NewsFeed
