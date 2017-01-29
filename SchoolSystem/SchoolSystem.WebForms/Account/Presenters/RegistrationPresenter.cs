@@ -9,6 +9,7 @@ using SchoolSystem.Web.Services.Contracts;
 using System;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
+using SchoolSystem.Data.Models.Common;
 
 namespace SchoolSystem.WebForms.Account.Presenters
 {
@@ -41,10 +42,6 @@ namespace SchoolSystem.WebForms.Account.Presenters
         {
             var manager = e.OwinCtx.GetUserManager<ApplicationUserManager>();
 
-            //TODO: take the subjectID
-            int subjectId = 1;
-            int classId = 1;
-
             var user = new User()
             {
                 Email = e.Email,
@@ -56,17 +53,16 @@ namespace SchoolSystem.WebForms.Account.Presenters
             IdentityResult result = manager.Create(user, e.Password);
             manager.AddToRole(user.Id, e.UserType);
 
-            if (e.UserType == "Teacher")
+            if (e.UserType == UserType.Teacher)
             {
-                this.registrationService.CreateTeacher(user.Id, subjectId);
+                this.registrationService.CreateTeacher(user.Id, e.SubjectId);
             }
-            else if (e.UserType == "Student")
+            else if (e.UserType == UserType.Admin)
             {
-                this.registrationService.CreateStudent(user.Id, classId);
+                this.registrationService.CreateStudent(user.Id, e.ClassOfSudentsId);
             }
            
             this.View.Model.Result = result;
         }
-
     }
 }

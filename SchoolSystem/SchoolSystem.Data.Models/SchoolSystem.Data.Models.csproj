@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="ClassOfStudents.cs" />
     <Compile Include="ClassOfStudentsSchedule.cs" />
+    <Compile Include="Common\UserType.cs" />
     <Compile Include="DaysOfWeek.cs" />
     <Compile Include="Newsfeed.cs" />
     <Compile Include="Student.cs" />
@@ -74,9 +75,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
