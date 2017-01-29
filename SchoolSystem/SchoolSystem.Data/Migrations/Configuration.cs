@@ -30,10 +30,13 @@ namespace SchoolSystem.Data.Migrations
 
         private void ClassOfStudentsSeeder(SchoolSystemDbContext context)
         {
+            var subjects = context.Subjects.Select(x => x).ToList();
+
             context.ClassOfStudents.Add(new ClassOfStudents()
             {
                 Id = 1,
-                Name = "12à"
+                Name = "12à",
+                Subjects = subjects
             });
 
             context.SaveChanges();
@@ -122,7 +125,7 @@ namespace SchoolSystem.Data.Migrations
                 {
                     Id = studentUser.Id,
                     ClassOfStudentsId = 1,
-                    
+
                 });
             }
         }
