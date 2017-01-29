@@ -48,65 +48,65 @@
                     </button>
                     <a class="navbar-brand" runat="server" href="~/">Училищна система</a>
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Начало</a></li>
-                        <li><a runat="server" href="~/About">За Училището</a></li>
-                        <li><a runat="server" href="~/Contact">Контакти</a></li>
-                    </ul>
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Login">Вход</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Здравей, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
-                            </ul>
 
-                        </LoggedInTemplate>
-
-                    </asp:LoginView>
-
-                    <asp:LoginView runat="server">
-                        <RoleGroups>
-                            <asp:RoleGroup Roles="Admin">
-                                <ContentTemplate>
-                                    <ul class="nav navbar-nav">
-                                        <li><a runat="server" href="~/Account/Register">Регистрирай потребител</a></li>
-                                    </ul>
-                                </ContentTemplate>
-                            </asp:RoleGroup>
-
-                            <%--teacher--%>
-                            <asp:RoleGroup Roles="Teacher">
-                                <ContentTemplate>
-                                    <ul class="nav navbar-nav">
-                                        <li><a runat="server" href="#">Класове</a></li>
-                                        <li><a runat="server" href="#">Нещо друго</a></li>
-                                    </ul>
-                                </ContentTemplate>
-                            </asp:RoleGroup>
-
-                            <%--student--%>
-                            <asp:RoleGroup Roles="Student">
-                                <ContentTemplate>
-                                    <ul class="nav navbar-nav">
-                                        <li><a runat="server" href="#">Предмети</a></li>
-                                    </ul>
-                                </ContentTemplate>
-                            </asp:RoleGroup>
-                        </RoleGroups>
-
-                    </asp:LoginView>
-                </div>
             </div>
         </div>
+        <div class="navbar-collapse collapse header-menu">
+            <ul class="nav navbar-nav">
+                <li><a runat="server" href="~/">Начало</a></li>
+                <li><a runat="server" href="~/About">За Училището</a></li>
+                <li><a runat="server" href="~/Contact">Контакти</a></li>
+            </ul>
+            <asp:LoginView runat="server" ViewStateMode="Disabled">
+                <AnonymousTemplate>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a runat="server" href="~/Account/Login">Вход</a></li>
+                    </ul>
+                </AnonymousTemplate>
+                <LoggedInTemplate>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Здравей, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                        <li>
+                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                        </li>
+                    </ul>
 
+                </LoggedInTemplate>
+
+            </asp:LoginView>
+
+            <asp:LoginView runat="server">
+                <RoleGroups>
+                    <asp:RoleGroup Roles="Admin">
+                        <ContentTemplate>
+                            <ul class="nav navbar-nav">
+                                <li><a runat="server" href="~/Account/Register">Регистрирай потребител</a></li>
+                            </ul>
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+
+                    <%--teacher--%>
+                    <asp:RoleGroup Roles="Teacher">
+                        <ContentTemplate>
+                            <ul class="nav navbar-nav">
+                                <li><a runat="server" href="#">Класове</a></li>
+                                <li><a runat="server" href="#">Нещо друго</a></li>
+                            </ul>
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+
+                    <%--student--%>
+                    <asp:RoleGroup Roles="Student">
+                        <ContentTemplate>
+                            <ul class="nav navbar-nav">
+                                <li><a runat="server" href="#">Предмети</a></li>
+                            </ul>
+                        </ContentTemplate>
+                    </asp:RoleGroup>
+                </RoleGroups>
+
+            </asp:LoginView>
+        </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>

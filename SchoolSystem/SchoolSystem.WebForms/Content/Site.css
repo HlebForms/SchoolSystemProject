@@ -7,8 +7,6 @@ body {
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -32,7 +30,66 @@ input[type="select"] {
     .jumbotron {
         margin-top: 20px;
     }
+
     .body-content {
         padding: 0;
     }
+}
+
+@media screen and (max-width: 900px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+        .navbar-collapse.collapse.in {
+            display: block !important;
+        }
+
+    .navbar-header .collapse, .navbar-toggle {
+        display: block !important;
+    }
+
+    .navbar-header {
+        float: none;
+    }
+}
+
+@media (max-width:950px) {
+    .news-feed {
+        position: absolute;
+    }
+}
+
+@media (max-width:750px) {
+    .news-feed {
+        position: initial;
+    }
+}
+
+.header-menu {
+    border-bottom: 1px solid #2196F3;
+}
+
+.navbar-nav > li > a {
+    padding-bottom: 5.5px;
+}
+
+.test {
+    border: 1px solid black;
+    width: 250px;
+    height: 200px;
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.program, .top-news {
+    width: 450px;
+    margin-left: 5px;
+}
+
+
+.news-feed {
+    margin-left: 10px;
+    height: 400px;
+    width: 280px;
 }
