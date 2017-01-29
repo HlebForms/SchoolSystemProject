@@ -11,11 +11,11 @@ namespace SchoolSystem.Data.Models
     public class Student
     {
         private ICollection<SubjectStudent> studentSubj;
-        private ICollection<SubjectClassOfStudents> subjecClassOfStudents;
+        //private ICollection<SubjectClassOfStudents> subjecClassOfStudents;
         public Student()
         {
             this.studentSubj = new HashSet<SubjectStudent>();
-            this.subjecClassOfStudents = new HashSet<SubjectClassOfStudents>();
+            //this.subjecClassOfStudents = new HashSet<SubjectClassOfStudents>();
         }
 
         [Key, ForeignKey("User")]
@@ -35,11 +35,11 @@ namespace SchoolSystem.Data.Models
 
         public bool IsDeleted { get; set; } = false;
 
-        public virtual ICollection<SubjectClassOfStudents> SubjecClassOfStudents
-        {
-            get { return this.subjecClassOfStudents; }
+        //public virtual ICollection<SubjectClassOfStudents> SubjecClassOfStudents
+        //{
+        //    get { return this.subjecClassOfStudents; }
 
-            set { this.subjecClassOfStudents = value; }
-        }
+        //    set { this.subjecClassOfStudents = value; }
+        //}
     }
 }

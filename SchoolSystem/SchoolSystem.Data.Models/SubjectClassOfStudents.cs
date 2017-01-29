@@ -16,6 +16,8 @@ namespace SchoolSystem.Data.Models
         [Key, Column(Order = 1)]
         public int ClassOfStudentsId { get; set; }
 
+        public int Proba { get; set; }
+
         public virtual Subject Subject { get; set; }
 
         public virtual ClassOfStudents ClassOfStudents { get; set; }
