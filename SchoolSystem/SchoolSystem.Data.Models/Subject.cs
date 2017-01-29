@@ -12,14 +12,14 @@ namespace SchoolSystem.Data.Models
     {
         private ICollection<SubjectStudent> studentSubj;
         private ICollection<Teacher> teachers;
-        private ICollection<ClassOfStudents> classOfStudents;
+        //private ICollection<ClassOfStudents> classOfStudents;
         private ICollection<SubjectClassOfStudents> subjecClassOfStudents;
 
         public Subject()
         {
             this.studentSubj = new HashSet<SubjectStudent>();
             this.teachers = new HashSet<Teacher>();
-            this.classOfStudents = new HashSet<ClassOfStudents>();
+            //this.classOfStudents = new HashSet<ClassOfStudents>();
             this.subjecClassOfStudents = new HashSet<SubjectClassOfStudents>();
         }
 
@@ -42,11 +42,11 @@ namespace SchoolSystem.Data.Models
             set { this.teachers = value; }
         }
 
-        public virtual ICollection<ClassOfStudents> ClassOfStudents
-        {
-            get { return this.classOfStudents; }
-            set { this.classOfStudents = value; }
-        }
+        //public virtual ICollection<ClassOfStudents> ClassOfStudents
+        //{
+        //    get { return this.classOfStudents; }
+        //    set { this.classOfStudents = value; }
+        //}
 
         public bool IsDeleted { get; set; } = false;
 

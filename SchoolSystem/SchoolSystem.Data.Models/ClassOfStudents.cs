@@ -11,12 +11,12 @@ namespace SchoolSystem.Data.Models
     public class ClassOfStudents
     {
         private ICollection<Student> students;
-        private ICollection<Subject> subjects;
+        private ICollection<SubjectClassOfStudents> subjectClassOfStudents;
 
         public ClassOfStudents()
         {
             this.students = new HashSet<Student>();
-            this.subjects = new HashSet<Subject>();
+            this.SubjectClassOfStudents = new HashSet<SubjectClassOfStudents>();
         }
 
         public int Id { get; set; }
@@ -31,14 +31,13 @@ namespace SchoolSystem.Data.Models
             set { this.students = value; }
         }
 
-        public virtual ICollection<Subject> Subjects
-        {
-            get { return this.subjects; }
-
-            set { this.subjects = value; }
-        }
-
         public bool IsDeleted { get; set; } = false;
 
+        public virtual ICollection<SubjectClassOfStudents> SubjectClassOfStudents
+        {
+            get { return this.subjectClassOfStudents; }
+
+            set { this.subjectClassOfStudents = value; }
+        }
     }
 }

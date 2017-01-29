@@ -64,6 +64,7 @@
     <Compile Include="Student.cs" />
     <Compile Include="SubjectClassOfStudents.cs" />
     <Compile Include="Subject.cs" />
+    <Compile Include="SubjectClassOfStudentsDaysOfWeek.cs" />
     <Compile Include="SubjectStudent.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="User.cs" />

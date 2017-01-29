@@ -35,8 +35,8 @@ namespace SchoolSystem.Data.Migrations
             context.ClassOfStudents.Add(new ClassOfStudents()
             {
                 Id = 1,
-                Name = "12à",
-                Subjects = subjects
+                Name = "12à"
+             
             });
 
             context.SaveChanges();
