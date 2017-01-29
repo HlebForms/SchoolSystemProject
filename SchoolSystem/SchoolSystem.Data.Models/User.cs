@@ -14,6 +14,13 @@ namespace SchoolSystem.Data.Models
 {
     public class User : IdentityUser
     {
+        private ICollection<Newsfeed> newsFeed;
+
+        public User()
+        {
+            this.newsFeed = new HashSet<Newsfeed>();
+        }
+
         public virtual Teacher Teacher { get; set; }
 
         [MinLength(4)]
@@ -23,6 +30,15 @@ namespace SchoolSystem.Data.Models
         [MinLength(4)]
         [MaxLength(20)]
         public string LastName { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
+
+        public virtual ICollection<Newsfeed> NewsFeed
+        {
+            get { return this.newsFeed; }
+
+            set { this.newsFeed = value; }
+        }
 
         public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)
         {
@@ -36,5 +52,6 @@ namespace SchoolSystem.Data.Models
         {
             return Task.FromResult(GenerateUserIdentity(manager));
         }
+
     }
 }

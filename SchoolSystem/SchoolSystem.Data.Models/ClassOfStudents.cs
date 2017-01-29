@@ -11,10 +11,12 @@ namespace SchoolSystem.Data.Models
     public class ClassOfStudents
     {
         private ICollection<Student> students;
+        private ICollection<Subject> subjects;
 
         public ClassOfStudents()
         {
             this.students = new HashSet<Student>();
+            this.subjects = new HashSet<Subject>();
         }
 
         public int Id { get; set; }
@@ -28,5 +30,15 @@ namespace SchoolSystem.Data.Models
             get { return this.students; }
             set { this.students = value; }
         }
+
+        public virtual ICollection<Subject> Subjects
+        {
+            get { return this.subjects; }
+
+            set { this.subjects = value; }
+        }
+
+        public bool IsDeleted { get; set; } = false;
+
     }
 }

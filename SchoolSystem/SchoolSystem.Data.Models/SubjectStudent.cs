@@ -21,5 +21,8 @@ namespace SchoolSystem.Data.Models
         public virtual Subject Subject { get; set; }
 
         public int Mark { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
+
     }
 }

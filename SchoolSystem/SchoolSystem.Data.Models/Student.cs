@@ -31,5 +31,8 @@ namespace SchoolSystem.Data.Models
             get { return this.studentSubj; }
             set { this.studentSubj = value; }
         }
+
+        public bool IsDeleted { get; set; } = false;
+
     }
 }

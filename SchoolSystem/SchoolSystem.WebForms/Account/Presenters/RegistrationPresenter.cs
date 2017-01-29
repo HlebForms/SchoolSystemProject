@@ -49,6 +49,7 @@ namespace SchoolSystem.WebForms.Account.Presenters
 
             IdentityResult result = manager.Create(user, e.Password);
             manager.AddToRole(user.Id, e.UserType);
+            ////////////////////
             this.View.Model.Result = result;
         }
 
