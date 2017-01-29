@@ -121,7 +121,8 @@ namespace SchoolSystem.Data.Migrations
                 context.Students.Add(new Student()
                 {
                     Id = studentUser.Id,
-                    ClassOfStudentsId = 1
+                    ClassOfStudentsId = 1,
+                    
                 });
             }
         }
