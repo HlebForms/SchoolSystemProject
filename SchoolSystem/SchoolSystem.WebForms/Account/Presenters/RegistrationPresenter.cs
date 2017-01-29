@@ -27,12 +27,14 @@ namespace SchoolSystem.WebForms.Account.Presenters
             this.registrationService = registrationService;
 
             this.View.EventRegisterUser += RegisterUser;
-            this.View.EventBindUserRoles += BindUserRoles;
+            this.View.EventBindPageData += BindPageData;
         }
 
-        private void BindUserRoles(object sender, EventArgs e)
+        private void BindPageData(object sender, EventArgs e)
         {
             this.View.Model.UserRoles = this.registrationService.GetAllUserRoles();
+            this.View.Model.ClassOfStudents = this.registrationService.GetClassOfStudents();
+            this.View.Model.Subjects = this.registrationService.GetAllSubjects();
         }
 
         private void RegisterUser(object sender, RegistrationPageEventArgs e)

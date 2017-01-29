@@ -9,22 +9,29 @@ using SchoolSystem.WebForms.Account.Views.EventArguments;
 using System.Collections.Generic;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
+using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.Account
 {
-    [WebFormsMvp.PresenterBinding(typeof(RegistrationPresenter))]
+    [PresenterBinding(typeof(RegistrationPresenter))]
     public partial class Register : MvpPage<RegistrationModel>, IRegisterView
     {
-        public event EventHandler<EventArgs> EventBindUserRoles;
+        public event EventHandler<EventArgs> EventBindPageData;
         public event EventHandler<RegistrationPageEventArgs> EventRegisterUser;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
-                this.EventBindUserRoles(this, e);
+                this.EventBindPageData(this, e);
                 this.UserTypeDropDown.DataSource = this.Model.UserRoles;
                 this.UserTypeDropDown.DataBind();
+
+                this.SubjectDropDown.DataSource = this.Model.Subjects;
+                this.SubjectDropDown.DataBind();
+
+                this.ClassDropDown.DataSource = this.Model.ClassOfStudents;
+                this.ClassDropDown.DataBind();
             }
         }
 

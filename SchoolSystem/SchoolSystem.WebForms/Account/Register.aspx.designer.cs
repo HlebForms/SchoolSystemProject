@@ -31,6 +31,24 @@ namespace SchoolSystem.WebForms.Account {
         protected global::System.Web.UI.WebControls.DropDownList UserTypeDropDown;
         
         /// <summary>
+        /// SubjectDropDown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList SubjectDropDown;
+        
+        /// <summary>
+        /// ClassDropDown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ClassDropDown;
+        
+        /// <summary>
         /// Email control.
         /// </summary>
         /// <remarks>
