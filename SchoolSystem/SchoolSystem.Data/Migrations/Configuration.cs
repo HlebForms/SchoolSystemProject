@@ -23,7 +23,37 @@ namespace SchoolSystem.Data.Migrations
         protected override void Seed(SchoolSystemDbContext context)
         {
             this.RolesSeeder(context);
+            this.SubjectSeeder(context);
+            this.ClassOfStudentsSeeder(context);
             this.UsersSeeder(context);
+        }
+
+        private void ClassOfStudentsSeeder(SchoolSystemDbContext context)
+        {
+            context.ClassOfStudents.Add(new ClassOfStudents()
+            {
+                Id = 1,
+                Name = "12а"
+            });
+
+            context.SaveChanges();
+        }
+
+        private void SubjectSeeder(SchoolSystemDbContext context)
+        {
+            context.Subjects.Add(new Subject()
+            {
+                Id = 1,
+                Name = "Математика",
+            });
+
+            context.Subjects.Add(new Subject()
+            {
+                Id = 2,
+                Name = "ИТ"
+            });
+
+            context.SaveChanges();
         }
 
         private void RolesSeeder(SchoolSystemDbContext context)
@@ -31,7 +61,7 @@ namespace SchoolSystem.Data.Migrations
             var roleStore = new RoleStore<IdentityRole>(context);
             var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-            var roleAdmin = new IdentityRole() { Name = AdminRole};
+            var roleAdmin = new IdentityRole() { Name = AdminRole };
             var roleTeacher = new IdentityRole() { Name = TeacherRole };
             var roleStudent = new IdentityRole() { Name = StudentRole };
 
@@ -68,9 +98,18 @@ namespace SchoolSystem.Data.Migrations
             {
                 var teacherUser = new User { UserName = "teacher@teacher.com" };
 
+
                 userManager.Create(teacherUser, "teacher123");
                 userManager.AddToRole(teacherUser.Id, TeacherRole);
+                context.Teachers.Add(new Teacher()
+                {
+                    Id = teacherUser.Id,
+                    SubjectId = 1,
+                });
+
+                context.SaveChanges();
             }
+
 
             if (!context.Users.Any(u => u.UserName == "student@student.com"))
             {
@@ -78,6 +117,12 @@ namespace SchoolSystem.Data.Migrations
 
                 userManager.Create(studentUser, "student123");
                 userManager.AddToRole(studentUser.Id, StudentRole);
+
+                context.Students.Add(new Student()
+                {
+                    Id = studentUser.Id,
+                    ClassOfStudentsId = 1
+                });
             }
         }
     }

@@ -24,8 +24,17 @@ namespace SchoolSystem.Data
             return new SchoolSystemDbContext();
         }
 
-        //public DbSet<User> User { get; set; }
         public IDbSet<Teacher> Teachers { get; set; }
+
+        public IDbSet<Student> Students { get; set; }
+
+        public IDbSet<Newsfeed> NewsFeed { get; set; }
+
+        public IDbSet<Subject> Subjects { get; set; }
+
+        public IDbSet<ClassOfStudents> ClassOfStudents { get; set; }
+
+        public IDbSet<SubjectStudent> SubjectStudent { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
