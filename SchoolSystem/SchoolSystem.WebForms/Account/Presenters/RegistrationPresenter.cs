@@ -62,7 +62,7 @@ namespace SchoolSystem.WebForms.Account.Presenters
             {
                 this.registrationService.CreateStudent(user.Id, classId);
             }
-
+           
             this.View.Model.Result = result;
         }
 
