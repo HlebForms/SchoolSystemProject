@@ -36,6 +36,8 @@ namespace SchoolSystem.Data
 
         public IDbSet<SubjectStudent> SubjectStudent { get; set; }
 
+        public IDbSet<DaysOfWeek> DaysOfWeek { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

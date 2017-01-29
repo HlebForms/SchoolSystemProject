@@ -58,8 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassOfStudents.cs" />
+    <Compile Include="ClassOfStudentsSchedule.cs" />
+    <Compile Include="DaysOfWeek.cs" />
     <Compile Include="Newsfeed.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="SubjectClassOfStudents.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="SubjectStudent.cs" />
     <Compile Include="Teacher.cs" />
