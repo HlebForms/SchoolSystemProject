@@ -86,7 +86,7 @@ input[type="select"] {
 
     .frame > h4 {
         color: #2196F3;
-        text-align:center;
+        text-align: center;
     }
 
 .program, .top-news {
@@ -103,8 +103,8 @@ input[type="select"] {
 .program-item {
 }
 
-.time{
-    margin-left:15px;
+.time {
+    margin-left: 15px;
 }
 
 .time, .subject-info {
@@ -139,4 +139,10 @@ hr {
     border-color: #2196F3;
     background-color: #2196F3;
     color: #2196F3;
+}
+
+.checkbox-scrollbar-container {
+    overflow: auto;
+    height: 150px;
+    width: 400px;
 }
