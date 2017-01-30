@@ -9,6 +9,6 @@ namespace SchoolSystem.WebForms.Account.Views
     {
         event EventHandler<RegistrationPageEventArgs> EventRegisterUser;
 
-        event EventHandler<EventArgs> EventBindUserRoles;
+        event EventHandler<EventArgs> EventBindPageData;
     }
 }

@@ -214,15 +214,19 @@
     <Content Include="Images\subject_images\subject7.png" />
     <Content Include="Images\subject_images\subject8.png" />
     <Content Include="Images\subject_images\subject9.png" />
+    <Content Include="Admin\AdminArea.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CustomControls\Admin\CreatingSubjectControl.ascx" />
+    <Content Include="CustomControls\Notifier\Notifier.ascx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <Content Include="Admin\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -293,6 +297,13 @@
     <Compile Include="Account\Views\EventArguments\RegistrationPageEventArgs.cs" />
     <Compile Include="Account\Views\ILoginView.cs" />
     <Compile Include="Account\Views\IRegisterView.cs" />
+    <Compile Include="Admin\AdminArea.aspx.cs">
+      <DependentUpon>AdminArea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminArea.aspx.designer.cs">
+      <DependentUpon>AdminArea.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BindingsConfig.cs" />
     <Compile Include="App_Start\Bindings\DataConfig.cs" />
     <Compile Include="App_Start\Bindings\MvpBindings.cs" />
@@ -317,6 +328,24 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Admin\CreatingSubjectControl.ascx.cs">
+      <DependentUpon>CreatingSubjectControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Admin\CreatingSubjectControl.ascx.designer.cs">
+      <DependentUpon>CreatingSubjectControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Admin\Models\CreatingSubjcetModel.cs" />
+    <Compile Include="CustomControls\Admin\Presenters\CreatingSubjectPresenter.cs" />
+    <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingSubjectEventArgs.cs" />
+    <Compile Include="CustomControls\Admin\Views\ICreatingSubjectView.cs" />
+    <Compile Include="CustomControls\Notifier\Notifier.ascx.cs">
+      <DependentUpon>Notifier.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Notifier\Notifier.ascx.designer.cs">
+      <DependentUpon>Notifier.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

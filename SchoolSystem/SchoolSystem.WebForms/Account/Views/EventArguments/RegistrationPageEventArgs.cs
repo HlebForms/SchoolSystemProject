@@ -21,5 +21,9 @@ namespace SchoolSystem.WebForms.Account.Views.EventArguments
         public string UserType { get; set; }
 
         public IOwinContext OwinCtx { get; set; }
+
+        public int SubjectId { get; set; }
+
+        public int ClassOfSudentsId { get; set; }
     }
 }

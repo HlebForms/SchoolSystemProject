@@ -9,30 +9,33 @@ using SchoolSystem.Web.Services.Contracts;
 using System;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
+using SchoolSystem.Data.Models.Common;
 
 namespace SchoolSystem.WebForms.Account.Presenters
 {
     public class RegistrationPresenter : Presenter<IRegisterView>
     {
-        private readonly IUserRolesDataService service;
+        private readonly IRegistrationService registrationService;
 
-        public RegistrationPresenter(IRegisterView view, IUserRolesDataService service)
+        public RegistrationPresenter(IRegisterView view, IRegistrationService registrationService)
             : base(view)
         {
-            if (service == null)
+            if (registrationService == null)
             {
                 throw new ArgumentNullException("service");
             }
 
-            this.service = service;
+            this.registrationService = registrationService;
 
             this.View.EventRegisterUser += RegisterUser;
-            this.View.EventBindUserRoles += BindUserRoles;
+            this.View.EventBindPageData += BindPageData;
         }
 
-        private void BindUserRoles(object sender, EventArgs e)
+        private void BindPageData(object sender, EventArgs e)
         {
-            this.View.Model.UserRoles = this.service.GetAllUserRoles();
+            this.View.Model.UserRoles = this.registrationService.GetAllUserRoles();
+            this.View.Model.ClassOfStudents = this.registrationService.GetClassOfStudents();
+            this.View.Model.Subjects = this.registrationService.GetAllSubjects();
         }
 
         private void RegisterUser(object sender, RegistrationPageEventArgs e)
@@ -49,9 +52,17 @@ namespace SchoolSystem.WebForms.Account.Presenters
 
             IdentityResult result = manager.Create(user, e.Password);
             manager.AddToRole(user.Id, e.UserType);
-            ////////////////////
+
+            if (e.UserType == UserType.Teacher)
+            {
+                this.registrationService.CreateTeacher(user.Id, e.SubjectId);
+            }
+            else if (e.UserType == UserType.Student)
+            {
+                this.registrationService.CreateStudent(user.Id, e.ClassOfSudentsId);
+            }
+           
             this.View.Model.Result = result;
         }
-
     }
 }

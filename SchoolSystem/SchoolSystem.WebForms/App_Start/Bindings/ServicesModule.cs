@@ -8,7 +8,8 @@ namespace SchoolSystem.WebForms.App_Start.Bindings
     {
         public override void Load()
         {
-            this.Bind<IUserRolesDataService>().To<UserRolesDataService>();
+            this.Bind<IRegistrationService>().To<RegistrationService>();
+            this.Bind<ISubjectManagementService>().To<SubjectManagementService>();
         }
     }
 }

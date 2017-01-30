@@ -9,28 +9,40 @@ using SchoolSystem.WebForms.Account.Views.EventArguments;
 using System.Collections.Generic;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
+using WebFormsMvp;
+using SchoolSystem.Data.Models.Common;
 
 namespace SchoolSystem.WebForms.Account
 {
-    [WebFormsMvp.PresenterBinding(typeof(RegistrationPresenter))]
+    [PresenterBinding(typeof(RegistrationPresenter))]
     public partial class Register : MvpPage<RegistrationModel>, IRegisterView
     {
-        public event EventHandler<EventArgs> EventBindUserRoles;
+        public event EventHandler<EventArgs> EventBindPageData;
         public event EventHandler<RegistrationPageEventArgs> EventRegisterUser;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
-                this.EventBindUserRoles(this, e);
+                this.EventBindPageData(this, e);
                 this.UserTypeDropDown.DataSource = this.Model.UserRoles;
                 this.UserTypeDropDown.DataBind();
+
+                this.SubjectDropDown.DataSource = this.Model.Subjects;
+                this.SubjectDropDown.DataBind();
+                this.ClassContainer.Visible = false;
+
+                this.ClassDropDown.DataSource = this.Model.ClassOfStudents;
+                this.ClassDropDown.DataBind();
+                this.SubjectContainer.Visible = false;
             }
         }
 
         protected void CreateUser_Click(object sender, EventArgs e)
         {
             var owinCtx = Context.GetOwinContext();
+            var selectedRole = this.UserTypeDropDown.SelectedItem.Text;
+
             var eventArgs = new RegistrationPageEventArgs()
             {
                 OwinCtx = owinCtx,
@@ -42,6 +54,15 @@ namespace SchoolSystem.WebForms.Account
                 Password = this.Password.Text,
                 ConfirmedPassword = this.ConfirmPassword.Text
             };
+
+            if (selectedRole == UserType.Teacher)
+            {
+                eventArgs.SubjectId = int.Parse(this.SubjectDropDown.SelectedItem.Value);
+            }
+            else if (selectedRole == UserType.Student)
+            {
+                eventArgs.ClassOfSudentsId = int.Parse(this.ClassDropDown.SelectedItem.Value);
+            }
 
             EventRegisterUser(this, eventArgs);
 
@@ -57,5 +78,25 @@ namespace SchoolSystem.WebForms.Account
             }
         }
 
+        protected void UserTypeDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedRole = this.UserTypeDropDown.SelectedItem.Text;
+
+            if (selectedRole == UserType.Student)
+            {
+                this.ClassContainer.Visible = !this.ClassContainer.Visible;
+                this.SubjectContainer.Visible = false;
+            }
+            else if (selectedRole == UserType.Teacher)
+            {
+                this.SubjectContainer.Visible = !this.SubjectContainer.Visible;
+                this.ClassContainer.Visible = false;
+            }
+            else
+            {
+                this.SubjectContainer.Visible = false;
+                this.ClassContainer.Visible = false;
+            }
+        }
     }
 }

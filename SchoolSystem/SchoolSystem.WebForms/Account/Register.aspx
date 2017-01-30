@@ -19,10 +19,42 @@
                     CssClass="form-control"
                     Width="285"
                     DataValueField="Id"
+                    DataTextField="Name"
+                    OnSelectedIndexChanged="UserTypeDropDown_SelectedIndexChanged"
+                    AutoPostBack="true">
+                </asp:DropDownList>
+            </div>
+        </div>
+
+          <div class="form-group" runat="server" id="SubjectContainer"> 
+            <asp:Label runat="server" AssociatedControlID="SubjectDropDown" CssClass="col-md-2 control-label">Предмет</asp:Label>
+            <div class="col-md-10">
+                <asp:DropDownList
+                    runat="server"
+                    ID="SubjectDropDown"
+                    CssClass="form-control"
+                    Width="285"
+                    DataValueField="Id"
                     DataTextField="Name">
                 </asp:DropDownList>
             </div>
         </div>
+
+         <div class="form-group" runat="server" id="ClassContainer">
+            <asp:Label runat="server" AssociatedControlID="ClassDropDown" CssClass="col-md-2 control-label">Клас</asp:Label>
+            <div class="col-md-10">
+                <asp:DropDownList
+                    runat="server"
+                    ID="ClassDropDown"
+                    CssClass="form-control"
+                    Width="285"
+                    DataValueField="Id"
+                    DataTextField="Name">
+                </asp:DropDownList>
+            </div>
+        </div>
+
+
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
             <div class="col-md-10">
