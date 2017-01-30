@@ -28,6 +28,37 @@ namespace SchoolSystem.Data.Migrations
             this.SubjectSeeder(context);
             this.ClassOfStudentsSeeder(context);
             this.UsersSeeder(context);
+            this.DaysOfWeekSeeder(context);
+        }
+
+        private void DaysOfWeekSeeder(SchoolSystemDbContext context)
+        {
+            context.DaysOfWeek.Add(new DaysOfWeek()
+            {
+                Name = "Понеделник"
+            });
+
+            context.DaysOfWeek.Add(new DaysOfWeek()
+            {
+                Name = "Вторник"
+            });
+
+            context.DaysOfWeek.Add(new DaysOfWeek()
+            {
+                Name = "Сряда"
+            });
+
+            context.DaysOfWeek.Add(new DaysOfWeek()
+            {
+                Name = "Четвъртък"
+            });
+
+            context.DaysOfWeek.Add(new DaysOfWeek()
+            {
+                Name = "Петък"
+            });
+
+            context.SaveChanges();
         }
 
         private void ClassOfStudentsSeeder(SchoolSystemDbContext context)
