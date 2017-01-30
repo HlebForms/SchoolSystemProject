@@ -1,9 +1,5 @@
 ﻿using SchoolSystem.Data.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolSystem.Web.Services.Contracts
 {
@@ -13,6 +9,6 @@ namespace SchoolSystem.Web.Services.Contracts
 
         void AddSubjectsToClass();
 
-        IEnumerable<Subject> GetAllSubjects()
+        IEnumerable<Subject> GetAllSubjects();
     }
 }
