@@ -13,12 +13,12 @@ namespace SchoolSystem.WebForms.Admin {
     public partial class AdminArea {
         
         /// <summary>
-        /// CreatingSubjectControl control.
+        /// CreatingClassOfStudentsControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Admin.AddingSubjectUserControl CreatingSubjectControl;
+        protected global::SchoolSystem.WebForms.CustomControls.Admin.CreatingClassControl CreatingClassOfStudentsControl;
     }
 }

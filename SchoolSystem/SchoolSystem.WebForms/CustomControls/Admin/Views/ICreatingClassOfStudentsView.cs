@@ -9,6 +9,6 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Views
     {
         event EventHandler<CreatingClassOfStudentsEventArgs> EventCreateClassOfStudents;
 
-        event EventHandler<EventArgs> EventBindPageData;
+        event EventHandler<EventArgs> EventGetAllSubjects;
     }
 }

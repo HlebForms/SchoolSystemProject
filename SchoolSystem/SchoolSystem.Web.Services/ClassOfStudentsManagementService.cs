@@ -38,11 +38,39 @@ namespace SchoolSystem.Web.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public bool AddClass(string name, IEnumerable<Subject> subjects)
+        public void AddSubjectsToClass()
         {
-            var allClassNames = this.classOfStudentsRepo.GetAll().Select(c => c.Name);
+            throw new NotImplementedException();
+        }
 
-            if (allClassNames.Any(x => x == name))
+        public IEnumerable<Subject> GetAllSubjects()
+        {
+            return this.subjectsRepo.GetAll();
+        }
+
+        public bool AddClass(string name, IEnumerable<string> subjecIds)
+        {
+            if (name == null)
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            if (subjecIds == null)
+            {
+                throw new ArgumentNullException("subjects");
+            }
+
+            var allClassesNames = this.classOfStudentsRepo.GetAll(null, x => x.Name).ToList();
+
+            var subjects = new HashSet<Subject>();
+            foreach (var subj in subjecIds)
+            {
+                var subjId = int.Parse(subj);
+                var subject = this.subjectsRepo.GetFirst(x => x.Id == subjId);
+                subjects.Add(subject);
+            }
+
+            if (allClassesNames.Any(x => x == name))
             {
                 return false;
             }
@@ -73,16 +101,6 @@ namespace SchoolSystem.Web.Services
                     return true;
                 }
             }
-        }
-
-        public void AddSubjectsToClass()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Subject> GetAllSubjects()
-        {
-            return this.subjectsRepo.GetAll();
         }
     }
 }

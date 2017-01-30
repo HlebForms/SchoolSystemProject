@@ -22,11 +22,17 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
 
             this.classOfStudentsManagementService = classOfStudentsManagementService;
             this.View.EventCreateClassOfStudents += this.CreateClassOfStudents;
+            this.View.EventGetAllSubjects += this.GetAllSubjects;
+        }
+
+        private void GetAllSubjects(object sender, EventArgs e)
+        {
+            this.View.Model.Subjects = this.classOfStudentsManagementService.GetAllSubjects();
         }
 
         private void CreateClassOfStudents(object sender, CreatingClassOfStudentsEventArgs e)
         {
-            var result = this.classOfStudentsManagementService.AddClass(e.ClassName, e.Subjects);
+            var result = this.classOfStudentsManagementService.AddClass(e.ClassName, e.SubjectIds);
 
             if (result)
             {
