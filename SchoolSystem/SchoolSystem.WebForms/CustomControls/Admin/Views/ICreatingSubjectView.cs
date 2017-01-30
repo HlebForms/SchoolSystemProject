@@ -9,7 +9,7 @@ using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin.Views
 {
-    public interface ICreatingSubjectControlView : IView<CreatingSubjcetModel>
+    public interface ICreatingSubjectView : IView<CreatingSubjcetModel>
     {
         event EventHandler<CreatingSubjectEventArgs> EventCreateSubject;
     }

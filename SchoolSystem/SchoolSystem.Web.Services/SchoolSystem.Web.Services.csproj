@@ -87,8 +87,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IRegistrationService.cs" />
+    <Compile Include="Contracts\ISubjectManagementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationService.cs" />
+    <Compile Include="SubjectManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

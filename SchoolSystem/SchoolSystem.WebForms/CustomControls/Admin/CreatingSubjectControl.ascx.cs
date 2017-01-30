@@ -32,9 +32,11 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
             if (this.Model.IsSuccesfull)
             {
                 // Notify admin 
+                Response.Write("Done");
             }
             else
             {
+                Response.Write("Error");
                 // Notify Admin
             }
         }

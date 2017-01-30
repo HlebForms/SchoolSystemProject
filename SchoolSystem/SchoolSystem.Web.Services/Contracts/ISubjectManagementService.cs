@@ -9,7 +9,7 @@ namespace SchoolSystem.Web.Services.Contracts
 {
     public interface ISubjectManagementService
     {
-        void CreateSubject(string subjectName);
+        bool CreateSubject(string subjectName);
 
         IEnumerable<Subject> GetAllSubjects();
     }

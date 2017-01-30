@@ -5,7 +5,8 @@ using System.Web;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments
 {
-    public class AddingSubjectEventArgs
+    public class CreatingSubjectEventArgs : EventArgs
     {
+        public string SubjectName { get; set; }
     }
 }

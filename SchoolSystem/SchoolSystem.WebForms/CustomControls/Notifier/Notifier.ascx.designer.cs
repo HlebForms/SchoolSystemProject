@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolSystem.WebForms.Admin {
+namespace SchoolSystem.WebForms.CustomControls.Notifier {
     
     
-    public partial class AdminArea {
+    public partial class Notifier {
         
         /// <summary>
-        /// CreatingSubjectControl control.
+        /// NotifyLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Admin.AddingSubjectUserControl CreatingSubjectControl;
+        protected global::System.Web.UI.WebControls.Label NotifyLabel;
     }
 }

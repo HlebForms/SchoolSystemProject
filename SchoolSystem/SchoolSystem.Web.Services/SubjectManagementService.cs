@@ -30,13 +30,14 @@ namespace SchoolSystem.Web.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public void CreateSubject(string subjectName)
+        public bool CreateSubject(string subjectName)
         {
             var allSubjectNames = this.subjectRepo.GetAll().Select(x => x.Name).ToList();
 
             if (allSubjectNames.Any(x => x == subjectName))
             {
                 // ima predmet s takova ime
+                return false;
             }
 
             using (var uow = this.unitOfWork())
@@ -47,6 +48,7 @@ namespace SchoolSystem.Web.Services
                 });
 
                 uow.Commit();
+                return true;
             }
         }
 
