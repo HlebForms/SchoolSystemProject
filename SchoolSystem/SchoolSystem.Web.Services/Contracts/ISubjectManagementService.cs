@@ -9,6 +9,5 @@ namespace SchoolSystem.Web.Services.Contracts
 
         IEnumerable<Subject> GetAllSubjects();
 
-        IEnumerable<Subject> GetAllSubjects()
     }
 }

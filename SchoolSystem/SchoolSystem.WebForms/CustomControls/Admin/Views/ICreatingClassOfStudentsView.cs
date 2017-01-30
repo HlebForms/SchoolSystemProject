@@ -8,5 +8,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Views
     public interface ICreatingClassOfStudentsView : IView<CreatingClassOfStudentsModel>
     {
         event EventHandler<CreatingClassOfStudentsEventArgs> EventCreateClassOfStudents;
+
+        event EventHandler<EventArgs> EventBindPageData;
     }
 }

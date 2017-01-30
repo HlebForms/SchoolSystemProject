@@ -86,6 +86,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassOfStudentsManagementService.cs" />
+    <Compile Include="Contracts\IClassOfStudentsManagementService.cs" />
     <Compile Include="Contracts\IRegistrationService.cs" />
     <Compile Include="Contracts\ISubjectManagementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

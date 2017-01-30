@@ -195,6 +195,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CustomControls\Admin\CreatingClassOfStudentsControl.ascx" />
     <Content Include="CustomControls\Admin\CreatingSubjectControl.ascx" />
     <Content Include="CustomControls\Notifier\Notifier.ascx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -305,6 +306,13 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\Admin\CreatingClassOfStudentsControl.ascx.cs">
+      <DependentUpon>CreatingClassOfStudentsControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Admin\CreatingClassOfStudentsControl.ascx.designer.cs">
+      <DependentUpon>CreatingClassOfStudentsControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\Admin\CreatingSubjectControl.ascx.cs">
       <DependentUpon>CreatingSubjectControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -312,9 +320,13 @@
     <Compile Include="CustomControls\Admin\CreatingSubjectControl.ascx.designer.cs">
       <DependentUpon>CreatingSubjectControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\Admin\Models\CreatingClassOfStudentsModel.cs" />
     <Compile Include="CustomControls\Admin\Models\CreatingSubjcetModel.cs" />
+    <Compile Include="CustomControls\Admin\Presenters\CreatingClassOfStudentsPresenter.cs" />
     <Compile Include="CustomControls\Admin\Presenters\CreatingSubjectPresenter.cs" />
+    <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingClassOfStudentsEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingSubjectEventArgs.cs" />
+    <Compile Include="CustomControls\Admin\Views\ICreatingClassOfStudentsView.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingSubjectView.cs" />
     <Compile Include="CustomControls\Notifier\Notifier.ascx.cs">
       <DependentUpon>Notifier.ascx</DependentUpon>
