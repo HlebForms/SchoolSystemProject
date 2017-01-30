@@ -2,6 +2,7 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    color: #2196F3;
 }
 
 /* Wrapping element */
@@ -74,13 +75,19 @@ input[type="select"] {
     padding-bottom: 5.5px;
 }
 
-.test {
-    border: 1px solid black;
+.frame {
+    border: 1px solid #2196F3;
+    border-radius: 20px;
     width: 250px;
-    height: 200px;
+    height: 400px;
     display: inline-block;
     margin-top: 30px;
 }
+
+    .frame > h4 {
+        color: #2196F3;
+        text-align:center;
+    }
 
 .program, .top-news {
     width: 450px;
@@ -90,6 +97,42 @@ input[type="select"] {
 
 .news-feed {
     margin-left: 10px;
-    height: 400px;
     width: 280px;
+}
+
+.program-item {
+}
+
+.time, .subject-info {
+    display: inline-block;
+}
+
+.start-hour, .end-hour {
+    font-size: 18px;
+}
+
+    .start-hour > span:nth-child(1) {
+        color: green;
+        font-weight: bold;
+    }
+
+    .end-hour > span:nth-child(1) {
+        color: red;
+        font-weight: bold;
+    }
+
+.subject-info {
+    font-size: 18px;
+    margin-left: 100px;
+}
+
+.subject-image {
+    display: inline-block;
+    margin-top: -30px;
+}
+
+hr {
+    border-color: #2196F3;
+    background-color: #2196F3;
+    color: #2196F3;
 }
