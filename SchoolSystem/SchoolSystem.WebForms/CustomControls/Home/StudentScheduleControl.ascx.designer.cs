@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolSystem.WebForms {
+namespace SchoolSystem.WebForms.CustomControls.Home {
     
     
-    public partial class _Default {
+    public partial class StudentScheduleControl {
         
         /// <summary>
-        /// StudentScheduleControl control.
+        /// schedule control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Home.StudentScheduleControl StudentScheduleControl;
+        protected global::System.Web.UI.WebControls.ListView schedule;
     }
 }

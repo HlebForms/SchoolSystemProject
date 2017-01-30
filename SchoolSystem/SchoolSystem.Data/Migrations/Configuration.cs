@@ -33,29 +33,39 @@ namespace SchoolSystem.Data.Migrations
 
         private void DaysOfWeekSeeder(SchoolSystemDbContext context)
         {
-            context.DaysOfWeek.Add(new DaysOfWeek()
+            context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {
-                Name = "Понеделник"
+                Name = DayOfWeek.Monday.ToString()
             });
 
-            context.DaysOfWeek.Add(new DaysOfWeek()
+            context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {
-                Name = "Вторник"
+                Name = DayOfWeek.Tuesday.ToString()
             });
 
-            context.DaysOfWeek.Add(new DaysOfWeek()
+            context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {
-                Name = "Сряда"
+                Name = DayOfWeek.Wednesday.ToString()
             });
 
-            context.DaysOfWeek.Add(new DaysOfWeek()
+            context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {
-                Name = "Четвъртък"
+                Name = DayOfWeek.Thursday.ToString()
             });
 
-            context.DaysOfWeek.Add(new DaysOfWeek()
+            context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {
-                Name = "Петък"
+                Name = DayOfWeek.Friday.ToString()
+            });
+
+            context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
+            {
+                Name = DayOfWeek.Saturday.ToString()
+            });
+
+            context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
+            {
+                Name = DayOfWeek.Sunday.ToString()
             });
 
             context.SaveChanges();

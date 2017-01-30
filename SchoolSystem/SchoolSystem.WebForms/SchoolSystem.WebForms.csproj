@@ -190,6 +190,7 @@
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="CustomControls\Home\StudentScheduleControl.ascx" />
     <Content Include="Images\subject_images\subject1.png" />
     <Content Include="Images\subject_images\subject10.png" />
     <Content Include="Images\subject_images\subject11.png" />
@@ -352,6 +353,17 @@
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingSubjectEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingClassOfStudentsView.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingSubjectView.cs" />
+    <Compile Include="CustomControls\Home\Models\StudentScheduleModel.cs" />
+    <Compile Include="CustomControls\Home\Presenter\StudentSchedulePresenter.cs" />
+    <Compile Include="CustomControls\Home\StudentScheduleControl.ascx.cs">
+      <DependentUpon>StudentScheduleControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Home\StudentScheduleControl.ascx.designer.cs">
+      <DependentUpon>StudentScheduleControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Home\Views\EventArguments\StudentScheduleEventargs.cs" />
+    <Compile Include="CustomControls\Home\Views\IStudentScheduleView.cs" />
     <Compile Include="CustomControls\Notifier\Notifier.ascx.cs">
       <DependentUpon>Notifier.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -425,7 +437,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53292</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
