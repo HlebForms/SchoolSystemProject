@@ -15,7 +15,7 @@
                 <ItemTemplate>
                     <div class="program-items">
                         <div class="program-item">
-                            <asp:Image ToolTip="pesho" ImageUrl='<%#: "~/Images/subject_images/subject" + Item.SubjectId + ".png"  %>' runat="server" CssClass="subject-image" />
+                            <asp:Image ToolTip=<%#: Item.SubjectName %> ImageUrl='<%#: "~/Images/subject_images/subject" + Item.SubjectId + ".png"  %>' runat="server" CssClass="subject-image" />
                             <div class="time">
                                 <div class="start-hour"><span>От:</span> <span><%#: Item.StartHour.ToString("H:mm:ss") %></span></div>
                                 <div class="end-hour"><span>До:</span> <span><%#: Item.EndHour.ToString("H:mm:ss") %></span></div>
