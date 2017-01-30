@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
 {
     [TestFixture]
-    public class SubjectManagementServiceCtor_Should
+    public class Constructorr_Should
     {
         [Test]
         public void ThrowArgumentNullException_WhenSubjectsRepoIsNull()

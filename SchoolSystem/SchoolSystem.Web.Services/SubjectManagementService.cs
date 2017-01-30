@@ -32,11 +32,16 @@ namespace SchoolSystem.Web.Services
 
         public bool CreateSubject(string subjectName)
         {
+            if (subjectName==null)
+            {
+                throw new ArgumentNullException("subjectName");
+            }
+
             var allSubjectNames = this.subjectRepo.GetAll().Select(x => x.Name).ToList();
 
             if (allSubjectNames.Any(x => x == subjectName))
             {
-                // ima predmet s takova ime
+                // there is subject with that name already
                 return false;
             }
 
