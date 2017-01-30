@@ -81,6 +81,7 @@
                         <ContentTemplate>
                             <ul class="nav navbar-nav">
                                 <li><a runat="server" href="~/Account/Register">Регистрирай потребител</a></li>
+                                <li><a runat="server" href="~/Admin/AdminArea.aspx">Админска част</a></li>
                             </ul>
                         </ContentTemplate>
                     </asp:RoleGroup>
