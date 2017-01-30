@@ -103,6 +103,10 @@ input[type="select"] {
 .program-item {
 }
 
+.time{
+    margin-left:10px;
+}
+
 .time, .subject-info {
     display: inline-block;
 }
