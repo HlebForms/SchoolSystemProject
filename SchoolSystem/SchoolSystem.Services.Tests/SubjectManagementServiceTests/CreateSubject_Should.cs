@@ -56,6 +56,21 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
         }
 
         [Test]
+        public void ReturnTrue_WhenSubjectIsCreatedSuccesfully()
+        {
+            var mockedRepo = new Mock<IRepository<Subject>>();
+            var mockedUow = new Mock<IUnitOfWork>().Object;
+            var service = new SubjectManagementService(mockedRepo.Object, () => mockedUow);
+
+            mockedRepo.Setup(x => x.GetAll()).Returns(new List<Subject>() {  });
+
+            var result = service.CreateSubject("test");
+
+            Assert.IsTrue(result);
+        }
+
+
+        [Test]
         public void CallAddMethodOfSubjectRepoOnce()
         {
             var mockedRepo = new Mock<IRepository<Subject>>();
@@ -68,6 +83,21 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
             var result = service.CreateSubject("test");
 
             mockedRepo.Verify(x => x.Add(It.IsAny<Subject>()), Times.Once);
+        }
+
+        [Test]
+        public void CallCommitMethofOfUowOnce()
+        {
+            var mockedRepo = new Mock<IRepository<Subject>>();
+            var mockedUow = new Mock<IUnitOfWork>();
+
+            mockedRepo.Setup(x => x.GetAll()).Returns(new List<Subject>());
+            mockedUow.Setup(x => x.Commit());
+
+            var service = new SubjectManagementService(mockedRepo.Object, () => mockedUow.Object);
+            var result = service.CreateSubject("test");
+
+            mockedUow.Verify(x => x.Commit(), Times.Once);
         }
     }
 }
