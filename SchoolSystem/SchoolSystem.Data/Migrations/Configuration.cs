@@ -38,6 +38,7 @@ namespace SchoolSystem.Data.Migrations
                 Name = DayOfWeek.Monday.ToString()
             });
 
+
             context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {
                 Name = DayOfWeek.Tuesday.ToString()

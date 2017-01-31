@@ -7,36 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolSystem.WebForms.Admin {
+namespace SchoolSystem.WebForms.CustomControls.Admin {
     
     
-    public partial class AdminArea {
+    public partial class CreateScheduleControl {
         
         /// <summary>
-        /// CreatingSubjectControl control.
+        /// ClassOfStudentsDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Admin.AddingSubjectUserControl CreatingSubjectControl;
+        protected global::System.Web.UI.WebControls.DropDownList ClassOfStudentsDropDown;
         
         /// <summary>
-        /// CreatingClassOfStudentsControl control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Admin.CreatingClassControl CreatingClassOfStudentsControl;
-        
-        /// <summary>
-        /// CreatingScheduleControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Admin.CreateScheduleControl CreatingScheduleControl;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

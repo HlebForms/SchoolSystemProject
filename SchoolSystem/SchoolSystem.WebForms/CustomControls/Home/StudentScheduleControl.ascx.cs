@@ -32,8 +32,8 @@ namespace SchoolSystem.WebForms.CustomControls.Home
 
                 this.EventBindScheduleData(this, args);
 
-                //this.schedule.DataSource = this.Model.StudentSchedule;
-                //this.schedule.DataBind();
+                this.schedule.DataSource = this.Model.StudentSchedule;
+                this.schedule.DataBind();
             }
 
             //var program1 = new SubjectClassOfStudentsDaysOfWeek()

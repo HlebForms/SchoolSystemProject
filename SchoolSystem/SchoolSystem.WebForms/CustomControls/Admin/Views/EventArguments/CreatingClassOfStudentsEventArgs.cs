@@ -9,5 +9,6 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments
         public string ClassName { get; set; }
 
         public IEnumerable<string> SubjectIds{ get; set; }
+
     }
 }

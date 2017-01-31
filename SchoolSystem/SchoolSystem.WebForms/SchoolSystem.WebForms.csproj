@@ -190,6 +190,7 @@
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="CustomControls\Admin\CreatingScheduleControl.ascx" />
     <Content Include="CustomControls\Home\StudentScheduleControl.ascx" />
     <Content Include="Images\subject_images\subject1.png" />
     <Content Include="Images\subject_images\subject10.png" />
@@ -331,6 +332,13 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\Admin\CreatingScheduleControl.ascx.cs">
+      <DependentUpon>CreatingScheduleControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Admin\CreatingScheduleControl.ascx.designer.cs">
+      <DependentUpon>CreatingScheduleControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\Admin\CreatingClassOfStudentsControl.ascx.cs">
       <DependentUpon>CreatingClassOfStudentsControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -346,12 +354,16 @@
       <DependentUpon>CreatingSubjectControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\Admin\Models\CreatingClassOfStudentsModel.cs" />
+    <Compile Include="CustomControls\Admin\Models\CreatingScheduleModel.cs" />
     <Compile Include="CustomControls\Admin\Models\CreatingSubjcetModel.cs" />
     <Compile Include="CustomControls\Admin\Presenters\CreatingClassOfStudentsPresenter.cs" />
+    <Compile Include="CustomControls\Admin\Presenters\CreatingSchedulePresenter.cs" />
     <Compile Include="CustomControls\Admin\Presenters\CreatingSubjectPresenter.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingClassOfStudentsEventArgs.cs" />
+    <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingScheduleEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingSubjectEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingClassOfStudentsView.cs" />
+    <Compile Include="CustomControls\Admin\Views\ICreatingScheduleView.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingSubjectView.cs" />
     <Compile Include="CustomControls\Home\Models\StudentScheduleModel.cs" />
     <Compile Include="CustomControls\Home\Presenter\StudentSchedulePresenter.cs" />

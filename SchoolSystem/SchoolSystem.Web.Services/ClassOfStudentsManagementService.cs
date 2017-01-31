@@ -102,5 +102,10 @@ namespace SchoolSystem.Web.Services
                 }
             }
         }
+
+        public IEnumerable<ClassOfStudents> GetAllClasses()
+        {
+            return this.classOfStudentsRepo.GetAll();
+        }
     }
 }
