@@ -22,6 +22,24 @@ namespace SchoolSystem.WebForms.CustomControls.Admin {
         protected global::System.Web.UI.WebControls.DropDownList ClassOfStudentsDropDown;
         
         /// <summary>
+        /// test control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel test;
+        
+        /// <summary>
+        /// DaysOfWeekDropDown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DaysOfWeekDropDown;
+        
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>
