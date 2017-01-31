@@ -18,7 +18,6 @@
     <div class="col-md-10">
 
         <asp:UpdatePanel runat="server" ID="test" UpdateMode="Conditional">
-           
             <ContentTemplate>
                 <asp:DropDownList
                     ID="DaysOfWeekDropDown"
