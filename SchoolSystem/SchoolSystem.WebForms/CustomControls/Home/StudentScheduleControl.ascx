@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StudentScheduleControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Home.StudentScheduleControl" %>
- <div class="frame program col-xs-4">
+ <div class="frame program">
             <h4>Програма за деня</h4>
 
             <asp:ListView ID="schedule" runat="server"

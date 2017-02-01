@@ -4,10 +4,10 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="row">
+    <div class="content">
         <custom:StudentScheduleControl runat="server" id="StudentScheduleControl" />
-        <div class="frame top-news col-xs-4">IMPORTANT NEWS</div>
-        <div class="frame news-feed col-xs-4">NEWS FEED</div>
+        <div class="frame top-news">IMPORTANT NEWS</div>
+        <div class="frame news-feed">NEWS FEED</div>
 
     </div>
 </asp:Content>
