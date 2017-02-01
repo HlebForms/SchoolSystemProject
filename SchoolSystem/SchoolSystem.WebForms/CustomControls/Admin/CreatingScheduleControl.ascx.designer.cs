@@ -13,15 +13,6 @@ namespace SchoolSystem.WebForms.CustomControls.Admin {
     public partial class CreateScheduleControl {
         
         /// <summary>
-        /// ClassOfStudentsDropDown control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ClassOfStudentsDropDown;
-        
-        /// <summary>
         /// test control.
         /// </summary>
         /// <remarks>
@@ -29,6 +20,15 @@ namespace SchoolSystem.WebForms.CustomControls.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel test;
+        
+        /// <summary>
+        /// ClassOfStudentsDropDown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ClassOfStudentsDropDown;
         
         /// <summary>
         /// DaysOfWeekDropDown control.
@@ -40,12 +40,12 @@ namespace SchoolSystem.WebForms.CustomControls.Admin {
         protected global::System.Web.UI.WebControls.DropDownList DaysOfWeekDropDown;
         
         /// <summary>
-        /// GridView1 control.
+        /// ScheduleList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.ListView ScheduleList;
     }
 }
