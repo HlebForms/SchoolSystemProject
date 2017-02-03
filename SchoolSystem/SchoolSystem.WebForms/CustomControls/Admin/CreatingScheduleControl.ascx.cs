@@ -22,6 +22,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
         public event EventHandler<EventArgs> EventBindDaysOfWeek;
         public event EventHandler<AddingSubjectToScheduleEventArgs> EventAddSubjectToSchedule;
         public event EventHandler<BindSubjectsForClassEventArgs> EventBitSubjectForCurrentClass;
+        public event EventHandler<RemovingSubjectFromScheduleEventArgs> EventRemoveSubjectFromSchedule;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -71,7 +72,20 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 case ("Insert"):
                     this.ScheduleList_InsertItem(classId, dayOfWeekId, selectedSubjectId, startHourDateTime, endHourAsDateTime);
                     break;
+                case ("Delete"):
+                    this.ScheduleList_DeleteItem(classId, dayOfWeekId, selectedSubjectId);
+                    break;
             }
+        }
+
+        private void ScheduleList_DeleteItem(int classId, int dayOfWeekId, int selectedSubjectId)
+        {
+            this.EventRemoveSubjectFromSchedule(this, new RemovingSubjectFromScheduleEventArgs()
+            {
+                ClassId = classId,
+                DaysOfWeekId = dayOfWeekId,
+                SubjectId = selectedSubjectId
+            });
         }
 
         private void ScheduleList_InsertItem(int classId, int dayOfWeekId, int selectedSubjectId, DateTime sartHour, DateTime endHour)

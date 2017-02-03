@@ -121,7 +121,19 @@ namespace SchoolSystem.Web.Services
             }
 
         }
+
+        public void RemoveSubjectFromSchedule(int classId, int daysOfWeekId, int subjectId)
+        {
+            var entity = this.subjectClassOfStudentsDaysOfWeekRepo
+                .GetFirst(x => x.ClassOfStudentsId == classId
+                                && x.DaysOfWeekId == daysOfWeekId
+                                && x.SubjectId == subjectId);
+
+            using (var uow = this.unitOfWork())
+            {
+                this.subjectClassOfStudentsDaysOfWeekRepo.Delete(entity);
+                uow.Commit();
+            }
+        }
     }
-
-
 }

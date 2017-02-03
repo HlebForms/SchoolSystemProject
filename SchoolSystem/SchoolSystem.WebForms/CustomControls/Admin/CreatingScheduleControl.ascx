@@ -55,13 +55,15 @@
                                 SelectedItem='<%# Bind("Id") %>'
                                 DataTextField="Name"
                                 DataValueField="Id">
+                                <asp:ListItem Selected="True">Моля изберете предмет</asp:ListItem>
                             </asp:DropDownList>
+                            
                         </td>
                         <td>
                             <asp:DropDownList ID="StartHourDropDown" runat="server"
                                 SelectedItem='<%# Bind("StartDate") %>'
                                 CssClass="form-control">
-                                <asp:ListItem >9</asp:ListItem>
+                                <asp:ListItem>9</asp:ListItem>
                                 <asp:ListItem>10</asp:ListItem>
                                 <asp:ListItem>11</asp:ListItem>
                             </asp:DropDownList>
@@ -106,6 +108,8 @@
                         <td>
                             <asp:Button ID="EditButton" runat="server"
                                 CommandName="Edit" Text="Edit" />
+                            <asp:Button ID="Delete" runat="server"
+                                CommandName="Delete" Text="Delete" />
                         </td>
                         <td><%#: Item.Subject.Name %></td>
                         <td><%#: Item.StartHour %></td>
