@@ -77,7 +77,6 @@ input[type="select"] {
 
 .frame {
     border: 1px solid #2196F3;
-    border-radius: 20px;
     width: 250px;
     height: 400px;
     display: inline-block;
@@ -96,7 +95,7 @@ input[type="select"] {
 
 
 .news-feed {
-    margin-left: 10px;
+    margin-left: 10px; 
     width: 280px;
 }
 

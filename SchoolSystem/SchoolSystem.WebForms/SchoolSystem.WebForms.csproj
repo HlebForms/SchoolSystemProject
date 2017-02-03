@@ -191,6 +191,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="CustomControls\Admin\CreatingScheduleControl.ascx" />
+    <Content Include="CustomControls\Home\NewsfeedControl.ascx" />
     <Content Include="CustomControls\Home\StudentScheduleControl.ascx" />
     <Content Include="Images\subject_images\subject1.png" />
     <Content Include="Images\subject_images\subject10.png" />
@@ -366,6 +367,13 @@
     <Compile Include="CustomControls\Admin\Views\ICreatingScheduleView.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingSubjectView.cs" />
     <Compile Include="CustomControls\Home\Models\StudentScheduleModel.cs" />
+    <Compile Include="CustomControls\Home\NewsfeedControl.ascx.cs">
+      <DependentUpon>NewsfeedControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Home\NewsfeedControl.ascx.designer.cs">
+      <DependentUpon>NewsfeedControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\Home\Presenter\StudentSchedulePresenter.cs" />
     <Compile Include="CustomControls\Home\StudentScheduleControl.ascx.cs">
       <DependentUpon>StudentScheduleControl.ascx</DependentUpon>

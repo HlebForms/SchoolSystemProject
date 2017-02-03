@@ -40,7 +40,7 @@ namespace SchoolSystem.Web.Services
         {
 
             //var userId = this.userRepo.GetFirst(x => x.UserName == username).Id;
-            var userId = "8c8a33cb-ae6e-453c-aae6-fef949a3c370";
+            var userId = "7b68137f-ede6-4dc5-bcc3-d880e14e12a8";
             var userClassId = this.studentRepo.GetFirst(x => x.Id == userId).ClassOfStudentsId;
             var daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
                 .GetAll(x => x.ClassOfStudentsId == userClassId && x.DaysOfWeek.Id == (int)dayOfWeek, y => y)

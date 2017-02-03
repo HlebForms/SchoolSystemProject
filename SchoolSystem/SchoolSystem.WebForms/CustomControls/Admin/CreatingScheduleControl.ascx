@@ -36,7 +36,6 @@
             </div>
         </div>
         <div class="form-group">
-
             <asp:ListView runat="server" ID="ScheduleList"
                 ItemType="SchoolSystem.WebForms.CustomControls.Admin.Models.Test"
                 UpdateMethod="ScheduleList_UpdateItem"
@@ -44,6 +43,7 @@
                 InsertMethod="ScheduleList_InsertItem"
                 InsertItemPosition="LastItem"
                 DataKeyNames="Id">
+                
                 <InsertItemTemplate>
                     <tr>
                         <td>
@@ -51,9 +51,12 @@
                                 CommandName="Insert" Text="Insert" />
                         </td>
                         <td>
-                            <asp:DropDownList ID="dd" runat="server">
-                                <asp:ListItem>1</asp:ListItem>
-                                <asp:ListItem>2</asp:ListItem>
+                            <asp:DropDownList ID="dd" runat="server"
+                               OnSelectedIndexChanged="dd_SelectedIndexChanged"
+                                
+                                >
+                                <asp:ListItem>aaaa</asp:ListItem>
+                                <asp:ListItem>bbbb</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                         <td>
@@ -81,7 +84,11 @@
                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# BindItem.StartHour %>'></asp:TextBox>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# BindItem.EndHour %>'></asp:TextBox>
+                            <asp:DropDownList ID="dd2" runat="server"
+                               OnSelectedIndexChanged="dd2_SelectedIndexChanged">
+                                <asp:ListItem>aaaa</asp:ListItem>
+                                <asp:ListItem>bbbb</asp:ListItem>
+                            </asp:DropDownList>
                         </td>
                     </tr>
                 </EditItemTemplate>

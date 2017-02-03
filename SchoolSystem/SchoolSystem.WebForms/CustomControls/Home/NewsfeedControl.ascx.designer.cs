@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolSystem.WebForms {
+namespace SchoolSystem.WebForms.CustomControls.Home {
     
     
-    public partial class _Default {
+    public partial class NewsfeedControl {
         
         /// <summary>
-        /// StudentScheduleControl control.
+        /// AddTextbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Home.StudentScheduleControl StudentScheduleControl;
-        
-        /// <summary>
-        /// NewsfeedControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Home.NewsfeedControl NewsfeedControl;
+        protected global::System.Web.UI.WebControls.TextBox AddTextbox;
     }
 }

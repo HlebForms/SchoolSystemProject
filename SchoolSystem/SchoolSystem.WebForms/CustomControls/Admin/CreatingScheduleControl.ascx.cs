@@ -16,6 +16,7 @@ using Ninject;
 using SchoolSystem.WebForms.App_Start;
 using System.Data.Entity;
 using SchoolSystem.Data;
+using System.Windows.Forms;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin
 {
@@ -24,7 +25,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
     {
 
         private readonly SchoolSystemDbContext context;
-
+        private string ddvalue;
         public event EventHandler<EventArgs> EventBindAllClasses;
         public event EventHandler<CreatingScheduleEventArgs> EventBindScheduleData;
 
@@ -37,7 +38,6 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
         {
             if (!this.IsPostBack)
             {
-
                 this.EventBindAllClasses(this, e);
                 this.ClassOfStudentsDropDown.DataSource = this.Model.AllClassOfStudents;
                 this.ClassOfStudentsDropDown.DataBind();
@@ -81,6 +81,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
             item.ClassName = this.ClassOfStudentsDropDown.SelectedItem.Text;
             item.DayOfWeek = this.DaysOfWeekDropDown.SelectedItem.Text;
             item.Id = this.Model.CurrentSchedule.Count + 1;
+            item.SubjName = this.ddvalue;
             TryUpdateModel(item);
             if (this.Page.ModelState.IsValid)
             {
@@ -115,6 +116,16 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
            return this.context.Subjects.ToList();
         }
 
-       
+        protected void dd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList list = (DropDownList)sender;
+            this.ddvalue = (string)list.SelectedValue;
+        }
+
+        protected void dd2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList list = (DropDownList)sender;
+            this.ddvalue = (string)list.SelectedValue;
+        }
     }
 }
