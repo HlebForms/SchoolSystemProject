@@ -46,6 +46,12 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
             this.View.EventBindAllClasses += this.GetAllClasses;
             this.View.EventBindDaysOfWeek += this.BindDaysOfWeek;
             this.View.EventBitSubjectForCurrentClass += this.BindSubjectsForSpecificClass;
+            this.View.EventAddSubjectToSchedule += this.AddSubjectToSchedule;
+        }
+
+        private void AddSubjectToSchedule(object sender, AddingSubjectToScheduleEventArgs e)
+        {
+            this.scheduleService.AddSubjectToSchedule(e.ClassId, e.SubjectId, e.DaysOfWeekId, e.StartHour, e.EndHour);
         }
 
         private void BindSubjectsForSpecificClass(object sender, BindSubjectsForClassEventArgs e)

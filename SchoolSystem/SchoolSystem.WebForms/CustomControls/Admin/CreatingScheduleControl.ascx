@@ -37,9 +37,44 @@
 
             <asp:ListView runat="server" ID="ScheduleList"
                 ItemType="SchoolSystem.Data.Models.CustomModels.ManagingScheduleModel"
+                OnItemCommand="ScheduleList_ItemCommand"
                 InsertItemPosition="LastItem"
-                OnItemCommand="ScheduleList_ItemCommand">
+                DataKeyNames="StartHour"
+                InsertMethod="ScheduleList_InsertItem2"
+                SelectMethod="ScheduleList_GetData">
                 <InsertItemTemplate>
+                    <tr>
+                        <td>
+                            <asp:Button ID="InsertBtn" runat="server" CommandName="Insert"
+                                Text="Insert" />
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="AddingSubjectDropDown" runat="server"
+                                CssClass="form-control"
+                                SelectMethod="PopulateSubjects"
+                                SelectedItem='<%# Bind("Id") %>'
+                                DataTextField="Name"
+                                DataValueField="Id">
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="StartHourDropDown" runat="server"
+                                SelectedItem='<%# Bind("StartDate") %>'
+                                CssClass="form-control">
+                                <asp:ListItem >9</asp:ListItem>
+                                <asp:ListItem>10</asp:ListItem>
+                                <asp:ListItem>11</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="EndHourDropDown" runat="server"
+                                CssClass="form-control">
+                                <asp:ListItem>9</asp:ListItem>
+                                <asp:ListItem>10</asp:ListItem>
+                                <asp:ListItem>11</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
                 </InsertItemTemplate>
                 <EditItemTemplate>
                     <tr>
@@ -106,38 +141,6 @@
                     </table>
                 </LayoutTemplate>
             </asp:ListView>
-            <table>
-                <tr>
-                    <td>
-                        <asp:Button ID="InsertBtn" runat="server"
-                            CommandName="Insert" Text="Insert" />
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="AddingSubjectDropDown" runat="server"
-                            CssClass="form-control"
-                            DataTextField="Name"
-                            DataValueField="Id">
-                        </asp:DropDownList>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="StartHourDropDown" runat="server"
-                            CssClass="form-control">
-                            <asp:ListItem>9</asp:ListItem>
-                            <asp:ListItem>10</asp:ListItem>
-                            <asp:ListItem>11</asp:ListItem>
-                        </asp:DropDownList>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="EndHourDropDown" runat="server"
-                            CssClass="form-control">
-                            <asp:ListItem>9</asp:ListItem>
-                            <asp:ListItem>10</asp:ListItem>
-                            <asp:ListItem>11</asp:ListItem>
-                        </asp:DropDownList>
-                    </td>
-                </tr>
-            </table>
-
         </div>
 
     </ContentTemplate>

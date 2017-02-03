@@ -18,6 +18,7 @@ namespace SchoolSystem.Web.Services
         private readonly IRepository<Teacher> teacherRepo;
         private readonly IRepository<User> userRepo;
         private readonly IRepository<DaysOfWeek> daysOfWeekRepo;
+        private readonly Func<IUnitOfWork> unitOfWork;
 
         public ScheduleDataService(
             IRepository<Subject> subjectRepo,
@@ -25,7 +26,8 @@ namespace SchoolSystem.Web.Services
             IRepository<Teacher> teacherRepo,
             IRepository<SubjectClassOfStudentsDaysOfWeek> subjectClassOfStudentsDaysOfWeekRepo,
             IRepository<DaysOfWeek> daysOfWeekRepo,
-        IRepository<Student> studentRepo
+            IRepository<Student> studentRepo,
+            Func<IUnitOfWork> unitOfWork
             )
         {
             this.studentRepo = studentRepo;
@@ -34,6 +36,7 @@ namespace SchoolSystem.Web.Services
             this.teacherRepo = teacherRepo;
             this.subjectClassOfStudentsDaysOfWeekRepo = subjectClassOfStudentsDaysOfWeekRepo;
             this.daysOfWeekRepo = daysOfWeekRepo;
+            this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<StudentSchedule> GetTodaysSchedule(DayOfWeek dayOfWeek, string username)
@@ -91,6 +94,32 @@ namespace SchoolSystem.Web.Services
 
 
             return content;
+        }
+
+        public void AddSubjectToSchedule(int classId, int subjectId, int dayOfWeekId, DateTime startHour, DateTime endHour)
+        {
+            using (var uow = this.unitOfWork())
+            {
+                this.subjectClassOfStudentsDaysOfWeekRepo.Add(new SubjectClassOfStudentsDaysOfWeek()
+                {
+                    ClassOfStudentsId = classId,
+                    SubjectId = subjectId,
+                    DaysOfWeekId = dayOfWeekId,
+                    StartHour = startHour,
+                    EndHour = endHour
+                });
+
+                try
+                {
+                    uow.Commit();
+
+                }
+                catch (Exception e)
+                {
+                    // nqma da se dobavi - pk confilct
+                }
+            }
+
         }
     }
 
