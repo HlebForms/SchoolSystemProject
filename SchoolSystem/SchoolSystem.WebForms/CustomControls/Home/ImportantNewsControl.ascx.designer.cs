@@ -10,33 +10,24 @@
 namespace SchoolSystem.WebForms.CustomControls.Home {
     
     
-    public partial class NewsfeedControl {
+    public partial class ImportantNewsControl {
         
         /// <summary>
-        /// updatePanel control.
+        /// updatePanelImportant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updatePanel;
+        protected global::System.Web.UI.UpdatePanel updatePanelImportant;
         
         /// <summary>
-        /// LoginView control.
+        /// importantNewsList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView LoginView;
-        
-        /// <summary>
-        /// CommentsList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater CommentsList;
+        protected global::System.Web.UI.WebControls.Repeater importantNewsList;
     }
 }

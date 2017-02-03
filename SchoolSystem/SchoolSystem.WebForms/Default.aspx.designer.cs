@@ -22,6 +22,15 @@ namespace SchoolSystem.WebForms {
         protected global::SchoolSystem.WebForms.CustomControls.Home.StudentScheduleControl StudentScheduleControl;
         
         /// <summary>
+        /// ImportantNewsControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SchoolSystem.WebForms.CustomControls.Home.ImportantNewsControl ImportantNewsControl;
+        
+        /// <summary>
         /// NewsfeedControl control.
         /// </summary>
         /// <remarks>
