@@ -16,6 +16,7 @@ using Ninject;
 using SchoolSystem.WebForms.App_Start;
 using System.Data.Entity;
 using SchoolSystem.Data;
+using System.Windows.Forms;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin
 {
@@ -24,7 +25,6 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
     {
 
         private readonly SchoolSystemDbContext context;
-
         public event EventHandler<EventArgs> EventBindAllClasses;
         public event EventHandler<CreatingScheduleEventArgs> EventBindScheduleData;
         public event EventHandler<EventArgs> EventBindDaysOfWeek;
@@ -38,7 +38,6 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
         {
             if (!this.IsPostBack)
             {
-
                 this.EventBindAllClasses(this, e);
                 this.ClassOfStudentsDropDown.DataSource = this.Model.AllClassOfStudents;
                 this.ClassOfStudentsDropDown.DataBind();
@@ -74,6 +73,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
             var item = new SchoolSystem.WebForms.CustomControls.Admin.Models.Test();
             item.ClassName = this.ClassOfStudentsDropDown.SelectedItem.Text;
             item.DayOfWeek = this.DaysOfWeekDropDown.SelectedItem.Text;
+
             TryUpdateModel(item);
             if (this.Page.ModelState.IsValid)
             {
@@ -103,19 +103,6 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
             }
         }
 
-        public  IEnumerable<Subject> Test()
-        {
-           return this.context.Subjects.ToList();
-        }
-
-        // The id parameter name should match the DataKeyNames value set on the control
-        public void ScheduleList_DeleteItem(int id)
-        {
-        }
-
-        protected void ScheduleList_ItemEditing(object sender, ListViewEditEventArgs e)
-        {
-           
-        }
+  
     }
 }

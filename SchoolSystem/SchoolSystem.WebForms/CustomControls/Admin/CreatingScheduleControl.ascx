@@ -35,12 +35,9 @@
         </div>
         <div class="form-group">
 
-
-
             <asp:ListView runat="server" ID="ScheduleList"
                 ItemType="SchoolSystem.Data.Models.CustomModels.ManagingScheduleModel"
-                InsertItemPosition="LastItem"
-              >
+                InsertItemPosition="LastItem">
                 <InsertItemTemplate>
                     <tr>
                         <td>
@@ -53,6 +50,8 @@
                                 SelectedValue='<%# BindItem.Subject.Name %>'>
                                 <asp:ListItem>BG</asp:ListItem>
                                 <asp:ListItem>Matem</asp:ListItem>
+                                <asp:ListItem>aaaa</asp:ListItem>
+                                <asp:ListItem>bbbb</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                         <td>
@@ -93,7 +92,11 @@
 
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# BindItem.EndHour %>'></asp:TextBox>
+                            <asp:DropDownList ID="dd2" runat="server"
+                              >
+                                <asp:ListItem>aaaa</asp:ListItem>
+                                <asp:ListItem>bbbb</asp:ListItem>
+                            </asp:DropDownList>
                         </td>
                     </tr>
                 </EditItemTemplate>
@@ -140,8 +143,6 @@
 
         </div>
 
-
     </ContentTemplate>
-
 
 </asp:UpdatePanel>
