@@ -92,11 +92,11 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
             var startHourDropDown = e.Item.FindControl("StartHourDropDown") as DropDownList;
             var startHour = int.Parse(startHourDropDown.SelectedValue);
             // public DateTime(int year, int month, int day, int hour, int minute, int second);
-            var startHourDateTime = new DateTime(1, 1, 1, startHour, 0, 0, 0);
+            var startHourDateTime = new DateTime(2016, 1, 1, startHour, 0, 0);
 
             var endHourDropDown = e.Item.FindControl("EndHourDropDown") as DropDownList;
             var endHour = int.Parse(endHourDropDown.SelectedValue);
-            var endHourAsDateTime = new DateTime(1, 1, 1, startHour, 0, 0, 0);
+            var endHourAsDateTime = new DateTime(2016, 1, 1, startHour, 0, 0);
 
             var dayOfWeekId = int.Parse(this.DaysOfWeekDropDown.SelectedValue);
             var classId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
