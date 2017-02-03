@@ -13,5 +13,7 @@ namespace SchoolSystem.Web.Services.Contracts
         IEnumerable<StudentSchedule> GetTodaysSchedule(DayOfWeek dayOfWeek, string username);
 
         IEnumerable<DaysOfWeek> GetAllDaysOfWeek();
+
+        IEnumerable<ManagingScheduleModel> GetTodaysSchedule(int dayOfWeekId, int classId);
     }
 }

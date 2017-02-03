@@ -35,6 +35,12 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
             this.classOfStudentsManagementService = classOfStudentsManagementService;
             this.View.EventBindScheduleData += this.BindScheduleData;
             this.View.EventBindAllClasses += this.GetAllClasses;
+            this.View.EventBindDaysOfWeek += this.BindDaysOfWeek;
+        }
+
+        private void BindDaysOfWeek(object sender, EventArgs e)
+        {
+            this.View.Model.DaysOfWeek = this.scheduleService.GetAllDaysOfWeek();
         }
 
         private void GetAllClasses(object sender, EventArgs e)
@@ -44,7 +50,8 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
 
         private void BindScheduleData(object sender, CreatingScheduleEventArgs e)
         {
-            this.View.Model.DaysOfWeek = this.scheduleService.GetAllDaysOfWeek();
+            this.View.Model.CurrentSchedule = this.scheduleService.GetTodaysSchedule(
+                int.Parse(e.DayOfWeekId), int.Parse(e.ClassId));
         }
     }
 }

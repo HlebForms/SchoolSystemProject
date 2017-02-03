@@ -72,6 +72,26 @@ namespace SchoolSystem.Web.Services
         {
             return this.daysOfWeekRepo.GetAll();
         }
+
+        public IEnumerable<ManagingScheduleModel> GetTodaysSchedule(int dayOfWeekId, int classId)
+        {
+            var data = new List<ManagingScheduleModel>();
+
+            var content = this.subjectClassOfStudentsDaysOfWeekRepo.GetAll(
+                x => x.DaysOfWeekId == dayOfWeekId
+                && x.ClassOfStudentsId == classId
+                , x => new ManagingScheduleModel()
+                {
+                    DaysOfWeek = x.DaysOfWeek,
+                    Subject = x.SubjectClassOfStudents.Subject,
+                    StartHour = x.StartHour,
+                    EndHour = x.EndHour
+                });
+
+
+
+            return content;
+        }
     }
 
 

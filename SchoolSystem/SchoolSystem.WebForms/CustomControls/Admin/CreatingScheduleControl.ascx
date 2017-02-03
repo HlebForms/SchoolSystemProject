@@ -27,8 +27,6 @@
                     AutoPostBack="true"
                     DataTextField="Name"
                     DataValueField="Id"
-                    SelectMethod="PopulateDaysOfWeek"
-                    ItemType="SchoolSystem.Data.Models.DaysOfWeek"
                     OnSelectedIndexChanged="DaysOfWeekDropDown_SelectedIndexChanged"
                     CssClass="form-control"
                     Width="250">
@@ -37,13 +35,12 @@
         </div>
         <div class="form-group">
 
+
+
             <asp:ListView runat="server" ID="ScheduleList"
-                ItemType="SchoolSystem.WebForms.CustomControls.Admin.Models.Test"
-                UpdateMethod="ScheduleList_UpdateItem"
-                SelectMethod="ScheduleList_GetData"
-                InsertMethod="ScheduleList_InsertItem"
+                ItemType="SchoolSystem.Data.Models.CustomModels.ManagingScheduleModel"
                 InsertItemPosition="LastItem"
-                DataKeyNames="Id">
+              >
                 <InsertItemTemplate>
                     <tr>
                         <td>
@@ -51,18 +48,30 @@
                                 CommandName="Insert" Text="Insert" />
                         </td>
                         <td>
-                            <asp:DropDownList ID="dd" runat="server">
-                                <asp:ListItem>1</asp:ListItem>
-                                <asp:ListItem>2</asp:ListItem>
+                            <asp:DropDownList ID="dd" runat="server"
+                                CssClass="form-control"
+                                SelectedValue='<%# BindItem.Subject.Name %>'>
+                                <asp:ListItem>BG</asp:ListItem>
+                                <asp:ListItem>Matem</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox3" runat="server"
-                                Text='<%# BindItem.StartHour %>' />
+                            <asp:DropDownList ID="DropDownList1" runat="server"
+                                CssClass="form-control"
+                                SelectedValue='<%#  BindItem.StartHour.Hour %>'>
+                                <asp:ListItem>9</asp:ListItem>
+                                <asp:ListItem>10</asp:ListItem>
+                                <asp:ListItem>11</asp:ListItem>
+                            </asp:DropDownList>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox4" runat="server"
-                                Text='<%# BindItem.EndHour %>' />
+                            <asp:DropDownList ID="DropDownList2" runat="server"
+                                CssClass="form-control"
+                                SelectedValue='<%# BindItem.EndHour.Hour%>'>
+                                <asp:ListItem>9</asp:ListItem>
+                                <asp:ListItem>10</asp:ListItem>
+                                <asp:ListItem>11</asp:ListItem>
+                            </asp:DropDownList>
                         </td>
                     </tr>
                 </InsertItemTemplate>
@@ -75,10 +84,13 @@
                                 CommandName="Cancel" Text="Cancel" />
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# BindItem.SubjName %>'></asp:TextBox>
+
+                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# BindItem.Subject.Name %>'></asp:TextBox>
+
                         </td>
                         <td>
                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# BindItem.StartHour %>'></asp:TextBox>
+
                         </td>
                         <td>
                             <asp:TextBox ID="TextBox2" runat="server" Text='<%# BindItem.EndHour %>'></asp:TextBox>
@@ -91,7 +103,7 @@
                             <asp:Button ID="EditButton" runat="server"
                                 CommandName="Edit" Text="Edit" />
                         </td>
-                        <td><%#: Item.SubjName %></td>
+                        <td><%#: Item.Subject.Name %></td>
                         <td><%#: Item.StartHour %></td>
                         <td><%#: Item.EndHour %></td>
                     </tr>
@@ -133,5 +145,3 @@
 
 
 </asp:UpdatePanel>
-
-
