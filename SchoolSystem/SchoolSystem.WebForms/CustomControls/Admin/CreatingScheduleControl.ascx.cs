@@ -28,6 +28,8 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
         public event EventHandler<EventArgs> EventBindAllClasses;
         public event EventHandler<CreatingScheduleEventArgs> EventBindScheduleData;
         public event EventHandler<EventArgs> EventBindDaysOfWeek;
+        public event EventHandler<AddingSubjectToScheduleEventArgs> EventAddSubjectToSchedule;
+        public event EventHandler<BindSubjectsForClassEventArgs> EventBitSubjectForCurrentClass;
 
         public CreateScheduleControl()
         {
@@ -45,6 +47,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 this.EventBindDaysOfWeek(this, e);
                 this.DaysOfWeekDropDown.DataSource = this.Model.DaysOfWeek;
                 this.DaysOfWeekDropDown.DataBind();
+
                 this.EventBindScheduleData(this, new CreatingScheduleEventArgs()
                 {
                     ClassId = this.ClassOfStudentsDropDown.SelectedValue,
@@ -53,6 +56,13 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
 
                 this.ScheduleList.DataSource = this.Model.CurrentSchedule;
                 this.ScheduleList.DataBind();
+
+                this.EventBitSubjectForCurrentClass(this, new BindSubjectsForClassEventArgs()
+                {
+                    ClassId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue)
+                });
+                this.AddingSubjectDropDown.DataSource = this.Model.SubjectForCurrentClass;
+                this.AddingSubjectDropDown.DataBind();
             }
         }
 
@@ -70,16 +80,17 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
 
         public void ScheduleList_InsertItem()
         {
-            var item = new SchoolSystem.WebForms.CustomControls.Admin.Models.Test();
-            item.ClassName = this.ClassOfStudentsDropDown.SelectedItem.Text;
-            item.DayOfWeek = this.DaysOfWeekDropDown.SelectedItem.Text;
 
-            TryUpdateModel(item);
-            if (this.Page.ModelState.IsValid)
-            {
-                // Save changes here
-                //this.Model.CurrentSchedule.Add(item);
-            }
+            //this.EventAddSubjectToSchedule(this, new AddingSubjectToScheduleEventArgs()
+            //{
+            //    ClassId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue),
+            //    DaysOfWeekId=int.Parse(this.DaysOfWeekDropDown.SelectedValue),
+            //});
+
+            var data = new SubjectClassOfStudentsDaysOfWeek();
+            TryUpdateModel<SubjectClassOfStudentsDaysOfWeek>(data);
+
+
         }
 
         // The id parameter name should match the DataKeyNames value set on the control
@@ -103,6 +114,30 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
             }
         }
 
-  
+        protected void ScheduleList_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            switch (e.CommandName)
+            {
+                case ("Edit"):
+                    this.Update();
+
+                    break;
+            }
+        }
+
+        private void Update()
+        {
+        }
+
+        public void ScheduleList_InsertItem1()
+        {
+            var item = new SchoolSystem.Data.Models.CustomModels.ManagingScheduleModel();
+            TryUpdateModel(item);
+            if (this.Page.ModelState.IsValid)
+            {
+                // Save changes here
+
+            }
+        }
     }
 }

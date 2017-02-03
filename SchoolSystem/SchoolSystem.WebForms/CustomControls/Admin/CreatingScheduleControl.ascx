@@ -37,42 +37,9 @@
 
             <asp:ListView runat="server" ID="ScheduleList"
                 ItemType="SchoolSystem.Data.Models.CustomModels.ManagingScheduleModel"
-                InsertItemPosition="LastItem">
+                InsertItemPosition="LastItem"
+                OnItemCommand="ScheduleList_ItemCommand">
                 <InsertItemTemplate>
-                    <tr>
-                        <td>
-                            <asp:Button ID="InsertBtn" runat="server"
-                                CommandName="Insert" Text="Insert" />
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="dd" runat="server"
-                                CssClass="form-control"
-                                SelectedValue='<%# BindItem.Subject.Name %>'>
-                                <asp:ListItem>BG</asp:ListItem>
-                                <asp:ListItem>Matem</asp:ListItem>
-                                <asp:ListItem>aaaa</asp:ListItem>
-                                <asp:ListItem>bbbb</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="DropDownList1" runat="server"
-                                CssClass="form-control"
-                                SelectedValue='<%#  BindItem.StartHour.Hour %>'>
-                                <asp:ListItem>9</asp:ListItem>
-                                <asp:ListItem>10</asp:ListItem>
-                                <asp:ListItem>11</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="DropDownList2" runat="server"
-                                CssClass="form-control"
-                                SelectedValue='<%# BindItem.EndHour.Hour%>'>
-                                <asp:ListItem>9</asp:ListItem>
-                                <asp:ListItem>10</asp:ListItem>
-                                <asp:ListItem>11</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
                 </InsertItemTemplate>
                 <EditItemTemplate>
                     <tr>
@@ -92,8 +59,7 @@
 
                         </td>
                         <td>
-                            <asp:DropDownList ID="dd2" runat="server"
-                              >
+                            <asp:DropDownList ID="dd2" runat="server">
                                 <asp:ListItem>aaaa</asp:ListItem>
                                 <asp:ListItem>bbbb</asp:ListItem>
                             </asp:DropDownList>
@@ -140,6 +106,37 @@
                     </table>
                 </LayoutTemplate>
             </asp:ListView>
+            <table>
+                <tr>
+                    <td>
+                        <asp:Button ID="InsertBtn" runat="server"
+                            CommandName="Insert" Text="Insert" />
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="AddingSubjectDropDown" runat="server"
+                            CssClass="form-control"
+                            DataTextField="Name"
+                            DataValueField="Id">
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="StartHourDropDown" runat="server"
+                            CssClass="form-control">
+                            <asp:ListItem>9</asp:ListItem>
+                            <asp:ListItem>10</asp:ListItem>
+                            <asp:ListItem>11</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="EndHourDropDown" runat="server"
+                            CssClass="form-control">
+                            <asp:ListItem>9</asp:ListItem>
+                            <asp:ListItem>10</asp:ListItem>
+                            <asp:ListItem>11</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+            </table>
 
         </div>
 
