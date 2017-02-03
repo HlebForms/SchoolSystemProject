@@ -177,13 +177,39 @@ input[type="select"] {
     }
 }
 
-@media screen and (min-width: 768px) {
+@media (max-width: 735px) {
     .jumbotron {
         margin-top: 20px;
     }
 
     .body-content {
         padding: 0;
+    }
+
+     .news-feed {
+        order: 2;
+        height: 400px;
+        position: unset;
+        top: 0;
+        right: 50px;
+    }
+     
+    .top-news {
+        order: 3;
+    }
+
+    .program, .top-news, .news-feed {
+        width: 300px;
+        margin-left:8px;
+    }
+
+    .content {
+        width: auto;
+        position: relative;
+    }
+    .footer-hr{
+        margin-left:0px;
+        width:310px
     }
 }
 
