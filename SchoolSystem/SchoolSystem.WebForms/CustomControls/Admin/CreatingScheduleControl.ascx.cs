@@ -11,19 +11,33 @@ using WebFormsMvp;
 using WebFormsMvp.Web;
 using SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments;
 using System.Web.ModelBinding;
+using SchoolSystem.Data.Models;
+using Ninject;
+using SchoolSystem.WebForms.App_Start;
+using System.Data.Entity;
+using SchoolSystem.Data;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin
 {
     [PresenterBinding(typeof(CreatingSchedulePresenter))]
     public partial class CreateScheduleControl : MvpUserControl<CreatingScheduleModel>, ICreatingScheduleView
     {
+
+        private readonly SchoolSystemDbContext context;
+
         public event EventHandler<EventArgs> EventBindAllClasses;
         public event EventHandler<CreatingScheduleEventArgs> EventBindScheduleData;
+
+        public CreateScheduleControl()
+        {
+            this.context = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
+
                 this.EventBindAllClasses(this, e);
                 this.ClassOfStudentsDropDown.DataSource = this.Model.AllClassOfStudents;
                 this.ClassOfStudentsDropDown.DataBind();
@@ -32,6 +46,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 // && x.ClassName == this.ClassOfStudentsDropDown.SelectedItem.Text);
 
                 //this.ScheduleList.DataBind();
+                //}
             }
         }
 
@@ -43,9 +58,35 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
             //this.ScheduleList.DataBind();
         }
 
-        protected void ScheduleList_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+        public IEnumerable<Test> ScheduleList_GetData()
+        {
+            return this.Model.CurrentSchedule.Where(x => x.ClassName == this.ClassOfStudentsDropDown.SelectedItem.Text
+            && x.DayOfWeek == this.DaysOfWeekDropDown.SelectedItem.Text);
+        }
+
+        public IEnumerable<DaysOfWeek> PopulateDaysOfWeek()
+        {
+            if (!this.IsPostBack)
+            {
+                EventBindScheduleData(this, null);
+            }
+
+            return this.Model.DaysOfWeek;
+        }
+
+        public void ScheduleList_InsertItem()
+        {
+            var item = new SchoolSystem.WebForms.CustomControls.Admin.Models.Test();
+            item.ClassName = this.ClassOfStudentsDropDown.SelectedItem.Text;
+            item.DayOfWeek = this.DaysOfWeekDropDown.SelectedItem.Text;
+            item.Id = this.Model.CurrentSchedule.Count + 1;
+            TryUpdateModel(item);
+            if (this.Page.ModelState.IsValid)
+            {
+                // Save changes here
+                this.Model.CurrentSchedule.Add(item);
+            }
         }
 
         // The id parameter name should match the DataKeyNames value set on the control
@@ -53,31 +94,27 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
         {
             SchoolSystem.WebForms.CustomControls.Admin.Models.Test item = null;
             // Load the item here, e.g. item = MyDataLayer.Find(id);
-            item = this.Model.CurrentSchedule.FirstOrDefault();
-
+            item = this.Model.CurrentSchedule.FirstOrDefault(x => x.Id == id);
             if (item == null)
             {
                 // The item wasn't found
-                //ModelState.AddModelError("", String.Format("Item with id {0} was not found", id));
+                this.Page.ModelState.AddModelError("", String.Format("Item with id {0} was not found", id));
                 return;
             }
+
             TryUpdateModel(item);
-            //if (ModelState.IsValid)
+            if (this.Page.ModelState.IsValid)
             {
                 // Save changes here, e.g. MyDataLayer.SaveChanges();
 
             }
         }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
-        public IQueryable<SchoolSystem.WebForms.CustomControls.Admin.Models.Test> ScheduleList_GetData()
+        public  IEnumerable<Subject> Test()
         {
-            return this.Model.CurrentSchedule.AsQueryable();
+           return this.context.Subjects.ToList();
         }
+
+       
     }
 }

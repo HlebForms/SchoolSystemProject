@@ -44,6 +44,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
 
         private void BindScheduleData(object sender, CreatingScheduleEventArgs e)
         {
+            this.View.Model.DaysOfWeek = this.scheduleService.GetAllDaysOfWeek();
         }
     }
 }

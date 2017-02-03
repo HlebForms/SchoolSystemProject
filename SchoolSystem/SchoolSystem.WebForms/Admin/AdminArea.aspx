@@ -5,7 +5,7 @@
 <%@ Register Src="~/CustomControls/Admin/CreatingScheduleControl.ascx" TagPrefix="spuc" TagName="CreatingScheduleControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<%--    <spuc:CreatingSubjectControl runat="server" ID="CreatingSubjectControl" />
+  <%--  <spuc:CreatingSubjectControl runat="server" ID="CreatingSubjectControl" />
     <spuc:CreatingClassOfStudentsControl runat="server" ID="CreatingClassOfStudentsControl" />--%>
     <spuc:CreatingScheduleControl runat="server" ID="CreatingScheduleControl" />
 </asp:Content>
