@@ -1,6 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ImportantNewsControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Home.ImportantNewsControl" %>
-<asp:UpdatePanel ID="updatePanelImportant" runat="server" UpdateMode="Conditional">
-    <ContentTemplate>
+
         <h4 class="importantNews-header-text">Важни новини</h4>
         <div class="importantNews-container">
             <ul class="importantNews-list">
@@ -16,5 +15,4 @@
                 </asp:Repeater>
             </ul>
         </div>
-    </ContentTemplate>
-</asp:UpdatePanel>
+

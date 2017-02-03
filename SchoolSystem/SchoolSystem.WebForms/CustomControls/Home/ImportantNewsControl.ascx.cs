@@ -14,6 +14,11 @@ namespace SchoolSystem.WebForms.CustomControls.Home
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+           
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
             var context = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
 
             this.importantNewsList.DataSource = context.NewsFeed.Where(n => n.IsImportant == true).OrderByDescending(x => x.CreatedOn).ToList();

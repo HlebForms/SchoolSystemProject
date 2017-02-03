@@ -1,6 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="NewsfeedControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Home.NewsfeedControl" %>
-<asp:UpdatePanel ID="updatePanel" runat="server" UpdateMode="Conditional">
-    <ContentTemplate>
+
         <asp:LoginView runat="server" ID="LoginView" ViewStateMode="Disabled">
 
             <AnonymousTemplate>
@@ -32,5 +31,4 @@
                 </asp:Repeater>
             </ul>
         </div>
-    </ContentTemplate>
-</asp:UpdatePanel>
+
