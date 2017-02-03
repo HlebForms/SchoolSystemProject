@@ -11,10 +11,14 @@ namespace SchoolSystem.Web.Services
 {
     public class SubjectManagementService : ISubjectManagementService
     {
+        private readonly IRepository<SubjectClassOfStudents> subjectClassOfStudentsRepo;
         private readonly IRepository<Subject> subjectRepo;
         private readonly Func<IUnitOfWork> unitOfWork;
 
-        public SubjectManagementService(IRepository<Subject> subjectRepo, Func<IUnitOfWork> unitOfWork)
+        public SubjectManagementService(
+            IRepository<Subject> subjectRepo,
+            IRepository<SubjectClassOfStudents> subjectClassOfStudentsRepo,
+            Func<IUnitOfWork> unitOfWork)
         {
             if (subjectRepo == null)
             {
@@ -26,13 +30,20 @@ namespace SchoolSystem.Web.Services
                 throw new ArgumentNullException("unitOfWork");
             }
 
+            if (subjectClassOfStudentsRepo == null)
+            {
+                throw new ArgumentNullException("subjectClassOfStudentsRepo");
+            }
+
+
             this.subjectRepo = subjectRepo;
+            this.subjectClassOfStudentsRepo = subjectClassOfStudentsRepo;
             this.unitOfWork = unitOfWork;
         }
 
         public bool CreateSubject(string subjectName)
         {
-            if (subjectName==null)
+            if (subjectName == null)
             {
                 throw new ArgumentNullException("subjectName");
             }
@@ -60,6 +71,11 @@ namespace SchoolSystem.Web.Services
         public IEnumerable<Subject> GetAllSubjects()
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<Subject> GetSubjectsForSpecificClass(int classId)
+        {
+            return this.subjectClassOfStudentsRepo.GetAll(x => x.ClassOfStudentsId == classId, x => x.Subject);
         }
     }
 }

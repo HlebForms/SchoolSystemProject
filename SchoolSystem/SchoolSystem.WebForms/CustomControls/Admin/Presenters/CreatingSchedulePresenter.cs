@@ -13,11 +13,13 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
     {
         private readonly IScheduleDataService scheduleService;
         private readonly IClassOfStudentsManagementService classOfStudentsManagementService;
+        private readonly ISubjectManagementService subjectManagementService;
 
         public CreatingSchedulePresenter(
             ICreatingScheduleView view,
             IScheduleDataService scheduleService,
-            IClassOfStudentsManagementService classOfStudentsManagementService
+            IClassOfStudentsManagementService classOfStudentsManagementService,
+            ISubjectManagementService subjectManagementService
             )
             : base(view)
         {
@@ -31,10 +33,35 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
                 throw new ArgumentNullException("classOfStudentsManagementService");
             }
 
+            if (subjectManagementService==null)
+            {
+                throw new ArgumentNullException("subjectManagementService");
+            }
+
             this.scheduleService = scheduleService;
             this.classOfStudentsManagementService = classOfStudentsManagementService;
+            this.subjectManagementService = subjectManagementService;
+            
             this.View.EventBindScheduleData += this.BindScheduleData;
             this.View.EventBindAllClasses += this.GetAllClasses;
+            this.View.EventBindDaysOfWeek += this.BindDaysOfWeek;
+            this.View.EventBitSubjectForCurrentClass += this.BindSubjectsForSpecificClass;
+            this.View.EventAddSubjectToSchedule += this.AddSubjectToSchedule;
+        }
+
+        private void AddSubjectToSchedule(object sender, AddingSubjectToScheduleEventArgs e)
+        {
+            this.scheduleService.AddSubjectToSchedule(e.ClassId, e.SubjectId, e.DaysOfWeekId, e.StartHour, e.EndHour);
+        }
+
+        private void BindSubjectsForSpecificClass(object sender, BindSubjectsForClassEventArgs e)
+        {
+            this.View.Model.SubjectForCurrentClass = this.subjectManagementService.GetSubjectsForSpecificClass(e.ClassId);
+        }
+
+        private void BindDaysOfWeek(object sender, EventArgs e)
+        {
+            this.View.Model.DaysOfWeek = this.scheduleService.GetAllDaysOfWeek();
         }
 
         private void GetAllClasses(object sender, EventArgs e)
@@ -44,7 +71,8 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
 
         private void BindScheduleData(object sender, CreatingScheduleEventArgs e)
         {
-            this.View.Model.DaysOfWeek = this.scheduleService.GetAllDaysOfWeek();
+            this.View.Model.CurrentSchedule = this.scheduleService.GetTodaysSchedule(
+                int.Parse(e.DayOfWeekId), int.Parse(e.ClassId));
         }
     }
 }

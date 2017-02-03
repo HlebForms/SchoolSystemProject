@@ -363,6 +363,8 @@
     <Compile Include="CustomControls\Admin\Presenters\CreatingClassOfStudentsPresenter.cs" />
     <Compile Include="CustomControls\Admin\Presenters\CreatingSchedulePresenter.cs" />
     <Compile Include="CustomControls\Admin\Presenters\CreatingSubjectPresenter.cs" />
+    <Compile Include="CustomControls\Admin\Views\EventArguments\BindSubjectsForClassEventArgs.cs" />
+    <Compile Include="CustomControls\Admin\Views\EventArguments\AddingSubjectToScheduleEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingClassOfStudentsEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingScheduleEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingSubjectEventArgs.cs" />

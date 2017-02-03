@@ -11,6 +11,12 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Views
     {
         event EventHandler<EventArgs> EventBindAllClasses;
 
+        event EventHandler<EventArgs> EventBindDaysOfWeek;
+
         event EventHandler<CreatingScheduleEventArgs> EventBindScheduleData;
+
+        event EventHandler<AddingSubjectToScheduleEventArgs> EventAddSubjectToSchedule;
+
+        event EventHandler<BindSubjectsForClassEventArgs> EventBitSubjectForCurrentClass;
     }
 }

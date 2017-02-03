@@ -18,6 +18,7 @@ namespace SchoolSystem.Web.Services
         private readonly IRepository<Teacher> teacherRepo;
         private readonly IRepository<User> userRepo;
         private readonly IRepository<DaysOfWeek> daysOfWeekRepo;
+        private readonly Func<IUnitOfWork> unitOfWork;
 
         public ScheduleDataService(
             IRepository<Subject> subjectRepo,
@@ -25,7 +26,8 @@ namespace SchoolSystem.Web.Services
             IRepository<Teacher> teacherRepo,
             IRepository<SubjectClassOfStudentsDaysOfWeek> subjectClassOfStudentsDaysOfWeekRepo,
             IRepository<DaysOfWeek> daysOfWeekRepo,
-        IRepository<Student> studentRepo
+            IRepository<Student> studentRepo,
+            Func<IUnitOfWork> unitOfWork
             )
         {
             this.studentRepo = studentRepo;
@@ -34,13 +36,14 @@ namespace SchoolSystem.Web.Services
             this.teacherRepo = teacherRepo;
             this.subjectClassOfStudentsDaysOfWeekRepo = subjectClassOfStudentsDaysOfWeekRepo;
             this.daysOfWeekRepo = daysOfWeekRepo;
+            this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<StudentSchedule> GetTodaysSchedule(DayOfWeek dayOfWeek, string username)
         {
 
             //var userId = this.userRepo.GetFirst(x => x.UserName == username).Id;
-            var userId = "7b68137f-ede6-4dc5-bcc3-d880e14e12a8";
+            var userId = "8c8a33cb-ae6e-453c-aae6-fef949a3c370";
             var userClassId = this.studentRepo.GetFirst(x => x.Id == userId).ClassOfStudentsId;
             var daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
                 .GetAll(x => x.ClassOfStudentsId == userClassId && x.DaysOfWeek.Id == 1, y => y)
@@ -71,6 +74,52 @@ namespace SchoolSystem.Web.Services
         public IEnumerable<DaysOfWeek> GetAllDaysOfWeek()
         {
             return this.daysOfWeekRepo.GetAll();
+        }
+
+        public IEnumerable<ManagingScheduleModel> GetTodaysSchedule(int dayOfWeekId, int classId)
+        {
+            var data = new List<ManagingScheduleModel>();
+
+            var content = this.subjectClassOfStudentsDaysOfWeekRepo.GetAll(
+                x => x.DaysOfWeekId == dayOfWeekId
+                && x.ClassOfStudentsId == classId
+                , x => new ManagingScheduleModel()
+                {
+                    DaysOfWeek = x.DaysOfWeek,
+                    Subject = x.SubjectClassOfStudents.Subject,
+                    StartHour = x.StartHour,
+                    EndHour = x.EndHour
+                });
+
+
+
+            return content;
+        }
+
+        public void AddSubjectToSchedule(int classId, int subjectId, int dayOfWeekId, DateTime startHour, DateTime endHour)
+        {
+            using (var uow = this.unitOfWork())
+            {
+                this.subjectClassOfStudentsDaysOfWeekRepo.Add(new SubjectClassOfStudentsDaysOfWeek()
+                {
+                    ClassOfStudentsId = classId,
+                    SubjectId = subjectId,
+                    DaysOfWeekId = dayOfWeekId,
+                    StartHour = startHour,
+                    EndHour = endHour
+                });
+
+                try
+                {
+                    uow.Commit();
+
+                }
+                catch (Exception e)
+                {
+                    // nqma da se dobavi - pk confilct
+                }
+            }
+
         }
     }
 
