@@ -24,11 +24,11 @@ namespace SchoolSystem.Data.Migrations
 
         protected override void Seed(SchoolSystemDbContext context)
         {
-            this.RolesSeeder(context);
-            this.SubjectSeeder(context);
-            this.ClassOfStudentsSeeder(context);
-            this.UsersSeeder(context);
-            this.DaysOfWeekSeeder(context);
+            //this.RolesSeeder(context);
+            //this.SubjectSeeder(context);
+            //this.ClassOfStudentsSeeder(context);
+            //this.UsersSeeder(context);
+            //this.DaysOfWeekSeeder(context);
         }
 
         private void DaysOfWeekSeeder(SchoolSystemDbContext context)
@@ -37,6 +37,7 @@ namespace SchoolSystem.Data.Migrations
             {
                 Name = DayOfWeek.Monday.ToString()
             });
+
 
             context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {

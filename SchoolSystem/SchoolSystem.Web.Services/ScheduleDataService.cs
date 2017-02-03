@@ -17,13 +17,15 @@ namespace SchoolSystem.Web.Services
         private readonly IRepository<Subject> subjectRepo;
         private readonly IRepository<Teacher> teacherRepo;
         private readonly IRepository<User> userRepo;
+        private readonly IRepository<DaysOfWeek> daysOfWeekRepo;
 
         public ScheduleDataService(
             IRepository<Subject> subjectRepo,
             IRepository<User> userRepo,
             IRepository<Teacher> teacherRepo,
             IRepository<SubjectClassOfStudentsDaysOfWeek> subjectClassOfStudentsDaysOfWeekRepo,
-            IRepository<Student> studentRepo
+            IRepository<DaysOfWeek> daysOfWeekRepo,
+        IRepository<Student> studentRepo
             )
         {
             this.studentRepo = studentRepo;
@@ -31,11 +33,12 @@ namespace SchoolSystem.Web.Services
             this.userRepo = userRepo;
             this.teacherRepo = teacherRepo;
             this.subjectClassOfStudentsDaysOfWeekRepo = subjectClassOfStudentsDaysOfWeekRepo;
+            this.daysOfWeekRepo = daysOfWeekRepo;
         }
 
         public IEnumerable<StudentSchedule> GetTodaysSchedule(DayOfWeek dayOfWeek, string username)
         {
-            
+
             //var userId = this.userRepo.GetFirst(x => x.UserName == username).Id;
             var userId = "7b68137f-ede6-4dc5-bcc3-d880e14e12a8";
             var userClassId = this.studentRepo.GetFirst(x => x.Id == userId).ClassOfStudentsId;
@@ -63,6 +66,11 @@ namespace SchoolSystem.Web.Services
             }
 
             return result;
+        }
+
+        public IEnumerable<DaysOfWeek> GetAllDaysOfWeek()
+        {
+            return this.daysOfWeekRepo.GetAll();
         }
     }
 

@@ -7,36 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolSystem.WebForms {
+namespace SchoolSystem.WebForms.CustomControls.Admin {
     
     
-    public partial class _Default {
+    public partial class CreateScheduleControl {
         
         /// <summary>
-        /// StudentScheduleControl control.
+        /// test control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Home.StudentScheduleControl StudentScheduleControl;
+        protected global::System.Web.UI.UpdatePanel test;
         
         /// <summary>
-        /// ImportantNewsControl control.
+        /// ClassOfStudentsDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Home.ImportantNewsControl ImportantNewsControl;
+        protected global::System.Web.UI.WebControls.DropDownList ClassOfStudentsDropDown;
         
         /// <summary>
-        /// NewsfeedControl control.
+        /// DaysOfWeekDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Home.NewsfeedControl NewsfeedControl;
+        protected global::System.Web.UI.WebControls.DropDownList DaysOfWeekDropDown;
+        
+        /// <summary>
+        /// ScheduleList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ScheduleList;
     }
 }

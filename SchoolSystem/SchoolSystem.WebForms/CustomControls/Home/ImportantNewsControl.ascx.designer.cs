@@ -7,27 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolSystem.WebForms {
+namespace SchoolSystem.WebForms.CustomControls.Home {
     
     
-    public partial class SiteMaster {
+    public partial class ImportantNewsControl {
         
         /// <summary>
-        /// LoginView control.
+        /// updatePanelImportant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView LoginView;
+        protected global::System.Web.UI.UpdatePanel updatePanelImportant;
         
         /// <summary>
-        /// MainContent control.
+        /// importantNewsList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Repeater importantNewsList;
     }
 }
