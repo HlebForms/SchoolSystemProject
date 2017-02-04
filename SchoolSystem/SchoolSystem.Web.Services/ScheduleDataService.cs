@@ -43,7 +43,7 @@ namespace SchoolSystem.Web.Services
             var userId = "7b68137f-ede6-4dc5-bcc3-d880e14e12a8";
             var userClassId = this.studentRepo.GetFirst(x => x.Id == userId).ClassOfStudentsId;
             var daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
-                .GetAll(x => x.ClassOfStudentsId == userClassId && x.DaysOfWeek.Id == 1, y => y)
+                .GetAll(x => x.ClassOfStudentsId == userClassId && x.DaysOfWeek.Id == (int)dayOfWeek, y => y)
                 .ToList();
 
             var result = new List<StudentSchedule>();
