@@ -24,6 +24,10 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
         public event EventHandler<BindSubjectsForClassEventArgs> EventBitSubjectForCurrentClass;
         public event EventHandler<RemovingSubjectFromScheduleEventArgs> EventRemoveSubjectFromSchedule;
 
+        protected override void OnPreRender(EventArgs e)
+        {
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -97,6 +101,12 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 StartHour = sartHour,
                 EndHour = endHour,
                 SubjectId = selectedSubjectId
+            });
+
+            this.EventBindScheduleData(this, new CreatingScheduleEventArgs()
+            {
+                ClassId = this.ClassOfStudentsDropDown.SelectedValue,
+                DayOfWeekId = this.DaysOfWeekDropDown.SelectedValue
             });
         }
 

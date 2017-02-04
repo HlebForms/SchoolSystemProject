@@ -41,8 +41,6 @@
                 ItemType="SchoolSystem.Data.Models.CustomModels.ManagingScheduleModel"
                 OnItemCommand="ScheduleList_ItemCommand"
                 InsertItemPosition="LastItem"
-                DeleteMethod="ScheduleList_DeleteItem"
-                InsertMethod="ScheduleList_InsertItem2"
                 SelectMethod="ScheduleList_GetData">
                 <InsertItemTemplate>
                     <tr>
