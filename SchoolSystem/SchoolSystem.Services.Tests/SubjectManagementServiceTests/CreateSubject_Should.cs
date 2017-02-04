@@ -19,8 +19,9 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
         {
             var mockedRepo = new Mock<IRepository<Subject>>().Object;
             var mockedUow = new Mock<IUnitOfWork>().Object;
+            var mockedSubjClassRepo = new Mock<IRepository<SubjectClassOfStudents>>();
 
-            var service = new SubjectManagementService(mockedRepo, () => mockedUow);
+            var service = new SubjectManagementService(mockedRepo, mockedSubjClassRepo.Object,() => mockedUow);
 
             Assert.Throws<ArgumentNullException>(() =>
             {
@@ -33,8 +34,9 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
         {
             var mockedRepo = new Mock<IRepository<Subject>>().Object;
             var mockedUow = new Mock<IUnitOfWork>().Object;
+            var mockedSubjClassRepo = new Mock<IRepository<SubjectClassOfStudents>>();
 
-            var service = new SubjectManagementService(mockedRepo, () => mockedUow);
+            var service = new SubjectManagementService(mockedRepo, mockedSubjClassRepo.Object,() => mockedUow);
 
             Assert.That(() => service.CreateSubject(null),
                 Throws.ArgumentNullException.With.Message.Contain("subjectName"));
@@ -45,7 +47,9 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
         {
             var mockedRepo = new Mock<IRepository<Subject>>();
             var mockedUow = new Mock<IUnitOfWork>().Object;
-            var service = new SubjectManagementService(mockedRepo.Object, () => mockedUow);
+            var mockedSubjClassRepo = new Mock<IRepository<SubjectClassOfStudents>>();
+
+            var service = new SubjectManagementService(mockedRepo.Object, mockedSubjClassRepo.Object,() => mockedUow);
             var subject = new Subject() { Name = "test" };
 
             mockedRepo.Setup(x => x.GetAll()).Returns(new List<Subject>() { subject });
@@ -60,9 +64,11 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
         {
             var mockedRepo = new Mock<IRepository<Subject>>();
             var mockedUow = new Mock<IUnitOfWork>().Object;
-            var service = new SubjectManagementService(mockedRepo.Object, () => mockedUow);
+            var mockedSubjClassRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
 
-            mockedRepo.Setup(x => x.GetAll()).Returns(new List<Subject>() {  });
+            var service = new SubjectManagementService(mockedRepo.Object, mockedSubjClassRepo,() => mockedUow);
+
+            mockedRepo.Setup(x => x.GetAll()).Returns(new List<Subject>() { });
 
             var result = service.CreateSubject("test");
 
@@ -73,28 +79,31 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
         [Test]
         public void CallAddMethodOfSubjectRepoOnce()
         {
-            var mockedRepo = new Mock<IRepository<Subject>>();
+            var mockedSupjectRepo = new Mock<IRepository<Subject>>();
+            var mockedSubjClassRepo = new Mock<IRepository<SubjectClassOfStudents>>();
             var mockedUow = new Mock<IUnitOfWork>();
 
-            mockedRepo.Setup(x => x.GetAll()).Returns(new List<Subject>());
-            var service = new SubjectManagementService(mockedRepo.Object, () => mockedUow.Object);
-            mockedRepo.Setup(x => x.Add(It.IsAny<Subject>()));
+            mockedSupjectRepo.Setup(x => x.GetAll()).Returns(new List<Subject>());
+            var service = new SubjectManagementService(mockedSupjectRepo.Object, mockedSubjClassRepo.Object, () => mockedUow.Object);
+            mockedSupjectRepo.Setup(x => x.Add(It.IsAny<Subject>()));
 
             var result = service.CreateSubject("test");
 
-            mockedRepo.Verify(x => x.Add(It.IsAny<Subject>()), Times.Once);
+            mockedSupjectRepo.Verify(x => x.Add(It.IsAny<Subject>()), Times.Once);
         }
 
         [Test]
         public void CallCommitMethofOfUowOnce()
         {
             var mockedRepo = new Mock<IRepository<Subject>>();
+            var mockedSubjClassRepo = new Mock<IRepository<SubjectClassOfStudents>>();
+
             var mockedUow = new Mock<IUnitOfWork>();
 
             mockedRepo.Setup(x => x.GetAll()).Returns(new List<Subject>());
             mockedUow.Setup(x => x.Commit());
 
-            var service = new SubjectManagementService(mockedRepo.Object, () => mockedUow.Object);
+            var service = new SubjectManagementService(mockedRepo.Object, mockedSubjClassRepo.Object,() => mockedUow.Object);
             var result = service.CreateSubject("test");
 
             mockedUow.Verify(x => x.Commit(), Times.Once);

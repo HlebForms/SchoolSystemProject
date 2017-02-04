@@ -8,6 +8,6 @@ namespace SchoolSystem.Web.Services.Contracts
         bool CreateSubject(string subjectName);
 
         IEnumerable<Subject> GetAllSubjects();
-
+        IEnumerable<Subject> GetSubjectsForSpecificClass(int classId);
     }
 }
