@@ -18,10 +18,11 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
         public void ThrowArgumentNullException_WhenSubjectsRepoIsNull()
         {
             var mockedUow = new Mock<IUnitOfWork>().Object;
+            var mockedSubjClassRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
 
             Assert.Throws<ArgumentNullException>(() =>
             {
-                var subjectManagementService = new SubjectManagementService(null, () => mockedUow);
+                var subjectManagementService = new SubjectManagementService(null, mockedSubjClassRepo, () => mockedUow);
             });
         }
 
@@ -29,8 +30,9 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
         public void ThrowArgumentNullException_WithMsgContainingSubjectRepo_WhenSubjectsRepoIsNull()
         {
             var mockedUow = new Mock<IUnitOfWork>().Object;
+            var mockedSubjClassRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
 
-            Assert.That(() => new SubjectManagementService(null, () => mockedUow),
+            Assert.That(() => new SubjectManagementService(null, mockedSubjClassRepo, () => mockedUow),
                 Throws.ArgumentNullException.With.Message.Contain("subjectRepo"));
         }
 
@@ -38,10 +40,11 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
         public void ThrowArgumentNullException_WhenUnitOfWorkIsNull()
         {
             var mockedRepo = new Mock<IRepository<Subject>>().Object;
+            var mockedSubjClassRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
 
             Assert.Throws<ArgumentNullException>(() =>
             {
-                var subjectManagementService = new SubjectManagementService(mockedRepo,null);
+                var subjectManagementService = new SubjectManagementService(mockedRepo, mockedSubjClassRepo, null);
             });
         }
 
@@ -49,8 +52,9 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
         public void ThrowArgumentNullException_WithMsgContainingUnitOfWork_WhenSubjectsRepoIsNull()
         {
             var mockedRepo = new Mock<IRepository<Subject>>().Object;
+            var mockedSubjClassRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
 
-            Assert.That(() => new SubjectManagementService(mockedRepo,null),
+            Assert.That(() => new SubjectManagementService(mockedRepo, mockedSubjClassRepo, null),
                 Throws.ArgumentNullException.With.Message.Contain("unitOfWork"));
         }
     }

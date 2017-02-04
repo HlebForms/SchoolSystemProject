@@ -102,6 +102,12 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 EndHour = endHour,
                 SubjectId = selectedSubjectId
             });
+
+            this.EventBindScheduleData(this, new CreatingScheduleEventArgs()
+            {
+                ClassId = this.ClassOfStudentsDropDown.SelectedValue,
+                DayOfWeekId = this.DaysOfWeekDropDown.SelectedValue
+            });
         }
 
         public IEnumerable<ManagingScheduleModel> ScheduleList_GetData()
