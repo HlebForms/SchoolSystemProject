@@ -3,8 +3,12 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
     color: #2196F3;
+    /*background-image: url("../Images/background.jpg");
+    background-size: 500px;*/
 }
 
+footer {
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -69,6 +73,7 @@ input[type="select"] {
 
 .header-menu {
     border-bottom: 1px solid #2196F3;
+    background-color: white;
 }
 
 .navbar-nav > li > a {
@@ -81,6 +86,7 @@ input[type="select"] {
     height: 400px;
     display: inline-block;
     margin-top: 30px;
+    background-color: white;
 }
 
     .frame > h4 {
@@ -199,7 +205,8 @@ hr {
 .comment-content {
     font-size: 12px;
 }
-.importantNews-content{
+
+.importantNews-content {
     font-size: 16px;
 }
 
@@ -213,7 +220,7 @@ hr {
 }
 
 .importantNews-user-avatar {
-    width:55px;
+    width: 55px;
     float: left;
     margin-right: 5px;
     padding: 5px;

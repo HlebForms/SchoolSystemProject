@@ -196,6 +196,7 @@
     <Content Include="CustomControls\Home\StudentScheduleControl.ascx" />
     <Content Include="Images\avatars\modified-avatar.png" />
     <Content Include="Images\avatars\simple-avatar.png" />
+    <Content Include="Images\background.jpg" />
     <Content Include="Images\subject_images\subject1.png" />
     <Content Include="Images\subject_images\subject10.png" />
     <Content Include="Images\subject_images\subject11.png" />
