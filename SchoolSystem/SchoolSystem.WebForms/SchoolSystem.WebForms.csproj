@@ -368,6 +368,7 @@
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingClassOfStudentsEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingScheduleEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingSubjectEventArgs.cs" />
+    <Compile Include="CustomControls\Admin\Views\EventArguments\RemovingSubjectFromScheduleEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingClassOfStudentsView.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingScheduleView.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingSubjectView.cs" />

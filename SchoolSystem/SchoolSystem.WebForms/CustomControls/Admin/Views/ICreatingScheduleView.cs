@@ -18,5 +18,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Views
         event EventHandler<AddingSubjectToScheduleEventArgs> EventAddSubjectToSchedule;
 
         event EventHandler<BindSubjectsForClassEventArgs> EventBitSubjectForCurrentClass;
+
+        event EventHandler<RemovingSubjectFromScheduleEventArgs> EventRemoveSubjectFromSchedule;
     }
 }

@@ -9,6 +9,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Models
 {
     public class CreatingScheduleModel
     {
+
         public IEnumerable<ClassOfStudents> AllClassOfStudents { get; set; }
 
         public IEnumerable<DaysOfWeek> DaysOfWeek { get; set; }
