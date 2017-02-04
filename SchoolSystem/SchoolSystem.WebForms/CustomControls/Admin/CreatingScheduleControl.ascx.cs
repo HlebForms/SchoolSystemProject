@@ -1,37 +1,31 @@
-﻿using SchoolSystem.WebForms.CustomControls.Admin.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
+
+using SchoolSystem.WebForms.CustomControls.Admin.Models;
 using SchoolSystem.WebForms.CustomControls.Admin.Presenters;
 using SchoolSystem.WebForms.CustomControls.Admin.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using WebFormsMvp;
-using WebFormsMvp.Web;
 using SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments;
-using System.Web.ModelBinding;
 using SchoolSystem.Data.Models;
-using Ninject;
-using SchoolSystem.WebForms.App_Start;
-using System.Data.Entity;
-using SchoolSystem.Data;
-using System.Windows.Forms;
+using SchoolSystem.Data.Models.CustomModels;
+
+using WebFormsMvp.Web;
+using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin
 {
     [PresenterBinding(typeof(CreatingSchedulePresenter))]
     public partial class CreateScheduleControl : MvpUserControl<CreatingScheduleModel>, ICreatingScheduleView
     {
-
-        private readonly SchoolSystemDbContext context;
-        private string ddvalue;
         public event EventHandler<EventArgs> EventBindAllClasses;
         public event EventHandler<CreatingScheduleEventArgs> EventBindScheduleData;
+        public event EventHandler<EventArgs> EventBindDaysOfWeek;
+        public event EventHandler<AddingSubjectToScheduleEventArgs> EventAddSubjectToSchedule;
+        public event EventHandler<BindSubjectsForClassEventArgs> EventBitSubjectForCurrentClass;
+        public event EventHandler<RemovingSubjectFromScheduleEventArgs> EventRemoveSubjectFromSchedule;
 
-        public CreateScheduleControl()
+        protected override void OnPreRender(EventArgs e)
         {
-            this.context = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -42,90 +36,93 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 this.ClassOfStudentsDropDown.DataSource = this.Model.AllClassOfStudents;
                 this.ClassOfStudentsDropDown.DataBind();
 
-                //this.ScheduleList.DataSource = this.Model.CurrentSchedule.Where(x => x.DayOfWeek == this.DaysOfWeekDropDown.SelectedValue
-                // && x.ClassName == this.ClassOfStudentsDropDown.SelectedItem.Text);
-
-                //this.ScheduleList.DataBind();
-                //}
+                this.EventBindDaysOfWeek(this, e);
+                this.DaysOfWeekDropDown.DataSource = this.Model.DaysOfWeek;
+                this.DaysOfWeekDropDown.DataBind();
             }
         }
 
         public void DaysOfWeekDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            //this.ScheduleList.DataSource = this.Model.CurrentSchedule.Where(x => x.DayOfWeek == this.DaysOfWeekDropDown.SelectedValue
-            //     && x.ClassName == this.ClassOfStudentsDropDown.SelectedItem.Text);
-            //this.ScheduleList.DataBind();
+            this.EventBindScheduleData(this, new CreatingScheduleEventArgs()
+            {
+                ClassId = this.ClassOfStudentsDropDown.SelectedValue,
+                DayOfWeekId = this.DaysOfWeekDropDown.SelectedValue
+            });
         }
 
-
-        public IEnumerable<Test> ScheduleList_GetData()
+        protected void ScheduleList_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            return this.Model.CurrentSchedule.Where(x => x.ClassName == this.ClassOfStudentsDropDown.SelectedItem.Text
-            && x.DayOfWeek == this.DaysOfWeekDropDown.SelectedItem.Text);
-        }
+            var dayOfWeekId = int.Parse(this.DaysOfWeekDropDown.SelectedValue);
+            var classId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
 
-        public IEnumerable<DaysOfWeek> PopulateDaysOfWeek()
-        {
-            if (!this.IsPostBack)
+            switch (e.CommandName)
             {
-                EventBindScheduleData(this, null);
-            }
+                case ("Insert"):
+                    var subjectDropDown = e.Item.FindControl("AddingSubjectDropDown") as DropDownList;
+                    var selectedSubjectId = int.Parse(subjectDropDown.SelectedValue);
 
-            return this.Model.DaysOfWeek;
-        }
+                    var startHourDropDown = e.Item.FindControl("StartHourDropDown") as DropDownList;
+                    var startHour = int.Parse(startHourDropDown.SelectedValue);
+                    // public DateTime(int year, int month, int day, int hour, int minute, int second);
+                    var startHourDateTime = new DateTime(2016, 1, 1, startHour, 0, 0);
 
-        public void ScheduleList_InsertItem()
-        {
-            var item = new SchoolSystem.WebForms.CustomControls.Admin.Models.Test();
-            item.ClassName = this.ClassOfStudentsDropDown.SelectedItem.Text;
-            item.DayOfWeek = this.DaysOfWeekDropDown.SelectedItem.Text;
-            item.Id = this.Model.CurrentSchedule.Count + 1;
-            item.SubjName = this.ddvalue;
-            TryUpdateModel(item);
-            if (this.Page.ModelState.IsValid)
-            {
-                // Save changes here
-                this.Model.CurrentSchedule.Add(item);
-            }
-        }
+                    var endHourDropDown = e.Item.FindControl("EndHourDropDown") as DropDownList;
+                    var endHour = int.Parse(endHourDropDown.SelectedValue);
+                    var endHourAsDateTime = new DateTime(2016, 1, 1, startHour, 0, 0);
 
-        // The id parameter name should match the DataKeyNames value set on the control
-        public void ScheduleList_UpdateItem(int id)
-        {
-            SchoolSystem.WebForms.CustomControls.Admin.Models.Test item = null;
-            // Load the item here, e.g. item = MyDataLayer.Find(id);
-            item = this.Model.CurrentSchedule.FirstOrDefault(x => x.Id == id);
-            if (item == null)
-            {
-                // The item wasn't found
-                this.Page.ModelState.AddModelError("", String.Format("Item with id {0} was not found", id));
-                return;
-            }
+                    this.ScheduleList_InsertItem(classId, dayOfWeekId, selectedSubjectId, startHourDateTime, endHourAsDateTime);
+                    break;
+                case ("Delete"):
+                    var hiddenField = e.Item.FindControl("HiddenFielSubjectId") as HiddenField;
+                    int subjId = int.Parse(hiddenField.Value);
 
-            TryUpdateModel(item);
-            if (this.Page.ModelState.IsValid)
-            {
-                // Save changes here, e.g. MyDataLayer.SaveChanges();
-
+                    this.ScheduleList_DeleteItem(classId, dayOfWeekId, subjId);
+                    break;
             }
         }
 
-        public  IEnumerable<Subject> Test()
+        private void ScheduleList_DeleteItem(int classId, int dayOfWeekId, int selectedSubjectId)
         {
-           return this.context.Subjects.ToList();
+            this.EventRemoveSubjectFromSchedule(this, new RemovingSubjectFromScheduleEventArgs()
+            {
+                ClassId = classId,
+                DaysOfWeekId = dayOfWeekId,
+                SubjectId = selectedSubjectId
+            });
         }
 
-        protected void dd_SelectedIndexChanged(object sender, EventArgs e)
+        private void ScheduleList_InsertItem(int classId, int dayOfWeekId, int selectedSubjectId, DateTime sartHour, DateTime endHour)
         {
-            DropDownList list = (DropDownList)sender;
-            this.ddvalue = (string)list.SelectedValue;
+            this.EventAddSubjectToSchedule(this, new AddingSubjectToScheduleEventArgs()
+            {
+                ClassId = classId,
+                DaysOfWeekId = dayOfWeekId,
+                StartHour = sartHour,
+                EndHour = endHour,
+                SubjectId = selectedSubjectId
+            });
         }
 
-        protected void dd2_SelectedIndexChanged(object sender, EventArgs e)
+        public IEnumerable<ManagingScheduleModel> ScheduleList_GetData()
         {
-            DropDownList list = (DropDownList)sender;
-            this.ddvalue = (string)list.SelectedValue;
+            this.EventBindScheduleData(this, new CreatingScheduleEventArgs()
+            {
+                ClassId = this.ClassOfStudentsDropDown.SelectedValue,
+                DayOfWeekId = this.DaysOfWeekDropDown.SelectedValue
+            });
+
+            return this.Model.CurrentSchedule;
+        }
+
+        public IEnumerable<Subject> PopulateSubjects()
+        {
+            this.EventBitSubjectForCurrentClass(this, new BindSubjectsForClassEventArgs()
+            {
+                ClassId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue)
+            });
+
+            return this.Model.SubjectForCurrentClass;
         }
     }
 }
