@@ -7,3 +7,4 @@
     Text="Качи"
     CssClass="btn btn-default btn-sm" />
 <asp:Label runat="server" ID="StatusLabel" Text="Upload status: " />
+

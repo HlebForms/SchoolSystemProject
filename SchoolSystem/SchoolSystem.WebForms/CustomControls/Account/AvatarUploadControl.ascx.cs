@@ -1,18 +1,21 @@
-﻿using Ninject;
-using SchoolSystem.Data;
-using SchoolSystem.WebForms.App_Start;
-using System;
-using System.Collections.Generic;
+﻿using System;
+
+using SchoolSystem.WebForms.CustomControls.Account.Models;
+using SchoolSystem.WebForms.CustomControls.Account.Presenters;
+using SchoolSystem.WebForms.CustomControls.Account.Views;
+using SchoolSystem.WebForms.CustomControls.Account.Views.EventArguments;
+
+using WebFormsMvp;
+using WebFormsMvp.Web;
 using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace SchoolSystem.WebForms.CustomControls.Account
 {
-    public partial class AvatarUploadControl : System.Web.UI.UserControl
+    [PresenterBinding(typeof(AvatarUploadPresenter))]
+    public partial class AvatarUploadControl : MvpUserControl<AvatarUploadModel>, IAvatarUploadView
     {
+        public event EventHandler<AvatarUploadEventArgs> EventUploadAvatar;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,37 +23,30 @@ namespace SchoolSystem.WebForms.CustomControls.Account
 
         protected void UploadAvatarBtn_Click(object sender, EventArgs e)
         {
-            var db = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
-            var loggedUserUserName = this.Context.User.Identity.Name;
-
             if (this.AvatarUpload.HasFile)
             {
-                try
-                {
-                    if (this.AvatarUpload.PostedFile.ContentType == "image/jpeg")
-                    {
-                        if (this.AvatarUpload.PostedFile.ContentLength < 5 * 1000 * 1000)
-                        {
-                            string extension = Path.GetExtension(this.AvatarUpload.FileName);
-                            string filename = loggedUserUserName + extension;
+                var loggedUserUserName = this.Context.User.Identity.Name;
+                var file = this.AvatarUpload.PostedFile;
 
-                            string avatarPath = Server.MapPath("~/Images/avatars/") + filename;
-                            this.AvatarUpload.SaveAs(avatarPath);
-                            this.StatusLabel.Text = "Upload status: File uploaded!";
+                string extension = Path.GetExtension(file.FileName);
+                string filename = loggedUserUserName + extension;
 
-                            db.Users.FirstOrDefault(x => x.UserName == loggedUserUserName).AvatarPictureUrl = "~/Images/avatars/" + filename;
-                            db.SaveChanges();
-                        }
-                        else
-                            this.StatusLabel.Text = "Upload status: The file has to be less than 100 kb!";
-                    }
-                    else
-                        this.StatusLabel.Text = "Upload status: Only JPEG files are accepted!";
-                }
-                catch (Exception ex)
+                string avatarStoragePath = Server.MapPath("~/Images/avatars/") + filename;
+                string userAvatarUrl = "~/Images/avatars/" + filename;
+
+                this.EventUploadAvatar(this, new AvatarUploadEventArgs()
                 {
-                    this.StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
-                }
+                    LoggedUserUserName = loggedUserUserName,
+                    PostedFile = file,
+                    AvatarStorateLocation = avatarStoragePath,
+                    UserAvatarUrl = userAvatarUrl
+                });
+
+                this.StatusLabel.Text = this.Model.StatusMessage;
+            }
+            else
+            {
+                this.StatusLabel.Text = "Моля изберете файл";
             }
         }
     }

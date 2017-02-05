@@ -352,6 +352,10 @@
     <Compile Include="CustomControls\Account\AvatarUploadControl.ascx.designer.cs">
       <DependentUpon>AvatarUploadControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\Account\Models\AvatarUploadModel.cs" />
+    <Compile Include="CustomControls\Account\Presenters\AvatarUploadPresenter.cs" />
+    <Compile Include="CustomControls\Account\Views\EventArguments\AvatarUploadEventArgs.cs" />
+    <Compile Include="CustomControls\Account\Views\IAvatarUploadView.cs" />
     <Compile Include="CustomControls\Admin\ManagingScheduleControl.ascx.cs">
       <DependentUpon>ManagingScheduleControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

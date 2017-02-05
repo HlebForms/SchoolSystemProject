@@ -12,6 +12,7 @@ namespace SchoolSystem.WebForms.App_Start.Bindings
             this.Bind<ISubjectManagementService>().To<SubjectManagementService>();
             this.Bind<IScheduleDataService>().To<ScheduleDataService>();
             this.Bind<IClassOfStudentsManagementService>().To<ClassOfStudentsManagementService>();
+            this.Bind<IAccountManagementService>().To<AccountManagementService>();
         }
     }
 }
