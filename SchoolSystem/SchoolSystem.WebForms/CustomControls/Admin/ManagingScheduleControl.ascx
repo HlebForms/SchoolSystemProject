@@ -48,8 +48,8 @@
                             <asp:Button ID="InsertBtn"
                                 runat="server"
                                 CommandName="Insert"
-                                CssClass="btn btn-success"
-                                Text="Insert" />
+                                CssClass="btn btn-success btn-sm"
+                                Text="Добави" />
                         </td>
                         <td>
                             <asp:DropDownList ID="AddingSubjectDropDown" runat="server"
@@ -94,9 +94,9 @@
                         <td>
                             <asp:LinkButton ID="Delete"
                                 runat="server"
-                                CssClass="btn btn-danger"
+                                CssClass="btn btn-danger btn-sm"
                                 CommandName="Delete"
-                                Text="X"
+                                Text="Изтрий"
                                 CommandArgument='<%#: Item.Subject.Id %>' />
                         </td>
                         <td runat="server" id="subjName"><%#: Item.Subject.Name %></td>
@@ -112,7 +112,7 @@
                     </table>
                 </EmptyDataTemplate>
                 <LayoutTemplate>
-                    <table runat="server">
+                    <table runat="server" class="table table-striped table-hover">
                         <tr runat="server">
                             <td runat="server">
                                 <table id="itemPlaceholderContainer" runat="server">
