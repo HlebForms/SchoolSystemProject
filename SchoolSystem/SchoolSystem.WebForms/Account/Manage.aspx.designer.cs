@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolSystem.WebForms.Admin {
+namespace SchoolSystem.WebForms.Account {
     
     
-    public partial class AdminArea {
+    public partial class Manage {
         
         /// <summary>
-        /// ManagingScheduleControl control.
+        /// AvatarUploadControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Admin.CreateScheduleControl ManagingScheduleControl;
+        protected global::SchoolSystem.WebForms.CustomControls.Account.AvatarUploadControl AvatarUploadControl;
     }
 }

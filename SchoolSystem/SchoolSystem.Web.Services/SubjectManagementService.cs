@@ -75,7 +75,9 @@ namespace SchoolSystem.Web.Services
 
         public IEnumerable<Subject> GetSubjectsForSpecificClass(int classId)
         {
-            return this.subjectClassOfStudentsRepo.GetAll(x => x.ClassOfStudentsId == classId, x => x.Subject);
+            return this.subjectClassOfStudentsRepo
+                .GetAll(x => x.ClassOfStudentsId == classId, x => x.Subject)
+                .Where(x => x.Teachers.Count != 0);
         }
     }
 }

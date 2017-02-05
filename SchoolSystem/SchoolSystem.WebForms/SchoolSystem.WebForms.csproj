@@ -189,8 +189,10 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Manage.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="CustomControls\Admin\CreatingScheduleControl.ascx" />
+    <Content Include="CustomControls\Account\AvatarUploadControl.ascx" />
+    <Content Include="CustomControls\Admin\ManagingScheduleControl.ascx" />
     <Content Include="CustomControls\Home\ImportantNewsControl.ascx" />
     <Content Include="CustomControls\Home\NewsfeedControl.ascx" />
     <Content Include="CustomControls\Home\StudentScheduleControl.ascx" />
@@ -290,6 +292,13 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Models\LoginModel.cs" />
     <Compile Include="Account\Models\RegistrationModel.cs" />
     <Compile Include="Account\Presenters\LoginPresenter.cs" />
@@ -337,12 +346,23 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\Admin\CreatingScheduleControl.ascx.cs">
-      <DependentUpon>CreatingScheduleControl.ascx</DependentUpon>
+    <Compile Include="CustomControls\Account\AvatarUploadControl.ascx.cs">
+      <DependentUpon>AvatarUploadControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CustomControls\Admin\CreatingScheduleControl.ascx.designer.cs">
-      <DependentUpon>CreatingScheduleControl.ascx</DependentUpon>
+    <Compile Include="CustomControls\Account\AvatarUploadControl.ascx.designer.cs">
+      <DependentUpon>AvatarUploadControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Account\Models\AvatarUploadModel.cs" />
+    <Compile Include="CustomControls\Account\Presenters\AvatarUploadPresenter.cs" />
+    <Compile Include="CustomControls\Account\Views\EventArguments\AvatarUploadEventArgs.cs" />
+    <Compile Include="CustomControls\Account\Views\IAvatarUploadView.cs" />
+    <Compile Include="CustomControls\Admin\ManagingScheduleControl.ascx.cs">
+      <DependentUpon>ManagingScheduleControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Admin\ManagingScheduleControl.ascx.designer.cs">
+      <DependentUpon>ManagingScheduleControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\Admin\CreatingClassOfStudentsControl.ascx.cs">
       <DependentUpon>CreatingClassOfStudentsControl.ascx</DependentUpon>
@@ -359,19 +379,19 @@
       <DependentUpon>CreatingSubjectControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\Admin\Models\CreatingClassOfStudentsModel.cs" />
-    <Compile Include="CustomControls\Admin\Models\CreatingScheduleModel.cs" />
+    <Compile Include="CustomControls\Admin\Models\ManagingScheduleControlModel.cs" />
     <Compile Include="CustomControls\Admin\Models\CreatingSubjcetModel.cs" />
     <Compile Include="CustomControls\Admin\Presenters\CreatingClassOfStudentsPresenter.cs" />
-    <Compile Include="CustomControls\Admin\Presenters\CreatingSchedulePresenter.cs" />
+    <Compile Include="CustomControls\Admin\Presenters\ManagingSchedulePresenter.cs" />
     <Compile Include="CustomControls\Admin\Presenters\CreatingSubjectPresenter.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\BindSubjectsForClassEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\AddingSubjectToScheduleEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingClassOfStudentsEventArgs.cs" />
-    <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingScheduleEventArgs.cs" />
+    <Compile Include="CustomControls\Admin\Views\EventArguments\ManagingScheduleEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingSubjectEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\RemovingSubjectFromScheduleEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingClassOfStudentsView.cs" />
-    <Compile Include="CustomControls\Admin\Views\ICreatingScheduleView.cs" />
+    <Compile Include="CustomControls\Admin\Views\IManagingScheduleView.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingSubjectView.cs" />
     <Compile Include="CustomControls\Home\ImportantNewsControl.ascx.cs">
       <DependentUpon>ImportantNewsControl.ascx</DependentUpon>

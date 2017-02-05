@@ -11,6 +11,7 @@ using System.Web.UI.WebControls;
 using WebFormsMvp;
 using WebFormsMvp.Web;
 using SchoolSystem.WebForms.CustomControls.Home.Views.EventArguments;
+using SchoolSystem.Data.Models.Common;
 
 namespace SchoolSystem.WebForms.CustomControls.Home
 {
@@ -30,10 +31,13 @@ namespace SchoolSystem.WebForms.CustomControls.Home
                     Username = loggedUserName
                 };
 
-                this.EventBindScheduleData(this, args);
+                if (this.Context.User.IsInRole(UserType.Student))
+                {
+                    this.EventBindScheduleData(this, args);
 
-                this.schedule.DataSource = this.Model.StudentSchedule;
-                this.schedule.DataBind();
+                    this.schedule.DataSource = this.Model.StudentSchedule;
+                    this.schedule.DataBind();
+                }
             }
 
             //var program1 = new SubjectClassOfStudentsDaysOfWeek()

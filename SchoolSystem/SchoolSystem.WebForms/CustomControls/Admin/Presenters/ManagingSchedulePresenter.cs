@@ -9,14 +9,14 @@ using SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
 {
-    public class CreatingSchedulePresenter : Presenter<ICreatingScheduleView>
+    public class ManagingSchedulePresenter : Presenter<IManagingScheduleView>
     {
         private readonly IScheduleDataService scheduleService;
         private readonly IClassOfStudentsManagementService classOfStudentsManagementService;
         private readonly ISubjectManagementService subjectManagementService;
 
-        public CreatingSchedulePresenter(
-            ICreatingScheduleView view,
+        public ManagingSchedulePresenter(
+            IManagingScheduleView view,
             IScheduleDataService scheduleService,
             IClassOfStudentsManagementService classOfStudentsManagementService,
             ISubjectManagementService subjectManagementService
@@ -75,7 +75,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
             this.View.Model.AllClassOfStudents = this.classOfStudentsManagementService.GetAllClasses();
         }
 
-        private void BindScheduleData(object sender, CreatingScheduleEventArgs e)
+        private void BindScheduleData(object sender, ManagingScheduleEventArgs e)
         {
             this.View.Model.CurrentSchedule = this.scheduleService.GetTodaysSchedule(
                 int.Parse(e.DayOfWeekId), int.Parse(e.ClassId));

@@ -1,5 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CreatingScheduleControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Admin.CreateScheduleControl" %>
-
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ManagingScheduleControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Admin.CreateScheduleControl" %>
 
 <asp:UpdatePanel runat="server" ID="test" UpdateMode="Conditional">
     <ContentTemplate>
@@ -41,21 +40,21 @@
                 ItemType="SchoolSystem.Data.Models.CustomModels.ManagingScheduleModel"
                 OnItemCommand="ScheduleList_ItemCommand"
                 InsertItemPosition="LastItem"
-                SelectMethod="ScheduleList_GetData">
+                OnItemDeleting="ScheduleList_ItemDeleting"
+                OnItemInserting="ScheduleList_ItemInserting">
                 <InsertItemTemplate>
                     <tr>
                         <td>
                             <asp:Button ID="InsertBtn"
                                 runat="server"
                                 CommandName="Insert"
-                                CssClass="btn btn-success"
-                                Text="Insert" />
+                                CssClass="btn btn-success btn-sm"
+                                Text="Добави" />
                         </td>
                         <td>
                             <asp:DropDownList ID="AddingSubjectDropDown" runat="server"
                                 CssClass="form-control"
                                 SelectMethod="PopulateSubjects"
-                                SelectedItem='<%# Bind("Id") %>'
                                 DataTextField="Name"
                                 DataValueField="Id">
                                 <asp:ListItem Selected="True">Моля изберете предмет</asp:ListItem>
@@ -64,63 +63,45 @@
                         </td>
                         <td>
                             <asp:DropDownList ID="StartHourDropDown" runat="server"
-                                SelectedItem='<%# Bind("StartDate") %>'
                                 CssClass="form-control">
+                                <asp:ListItem>7</asp:ListItem>
+                                <asp:ListItem>8</asp:ListItem>
                                 <asp:ListItem>9</asp:ListItem>
                                 <asp:ListItem>10</asp:ListItem>
                                 <asp:ListItem>11</asp:ListItem>
+                                <asp:ListItem>12</asp:ListItem>
+                                <asp:ListItem>13</asp:ListItem>
+                                <asp:ListItem>14</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                         <td>
                             <asp:DropDownList ID="EndHourDropDown" runat="server"
                                 CssClass="form-control">
+                                <asp:ListItem>7</asp:ListItem>
+                                <asp:ListItem>8</asp:ListItem>
                                 <asp:ListItem>9</asp:ListItem>
                                 <asp:ListItem>10</asp:ListItem>
                                 <asp:ListItem>11</asp:ListItem>
+                                <asp:ListItem>12</asp:ListItem>
+                                <asp:ListItem>13</asp:ListItem>
+                                <asp:ListItem>14</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                     </tr>
                 </InsertItemTemplate>
-                <EditItemTemplate>
-                    <tr>
-                        <td>
-                            <asp:Button ID="UpdateButton"
-                                runat="server"
-                                CssClass="btn btn-warning"
-                                CommandName="Update"
-                                Text="Update" />
-                            <asp:Button ID="CancelButton"
-                                runat="server"
-                                CssClass="btn btn-error"
-                                CommandName="Cancel"
-                                Text="Cancel" />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                </EditItemTemplate>
                 <ItemTemplate>
                     <tr>
                         <td>
-                            <asp:Button ID="Delete"
+                            <asp:LinkButton ID="Delete"
                                 runat="server"
-                                CssClass="btn btn-danger"
-                                CommandName="Delete" Text="X" />
-                            <asp:HiddenField
-                                ID="HiddenFielSubjectId"
-                                runat="server"
-                                Value='<%#: Item.Subject.Id %>'></asp:HiddenField>
+                                CssClass="btn btn-danger btn-sm"
+                                CommandName="Delete"
+                                Text="Изтрий"
+                                CommandArgument='<%#: Item.Subject.Id %>' />
                         </td>
                         <td runat="server" id="subjName"><%#: Item.Subject.Name %></td>
-                        <td><%#: Item.StartHour %></td>
-                        <td><%#: Item.EndHour %></td>
+                        <td><%#: Item.StartHour.Hour %></td>
+                        <td><%#: Item.EndHour.Hour %></td>
                     </tr>
                 </ItemTemplate>
                 <EmptyDataTemplate>
@@ -131,7 +112,7 @@
                     </table>
                 </EmptyDataTemplate>
                 <LayoutTemplate>
-                    <table runat="server">
+                    <table runat="server" class="table table-striped table-hover">
                         <tr runat="server">
                             <td runat="server">
                                 <table id="itemPlaceholderContainer" runat="server">
@@ -153,7 +134,5 @@
                 </LayoutTemplate>
             </asp:ListView>
         </div>
-
     </ContentTemplate>
-
 </asp:UpdatePanel>

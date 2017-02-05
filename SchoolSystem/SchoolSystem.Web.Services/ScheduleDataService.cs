@@ -4,8 +4,6 @@ using SchoolSystem.Web.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SchoolSystem.Data.Models.CustomModels;
 
 namespace SchoolSystem.Web.Services
@@ -41,13 +39,13 @@ namespace SchoolSystem.Web.Services
 
         public IEnumerable<StudentSchedule> GetTodaysSchedule(DayOfWeek dayOfWeek, string username)
         {
-
             //var userId = this.userRepo.GetFirst(x => x.UserName == username).Id;
             // STOQN
             //var userId = "8c8a33cb-ae6e-453c-aae6-fef949a3c370"; 
             // KIRO
-            var userId = "7b68137f-ede6-4dc5-bcc3-d880e14e12a8";
-            
+
+            var userId = this.userRepo.GetFirst(x => x.UserName == username).Id;
+
             var userClassId = this.studentRepo.GetFirst(x => x.Id == userId).ClassOfStudentsId;
             var daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
                 .GetAll(x => x.ClassOfStudentsId == userClassId && x.DaysOfWeek.Id == (int)dayOfWeek, y => y)
