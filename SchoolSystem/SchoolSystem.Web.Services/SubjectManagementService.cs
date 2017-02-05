@@ -70,7 +70,7 @@ namespace SchoolSystem.Web.Services
 
         public IEnumerable<Subject> GetAllSubjects()
         {
-            throw new NotImplementedException();
+            return this.subjectRepo.GetAll();
         }
 
         public IEnumerable<Subject> GetSubjectsForSpecificClass(int classId)
