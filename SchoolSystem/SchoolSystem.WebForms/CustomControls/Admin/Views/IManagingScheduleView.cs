@@ -7,13 +7,13 @@ using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin.Views
 {
-    public interface ICreatingScheduleView : IView<CreatingScheduleModel>
+    public interface IManagingScheduleView : IView<ManagingScheduleControlModel>
     {
         event EventHandler<EventArgs> EventBindAllClasses;
 
         event EventHandler<EventArgs> EventBindDaysOfWeek;
 
-        event EventHandler<CreatingScheduleEventArgs> EventBindScheduleData;
+        event EventHandler<ManagingScheduleEventArgs> EventBindScheduleData;
 
         event EventHandler<AddingSubjectToScheduleEventArgs> EventAddSubjectToSchedule;
 

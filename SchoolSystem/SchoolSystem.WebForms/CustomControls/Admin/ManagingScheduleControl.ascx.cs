@@ -7,26 +7,21 @@ using SchoolSystem.WebForms.CustomControls.Admin.Presenters;
 using SchoolSystem.WebForms.CustomControls.Admin.Views;
 using SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments;
 using SchoolSystem.Data.Models;
-using SchoolSystem.Data.Models.CustomModels;
 
 using WebFormsMvp.Web;
 using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin
 {
-    [PresenterBinding(typeof(CreatingSchedulePresenter))]
-    public partial class CreateScheduleControl : MvpUserControl<CreatingScheduleModel>, ICreatingScheduleView
+    [PresenterBinding(typeof(ManagingSchedulePresenter))]
+    public partial class CreateScheduleControl : MvpUserControl<ManagingScheduleControlModel>, IManagingScheduleView
     {
         public event EventHandler<EventArgs> EventBindAllClasses;
-        public event EventHandler<CreatingScheduleEventArgs> EventBindScheduleData;
+        public event EventHandler<ManagingScheduleEventArgs> EventBindScheduleData;
         public event EventHandler<EventArgs> EventBindDaysOfWeek;
         public event EventHandler<AddingSubjectToScheduleEventArgs> EventAddSubjectToSchedule;
         public event EventHandler<BindSubjectsForClassEventArgs> EventBitSubjectForCurrentClass;
         public event EventHandler<RemovingSubjectFromScheduleEventArgs> EventRemoveSubjectFromSchedule;
-
-        protected override void OnPreRender(EventArgs e)
-        {
-        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,16 +34,14 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 this.EventBindDaysOfWeek(this, e);
                 this.DaysOfWeekDropDown.DataSource = this.Model.DaysOfWeek;
                 this.DaysOfWeekDropDown.DataBind();
+
+                RaiseBindShceduleDataEvent();
             }
         }
 
         public void DaysOfWeekDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.EventBindScheduleData(this, new CreatingScheduleEventArgs()
-            {
-                ClassId = this.ClassOfStudentsDropDown.SelectedValue,
-                DayOfWeekId = this.DaysOfWeekDropDown.SelectedValue
-            });
+            RaiseBindShceduleDataEvent();
         }
 
         protected void ScheduleList_ItemCommand(object sender, ListViewCommandEventArgs e)
@@ -74,9 +67,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                     this.ScheduleList_InsertItem(classId, dayOfWeekId, selectedSubjectId, startHourDateTime, endHourAsDateTime);
                     break;
                 case ("Delete"):
-                    var hiddenField = e.Item.FindControl("HiddenFielSubjectId") as HiddenField;
-                    int subjId = int.Parse(hiddenField.Value);
-
+                    int subjId = int.Parse(e.CommandArgument.ToString());
                     this.ScheduleList_DeleteItem(classId, dayOfWeekId, subjId);
                     break;
             }
@@ -103,22 +94,6 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 SubjectId = selectedSubjectId
             });
 
-            this.EventBindScheduleData(this, new CreatingScheduleEventArgs()
-            {
-                ClassId = this.ClassOfStudentsDropDown.SelectedValue,
-                DayOfWeekId = this.DaysOfWeekDropDown.SelectedValue
-            });
-        }
-
-        public IEnumerable<ManagingScheduleModel> ScheduleList_GetData()
-        {
-            this.EventBindScheduleData(this, new CreatingScheduleEventArgs()
-            {
-                ClassId = this.ClassOfStudentsDropDown.SelectedValue,
-                DayOfWeekId = this.DaysOfWeekDropDown.SelectedValue
-            });
-
-            return this.Model.CurrentSchedule;
         }
 
         public IEnumerable<Subject> PopulateSubjects()
@@ -129,6 +104,28 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
             });
 
             return this.Model.SubjectForCurrentClass;
+        }
+
+        protected void ScheduleList_ItemDeleting(object sender, ListViewDeleteEventArgs e)
+        {
+            RaiseBindShceduleDataEvent();
+        }
+
+        protected void ScheduleList_ItemInserting(object sender, ListViewInsertEventArgs e)
+        {
+            RaiseBindShceduleDataEvent();
+        }
+
+        private void RaiseBindShceduleDataEvent()
+        {
+            this.EventBindScheduleData(this, new ManagingScheduleEventArgs()
+            {
+                ClassId = this.ClassOfStudentsDropDown.SelectedValue,
+                DayOfWeekId = this.DaysOfWeekDropDown.SelectedValue
+            });
+
+            this.ScheduleList.DataSource = this.Model.CurrentSchedule;
+            this.ScheduleList.DataBind();
         }
     }
 }

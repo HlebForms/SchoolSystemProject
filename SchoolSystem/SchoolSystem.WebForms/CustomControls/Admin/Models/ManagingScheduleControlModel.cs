@@ -7,9 +7,8 @@ using System.Web;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin.Models
 {
-    public class CreatingScheduleModel
+    public class ManagingScheduleControlModel
     {
-
         public IEnumerable<ClassOfStudents> AllClassOfStudents { get; set; }
 
         public IEnumerable<DaysOfWeek> DaysOfWeek { get; set; }
