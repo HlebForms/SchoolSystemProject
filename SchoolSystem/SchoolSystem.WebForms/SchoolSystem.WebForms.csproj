@@ -189,7 +189,9 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Manage.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="CustomControls\Account\AvatarUploadControl.ascx" />
     <Content Include="CustomControls\Admin\ManagingScheduleControl.ascx" />
     <Content Include="CustomControls\Home\ImportantNewsControl.ascx" />
     <Content Include="CustomControls\Home\NewsfeedControl.ascx" />
@@ -289,6 +291,13 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Models\LoginModel.cs" />
     <Compile Include="Account\Models\RegistrationModel.cs" />
     <Compile Include="Account\Presenters\LoginPresenter.cs" />
@@ -335,6 +344,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Account\AvatarUploadControl.ascx.cs">
+      <DependentUpon>AvatarUploadControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Account\AvatarUploadControl.ascx.designer.cs">
+      <DependentUpon>AvatarUploadControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\Admin\ManagingScheduleControl.ascx.cs">
       <DependentUpon>ManagingScheduleControl.ascx</DependentUpon>
