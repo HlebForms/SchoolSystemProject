@@ -52,6 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassOfStudentsManagemtServiceTests\AddClass_Should.cs" />
+    <Compile Include="ClassOfStudentsManagemtServiceTests\Constructor_Should.cs" />
+    <Compile Include="ClassOfStudentsManagemtServiceTests\GetAllClasses_Should.cs" />
+    <Compile Include="ClassOfStudentsManagemtServiceTests\GetAllSubjects_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubjectManagementServiceTests\Constructorr_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\CreateSubject_Should.cs" />
