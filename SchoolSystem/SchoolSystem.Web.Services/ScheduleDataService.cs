@@ -42,8 +42,8 @@ namespace SchoolSystem.Web.Services
         public IEnumerable<StudentSchedule> GetTodaysSchedule(DayOfWeek dayOfWeek, string username)
         {
 
-            //var userId = this.userRepo.GetFirst(x => x.UserName == username).Id;
-            var userId = "8c8a33cb-ae6e-453c-aae6-fef949a3c370";
+            var userId = this.userRepo.GetFirst(x => x.UserName == username).Id;
+            //var userId = "8c8a33cb-ae6e-453c-aae6-fef949a3c370";
             var userClassId = this.studentRepo.GetFirst(x => x.Id == userId).ClassOfStudentsId;
             var daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
                 .GetAll(x => x.ClassOfStudentsId == userClassId && x.DaysOfWeek.Id == 1, y => y)
