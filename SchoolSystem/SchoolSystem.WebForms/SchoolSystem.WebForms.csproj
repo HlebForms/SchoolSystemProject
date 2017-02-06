@@ -354,6 +354,7 @@
       <DependentUpon>AvatarUploadControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\Account\Models\AvatarUploadModel.cs" />
+    <Compile Include="CustomControls\Account\Models\PasswordChangeModel.cs" />
     <Compile Include="CustomControls\Account\PasswordChanger.ascx.cs">
       <DependentUpon>PasswordChanger.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -362,8 +363,11 @@
       <DependentUpon>PasswordChanger.ascx</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\Account\Presenters\AvatarUploadPresenter.cs" />
+    <Compile Include="CustomControls\Account\Presenters\PasswordChangerPresenter.cs" />
     <Compile Include="CustomControls\Account\Views\EventArguments\AvatarUploadEventArgs.cs" />
+    <Compile Include="CustomControls\Account\Views\EventArguments\PasswordChangeEventArgs.cs" />
     <Compile Include="CustomControls\Account\Views\IAvatarUploadView.cs" />
+    <Compile Include="CustomControls\Account\Views\IPasswordChangeView.cs" />
     <Compile Include="CustomControls\Admin\ManagingScheduleControl.ascx.cs">
       <DependentUpon>ManagingScheduleControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
