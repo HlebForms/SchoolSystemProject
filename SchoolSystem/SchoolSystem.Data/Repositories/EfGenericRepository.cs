@@ -1,12 +1,13 @@
-﻿using SchoolSystem.Data.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Linq.Expressions;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+
+using SchoolSystem.Data.Contracts;
+
+using Bytes2you.Validation;
 
 namespace SchoolSystem.Data.Repositories
 {
@@ -14,10 +15,7 @@ namespace SchoolSystem.Data.Repositories
     {
         public EfGenericRepository(DbContext context)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
+            Guard.WhenArgument(context, "context").IsNull().Throw();
 
             this.Context = context;
             this.DbSet = this.Context.Set<T>();
