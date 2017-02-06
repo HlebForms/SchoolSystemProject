@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Web;
-using SchoolSystem.WebForms.Account.Presenters;
+using WebFormsMvp;
 using WebFormsMvp.Web;
+
+using SchoolSystem.Data.Models.Common;
 using SchoolSystem.WebForms.Account.Models;
+using SchoolSystem.WebForms.Account.Presenters;
 using SchoolSystem.WebForms.Account.Views;
 using SchoolSystem.WebForms.Account.Views.EventArguments;
-using System.Collections.Generic;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity;
-using WebFormsMvp;
-using SchoolSystem.Data.Models.Common;
 
 namespace SchoolSystem.WebForms.Account
 {
@@ -70,11 +68,12 @@ namespace SchoolSystem.WebForms.Account
 
             if (result.Succeeded)
             {
-                // TODO redirect to login;
+                this.SuccessMessage.Text = "Успешно регестрирахте потребител";
+                Page.Response.Redirect(Page.Request.RawUrl);
             }
             else
             {
-                ErrorMessage.Text = result.Errors.FirstOrDefault();
+                this.ErrorMessage.Text = result.Errors.FirstOrDefault();
             }
         }
 

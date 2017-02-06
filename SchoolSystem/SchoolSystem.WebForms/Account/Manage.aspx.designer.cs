@@ -13,12 +13,12 @@ namespace SchoolSystem.WebForms.Account {
     public partial class Manage {
         
         /// <summary>
-        /// AvatarUploadControl control.
+        /// PasswordChanger control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Account.AvatarUploadControl AvatarUploadControl;
+        protected global::SchoolSystem.WebForms.CustomControls.Account.PasswordChanger PasswordChanger;
     }
 }

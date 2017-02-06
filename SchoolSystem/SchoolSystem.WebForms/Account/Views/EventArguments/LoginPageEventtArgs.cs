@@ -1,6 +1,8 @@
-﻿using Microsoft.Owin;
+﻿using System;
+
 using SchoolSystem.WebForms.Account.Models;
-using System;
+
+using Microsoft.Owin;
 
 namespace SchoolSystem.WebForms.Account.Views.EventArguments
 {
