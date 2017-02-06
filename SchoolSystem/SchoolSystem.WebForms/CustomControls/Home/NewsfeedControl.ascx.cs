@@ -9,43 +9,59 @@ using Ninject;
 using SchoolSystem.Data;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Models.Common;
+using WebFormsMvp;
+using SchoolSystem.WebForms.CustomControls.Home.Presenter;
+using WebFormsMvp.Web;
+using SchoolSystem.WebForms.CustomControls.Home.Models;
+using SchoolSystem.WebForms.CustomControls.Home.Views;
+using SchoolSystem.WebForms.CustomControls.Home.Views.EventArguments;
 
 namespace SchoolSystem.WebForms.CustomControls.Home
 {
-    public partial class NewsfeedControl : System.Web.UI.UserControl
+    [PresenterBinding(typeof(NewsfeedPresenter))]
+    public partial class NewsfeedControl : MvpUserControl<NewsfeedModel>, INewsfeedView
     {
+        public event EventHandler EventBindNewsfeedData;
+        public event EventHandler<AddNewsEventargs> EventAddNews;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            var context = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
+           
 
-            this.CommentsList.DataSource = context.NewsFeed.Where(n => n.IsImportant == false).OrderByDescending(x => x.CreatedOn).ToList();
-            this.CommentsList.DataBind();
         }
+        protected override void OnPreRender(EventArgs e)
+        {
+            this.EventBindNewsfeedData(this, e);
 
+            this.CommentsList.DataSource = this.Model.Newsfeed;
+            this.CommentsList.DataBind();
+
+            this.ImportantNewsList.DataSource = this.Model.ImportantNews;
+            this.ImportantNewsList.DataBind();
+        }
         protected void AddComment_Click(object sender, EventArgs e)
         {
-
-            var commentContent = (this.LoginView.FindControl("AddTextbox") as TextBox).Text;
-            var context = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
             var loggedUserName = this.Context.User.Identity.Name;
-            var user = context.Users.FirstOrDefault(x => x.UserName == loggedUserName);
-            var newsfeed = new Newsfeed();
+            var commentContent = (this.LoginView.FindControl("AddTextbox") as TextBox).Text;
+            var dateNow = DateTime.Now;
+            var isImportant = true;
 
-            newsfeed.Content = commentContent;
-            newsfeed.CreatedOn = DateTime.Now;
             if (this.Context.User.IsInRole(UserType.Student))
             {
-                newsfeed.IsImportant = false;
+                isImportant = false;
             }
-            else
+
+            var addNewsEventargs = new AddNewsEventargs()
             {
-                newsfeed.IsImportant = true;
-            }
-            user.NewsFeed.Add(newsfeed);
-            context.SaveChanges();
+                Username = loggedUserName,
+                Content = commentContent,
+                CreatedOn = dateNow,
+                IsImportant = isImportant
 
+            };
+            this.EventAddNews(this, addNewsEventargs);
 
-            this.CommentsList.DataSource = context.NewsFeed.Where(n => n.IsImportant == false).OrderByDescending(x => x.CreatedOn).ToList();
+            this.CommentsList.DataSource = this.Model.Newsfeed;
             this.CommentsList.DataBind();
 
             (this.LoginView.FindControl("AddTextbox") as TextBox).Text = string.Empty;
