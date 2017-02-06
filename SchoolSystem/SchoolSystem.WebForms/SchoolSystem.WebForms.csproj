@@ -196,6 +196,7 @@
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="CustomControls\Account\AvatarUploadControl.ascx" />
+    <Content Include="CustomControls\Account\PasswordChanger.ascx" />
     <Content Include="CustomControls\Admin\ManagingScheduleControl.ascx" />
     <Content Include="CustomControls\Home\NewsfeedControl.ascx" />
     <Content Include="CustomControls\Home\StudentScheduleControl.ascx" />
@@ -357,9 +358,20 @@
       <DependentUpon>AvatarUploadControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\Account\Models\AvatarUploadModel.cs" />
+    <Compile Include="CustomControls\Account\Models\PasswordChangeModel.cs" />
+    <Compile Include="CustomControls\Account\PasswordChanger.ascx.cs">
+      <DependentUpon>PasswordChanger.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Account\PasswordChanger.ascx.designer.cs">
+      <DependentUpon>PasswordChanger.ascx</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\Account\Presenters\AvatarUploadPresenter.cs" />
+    <Compile Include="CustomControls\Account\Presenters\PasswordChangerPresenter.cs" />
     <Compile Include="CustomControls\Account\Views\EventArguments\AvatarUploadEventArgs.cs" />
+    <Compile Include="CustomControls\Account\Views\EventArguments\PasswordChangeEventArgs.cs" />
     <Compile Include="CustomControls\Account\Views\IAvatarUploadView.cs" />
+    <Compile Include="CustomControls\Account\Views\IPasswordChangeView.cs" />
     <Compile Include="CustomControls\Admin\ManagingScheduleControl.ascx.cs">
       <DependentUpon>ManagingScheduleControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

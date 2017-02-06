@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolSystem.WebForms.Account {
+namespace SchoolSystem.WebForms.CustomControls.Account {
     
     
-    public partial class Register {
+    public partial class PasswordChanger {
         
         /// <summary>
         /// ErrorMessage control.
@@ -22,102 +22,66 @@ namespace SchoolSystem.WebForms.Account {
         protected global::System.Web.UI.WebControls.Literal ErrorMessage;
         
         /// <summary>
-        /// SuccessMessage control.
+        /// CurrentPasswordLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal SuccessMessage;
+        protected global::System.Web.UI.WebControls.Label CurrentPasswordLabel;
         
         /// <summary>
-        /// UserTypeDropDown control.
+        /// CurrentPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList UserTypeDropDown;
+        protected global::System.Web.UI.WebControls.TextBox CurrentPassword;
         
         /// <summary>
-        /// SubjectContainer control.
+        /// NewPasswordLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubjectContainer;
+        protected global::System.Web.UI.WebControls.Label NewPasswordLabel;
         
         /// <summary>
-        /// SubjectDropDown control.
+        /// NewPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList SubjectDropDown;
+        protected global::System.Web.UI.WebControls.TextBox NewPassword;
         
         /// <summary>
-        /// ClassContainer control.
+        /// ConfirmNewPasswordLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ClassContainer;
+        protected global::System.Web.UI.WebControls.Label ConfirmNewPasswordLabel;
         
         /// <summary>
-        /// ClassDropDown control.
+        /// ConfirmNewPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ClassDropDown;
+        protected global::System.Web.UI.WebControls.TextBox ConfirmNewPassword;
         
         /// <summary>
-        /// Email control.
+        /// ChangePassrodBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Email;
-        
-        /// <summary>
-        /// FirstNameTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FirstNameTextBox;
-        
-        /// <summary>
-        /// LastNameTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox LastNameTextBox;
-        
-        /// <summary>
-        /// Password control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Password;
-        
-        /// <summary>
-        /// ConfirmPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
+        protected global::System.Web.UI.WebControls.Button ChangePassrodBtn;
     }
 }

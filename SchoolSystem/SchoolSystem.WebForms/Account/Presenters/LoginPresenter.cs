@@ -1,16 +1,16 @@
 ﻿using SchoolSystem.WebForms.Account.Views;
-using System;
-using WebFormsMvp;
 using SchoolSystem.WebForms.Account.Views.EventArguments;
+
 using SchoolSystem.WebForms.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.Account.Presenters
 {
     public class LoginPresenter : Presenter<ILoginView>
     {
-
-        public LoginPresenter(ILoginView view) : base(view)
+        public LoginPresenter(ILoginView view) 
+            : base(view)
         {
             this.View.EventLoginUser += UserLogin;
         }
