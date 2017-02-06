@@ -1,9 +1,8 @@
-﻿using SchoolSystem.Web.Services.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using SchoolSystem.Web.Services.Contracts;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Contracts;
 
@@ -60,7 +59,7 @@ namespace SchoolSystem.Web.Services
                 throw new ArgumentNullException("subjects");
             }
 
-            var allClassesNames = this.classOfStudentsRepo.GetAll(null, x => x.Name).ToList();
+            var allClassesNames = this.classOfStudentsRepo.GetAll(null, x => x.Name);
 
             var subjects = new HashSet<Subject>();
             foreach (var subj in subjecIds)
