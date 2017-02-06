@@ -76,7 +76,7 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             Assert.That(() =>
             {
                 service.AddClass(NotNullString, null);
-            }, Throws.ArgumentNullException.With.Message.Contain("subjects"));
+            }, Throws.ArgumentNullException.With.Message.Contain("subjecIds"));
         }
 
         [Test]

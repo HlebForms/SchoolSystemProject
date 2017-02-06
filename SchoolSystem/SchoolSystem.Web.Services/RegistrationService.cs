@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Bytes2you.Validation;
+using Microsoft.AspNet.Identity.EntityFramework;
 using SchoolSystem.Data.Contracts;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Web.Services.Contracts;
@@ -25,7 +26,12 @@ namespace SchoolSystem.Web.Services
             Func<IUnitOfWork> unitOfWork
             )
         {
-            this.ValidateConstructorParameters(userRolesRepo, subjectsRepo, classOfStudentsRepo, studentRepo, teacherRepo, unitOfWork);
+            Guard.WhenArgument(userRolesRepo, "userRolesRepo").IsNull().Throw();
+            Guard.WhenArgument(subjectsRepo, "subjectsRepo").IsNull().Throw();
+            Guard.WhenArgument(classOfStudentsRepo, "classOfStudentsRepo").IsNull().Throw();
+            Guard.WhenArgument(studentRepo, "studentRepo").IsNull().Throw();
+            Guard.WhenArgument(teacherRepo, "teacherRepo").IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
 
             this.userRolesRepo = userRolesRepo;
             this.subjectsRepo = subjectsRepo;
@@ -53,10 +59,7 @@ namespace SchoolSystem.Web.Services
 
         public void CreateTeacher(string teacherId, int subjectId)
         {
-            if (teacherId == null)
-            {
-                throw new ArgumentNullException("teacherId");
-            }
+            Guard.WhenArgument(teacherId, "teacherId").IsNotNullOrEmpty().Throw();
 
             using (var uow = this.unitOfWork())
             {
@@ -71,11 +74,7 @@ namespace SchoolSystem.Web.Services
         }
         public void CreateStudent(string studentId, int classOfStudentId)
         {
-
-            if (studentId == null)
-            {
-                throw new ArgumentNullException("studentId");
-            }
+            Guard.WhenArgument(studentId, "studentId").IsNotNullOrEmpty().Throw();
 
             using (var uow = this.unitOfWork())
             {
@@ -86,45 +85,6 @@ namespace SchoolSystem.Web.Services
                 });
 
                 uow.Commit();
-            }
-        }
-
-        private void ValidateConstructorParameters(
-            IRepository<IdentityRole> userRolesRepo,
-            IRepository<Subject> subjectsRepo,
-            IRepository<ClassOfStudents> classOfStudentsRepo,
-            IRepository<Student> studentRepo,
-            IRepository<Teacher> teacherRepo,
-            Func<IUnitOfWork> unitOfWork)
-        {
-            if (userRolesRepo == null)
-            {
-                throw new ArgumentNullException("userRepo");
-            }
-
-            if (subjectsRepo == null)
-            {
-                throw new ArgumentNullException("subjectRepo");
-            }
-
-            if (classOfStudentsRepo == null)
-            {
-                throw new ArgumentNullException("classOfStudentsRepo");
-            }
-
-            if (studentRepo == null)
-            {
-                throw new ArgumentNullException("studentRepo");
-            }
-
-            if (teacherRepo == null)
-            {
-                throw new ArgumentNullException("teacherRepo");
-            }
-
-            if (unitOfWork == null)
-            {
-                throw new ArgumentNullException("unitOfWork");
             }
         }
     }

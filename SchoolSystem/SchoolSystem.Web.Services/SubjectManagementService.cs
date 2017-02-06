@@ -1,11 +1,12 @@
-﻿using SchoolSystem.Web.Services.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using SchoolSystem.Web.Services.Contracts;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Contracts;
+
+using Bytes2you.Validation;
 
 namespace SchoolSystem.Web.Services
 {
@@ -20,21 +21,10 @@ namespace SchoolSystem.Web.Services
             IRepository<SubjectClassOfStudents> subjectClassOfStudentsRepo,
             Func<IUnitOfWork> unitOfWork)
         {
-            if (subjectRepo == null)
-            {
-                throw new ArgumentNullException("subjectRepo");
-            }
 
-            if (unitOfWork == null)
-            {
-                throw new ArgumentNullException("unitOfWork");
-            }
-
-            if (subjectClassOfStudentsRepo == null)
-            {
-                throw new ArgumentNullException("subjectClassOfStudentsRepo");
-            }
-
+            Guard.WhenArgument(subjectRepo, "subjectRepo").IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
+            Guard.WhenArgument(subjectClassOfStudentsRepo, "subjectClassOfStudentsRepo").IsNull().Throw();
 
             this.subjectRepo = subjectRepo;
             this.subjectClassOfStudentsRepo = subjectClassOfStudentsRepo;
@@ -43,10 +33,7 @@ namespace SchoolSystem.Web.Services
 
         public bool CreateSubject(string subjectName)
         {
-            if (subjectName == null)
-            {
-                throw new ArgumentNullException("subjectName");
-            }
+            Guard.WhenArgument(subjectName, "subjectName").IsNull().Throw();
 
             var allSubjectNames = this.subjectRepo.GetAll().Select(x => x.Name).ToList();
 
