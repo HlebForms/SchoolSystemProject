@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Web;
+
 using SchoolSystem.WebForms.Account.Presenters;
-using WebFormsMvp;
-using WebFormsMvp.Web;
 using SchoolSystem.WebForms.Account.Models;
 using SchoolSystem.WebForms.Account.Views;
 using SchoolSystem.WebForms.Account.Views.EventArguments;
-using Microsoft.AspNet.Identity.Owin;
+
 using SchoolSystem.WebForms.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using WebFormsMvp;
+using WebFormsMvp.Web;
 
 namespace SchoolSystem.WebForms.Account
 {
@@ -15,24 +17,22 @@ namespace SchoolSystem.WebForms.Account
     public partial class Login : MvpPage<LoginModel>, ILoginView
     {
         public event EventHandler<LoginPageEventtArgs> EventLoginUser;
+
         protected void Page_Load(object sender, EventArgs e)
         {
         }
 
         protected void LogIn(object sender, EventArgs e)
         {
-            if (IsValid)
+            if (this.IsValid)
             {
-                // Validate the user password
                 var owinCtx = Context.GetOwinContext();
                 var model = new LoginModel() { Email = this.Email.Text, Password = this.Password.Text };
                 var eventArgs = new LoginPageEventtArgs(model, owinCtx);
 
                 this.EventLoginUser(this, eventArgs);
 
-
-                var result = this.Model.LoggedInStatus;
-
+                SignInStatus result = this.Model.LoggedInStatus;
 
                 switch (result)
                 {
@@ -41,7 +41,7 @@ namespace SchoolSystem.WebForms.Account
                         break;
                     case SignInStatus.Failure:
                     default:
-                        FailureText.Text = "Invalid login attempt";
+                        FailureText.Text = "Грешно потребителско име или парола";
                         ErrorMessage.Visible = true;
                         break;
                 }

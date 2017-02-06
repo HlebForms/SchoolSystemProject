@@ -1,15 +1,15 @@
-﻿using SchoolSystem.WebForms.Account.Views;
-using WebFormsMvp;
+﻿using System;
+using SchoolSystem.WebForms.Account.Views;
 using SchoolSystem.WebForms.Account.Views.EventArguments;
-using SchoolSystem.WebForms.Identity;
-using Microsoft.AspNet.Identity.Owin;
+
 using SchoolSystem.Data.Models;
-using Microsoft.AspNet.Identity;
 using SchoolSystem.Web.Services.Contracts;
-using System;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.Collections.Generic;
 using SchoolSystem.Data.Models.Common;
+using SchoolSystem.WebForms.Identity;
+
+using WebFormsMvp;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace SchoolSystem.WebForms.Account.Presenters
 {
@@ -61,7 +61,11 @@ namespace SchoolSystem.WebForms.Account.Presenters
             {
                 this.registrationService.CreateStudent(user.Id, e.ClassOfSudentsId);
             }
-           
+            else
+            {
+                // no specific need if the user is admin
+            }
+
             this.View.Model.Result = result;
         }
     }
