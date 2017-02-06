@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Bytes2you.Validation;
+using Microsoft.AspNet.Identity.EntityFramework;
 using SchoolSystem.Data.Contracts;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Models.Common;
@@ -25,6 +26,10 @@ namespace SchoolSystem.Web.Services
             Func<IUnitOfWork> unitOfWork
             )
         {
+            Guard.WhenArgument(newsfeedRepository, "newsfeedRepository").IsNull().Throw();
+            Guard.WhenArgument(userRepo, "userRepo").IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
+
             this.newsfeedRepository = newsfeedRepository;
             this.userRepo = userRepo;
             this.unitOfWork = unitOfWork;
@@ -32,17 +37,22 @@ namespace SchoolSystem.Web.Services
 
         public void AddNews(string username, string content, DateTime createdOn, bool isImportant)
         {
+            Guard.WhenArgument(username, "username").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(content, "content").IsNullOrEmpty().Throw();
+
             using (var uow = this.unitOfWork())
             {
                 var newsfeed = new Newsfeed();
                 var user = this.userRepo.GetFirst(x => x.UserName == username);
+                Guard.WhenArgument(user, "user").IsNull().Throw();
+              
+                    newsfeed.Content = content;
+                    newsfeed.CreatedOn = createdOn;
+                    newsfeed.IsImportant = isImportant;
 
-                newsfeed.Content = content;
-                newsfeed.CreatedOn = createdOn;
-                newsfeed.IsImportant = isImportant;
-
-                user.NewsFeed.Add(newsfeed);
-                uow.Commit();
+                    user.NewsFeed.Add(newsfeed);
+                    uow.Commit();
+                
             }
 
         }
