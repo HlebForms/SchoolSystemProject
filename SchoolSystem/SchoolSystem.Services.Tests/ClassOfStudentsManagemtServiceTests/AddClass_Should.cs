@@ -7,6 +7,8 @@ using SchoolSystem.Web.Services;
 
 using Moq;
 using NUnit.Framework;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
 {
@@ -75,6 +77,142 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             {
                 service.AddClass(NotNullString, null);
             }, Throws.ArgumentNullException.With.Message.Contain("subjects"));
+        }
+
+        [Test]
+        public void Call_GetAllMethodFromClassOfStudentsRepo_Once()
+        {
+            var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
+            var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+
+            mockedUnitOfWork.Setup(x => x.Commit());
+            mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(new List<string>());
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+
+            service.AddClass(NotNullString, new List<string>());
+
+            mockedClassOfStudentsRepo.Verify(x => x.GetAll(null, y => y.Name), Times.Once);
+        }
+
+        [Test]
+        public void Call_GetFirstMethodFromSubjectsRepo_Once_WhenThereIsEntriesInTheStudentIdsCollection()
+        {
+            var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
+            var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+
+            mockedUnitOfWork.Setup(x => x.Commit());
+            mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(new List<string>());
+            mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
+
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+            var nonEmptyList = new List<string>() { "2" };
+
+            service.AddClass(NotNullString, nonEmptyList);
+
+            mockedSubjectsRepo.Verify(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>()), Times.Once);
+        }
+
+        [Test]
+        public void Call_GetFirstMethodFromSubjectsRepo_Never_WhenThereIsEntriesInTheStudentIdsCollection()
+        {
+            var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
+            var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+
+            mockedUnitOfWork.Setup(x => x.Commit());
+            mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(new List<string>());
+            mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
+
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+            var emptyList = new List<string>();
+
+            service.AddClass(NotNullString, emptyList);
+
+            mockedSubjectsRepo.Verify(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>()), Times.Never);
+        }
+
+        [Test]
+        public void Return_False_WhenThereIsClassOfStudentsWithTheSameName()
+        {
+            var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
+            var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            mockedUnitOfWork.Setup(x => x.Commit());
+
+            string className = NotNullString;
+            IEnumerable<string> classNames = new List<string>() { className };
+
+            mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(classNames);
+            mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+            var nonEmptyList = new List<string>() { "2" };
+
+            var result = service.AddClass(NotNullString, nonEmptyList);
+
+            Assert.False(result);
+        }
+
+        [Test]
+        public void Call_AddMethod_Once_FromClassOfStudentsRepoOnce()
+        {
+            var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
+            var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            mockedUnitOfWork.Setup(x => x.Commit());
+
+            IEnumerable<string> classNames = new List<string>() { };
+
+            mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(classNames);
+            mockedClassOfStudentsRepo.Setup(x => x.Add(It.IsAny<ClassOfStudents>()));
+            mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+            var nonEmptyList = new List<string>() { "2" };
+
+            service.AddClass(NotNullString, nonEmptyList);
+
+            mockedClassOfStudentsRepo.Verify(x => x.Add(It.IsAny<ClassOfStudents>()), Times.Once);
+        }
+
+        [Test]
+        public void Call_CommitMethod_Once()
+        {
+            var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
+            var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            mockedUnitOfWork.Setup(x => x.Commit());
+
+            IEnumerable<string> classNames = new List<string>() { };
+
+            mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(classNames);
+            mockedClassOfStudentsRepo.Setup(x => x.Add(It.IsAny<ClassOfStudents>()));
+            mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+            var nonEmptyList = new List<string>() { "2" };
+
+            service.AddClass(NotNullString, nonEmptyList);
+
+            mockedUnitOfWork.Verify(x => x.Commit(), Times.Once);
+        }
+
+        [Test]
+        public void Return_True_WhenThereIsClassOfStudentsWithTheSameName()
+        {
+            var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
+            var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            mockedUnitOfWork.Setup(x => x.Commit());
+            IEnumerable<string> classNames = new List<string>();
+
+            mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(classNames);
+            mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+            var nonEmptyList = new List<string>() { "2" };
+
+            var result = service.AddClass(NotNullString, nonEmptyList);
+
+            Assert.True(result);
         }
     }
 }

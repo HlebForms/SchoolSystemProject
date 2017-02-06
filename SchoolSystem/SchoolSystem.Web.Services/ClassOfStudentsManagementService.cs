@@ -59,7 +59,7 @@ namespace SchoolSystem.Web.Services
                 throw new ArgumentNullException("subjects");
             }
 
-            var allClassesNames = this.classOfStudentsRepo.GetAll(null, x => x.Name).ToList();
+            var allClassesNames = this.classOfStudentsRepo.GetAll(null, x => x.Name);
 
             var subjects = new HashSet<Subject>();
             foreach (var subj in subjecIds)
