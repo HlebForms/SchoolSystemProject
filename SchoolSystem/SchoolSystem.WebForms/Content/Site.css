@@ -171,9 +171,14 @@ hr {
     font-size: 12px;
 }
 
-.comments-container {
-    overflow: auto;
+.comments-container-logged {
+    overflow: auto; 
     height: 230px;
+} 
+
+.comments-container-notlogged {
+    overflow: auto;
+    height: 300px;
 }
 
 .importantNews-container {
@@ -197,9 +202,21 @@ hr {
 .importantNews-list-item {
     border-bottom: 1px solid #2196F3;
     padding-bottom: 5px;
-    margin: 5px;
+    margin: 5px; 
     overflow: hidden;
     word-wrap: break-word;
+}
+
+.importantNews-list-item > .date-created{
+    color:grey;  
+    font-size:12px; 
+    display:block;
+}
+
+.date-created{
+    color:grey; 
+    font-size:10px; 
+    display:block;
 }
 
 .comment-content {

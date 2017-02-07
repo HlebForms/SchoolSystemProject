@@ -9,6 +9,7 @@
                 <ItemTemplate>
                     <li class="importantNews-list-item">
                         <asp:Image runat="server" CssClass="importantNews-user-avatar" ImageUrl='<%#: Item.AvatarPictureUrl %>' ToolTip='<%#: Item.Creator %>' />
+                        <asp:Label runat="server" CssClass="date-created"> <%# Item.CreatedOn.ToString("dd/MM/yyyy") %> </asp:Label>
                         <asp:Label runat="server" CssClass="importantNews-content"> <%#: Item.Content %></asp:Label>
                     </li>
                 </ItemTemplate>
@@ -21,31 +22,34 @@
 
         <AnonymousTemplate>
             <h5 class="newsfeed-header-text">Трябва да сте логнат в системата, за да напишете новина!</h5>
+            <hr class="comments-hr" />
+
+            <div class="comments-container-notlogged">
         </AnonymousTemplate>
 
         <LoggedInTemplate>
             <h5 class="newsfeed-header-text">Добави коментар</h5>
             <asp:TextBox TextMode="MultiLine" Rows="3" MaxLength="200" placeholder="Максимум 200 символа..." ID="AddTextbox" CssClass="comment-box" runat="server"></asp:TextBox>
             <asp:Button ID="AddComment" OnClick="AddComment_Click" runat="server" Text="Добави" />
+            <hr class="comments-hr" />
 
+            <div class="comments-container-logged">
         </LoggedInTemplate>
 
     </asp:LoginView>
 
-    <hr class="comments-hr" />
-
-    <div class="comments-container">
-        <ul class="comments-list">
-            <asp:Repeater ID="CommentsList"
-                runat="server"
-                ItemType="SchoolSystem.Data.Models.CustomModels.NewsModel">
-                <ItemTemplate>
-                    <li class="comment-list-item">
-                        <asp:Image runat="server" CssClass="comment-user-avatar" ImageUrl='<%#: Item.AvatarPictureUrl %>' ToolTip='<%#: Item.Creator %>' />
-                        <asp:Label runat="server" CssClass="comment-content"> <%#: Item.Content %></asp:Label>
-                    </li>
-                </ItemTemplate>
-            </asp:Repeater>
-        </ul>
-    </div>
+    <ul class="comments-list">
+        <asp:Repeater ID="CommentsList"
+            runat="server"
+            ItemType="SchoolSystem.Data.Models.CustomModels.NewsModel">
+            <ItemTemplate>
+                <li class="comment-list-item">
+                    <asp:Image runat="server" CssClass="comment-user-avatar" ImageUrl='<%#: Item.AvatarPictureUrl %>' ToolTip='<%#: Item.Creator %>' />
+                    <asp:Label runat="server" CssClass="date-created"> <%# Item.CreatedOn.ToString("dd/MM/yyyy") %> </asp:Label>
+                    <asp:Label runat="server" CssClass="comment-content"> <%#: Item.Content %></asp:Label>
+                </li>
+            </ItemTemplate>
+        </asp:Repeater>
+    </ul>
+</div>
 </div>
