@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="NewsfeedControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Home.NewsfeedControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" ValidateRequestMode="Disabled" CodeBehind="NewsfeedControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Home.NewsfeedControl" %>
 <div class="frame top-news col-xs-4">
     <h4 class="importantNews-header-text">Важни новини</h4>
     <div class="importantNews-container">

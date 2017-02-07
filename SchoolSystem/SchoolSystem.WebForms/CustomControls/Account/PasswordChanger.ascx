@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="PasswordChanger.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Account.PasswordChanger" %>
 
-<h1>Промяна на паролата</h1>
+<h3>Промяна на паролата</h3>
 <asp:UpdatePanel runat="server">
     <ContentTemplate>
         <div class="form-horizontal">
@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <asp:Button runat="server" Text="Промяна на паролата" ID="ChangePassrodBtn" ValidationGroup="ChangePassword" OnClick="ChangePassrodBtn_Click" CssClass="btn btn-default" />
+                    <asp:Button runat="server" Text="Промяна на паролата" ID="ChangePassrodBtn" ValidationGroup="ChangePassword" OnClick="ChangePassrodBtn_Click" CssClass="btn btn-primary" />
                 </div>
             </div>
         </div>

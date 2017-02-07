@@ -8,6 +8,12 @@ body {
 }
 
 footer {
+    position: absolute;
+    right: 80px;
+    bottom: 20px;
+    left: 80px;
+    padding: 1rem;
+    /*background-color: #efefef;*/
 }
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -94,6 +100,10 @@ input[type="select"] {
         text-align: center;
     }
 
+h1, h2, h3, h4, h5, h6 { 
+    color: #2196F3;
+}
+
 .program, .top-news {
     width: 450px;
     margin-left: 5px;
@@ -172,9 +182,9 @@ hr {
 }
 
 .comments-container-logged {
-    overflow: auto; 
+    overflow: auto;
     height: 230px;
-} 
+}
 
 .comments-container-notlogged {
     overflow: auto;
@@ -202,21 +212,21 @@ hr {
 .importantNews-list-item {
     border-bottom: 1px solid #2196F3;
     padding-bottom: 5px;
-    margin: 5px; 
+    margin: 5px;
     overflow: hidden;
     word-wrap: break-word;
 }
 
-.importantNews-list-item > .date-created{
-    color:grey;  
-    font-size:12px; 
-    display:block;
-}
+    .importantNews-list-item > .date-created {
+        color: grey;
+        font-size: 12px;
+        display: block;
+    }
 
-.date-created{
-    color:grey; 
-    font-size:10px; 
-    display:block;
+.date-created {
+    color: grey;
+    font-size: 10px;
+    display: block;
 }
 
 .comment-content {

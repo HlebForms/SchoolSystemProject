@@ -1,7 +1,5 @@
-﻿<%@ Page Title="Log in" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SchoolSystem.WebForms.Account.Login" Async="true" %>
-
-<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <asp:UpdatePanel runat="server">
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LoginControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Account.LoginControl" %>
+<asp:UpdatePanel runat="server">
         <ContentTemplate>
             <div class="row">
                 <div class="col-md-12">
@@ -40,6 +38,3 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-</asp:Content>
-
-
