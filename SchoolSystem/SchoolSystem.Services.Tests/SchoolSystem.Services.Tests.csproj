@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountManagementServiceTests\Constructor_Should.cs" />
+    <Compile Include="AccountManagementServiceTests\UploadAvatar_Should.cs" />
     <Compile Include="ClassOfStudentsManagemtServiceTests\AddClass_Should.cs" />
     <Compile Include="ClassOfStudentsManagemtServiceTests\Constructor_Should.cs" />
     <Compile Include="ClassOfStudentsManagemtServiceTests\GetAllClasses_Should.cs" />

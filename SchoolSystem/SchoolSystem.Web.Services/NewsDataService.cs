@@ -1,16 +1,13 @@
-﻿using Bytes2you.Validation;
-using Microsoft.AspNet.Identity.EntityFramework;
-using SchoolSystem.Data.Contracts;
-using SchoolSystem.Data.Models;
-using SchoolSystem.Data.Models.Common;
-using SchoolSystem.Data.Models.CustomModels;
-using SchoolSystem.Web.Services.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Security;
+
+using SchoolSystem.Web.Services.Contracts;
+using SchoolSystem.Data.Contracts;
+using SchoolSystem.Data.Models;
+using SchoolSystem.Data.Models.CustomModels;
+
+using Bytes2you.Validation;
 
 namespace SchoolSystem.Web.Services
 {

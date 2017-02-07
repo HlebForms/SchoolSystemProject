@@ -4,6 +4,8 @@ using SchoolSystem.Data.Contracts;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Web.Services.Contracts;
 
+using Bytes2you.Validation;
+
 namespace SchoolSystem.Web.Services
 {
     public class AccountManagementService : IAccountManagementService
@@ -13,15 +15,8 @@ namespace SchoolSystem.Web.Services
 
         public AccountManagementService(IRepository<User> userRepo, Func<IUnitOfWork> unitOfWork)
         {
-            if (userRepo == null)
-            {
-                throw new ArgumentNullException("userRepo");
-            }
-
-            if (unitOfWork == null)
-            {
-                throw new ArgumentNullException("unitOfWork");
-            }
+            Guard.WhenArgument(userRepo, "userRepo").IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
 
             this.userRepo = userRepo;
             this.unitOfWork = unitOfWork;
@@ -29,15 +24,8 @@ namespace SchoolSystem.Web.Services
 
         public void UploadAvatar(string userName, string avatarUrl)
         {
-            if (string.IsNullOrEmpty(userName))
-            {
-                throw new ArgumentNullException("userName");
-            }
-
-            if (string.IsNullOrEmpty(avatarUrl))
-            {
-                throw new ArgumentNullException("avatarUrl");
-            }
+            Guard.WhenArgument(userName, "userName").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(avatarUrl, "avatarUrl").IsNullOrEmpty().Throw();
 
             var user = this.userRepo.GetFirst(x => x.UserName == userName);
             if (user != null)

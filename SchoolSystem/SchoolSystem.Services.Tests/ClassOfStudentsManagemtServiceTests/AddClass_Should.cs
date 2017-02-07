@@ -8,7 +8,6 @@ using SchoolSystem.Web.Services;
 using Moq;
 using NUnit.Framework;
 using System.Linq.Expressions;
-using System.Linq;
 
 namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
 {
@@ -31,6 +30,38 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             {
                 service.AddClass(null, subjectIds);
             });
+        }
+
+        [Test]
+        public void ThrowArgumentException_WhenNameParamIsNuull()
+        {
+            var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
+            var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
+            var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+            IEnumerable<string> subjectIds = new List<string>();
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                service.AddClass(string.Empty, subjectIds);
+            });
+        }
+
+        [Test]
+        public void ThrowArgumentException_WithMessageContatining_Name_WhenNameParamIsNuull()
+        {
+            var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
+            var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
+            var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+            IEnumerable<string> subjectIds = new List<string>();
+
+            Assert.That(() =>
+            {
+                service.AddClass(string.Empty, subjectIds);
+            }, Throws.ArgumentException.With.Message.Contain("name"));
         }
 
         [Test]
@@ -76,7 +107,7 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             Assert.That(() =>
             {
                 service.AddClass(NotNullString, null);
-            }, Throws.ArgumentNullException.With.Message.Contain("subjects"));
+            }, Throws.ArgumentNullException.With.Message.Contain("subjecIds"));
         }
 
         [Test]

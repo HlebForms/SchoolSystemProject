@@ -72,7 +72,7 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
         }
 
         [Test]
-        public void Throw_When_ContentIsEmpty()
+        public void Throw_ArhumentException_When_ContentIsEmpty()
         {
             var mockedNewsfeedRepository = new Mock<IRepository<Newsfeed>>();
             var mockedUserRepo = new Mock<IRepository<User>>();

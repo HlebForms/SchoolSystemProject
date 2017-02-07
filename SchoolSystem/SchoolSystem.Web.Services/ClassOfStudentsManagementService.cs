@@ -6,6 +6,8 @@ using SchoolSystem.Web.Services.Contracts;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Contracts;
 
+using Bytes2you.Validation;
+
 namespace SchoolSystem.Web.Services
 {
     public class ClassOfStudentsManagementService : IClassOfStudentsManagementService
@@ -17,20 +19,9 @@ namespace SchoolSystem.Web.Services
         public ClassOfStudentsManagementService(IRepository<Subject> subjectsRepo,
                IRepository<ClassOfStudents> classOfStudentsRepo, Func<IUnitOfWork> unitOfWork)
         {
-            if (subjectsRepo == null)
-            {
-                throw new ArgumentNullException("subjectsRepo");
-            }
-
-            if (classOfStudentsRepo == null)
-            {
-                throw new ArgumentNullException("classOfStudentsRepo");
-            }
-
-            if (unitOfWork == null)
-            {
-                throw new ArgumentNullException("unitOfWork");
-            }
+            Guard.WhenArgument(subjectsRepo, "subjectsRepo").IsNull().Throw();
+            Guard.WhenArgument(classOfStudentsRepo, "classOfStudentsRepo").IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
 
             this.subjectsRepo = subjectsRepo;
             this.classOfStudentsRepo = classOfStudentsRepo;
@@ -49,15 +40,8 @@ namespace SchoolSystem.Web.Services
 
         public bool AddClass(string name, IEnumerable<string> subjecIds)
         {
-            if (name == null)
-            {
-                throw new ArgumentNullException("name");
-            }
-
-            if (subjecIds == null)
-            {
-                throw new ArgumentNullException("subjects");
-            }
+            Guard.WhenArgument(name, "name").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(subjecIds, "subjecIds").IsNull().Throw();
 
             var allClassesNames = this.classOfStudentsRepo.GetAll(null, x => x.Name);
 
