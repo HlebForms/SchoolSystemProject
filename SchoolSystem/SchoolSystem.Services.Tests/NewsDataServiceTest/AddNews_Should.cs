@@ -35,6 +35,7 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
             });
         }
 
+        [Test]
         public void Throw_When_UsernameIsEmpty()
         {
             var mockedNewsfeedRepository = new Mock<IRepository<Newsfeed>>();
@@ -46,7 +47,7 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
                 mockedUserRepo.Object,
                 mockedUnitOfWork.Object);
 
-            Assert.Throws<ArgumentNullException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 newsDataService.AddNews(string.Empty, "random string", DateTime.Now, false);
             });
@@ -82,12 +83,11 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
                 mockedUserRepo.Object,
                 mockedUnitOfWork.Object);
 
-            Assert.Throws<ArgumentNullException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 newsDataService.AddNews("username", string.Empty, DateTime.Now, false);
             });
         }
-
 
         [Test]
         public void CorrectlyAddData()

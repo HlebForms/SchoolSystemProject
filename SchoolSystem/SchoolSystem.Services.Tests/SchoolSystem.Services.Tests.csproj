@@ -63,6 +63,7 @@
     <Compile Include="ClassOfStudentsManagemtServiceTests\GetAllSubjects_Should.cs" />
     <Compile Include="NewsDataServiceTest\AddNews_Should.cs" />
     <Compile Include="NewsDataServiceTest\Constuctor_Should.cs" />
+    <Compile Include="NewsDataServiceTest\GetImportantNews_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubjectManagementServiceTests\Constructorr_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\CreateSubject_Should.cs" />
