@@ -14,10 +14,10 @@ using System.Threading.Tasks;
 namespace SchoolSystem.Services.Tests.NewsDataServiceTest
 {
     [TestFixture]
-    public class GetImportantNews_Should
+    public class GetNews_Should
     {
         [Test]
-        public void ReturnTheNewsFromTheLast5Days()
+        public void ReturnTheUnImportantNews()
         {
             var mockedNewsfeedRepository = new Mock<IRepository<Newsfeed>>();
             var mockedUserRepo = new Mock<IRepository<User>>();
@@ -33,8 +33,7 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
             {
                 new Newsfeed()
                 {
-                    IsImportant = true,
-                    CreatedOn = DateTime.Now,
+                    IsImportant = false,
                     Content = "test content 1",
                     User = new User(){AvatarPictureUrl = "test url 1"}
                 },
@@ -47,38 +46,10 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
                 },
                 new Newsfeed()
                 {
-                   IsImportant = true,
+                   IsImportant = false,
                    Content = "test content 3",
                    CreatedOn = DateTime.Now.AddDays(-2),
                    User = new User(){AvatarPictureUrl = "test url 3"}
-                },
-                new Newsfeed()
-                {
-                   IsImportant = true,
-                   Content = "test content 4",
-                   CreatedOn = DateTime.Now.AddDays(-3),
-                   User = new User(){AvatarPictureUrl = "test url 4"}
-                },
-                new Newsfeed()
-                {
-                   IsImportant = true,
-                   Content = "test content 5",
-                   CreatedOn = DateTime.Now.AddDays(-4),
-                   User = new User(){AvatarPictureUrl = "test url 5"}
-                },
-                new Newsfeed()
-                {
-                   IsImportant = true,
-                   Content = "test content 6",
-                   CreatedOn = DateTime.Now.AddDays(-5),
-                   User = new User(){AvatarPictureUrl = "test url 6"}
-                },
-                new Newsfeed()
-                {
-                   IsImportant = true,
-                   Content = "test content 7",
-                   CreatedOn = DateTime.Now.AddDays(-6),
-                   User = new User(){AvatarPictureUrl = "test url 7"}
                 }
             };
 
@@ -92,13 +63,13 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
                     expectedResult.Where(predicate.Compile()).Select(projection.Compile())
                 );
 
-            var actual = newsDataService.GetImportantNews();
+            var actual = newsDataService.GetNews();
 
-            Assert.AreEqual(actual.Count(), 5);
+            Assert.AreEqual(actual.Count(), 2);
         }
 
         [Test]
-        public void Call_newsfeedRepo_GetAllMethodOnce()
+        public void ReturnThe_20_ItemsByDefault()
         {
             var mockedNewsfeedRepository = new Mock<IRepository<Newsfeed>>();
             var mockedUserRepo = new Mock<IRepository<User>>();
@@ -109,14 +80,77 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
                 mockedUserRepo.Object,
                 () => mockedUnitOfWork.Object);
 
-            newsDataService.GetImportantNews();
+            var expectedResult = new List<Newsfeed>();
+
+            for (int i = 0; i < 40; i++)
+            {
+                expectedResult.Add(
+                    new Newsfeed()
+                    {
+                        IsImportant = false,
+                        Content = "test content " + i,
+                        User = new User() { AvatarPictureUrl = "test url " + i }
+                    }
+                );
+            }
 
             mockedNewsfeedRepository
-                    .Verify(
-                        x => x.GetAll(
-                            It.IsAny<Expression<Func<Newsfeed, bool>>>(),
-                            It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()),
-                        Times.Exactly(1));
+                .Setup(x => x.GetAll(
+                    It.IsAny<Expression<Func<Newsfeed, bool>>>(),
+                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()
+                )).Returns(
+                    (Expression<Func<Newsfeed, bool>> predicate,
+                    Expression<Func<Newsfeed, NewsModel>> projection) =>
+                    expectedResult.Where(predicate.Compile()).Select(projection.Compile())
+                );
+
+            var actual = newsDataService.GetNews();
+
+            Assert.AreEqual(actual.Count(), 20);
+        }
+
+        [TestCase(1)]
+        [TestCase(5)]
+        [TestCase(7)]
+        [TestCase(16)]
+        public void ReturnTheCorrectAmountOfItemsBasedOnCountInput(int count)
+        {
+            var mockedNewsfeedRepository = new Mock<IRepository<Newsfeed>>();
+            var mockedUserRepo = new Mock<IRepository<User>>();
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+
+            var newsDataService = new NewsDataService(
+                mockedNewsfeedRepository.Object,
+                mockedUserRepo.Object,
+                () => mockedUnitOfWork.Object);
+
+            var expectedResult = new List<Newsfeed>();
+
+            for (int i = 0; i < 40; i++)
+            {
+                expectedResult.Add(
+                    new Newsfeed()
+                    {
+                        IsImportant = false,
+                        Content = "test content " + i,
+                        User = new User() { AvatarPictureUrl = "test url " + i }
+                    }
+                );
+            }
+
+            mockedNewsfeedRepository
+                .Setup(x => x.GetAll(
+                    It.IsAny<Expression<Func<Newsfeed, bool>>>(),
+                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()
+                )).Returns(
+                    (Expression<Func<Newsfeed, bool>> predicate,
+                    Expression<Func<Newsfeed, NewsModel>> projection) =>
+                    expectedResult.Where(predicate.Compile()).Select(projection.Compile())
+                );
+
+            var actual = newsDataService.GetNews(count);
+
+            Assert.AreEqual(actual.Count(), count);
         }
 
         [Test]
@@ -133,21 +167,21 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
 
             var item1 = new Newsfeed()
             {
-                IsImportant = true,
+                IsImportant = false,
                 CreatedOn = DateTime.Now.AddDays(-2),
                 Content = "test content 1",
                 User = new User() { AvatarPictureUrl = "test url 1" }
             };
             var item2 = new Newsfeed()
             {
-                IsImportant = true,
+                IsImportant = false,
                 Content = "test content 2",
                 CreatedOn = DateTime.Now.AddDays(-1),
                 User = new User() { AvatarPictureUrl = "test url 2" }
             };
             var item3 = new Newsfeed()
             {
-                IsImportant = true,
+                IsImportant = false,
                 Content = "test content 3",
                 CreatedOn = DateTime.Now,
                 User = new User() { AvatarPictureUrl = "test url 3" }
@@ -165,13 +199,12 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
                     expectedResult.Where(predicate.Compile()).Select(projection.Compile())
                 );
 
-            var actualResult = newsDataService.GetImportantNews().ToList();
+            var actualResult = newsDataService.GetNews().ToList();
 
             Assert.AreEqual(actualResult[2].CreatedOn.ToString("dd:HH:mm:ss"), expectedResult[0].CreatedOn.ToString("dd:HH:mm:ss"));
             Assert.AreEqual(actualResult[1].CreatedOn.ToString("dd:HH:mm:ss"), expectedResult[1].CreatedOn.ToString("dd:HH:mm:ss"));
             Assert.AreEqual(actualResult[0].CreatedOn.ToString("dd:HH:mm:ss"), expectedResult[2].CreatedOn.ToString("dd:HH:mm:ss"));
         }
-
 
         [Test]
         public void MapDataCorrectly()
@@ -188,7 +221,7 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
             var mockedData = new List<Newsfeed>() {
                 new Newsfeed()
                 {
-                    IsImportant = true,
+                    IsImportant = false,
                     CreatedOn = DateTime.Now,
                     Content = "test content",
                     User = new User() {
@@ -208,7 +241,7 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
                     mockedData.Where(predicate.Compile()).Select(projection.Compile())
                 );
 
-            var actual = newsDataService.GetImportantNews().First();
+            var actual = newsDataService.GetNews().First();
 
             var expected = mockedData.First();
 
@@ -216,7 +249,6 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
             Assert.AreSame(expected.User.AvatarPictureUrl, actual.AvatarPictureUrl);
             Assert.AreSame(expected.User.UserName, actual.Creator);
             Assert.AreEqual(expected.CreatedOn, actual.CreatedOn);
-
         }
     }
 }

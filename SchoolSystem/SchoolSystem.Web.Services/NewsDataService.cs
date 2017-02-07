@@ -75,8 +75,7 @@ namespace SchoolSystem.Web.Services
 
             return result;
         }
-
-
+        
         /// <summary>
         /// Returns the last "count" not important news (default value is 20)
         /// </summary>
