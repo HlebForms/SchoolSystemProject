@@ -1,16 +1,12 @@
 ﻿using SchoolSystem.WebForms.CustomControls.Admin.Models;
 using SchoolSystem.WebForms.CustomControls.Admin.Views;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebFormsMvp.Web;
 using SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments;
 using SchoolSystem.WebForms.CustomControls.Admin.Presenters;
 using WebFormsMvp;
-using SchoolSystem.WebForms.CustomControls.Notifier;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin
 {
@@ -46,11 +42,11 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 this.SubjectsList.ClearSelection();
                 this.ClassNameTextBox.Text = string.Empty;
                 
-                this.Notifier.NotifySuccess("Stana");
+                this.Notifier.NotifySuccess("Класът е създаден!");
             }
             else
             {
-                this.Notifier.NotifyError("NE stana");
+                this.Notifier.NotifyError("Възникна грешка!");
             }
         }
     }

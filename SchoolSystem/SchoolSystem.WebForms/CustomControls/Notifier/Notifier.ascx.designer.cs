@@ -19,7 +19,7 @@ namespace SchoolSystem.WebForms.CustomControls.Notifier {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NotificationPane;
+        protected global::System.Web.UI.WebControls.Panel NotificationPane;
         
         /// <summary>
         /// NotificationMessage control.

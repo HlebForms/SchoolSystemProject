@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Notifier.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Notifier.Notifier" %>
 
-<div  runat="server" ID="NotificationPane">
+<asp:Panel  runat="server" ID="NotificationPane" CssClass="">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <asp:Label ID="NotificationMessage" runat="server"></asp:Label>
-</div>
+</asp:Panel>
