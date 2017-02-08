@@ -381,6 +381,7 @@
     <Compile Include="CustomControls\Account\Presenters\AvatarUploadPresenter.cs" />
     <Compile Include="CustomControls\Account\Presenters\PasswordChangerPresenter.cs" />
     <Compile Include="CustomControls\Account\Views\EventArguments\AvatarUploadEventArgs.cs" />
+    <Compile Include="CustomControls\Account\Views\EventArguments\GetUserAvatarEventArgs.cs" />
     <Compile Include="CustomControls\Account\Views\EventArguments\PasswordChangeEventArgs.cs" />
     <Compile Include="CustomControls\Account\Views\IAvatarUploadView.cs" />
     <Compile Include="CustomControls\Account\Views\IPasswordChangeView.cs" />

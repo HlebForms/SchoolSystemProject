@@ -13,5 +13,15 @@ namespace SchoolSystem.WebForms.Account
         {
 
         }
+
+        protected void Tab1_Click(object sender, EventArgs e)
+        {
+            this.MultiView1.ActiveViewIndex = 0;
+        }
+
+        protected void Tab2_Click(object sender, EventArgs e)
+        {
+            this.MultiView1.ActiveViewIndex = 1;
+        }
     }
 }
