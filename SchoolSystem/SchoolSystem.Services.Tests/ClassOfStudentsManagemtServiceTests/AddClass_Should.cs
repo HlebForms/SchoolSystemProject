@@ -233,11 +233,14 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            mockedUnitOfWork.Setup(x => x.Commit());
+            mockedUnitOfWork.Setup(x => x.Commit()).Returns(true);
+
             IEnumerable<string> classNames = new List<string>();
 
             mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(classNames);
+
             mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
+
             var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
             var nonEmptyList = new List<string>() { "2" };
 
