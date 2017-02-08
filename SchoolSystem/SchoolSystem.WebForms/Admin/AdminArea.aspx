@@ -11,14 +11,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
-            <asp:Button Text="Създаване на предмет" BorderStyle="None" ID="Tab1" CssClass="btn btn-default" runat="server"
-                OnClick="Tab1_Click" />
+            <asp:Label runat="server" ID="Tabs" CssClass="tabs">
+                <asp:Button Text="Създаване на предмет" BorderStyle="None" ID="Tab1" CssClass="btn btn-default tab" runat="server"
+                    OnClick="Tab1_Click" />
 
-            <asp:Button Text="Създаване на клас" BorderStyle="None" ID="Tab2" CssClass="btn btn-default" runat="server"
-                OnClick="Tab2_Click" />
+                <asp:Button Text="Създаване на клас" BorderStyle="None" ID="Tab2" CssClass="btn btn-default tab" runat="server"
+                    OnClick="Tab2_Click" />
 
-            <asp:Button Text="Менажиране на програма" BorderStyle="None" ID="Tab3" CssClass="btn btn-default" runat="server"
-                OnClick="Tab3_Click" />
+                <asp:Button Text="Менажиране на програма" BorderStyle="None" ID="Tab3" CssClass="btn btn-default tab" runat="server"
+                    OnClick="Tab3_Click" />
+            </asp:Label>
 
             <asp:MultiView ID="MultiView1" runat="server">
                 <asp:View runat="server" ID="CreatingSubjectTab">
