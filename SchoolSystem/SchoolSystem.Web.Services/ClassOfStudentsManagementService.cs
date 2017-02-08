@@ -80,8 +80,8 @@ namespace SchoolSystem.Web.Services
 
                     classOfStudents.SubjectClassOfStudents = subjectsForTheClass;
                     this.classOfStudentsRepo.Add(classOfStudents);
-                    uow.Commit();
-                    return true;
+
+                    return uow.Commit();
                 }
             }
         }

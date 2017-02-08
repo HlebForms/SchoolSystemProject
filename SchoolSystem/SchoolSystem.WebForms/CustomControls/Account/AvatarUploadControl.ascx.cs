@@ -44,11 +44,12 @@ namespace SchoolSystem.WebForms.CustomControls.Account
                     UserAvatarUrl = userAvatarUrl
                 });
 
-                this.StatusLabel.Text = this.Model.StatusMessage;
+
+                this.Notifier.NotifySuccess(this.Model.StatusMessage);
             }
             else
             {
-                this.StatusLabel.Text = "Моля изберете файл";
+                this.Notifier.NotifyError("Моля изберете файл");
             }
         }
     }

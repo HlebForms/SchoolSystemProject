@@ -35,8 +35,9 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 this.DaysOfWeekDropDown.DataSource = this.Model.DaysOfWeek;
                 this.DaysOfWeekDropDown.DataBind();
 
-                RaiseBindShceduleDataEvent();
+            RaiseBindShceduleDataEvent();
             }
+
         }
 
         public void DaysOfWeekDropDown_SelectedIndexChanged(object sender, EventArgs e)
