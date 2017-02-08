@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-namespace SchoolSystem.WebForms.Account.Models
+namespace SchoolSystem.WebForms.CustomControls.Account.Models
 {
     public class LoginModel
     {

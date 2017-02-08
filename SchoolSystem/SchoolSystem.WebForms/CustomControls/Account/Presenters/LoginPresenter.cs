@@ -1,11 +1,10 @@
-﻿using SchoolSystem.WebForms.Account.Views;
-using SchoolSystem.WebForms.Account.Views.EventArguments;
-
-using SchoolSystem.WebForms.Identity;
+﻿using SchoolSystem.WebForms.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using WebFormsMvp;
+using SchoolSystem.WebForms.CustomControls.Account.Views;
+using SchoolSystem.WebForms.CustomControls.Account.Views.EventArguments;
 
-namespace SchoolSystem.WebForms.Account.Presenters
+namespace SchoolSystem.WebForms.CustomControls.Account.Presenters
 {
     public class LoginPresenter : Presenter<ILoginView>
     {
