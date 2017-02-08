@@ -308,9 +308,9 @@
     <Compile Include="Account\Manage.aspx.designer.cs">
       <DependentUpon>Manage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Models\LoginModel.cs" />
+    <Compile Include="CustomControls\Account\Models\LoginModel.cs" />
     <Compile Include="Account\Models\RegistrationModel.cs" />
-    <Compile Include="Account\Presenters\LoginPresenter.cs" />
+    <Compile Include="CustomControls\Account\Presenters\LoginPresenter.cs" />
     <Compile Include="Account\Presenters\RegistrationPresenter.cs" />
     <Compile Include="Account\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -319,9 +319,9 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Views\EventArguments\LoginPageEventtArgs.cs" />
+    <Compile Include="CustomControls\Account\Views\EventArguments\LoginPageEventtArgs.cs" />
     <Compile Include="Account\Views\EventArguments\RegistrationPageEventArgs.cs" />
-    <Compile Include="Account\Views\ILoginView.cs" />
+    <Compile Include="CustomControls\Account\Views\ILoginView.cs" />
     <Compile Include="Account\Views\IRegisterView.cs" />
     <Compile Include="Admin\AdminArea.aspx.cs">
       <DependentUpon>AdminArea.aspx</DependentUpon>
@@ -381,6 +381,7 @@
     <Compile Include="CustomControls\Account\Presenters\AvatarUploadPresenter.cs" />
     <Compile Include="CustomControls\Account\Presenters\PasswordChangerPresenter.cs" />
     <Compile Include="CustomControls\Account\Views\EventArguments\AvatarUploadEventArgs.cs" />
+    <Compile Include="CustomControls\Account\Views\EventArguments\GetUserAvatarEventArgs.cs" />
     <Compile Include="CustomControls\Account\Views\EventArguments\PasswordChangeEventArgs.cs" />
     <Compile Include="CustomControls\Account\Views\IAvatarUploadView.cs" />
     <Compile Include="CustomControls\Account\Views\IPasswordChangeView.cs" />

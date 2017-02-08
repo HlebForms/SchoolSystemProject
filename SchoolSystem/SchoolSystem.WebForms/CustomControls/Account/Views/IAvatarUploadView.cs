@@ -10,5 +10,7 @@ namespace SchoolSystem.WebForms.CustomControls.Account.Views
     public interface IAvatarUploadView: IView<AvatarUploadModel>
     {
         event EventHandler<AvatarUploadEventArgs> EventUploadAvatar;
+
+        event EventHandler<GetUserAvatarEventArgs> EventGetUserAvatar;
     }
 }

@@ -37,5 +37,12 @@ namespace SchoolSystem.Web.Services
                 }
             }
         }
+
+        public string GetUserAvatarUrl(string userName)
+        {
+            Guard.WhenArgument(userName, "userName").IsNullOrEmpty().Throw();
+
+            return this.userRepo.GetFirst(x => x.UserName == userName).AvatarPictureUrl;
+        }
     }
 }

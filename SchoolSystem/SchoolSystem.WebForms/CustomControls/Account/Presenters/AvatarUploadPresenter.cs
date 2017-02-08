@@ -1,4 +1,5 @@
-﻿using SchoolSystem.Web.Services.Contracts;
+﻿using Bytes2you.Validation;
+using SchoolSystem.Web.Services.Contracts;
 using SchoolSystem.WebForms.CustomControls.Account.Views;
 using System;
 using System.Collections.Generic;
@@ -19,14 +20,17 @@ namespace SchoolSystem.WebForms.CustomControls.Account.Presenters
             IAccountManagementService accountManagementService)
             : base(view)
         {
-            if (accountManagementService == null)
-            {
-                throw new ArgumentNullException("accountManagementService");
-            }
+            Guard.WhenArgument(accountManagementService, "accountManagementService").IsNull().Throw();
 
             this.accountManagementService = accountManagementService;
 
             this.View.EventUploadAvatar += View_EventUploadAvatar;
+            this.View.EventGetUserAvatar += View_EventGetUserAvatar;
+        }
+
+        private void View_EventGetUserAvatar(object sender, Views.EventArguments.GetUserAvatarEventArgs e)
+        {
+            this.View.Model.UserAvatarUrl = this.accountManagementService.GetUserAvatarUrl(e.LoggedUseUserName);
         }
 
         private void View_EventUploadAvatar(object sender, Views.EventArguments.AvatarUploadEventArgs e)

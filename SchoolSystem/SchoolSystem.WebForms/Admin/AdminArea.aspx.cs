@@ -13,5 +13,43 @@ namespace SchoolSystem.WebForms.Admin
         {
 
         }
+
+        protected void Tab1_Click(object sender, EventArgs e)
+        {
+            this.MultiView1.ActiveViewIndex = 0;
+            Active_Tabs();
+        }
+
+        protected void Tab2_Click(object sender, EventArgs e)
+        {
+            this.MultiView1.ActiveViewIndex = 1;
+            Active_Tabs();
+        }
+
+        protected void Tab3_Click(object sender, EventArgs e)
+        {
+            this.MultiView1.ActiveViewIndex = 2;
+            Active_Tabs();
+        }
+
+        private void Active_Tabs()
+        {
+            var tabs = this.Tabs.Controls;
+            int count = 0;
+            int selectedTabIndex = this.MultiView1.ActiveViewIndex;
+
+            foreach (Button tab in tabs)
+            {
+                if (count == selectedTabIndex)
+                {
+                    tab.CssClass = "btn btn-primary tab";
+                }
+                else
+                {
+                    tab.CssClass = "btn btn-default tab";
+                }
+                count++;
+            }
+        }
     }
 }

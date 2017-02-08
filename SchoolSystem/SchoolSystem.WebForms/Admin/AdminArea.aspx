@@ -9,26 +9,31 @@
     TagPrefix="ajaxtoolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:UpdatePanel runat="server">
+        <ContentTemplate>
+            <asp:Label runat="server" ID="Tabs" CssClass="tabs">
+                <asp:Button Text="Създаване на предмет" BorderStyle="None" ID="Tab1" CssClass="btn btn-default tab" runat="server"
+                    OnClick="Tab1_Click" />
 
-    <ajaxtoolkit:TabContainer runat="server" ID="Container">
-        <ajaxtoolkit:TabPanel runat="server" ID="CreatingSubject">
-            <HeaderTemplate>Създаване на предмет</HeaderTemplate>
-            <ContentTemplate>
-                <custom:CreatingSubjectControl runat="server"></custom:CreatingSubjectControl>
-            </ContentTemplate>
-        </ajaxtoolkit:TabPanel>
-          <ajaxtoolkit:TabPanel runat="server" ID="TabPanel1">
-            <HeaderTemplate>Създаване на клас</HeaderTemplate>
-            <ContentTemplate>
-                <custom:CreatingClassOfStudentsControl runat="server"></custom:CreatingClassOfStudentsControl>
-            </ContentTemplate>
-        </ajaxtoolkit:TabPanel>
-          <ajaxtoolkit:TabPanel runat="server" ID="TabPanel2">
-            <HeaderTemplate>Промяна по разписанието на класовете</HeaderTemplate>
-            <ContentTemplate>
-                <custom:ManagingScheduleControl runat="server"></custom:ManagingScheduleControl>
-            </ContentTemplate>
-        </ajaxtoolkit:TabPanel>
-    </ajaxtoolkit:TabContainer>
+                <asp:Button Text="Създаване на клас" BorderStyle="None" ID="Tab2" CssClass="btn btn-default tab" runat="server"
+                    OnClick="Tab2_Click" />
+
+                <asp:Button Text="Менажиране на програма" BorderStyle="None" ID="Tab3" CssClass="btn btn-default tab" runat="server"
+                    OnClick="Tab3_Click" />
+            </asp:Label>
+
+            <asp:MultiView ID="MultiView1" runat="server">
+                <asp:View runat="server" ID="CreatingSubjectTab">
+                    <custom:CreatingSubjectControl runat="server" />
+                </asp:View>
+                <asp:View runat="server" ID="CreatingClassOfStudentsTab">
+                    <custom:CreatingClassOfStudentsControl runat="server" />
+                </asp:View>
+                <asp:View runat="server" ID="ManagingScheduleTab">
+                    <custom:ManagingScheduleControl runat="server" />
+                </asp:View>
+            </asp:MultiView>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 
 </asp:Content>

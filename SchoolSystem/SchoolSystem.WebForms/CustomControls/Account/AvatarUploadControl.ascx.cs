@@ -14,11 +14,13 @@ namespace SchoolSystem.WebForms.CustomControls.Account
     [PresenterBinding(typeof(AvatarUploadPresenter))]
     public partial class AvatarUploadControl : MvpUserControl<AvatarUploadModel>, IAvatarUploadView
     {
+        public event EventHandler<GetUserAvatarEventArgs> EventGetUserAvatar;
         public event EventHandler<AvatarUploadEventArgs> EventUploadAvatar;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.EventGetUserAvatar(this, new GetUserAvatarEventArgs() { LoggedUseUserName = this.Context.User.Identity.Name });
+            this.UserAvatar.ImageUrl = this.Model.UserAvatarUrl;
         }
 
         protected void UploadAvatarBtn_Click(object sender, EventArgs e)

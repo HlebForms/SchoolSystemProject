@@ -112,12 +112,17 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 5px;
 }
 
+
 .program{
     border: 2px solid #2196F3;
 }
 
-.top-news{
+.top-news {
     border: 2px solid #2196F3;
+}
+
+.tab{
+    margin:2px;
 }
 
 .news-feed {
@@ -265,3 +270,4 @@ hr {
     vertical-align: middle;
     border: 1px solid #c8cbcd;
 }
+

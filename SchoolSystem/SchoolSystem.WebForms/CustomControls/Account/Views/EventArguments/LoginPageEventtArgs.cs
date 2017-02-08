@@ -3,8 +3,9 @@
 using SchoolSystem.WebForms.Account.Models;
 
 using Microsoft.Owin;
+using SchoolSystem.WebForms.CustomControls.Account.Models;
 
-namespace SchoolSystem.WebForms.Account.Views.EventArguments
+namespace SchoolSystem.WebForms.CustomControls.Account.Views.EventArguments
 {
     public class LoginPageEventtArgs : EventArgs
     {

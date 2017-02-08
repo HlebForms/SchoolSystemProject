@@ -13,39 +13,75 @@ namespace SchoolSystem.WebForms.Admin {
     public partial class AdminArea {
         
         /// <summary>
-        /// Container control.
+        /// Tabs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabContainer Container;
+        protected global::System.Web.UI.WebControls.Label Tabs;
         
         /// <summary>
-        /// CreatingSubject control.
+        /// Tab1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel CreatingSubject;
+        protected global::System.Web.UI.WebControls.Button Tab1;
         
         /// <summary>
-        /// TabPanel1 control.
+        /// Tab2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel1;
+        protected global::System.Web.UI.WebControls.Button Tab2;
         
         /// <summary>
-        /// TabPanel2 control.
+        /// Tab3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel2;
+        protected global::System.Web.UI.WebControls.Button Tab3;
+        
+        /// <summary>
+        /// MultiView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView MultiView1;
+        
+        /// <summary>
+        /// CreatingSubjectTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View CreatingSubjectTab;
+        
+        /// <summary>
+        /// CreatingClassOfStudentsTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View CreatingClassOfStudentsTab;
+        
+        /// <summary>
+        /// ManagingScheduleTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View ManagingScheduleTab;
     }
 }

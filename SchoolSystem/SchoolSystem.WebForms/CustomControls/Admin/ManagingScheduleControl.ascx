@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ManagingScheduleControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Admin.CreateScheduleControl" %>
 
+<h4>Менажиране на програма</h4>
 <asp:UpdatePanel runat="server" ID="test" UpdateMode="Conditional">
     <ContentTemplate>
         <div class="form-group">
