@@ -112,7 +112,7 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <footer>
-            <hr class="footer-hr"/>
+                <hr class="footer-hr" />
                 <p>&copy; <%: DateTime.Now.Year %> - Developed by ХлебForms  </p>
             </footer>
         </div>

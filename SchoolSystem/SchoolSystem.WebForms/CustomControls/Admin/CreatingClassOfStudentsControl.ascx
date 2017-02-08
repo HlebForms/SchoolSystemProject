@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CreatingClassOfStudentsControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Admin.CreatingClassControl" %>
-<h1>Създаване на клас</h1>
+<h4>Създаване на клас</h4>
 <div class="row">
     <div class="form-group">
         <asp:Label runat="server" AssociatedControlID="ClassNameTextBox" CssClass="col-md-2 control-label">Име на класа</asp:Label>
@@ -9,7 +9,8 @@
                 runat="server"
                 ControlToValidate="ClassNameTextBox"
                 CssClass="text-danger"
-                ErrorMessage="Моля въведете име на класа" />
+                ErrorMessage="Моля въведете име на класа"
+                ValidationGroup="CreateClass" />
         </div>
     </div>
     <div class="form-group">
@@ -27,7 +28,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <asp:Button runat="server" ID="CreateClsasBtn" Text="Създай клас" CssClass="btn btn-default" OnClick="CreateClsasBtn_Click" />
+            <asp:Button runat="server" ID="CreateClsasBtn" Text="Създай клас" CssClass="btn btn-default" OnClick="CreateClsasBtn_Click" ValidationGroup="CreateClass" />
         </div>
     </div>
 </div>

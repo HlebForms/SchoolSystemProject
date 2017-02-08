@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CreatingSubjectControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Admin.AddingSubjectUserControl" %>
 
-<h1>Cъздаване на предмет</h1>
+<h4>Cъздаване на предмет</h4>
 <div class="form-group">
     <asp:Label runat="server" AssociatedControlID="SubjectNameTextBox" CssClass="col-md-2 control-label">Име на предмета</asp:Label>
     <div class="col-md-10">
