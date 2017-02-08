@@ -30,7 +30,7 @@
         <LoggedInTemplate>
             <h5 class="newsfeed-header-text">Добави коментар</h5>
             <asp:TextBox TextMode="MultiLine" Rows="3" MaxLength="200" placeholder="Максимум 200 символа..." ID="AddTextbox" CssClass="comment-box" runat="server"></asp:TextBox>
-            <asp:Button ID="AddComment" OnClick="AddComment_Click" runat="server" Text="Добави" />
+            <asp:Button ID="AddComment" OnClick="AddComment_Click" runat="server" Text="Добави" CssClass="btn btn-primary" />
             <hr class="comments-hr" />
 
             <div class="comments-container-logged">
