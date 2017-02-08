@@ -12,10 +12,6 @@ namespace SchoolSystem.Data.Migrations
 
     public sealed class Configuration : DbMigrationsConfiguration<SchoolSystem.Data.SchoolSystemDbContext>
     {
-        //private const string AdminRole = "Admin";
-        //private const string TeacherRole = "Teacher";
-        //private const string StudentRole = "Student";
-
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
@@ -24,11 +20,11 @@ namespace SchoolSystem.Data.Migrations
 
         protected override void Seed(SchoolSystemDbContext context)
         {
-            //this.RolesSeeder(context);
+            this.RolesSeeder(context);
             //this.SubjectSeeder(context);
             //this.ClassOfStudentsSeeder(context);
             //this.UsersSeeder(context);
-            //this.DaysOfWeekSeeder(context);
+            this.DaysOfWeekSeeder(context);
         }
 
         private void DaysOfWeekSeeder(SchoolSystemDbContext context)
@@ -143,37 +139,37 @@ namespace SchoolSystem.Data.Migrations
                 userManager.AddToRole(adminUser.Id, UserType.Admin);
             }
 
-            if (!context.Users.Any(u => u.UserName == "teacher@teacher.com"))
-            {
-                var teacherUser = new User { UserName = "teacher@teacher.com" };
+            //if (!context.Users.Any(u => u.UserName == "teacher@teacher.com"))
+            //{
+            //    var teacherUser = new User { UserName = "teacher@teacher.com" };
 
 
-                userManager.Create(teacherUser, "teacher123");
-                userManager.AddToRole(teacherUser.Id, UserType.Teacher);
-                context.Teachers.AddOrUpdate(new Teacher()
-                {
-                    Id = teacherUser.Id,
-                    SubjectId = 1,
-                });
+            //    userManager.Create(teacherUser, "teacher123");
+            //    userManager.AddToRole(teacherUser.Id, UserType.Teacher);
+            //    context.Teachers.AddOrUpdate(new Teacher()
+            //    {
+            //        Id = teacherUser.Id,
+            //        SubjectId = 1,
+            //    });
 
-                context.SaveChanges();
-            }
+            //    context.SaveChanges();
+            //}
 
 
-            if (!context.Users.Any(u => u.UserName == "student@student.com"))
-            {
-                var studentUser = new User { UserName = "student@student.com" };
+            //if (!context.Users.Any(u => u.UserName == "student@student.com"))
+            //{
+            //    var studentUser = new User { UserName = "student@student.com" };
 
-                userManager.Create(studentUser, "student123");
-                userManager.AddToRole(studentUser.Id, UserType.Student);
+            //    userManager.Create(studentUser, "student123");
+            //    userManager.AddToRole(studentUser.Id, UserType.Student);
 
-                context.Students.AddOrUpdate(new Student()
-                {
-                    Id = studentUser.Id,
-                    ClassOfStudentsId = 1,
+            //    context.Students.AddOrUpdate(new Student()
+            //    {
+            //        Id = studentUser.Id,
+            //        ClassOfStudentsId = 1,
 
-                });
-            }
+            //    });
+            //}
         }
     }
 }

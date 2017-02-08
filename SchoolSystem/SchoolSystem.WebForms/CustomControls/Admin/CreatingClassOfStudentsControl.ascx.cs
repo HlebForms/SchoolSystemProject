@@ -1,10 +1,7 @@
 ﻿using SchoolSystem.WebForms.CustomControls.Admin.Models;
 using SchoolSystem.WebForms.CustomControls.Admin.Views;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebFormsMvp.Web;
 using SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments;
@@ -39,7 +36,18 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 SubjectIds = subjects
             };
             this.EventCreateClassOfStudents(this, args);
-            // TODO: handle result
+
+            if (this.Model.IsSuccesfull)
+            {
+                this.SubjectsList.ClearSelection();
+                this.ClassNameTextBox.Text = string.Empty;
+                
+                this.Notifier.NotifySuccess("Класът е създаден!");
+            }
+            else
+            {
+                this.Notifier.NotifyError("Възникна грешка!");
+            }
         }
     }
 }

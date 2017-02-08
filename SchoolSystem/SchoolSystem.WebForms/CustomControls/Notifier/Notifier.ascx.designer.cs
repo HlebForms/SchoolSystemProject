@@ -13,12 +13,21 @@ namespace SchoolSystem.WebForms.CustomControls.Notifier {
     public partial class Notifier {
         
         /// <summary>
-        /// NotifyLabel control.
+        /// NotificationPane control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label NotifyLabel;
+        protected global::System.Web.UI.WebControls.Panel NotificationPane;
+        
+        /// <summary>
+        /// NotificationMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NotificationMessage;
     }
 }
