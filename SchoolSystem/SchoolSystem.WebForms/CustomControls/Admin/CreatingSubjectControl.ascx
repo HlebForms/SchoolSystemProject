@@ -5,11 +5,12 @@
     <asp:Label runat="server" AssociatedControlID="SubjectNameTextBox" CssClass="col-md-2 control-label">Име на предмета</asp:Label>
     <div class="col-md-10">
         <asp:TextBox runat="server" ID="SubjectNameTextBox" CssClass="form-control"> </asp:TextBox>
+        <br />
         <asp:Button
             runat="server"
             Text="Създай предмет"
             ID="AddSubjectBtn"
-            CssClass="btn btn-default"
+            CssClass="btn btn-primary"
             OnClick="AddSubjectBtn_Click" />
     </div>
 </div>

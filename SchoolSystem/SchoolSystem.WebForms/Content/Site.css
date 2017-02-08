@@ -113,7 +113,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-.program{
+.program {
     border: 2px solid #2196F3;
 }
 
@@ -121,8 +121,8 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid #2196F3;
 }
 
-.tab{
-    margin:2px;
+.tab {
+    margin: 2px;
 }
 
 .news-feed {
@@ -271,3 +271,28 @@ hr {
     border: 1px solid #c8cbcd;
 }
 
+.upload-button {
+    opacity: 0;
+	z-index: -1;
+}
+
+select{
+  background-color:white !important; 
+}
+
+.table td:nth-child(1) {
+    padding-left:0;
+}
+
+.table th:nth-child(1) {
+    padding-left:0;
+}
+
+
+.table td {
+    padding-left:30px;
+}
+
+.table th { 
+    padding-left:30px;
+}

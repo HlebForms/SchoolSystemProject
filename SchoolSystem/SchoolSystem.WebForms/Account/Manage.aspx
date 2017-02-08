@@ -5,12 +5,13 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:Button Text="Смяна на аватар" BorderStyle="None" ID="Tab1" CssClass="btn btn-default" runat="server"
+    <asp:Label runat="server" ID="Tabs" CssClass="tabs">
+    <asp:Button Text="Смяна на аватар" BorderStyle="None" ID="Tab1" CssClass="btn btn-default tab" runat="server"
         OnClick="Tab1_Click" />
 
-    <asp:Button Text="Промяна на парола" BorderStyle="None" ID="Tab2" CssClass="btn btn-default" runat="server"
+    <asp:Button Text="Промяна на парола" BorderStyle="None" ID="Tab2" CssClass="btn btn-default tab" runat="server"
         OnClick="Tab2_Click" />
-
+        </asp:Label>
 
     <asp:MultiView ID="MultiView1" runat="server">
         <asp:View runat="server" ID="UploadAvatarView">

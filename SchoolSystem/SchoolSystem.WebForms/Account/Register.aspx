@@ -103,7 +103,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <asp:Button runat="server" OnClick="CreateUser_Click" Text="Регистрация" CssClass="btn btn-default" />
+                        <asp:Button runat="server" OnClick="CreateUser_Click" Text="Регистрация" CssClass="btn btn-primary" />
                     </div>
                 </div>
             </div>

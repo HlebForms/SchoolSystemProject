@@ -28,7 +28,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <asp:Button runat="server" ID="CreateClsasBtn" Text="Създай клас" CssClass="btn btn-default" OnClick="CreateClsasBtn_Click" ValidationGroup="CreateClass" />
+            <asp:Button runat="server" ID="CreateClsasBtn" Text="Създай клас" CssClass="btn btn-primary" OnClick="CreateClsasBtn_Click" ValidationGroup="CreateClass" />
         </div>
     </div>
 </div>
