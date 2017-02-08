@@ -11,5 +11,7 @@ namespace SchoolSystem.Web.Services.Contracts
         void UploadAvatar(string userName, string avatarUrl);
 
         string GetUserAvatarUrl(string userName);
+
+        bool IsEmailUnique(string email);
     }
 }

@@ -14,5 +14,6 @@ namespace SchoolSystem.WebForms.Account.Models
         public IEnumerable<ClassOfStudents> ClassOfStudents { get; set; }
 
         public IEnumerable<Subject> Subjects { get; set; }
+
     }
 }

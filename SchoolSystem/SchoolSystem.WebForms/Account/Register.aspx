@@ -1,19 +1,15 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="SchoolSystem.WebForms.Account.Register" %>
 
+<%@ Register Src="~/CustomControls/Notifier/Notifier.ascx" TagPrefix="custom" TagName="Notifier" %>
+
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <asp:UpdatePanel runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <p class="text-danger">
-                <asp:Literal runat="server" ID="ErrorMessage" />
-            </p>
-            <p class="text-success">
-                <asp:Literal runat="server" ID="SuccessMessage" />
-            </p>
+            <custom:Notifier runat="server" ID="Notifier" />
 
             <div class="form-horizontal">
                 <h4>Добавяне на нов потребител</h4>
                 <hr />
-                <asp:ValidationSummary runat="server" CssClass="text-danger" />
                 <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="UserTypeDropDown" CssClass="col-md-2 control-label">Тип на потребителя</asp:Label>
                     <div class="col-md-10">
@@ -55,6 +51,8 @@
                             DataValueField="Id"
                             DataTextField="Name">
                         </asp:DropDownList>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="ClassDropDown"
+                            CssClass="text-danger" ErrorMessage="Моля изберете класът, в който ще е ученикът" />
                     </div>
                 </div>
 
@@ -64,7 +62,7 @@
                     <div class="col-md-10">
                         <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
-                            CssClass="text-danger" ErrorMessage="The email field is required." />
+                            CssClass="text-danger" ErrorMessage="Имейлът е задължтелен" />
                     </div>
                 </div>
                 <div class="form-group">

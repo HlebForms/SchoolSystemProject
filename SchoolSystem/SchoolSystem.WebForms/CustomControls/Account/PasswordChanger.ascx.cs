@@ -41,7 +41,7 @@ namespace SchoolSystem.WebForms.CustomControls.Account
                 }
                 else
                 {
-                    this.ErrorMessage.Text = string.Join(Environment.NewLine, this.Model.ResultOfChangingPassword.Errors);
+                    this.Notifier.NotifyError(string.Join(Environment.NewLine, this.Model.ResultOfChangingPassword.Errors));
                 }
             }
         }

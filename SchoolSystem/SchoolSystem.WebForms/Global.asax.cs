@@ -20,7 +20,7 @@ namespace SchoolSystem.WebForms
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<SchoolSystemDbContext, Configuration>());
             //var database = new SchoolSystemDbContext();
             //database.Database.CreateIfNotExists();
-            DbConfig.Initialize();
+            //DbConfig.Initialize();
             // Ninject
             BindingsConfig.BindPresenterFactory();
         }

@@ -17,9 +17,9 @@ namespace SchoolSystem.Data
             this.context = context;
         }
 
-        public void Commit()
+        public bool Commit()
         {
-            this.context.SaveChanges();
+            return this.context.SaveChanges() == 1;
         }
 
         public void Dispose()

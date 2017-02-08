@@ -1,8 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ManagingScheduleControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Admin.CreateScheduleControl" %>
+<%@ Register Src="~/CustomControls/Notifier/Notifier.ascx" TagPrefix="uc1" TagName="Notifier" %>
 
 <h4>Менажиране на програма</h4>
+
 <asp:UpdatePanel runat="server" ID="test" UpdateMode="Conditional">
     <ContentTemplate>
+
+        <uc1:Notifier runat="server" ID="Notifier" />
+
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="ClassOfStudentsDropDown" CssClass="col-md-2 control-label">Клас</asp:Label>
             <div class="col-md-10">

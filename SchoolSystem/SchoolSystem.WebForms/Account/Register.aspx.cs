@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Web;
 using WebFormsMvp;
 using WebFormsMvp.Web;
@@ -68,12 +67,12 @@ namespace SchoolSystem.WebForms.Account
 
             if (result.Succeeded)
             {
-                this.SuccessMessage.Text = "Успешно регестрирахте потребител";
-                Page.Response.Redirect(Page.Request.RawUrl);
+                this.Notifier.NotifySuccess("Успешно регистрирахте потребител");
+                ResetInputInFields();
             }
             else
             {
-                this.ErrorMessage.Text = result.Errors.FirstOrDefault();
+                this.Notifier.NotifyError(string.Join(Environment.NewLine, result.Errors));
             }
         }
 
@@ -96,6 +95,15 @@ namespace SchoolSystem.WebForms.Account
                 this.SubjectContainer.Visible = false;
                 this.ClassContainer.Visible = false;
             }
+        }
+
+        private void ResetInputInFields()
+        {
+            this.Email.Text = string.Empty;
+            this.FirstNameTextBox.Text = string.Empty;
+            this.LastNameTextBox.Text = string.Empty;
+            this.Password.Text = string.Empty;
+            this.ConfirmPassword.Text = string.Empty;
         }
     }
 }

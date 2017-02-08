@@ -8,6 +8,6 @@ namespace SchoolSystem.Data.Contracts
 {
     public interface IUnitOfWork : IDisposable
     {
-        void Commit();
+        bool Commit();
     }
 }

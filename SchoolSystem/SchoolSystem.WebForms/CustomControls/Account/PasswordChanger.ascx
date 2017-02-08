@@ -1,12 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="PasswordChanger.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Account.PasswordChanger" %>
+<%@ Register Src="~/CustomControls/Notifier/Notifier.ascx" TagPrefix="custom" TagName="Notifier" %>
+
 
 <h3>Промяна на паролата</h3>
 <asp:UpdatePanel runat="server">
     <ContentTemplate>
         <div class="form-horizontal">
-            <p class="text-danger">
-                <asp:Literal runat="server" ID="ErrorMessage" />
-            </p>
+            <custom:Notifier runat="server" ID="Notifier" />
+
             <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
             <div class="form-group">
                 <asp:Label runat="server" ID="CurrentPasswordLabel" AssociatedControlID="CurrentPassword" CssClass="col-md-2 control-label">Текуща парола</asp:Label>

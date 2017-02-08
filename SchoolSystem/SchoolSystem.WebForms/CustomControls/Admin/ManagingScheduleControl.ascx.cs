@@ -37,6 +37,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
 
                 RaiseBindShceduleDataEvent(); 
             }
+
         }
 
         public void DaysOfWeekDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -57,6 +58,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
 
                     var startHourDropDown = e.Item.FindControl("StartHourDropDown") as DropDownList;
                     var startHour = int.Parse(startHourDropDown.SelectedValue);
+
                     // public DateTime(int year, int month, int day, int hour, int minute, int second);
                     var startHourDateTime = new DateTime(2016, 1, 1, startHour, 0, 0);
 
@@ -94,6 +96,10 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 SubjectId = selectedSubjectId
             });
 
+            if (!this.Model.IsInsertingSuccessFull)
+            {
+                this.Notifier.NotifyError("В един ден предметите не могат да се повтарят!");
+            }
         }
 
         public IEnumerable<Subject> PopulateSubjects()

@@ -33,7 +33,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
                 throw new ArgumentNullException("classOfStudentsManagementService");
             }
 
-            if (subjectManagementService==null)
+            if (subjectManagementService == null)
             {
                 throw new ArgumentNullException("subjectManagementService");
             }
@@ -41,7 +41,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
             this.scheduleService = scheduleService;
             this.classOfStudentsManagementService = classOfStudentsManagementService;
             this.subjectManagementService = subjectManagementService;
-            
+
             this.View.EventBindScheduleData += this.BindScheduleData;
             this.View.EventBindAllClasses += this.GetAllClasses;
             this.View.EventBindDaysOfWeek += this.BindDaysOfWeek;
@@ -57,7 +57,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
 
         private void AddSubjectToSchedule(object sender, AddingSubjectToScheduleEventArgs e)
         {
-            this.scheduleService.AddSubjectToSchedule(e.ClassId, e.SubjectId, e.DaysOfWeekId, e.StartHour, e.EndHour);
+            this.View.Model.IsInsertingSuccessFull = this.scheduleService.AddSubjectToSchedule(e.ClassId, e.SubjectId, e.DaysOfWeekId, e.StartHour, e.EndHour);
         }
 
         private void BindSubjectsForSpecificClass(object sender, BindSubjectsForClassEventArgs e)
