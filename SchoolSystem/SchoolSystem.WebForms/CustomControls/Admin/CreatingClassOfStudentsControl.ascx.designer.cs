@@ -13,6 +13,15 @@ namespace SchoolSystem.WebForms.CustomControls.Admin {
     public partial class CreatingClassControl {
         
         /// <summary>
+        /// Notifier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SchoolSystem.WebForms.CustomControls.Notifier.Notifier Notifier;
+        
+        /// <summary>
         /// ClassNameTextBox control.
         /// </summary>
         /// <remarks>

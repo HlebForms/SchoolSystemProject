@@ -12,9 +12,6 @@ namespace SchoolSystem.Data.Migrations
 
     public sealed class Configuration : DbMigrationsConfiguration<SchoolSystem.Data.SchoolSystemDbContext>
     {
-        private const string AdminRole = "Admin";
-        //private const string TeacherRole = "Teacher";
-        //private const string StudentRole = "Student";
 
         public Configuration()
         {
