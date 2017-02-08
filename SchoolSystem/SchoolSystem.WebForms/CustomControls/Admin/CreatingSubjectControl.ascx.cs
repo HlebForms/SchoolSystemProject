@@ -31,13 +31,11 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
 
             if (this.Model.IsSuccesfull)
             {
-                // Notify admin 
-                Response.Write("Done");
+               this.Notifier.NotifySuccess("Предметът е създаден!");
             }
             else
             {
-                Response.Write("Error");
-                // Notify Admin
+                this.Notifier.NotifyError("Възникна грешка! (Вероятно вече съществува предмет с такова име)");
             }
         }
     }
