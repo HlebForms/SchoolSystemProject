@@ -13,22 +13,13 @@ namespace SchoolSystem.WebForms.Account {
     public partial class Register {
         
         /// <summary>
-        /// ErrorMessage control.
+        /// Notifier control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
-        
-        /// <summary>
-        /// SuccessMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal SuccessMessage;
+        protected global::SchoolSystem.WebForms.CustomControls.Notifier.Notifier Notifier;
         
         /// <summary>
         /// UserTypeDropDown control.

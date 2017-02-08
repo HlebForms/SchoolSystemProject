@@ -9,6 +9,7 @@ using SchoolSystem.WebForms.Account.Models;
 using SchoolSystem.WebForms.Account.Presenters;
 using SchoolSystem.WebForms.Account.Views;
 using SchoolSystem.WebForms.Account.Views.EventArguments;
+using System.Web.UI.WebControls;
 
 namespace SchoolSystem.WebForms.Account
 {
@@ -68,12 +69,12 @@ namespace SchoolSystem.WebForms.Account
 
             if (result.Succeeded)
             {
-                this.SuccessMessage.Text = "Успешно регестрирахте потребител";
-                Page.Response.Redirect(Page.Request.RawUrl);
+                this.Notifier.NotifySuccess("Успешно регистрирахте потребител");
+                ResetInputInFields();
             }
             else
             {
-                this.ErrorMessage.Text = result.Errors.FirstOrDefault();
+                this.Notifier.NotifyError(result.Errors.FirstOrDefault());
             }
         }
 
@@ -96,6 +97,15 @@ namespace SchoolSystem.WebForms.Account
                 this.SubjectContainer.Visible = false;
                 this.ClassContainer.Visible = false;
             }
+        }
+
+        private void ResetInputInFields()
+        {
+            this.Email.Text = string.Empty;
+            this.FirstNameTextBox.Text = string.Empty;
+            this.LastNameTextBox.Text = string.Empty;
+            this.Password.Text = string.Empty;
+            this.ConfirmPassword.Text = string.Empty;
         }
     }
 }

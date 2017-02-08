@@ -10,22 +10,27 @@ using SchoolSystem.WebForms.Identity;
 using WebFormsMvp;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Bytes2you.Validation;
 
 namespace SchoolSystem.WebForms.Account.Presenters
 {
     public class RegistrationPresenter : Presenter<IRegisterView>
     {
         private readonly IRegistrationService registrationService;
+        private readonly IAccountManagementService accountManagementSerivce;
 
-        public RegistrationPresenter(IRegisterView view, IRegistrationService registrationService)
+        public RegistrationPresenter(
+            IRegisterView view,
+            IRegistrationService registrationService,
+            IAccountManagementService accountManagementSerivce)
             : base(view)
         {
-            if (registrationService == null)
-            {
-                throw new ArgumentNullException("service");
-            }
+
+            Guard.WhenArgument(registrationService, "registrationService").IsNull().Throw();
+            Guard.WhenArgument(accountManagementSerivce, "accountManagementSerivce").IsNull().Throw();
 
             this.registrationService = registrationService;
+            this.accountManagementSerivce = accountManagementSerivce;
 
             this.View.EventRegisterUser += RegisterUser;
             this.View.EventBindPageData += BindPageData;
@@ -40,6 +45,14 @@ namespace SchoolSystem.WebForms.Account.Presenters
 
         private void RegisterUser(object sender, RegistrationPageEventArgs e)
         {
+            var isEmailUniqe = this.accountManagementSerivce.IsEmailUnique(e.Email);
+
+            if (!isEmailUniqe)
+            {
+                this.View.Model.Result = new IdentityResult("Има потребител с такъв имейл!");
+                return;
+            }
+
             var manager = e.OwinCtx.GetUserManager<ApplicationUserManager>();
 
             var user = new User()
@@ -52,6 +65,7 @@ namespace SchoolSystem.WebForms.Account.Presenters
             };
 
             IdentityResult result = manager.Create(user, e.Password);
+
             manager.AddToRole(user.Id, e.UserType);
 
             if (e.UserType == UserType.Teacher)
