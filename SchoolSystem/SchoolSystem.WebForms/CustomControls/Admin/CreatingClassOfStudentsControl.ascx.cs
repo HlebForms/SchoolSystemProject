@@ -10,6 +10,7 @@ using WebFormsMvp.Web;
 using SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments;
 using SchoolSystem.WebForms.CustomControls.Admin.Presenters;
 using WebFormsMvp;
+using SchoolSystem.WebForms.CustomControls.Notifier;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin
 {
@@ -39,7 +40,17 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 SubjectIds = subjects
             };
             this.EventCreateClassOfStudents(this, args);
-            // TODO: handle result
+
+            if (this.Model.IsSuccesfull)
+            {
+                this.SubjectsList.ClearSelection();
+                this.ClassNameTextBox.Text = string.Empty;
+                this.Notifier.NotifySuccess("Stana");
+            }
+            else
+            {
+                this.Notifier.NotifyError("NE stana");
+            }
         }
     }
 }
