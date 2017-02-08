@@ -99,7 +99,7 @@ namespace SchoolSystem.Web.Services
             return content;
         }
 
-        public void AddSubjectToSchedule(int classId, int subjectId, int dayOfWeekId, DateTime startHour, DateTime endHour)
+        public bool AddSubjectToSchedule(int classId, int subjectId, int dayOfWeekId, DateTime startHour, DateTime endHour)
         {
             using (var uow = this.unitOfWork())
             {
@@ -114,7 +114,7 @@ namespace SchoolSystem.Web.Services
 
                 try
                 {
-                    uow.Commit();
+                    return uow.Commit();
 
                 }
                 catch (Exception e)
@@ -123,6 +123,7 @@ namespace SchoolSystem.Web.Services
                 }
             }
 
+            return false;
         }
 
         public void RemoveSubjectFromSchedule(int classId, int daysOfWeekId, int subjectId)

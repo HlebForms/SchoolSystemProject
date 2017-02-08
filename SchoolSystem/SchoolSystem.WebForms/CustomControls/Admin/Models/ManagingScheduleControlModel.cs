@@ -16,5 +16,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Models
         public IEnumerable<ManagingScheduleModel> CurrentSchedule { get; set; }
 
         public IEnumerable<Subject> SubjectForCurrentClass { get; internal set; }
+
+        public bool IsInsertingSuccessFull { get; set; }
     }
 }

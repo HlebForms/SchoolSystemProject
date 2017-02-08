@@ -22,6 +22,15 @@ namespace SchoolSystem.WebForms.CustomControls.Admin {
         protected global::System.Web.UI.UpdatePanel test;
         
         /// <summary>
+        /// Notifier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SchoolSystem.WebForms.CustomControls.Notifier.Notifier Notifier;
+        
+        /// <summary>
         /// ClassOfStudentsDropDown control.
         /// </summary>
         /// <remarks>
