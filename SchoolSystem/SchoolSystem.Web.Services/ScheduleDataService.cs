@@ -63,6 +63,7 @@ namespace SchoolSystem.Web.Services
                     {
                         SubjectId = schedule.SubjectId,
                         SubjectName = schedule.SubjectClassOfStudents.Subject.Name,
+                        ImageUrl = schedule.SubjectClassOfStudents.Subject.ImageUrl,
                         TeacherName = teacherName,
                         StartHour = schedule.StartHour,
                         EndHour = schedule.EndHour

@@ -22,7 +22,7 @@ namespace SchoolSystem.WebForms.CustomControls.Account
             this.EventGetUserAvatar(this, new GetUserAvatarEventArgs() { LoggedUseUserName = this.Context.User.Identity.Name });
             this.UserAvatar.ImageUrl = this.Model.UserAvatarUrl;
         }
-
+         
         protected void UploadAvatarBtn_Click(object sender, EventArgs e)
         {
             if (this.AvatarUpload.HasFile)

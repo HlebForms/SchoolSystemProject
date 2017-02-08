@@ -12,7 +12,7 @@ namespace SchoolSystem.Data.Migrations
 
     public sealed class Configuration : DbMigrationsConfiguration<SchoolSystem.Data.SchoolSystemDbContext>
     {
-        //private const string AdminRole = "Admin";
+        private const string AdminRole = "Admin";
         //private const string TeacherRole = "Teacher";
         //private const string StudentRole = "Student";
 
@@ -24,49 +24,57 @@ namespace SchoolSystem.Data.Migrations
 
         protected override void Seed(SchoolSystemDbContext context)
         {
-            //this.RolesSeeder(context);
-            //this.SubjectSeeder(context);
-            //this.ClassOfStudentsSeeder(context);
-            //this.UsersSeeder(context);
-            //this.DaysOfWeekSeeder(context);
+            this.RolesSeeder(context);
+            this.SubjectSeeder(context);
+            this.ClassOfStudentsSeeder(context);
+            this.UsersSeeder(context);
+            this.DaysOfWeekSeeder(context);
         }
 
         private void DaysOfWeekSeeder(SchoolSystemDbContext context)
         {
-            context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
-            {
-                Name = DayOfWeek.Monday.ToString()
-            });
-
+            var culture = new System.Globalization.CultureInfo("bg-BG");
 
             context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {
-                Name = DayOfWeek.Tuesday.ToString()
+                Id = 1,
+                Name = culture.DateTimeFormat.GetDayName(DayOfWeek.Monday)
             });
 
             context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {
-                Name = DayOfWeek.Wednesday.ToString()
+                Id = 2,
+                Name = culture.DateTimeFormat.GetDayName(DayOfWeek.Tuesday)
             });
 
             context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {
-                Name = DayOfWeek.Thursday.ToString()
+                Id = 3,
+                Name = culture.DateTimeFormat.GetDayName(DayOfWeek.Wednesday)
             });
 
             context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {
-                Name = DayOfWeek.Friday.ToString()
+                Id = 4,
+                Name = culture.DateTimeFormat.GetDayName(DayOfWeek.Thursday)
             });
 
             context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {
-                Name = DayOfWeek.Saturday.ToString()
+                Id = 5,
+                Name = culture.DateTimeFormat.GetDayName(DayOfWeek.Friday)
             });
 
             context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
             {
-                Name = DayOfWeek.Sunday.ToString()
+                Id = 6,
+                Name = culture.DateTimeFormat.GetDayName(DayOfWeek.Saturday)
+            });
+
+            context.DaysOfWeek.AddOrUpdate(new DaysOfWeek()
+            {
+                Id = 7,
+                Name = culture.DateTimeFormat.GetDayName(DayOfWeek.Sunday)
             });
 
             context.SaveChanges();
@@ -78,10 +86,15 @@ namespace SchoolSystem.Data.Migrations
             context.ClassOfStudents.AddOrUpdate(new ClassOfStudents()
             {
                 Id = 1,
-                Name = "12а",
+                Name = "7 А",
                 SubjectClassOfStudents = new HashSet<SubjectClassOfStudents>()
                 {
-                    new SubjectClassOfStudents() { SubjectId = 1, ClassOfStudentsId = 1 }
+                    new SubjectClassOfStudents() { SubjectId = 1, ClassOfStudentsId = 1 },
+                    new SubjectClassOfStudents() { SubjectId = 2, ClassOfStudentsId = 1 },
+                    new SubjectClassOfStudents() { SubjectId = 3, ClassOfStudentsId = 1 },
+                    new SubjectClassOfStudents() { SubjectId = 10, ClassOfStudentsId = 1 },
+                    new SubjectClassOfStudents() { SubjectId = 11, ClassOfStudentsId = 1 },
+                    new SubjectClassOfStudents() { SubjectId = 12, ClassOfStudentsId = 1 }
                 }
             });
 
@@ -93,13 +106,85 @@ namespace SchoolSystem.Data.Migrations
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 1,
-                Name = "Математика",
+                Name = "Български",
+                ImageUrl = "~/Image/subject_images/subject1.png"
             });
 
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 2,
-                Name = "ИТ"
+                Name = "Литература",
+                ImageUrl = "~/Image/subject_images/subject2.png"
+            });
+
+            context.Subjects.AddOrUpdate(new Subject()
+            {
+                Id = 3,
+                Name = "Математика",
+                ImageUrl = "~/Image/subject_images/subject3.png"
+            });
+
+            context.Subjects.AddOrUpdate(new Subject()
+            {
+                Id = 4,
+                Name = "Биология",
+                ImageUrl = "~/Image/subject_images/subject4.png"
+            });
+
+            context.Subjects.AddOrUpdate(new Subject()
+            {
+                Id = 5,
+                Name = "Физика",
+                ImageUrl = "~/Image/subject_images/subject5.png"
+            });
+
+            context.Subjects.AddOrUpdate(new Subject()
+            {
+                Id = 6,
+                Name = "Химия",
+                ImageUrl = "~/Image/subject_images/subject6.png"
+            });
+
+            context.Subjects.AddOrUpdate(new Subject()
+            {
+                Id = 7,
+                Name = "Музика",
+                ImageUrl = "~/Image/subject_images/subject7.png"
+            });
+
+            context.Subjects.AddOrUpdate(new Subject()
+            {
+                Id = 8,
+                Name = "Рисуване",
+                ImageUrl = "~/Image/subject_images/subject8.png"
+            });
+
+            context.Subjects.AddOrUpdate(new Subject()
+            {
+                Id = 9,
+                Name = "Информатика",
+                ImageUrl = "~/Image/subject_images/subject9.png"
+            });
+
+            context.Subjects.AddOrUpdate(new Subject()
+            {
+                Id = 10,
+                Name = "География",
+                ImageUrl = "~/Image/subject_images/subject10.png"
+            });
+
+            context.Subjects.AddOrUpdate(new Subject()
+            {
+                Id = 11,
+                Name = "Физкултура",
+                ImageUrl = "~/Image/subject_images/subject11.png"
+            });
+
+            context.Subjects.AddOrUpdate(new Subject()
+            {
+                Id = 12,
+                Name = "История",
+                ImageUrl = "~/Image/subject_images/subject12.png"
             });
 
             context.SaveChanges();
@@ -137,43 +222,48 @@ namespace SchoolSystem.Data.Migrations
 
             if (!context.Users.Any(u => u.UserName == "admin@admin.com"))
             {
-                var adminUser = new User { UserName = "admin@admin.com" };
+                var adminUser = new User
+                {
+                    UserName = "admin@admin.com",
+                    Email = "admin@admin.com",
+                    AvatarPictureUrl = "~/Images/avatars/modified-avatar.png"
+                };
 
                 userManager.Create(adminUser, "admin123");
                 userManager.AddToRole(adminUser.Id, UserType.Admin);
             }
 
-            if (!context.Users.Any(u => u.UserName == "teacher@teacher.com"))
-            {
-                var teacherUser = new User { UserName = "teacher@teacher.com" };
+            //if (!context.Users.Any(u => u.UserName == "teacher@teacher.com"))
+            //{
+            //    var teacherUser = new User { UserName = "teacher@teacher.com" };
 
 
-                userManager.Create(teacherUser, "teacher123");
-                userManager.AddToRole(teacherUser.Id, UserType.Teacher);
-                context.Teachers.AddOrUpdate(new Teacher()
-                {
-                    Id = teacherUser.Id,
-                    SubjectId = 1,
-                });
+            //    userManager.Create(teacherUser, "teacher123");
+            //    userManager.AddToRole(teacherUser.Id, UserType.Teacher);
+            //    context.Teachers.AddOrUpdate(new Teacher()
+            //    {
+            //        Id = teacherUser.Id,
+            //        SubjectId = 1,
+            //    });
 
-                context.SaveChanges();
-            }
+            //    context.SaveChanges();
+            //}
 
 
-            if (!context.Users.Any(u => u.UserName == "student@student.com"))
-            {
-                var studentUser = new User { UserName = "student@student.com" };
+            //if (!context.Users.Any(u => u.UserName == "student@student.com"))
+            //{
+            //    var studentUser = new User { UserName = "student@student.com" };
 
-                userManager.Create(studentUser, "student123");
-                userManager.AddToRole(studentUser.Id, UserType.Student);
+            //    userManager.Create(studentUser, "student123");
+            //    userManager.AddToRole(studentUser.Id, UserType.Student);
 
-                context.Students.AddOrUpdate(new Student()
-                {
-                    Id = studentUser.Id,
-                    ClassOfStudentsId = 1,
+            //    context.Students.AddOrUpdate(new Student()
+            //    {
+            //        Id = studentUser.Id,
+            //        ClassOfStudentsId = 1,
 
-                });
-            }
+            //    });
+            //}
         }
     }
 }

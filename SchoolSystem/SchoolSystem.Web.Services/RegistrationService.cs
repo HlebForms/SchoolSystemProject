@@ -59,7 +59,7 @@ namespace SchoolSystem.Web.Services
 
         public void CreateTeacher(string teacherId, int subjectId)
         {
-            Guard.WhenArgument(teacherId, "teacherId").IsNotNullOrEmpty().Throw();
+            Guard.WhenArgument(teacherId, "teacherId").IsNullOrEmpty().Throw();
 
             using (var uow = this.unitOfWork())
             {
@@ -74,7 +74,7 @@ namespace SchoolSystem.Web.Services
         }
         public void CreateStudent(string studentId, int classOfStudentId)
         {
-            Guard.WhenArgument(studentId, "studentId").IsNotNullOrEmpty().Throw();
+            Guard.WhenArgument(studentId, "studentId").IsNullOrEmpty().Throw();
 
             using (var uow = this.unitOfWork())
             {

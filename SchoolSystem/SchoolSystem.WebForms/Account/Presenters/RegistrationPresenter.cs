@@ -47,7 +47,8 @@ namespace SchoolSystem.WebForms.Account.Presenters
                 Email = e.Email,
                 UserName = e.Email,
                 FirstName = e.FirstName,
-                LastName = e.LastName
+                LastName = e.LastName,
+                AvatarPictureUrl = "~/Images/avatars/modified-avatar.png"
             };
 
             IdentityResult result = manager.Create(user, e.Password);

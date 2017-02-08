@@ -10,6 +10,8 @@ namespace SchoolSystem.Data.Models.CustomModels
 
         public string TeacherName { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public DateTime StartHour { get; set; }
 
         public DateTime EndHour { get; set; }

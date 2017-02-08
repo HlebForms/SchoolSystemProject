@@ -29,6 +29,8 @@ namespace SchoolSystem.Data.Models
         [Index(IsUnique = true)]
         public string Name { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public virtual ICollection<SubjectStudent> StudentSubj
         {
             get { return this.studentSubj; }
