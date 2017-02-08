@@ -13,7 +13,7 @@
                                 </p>
                             </asp:PlaceHolder>
                             <div class="form-group">
-                                <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
+                                <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Имейл</asp:Label>
                                 <div class="col-md-10">
                                     <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Password</asp:Label>
+                                <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Парола</asp:Label>
                                 <div class="col-md-10">
                                     <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                                     <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="text-danger" ErrorMessage="Моля, въведете парола" />

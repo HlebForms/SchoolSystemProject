@@ -48,7 +48,6 @@
                     </button>
                     <a class="navbar-brand" runat="server" href="~/">Училищна система</a>
                 </div>
-
             </div>
         </div>
         <div class="navbar-collapse collapse header-menu">
