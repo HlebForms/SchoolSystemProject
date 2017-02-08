@@ -14,17 +14,22 @@ namespace SchoolSystem.WebForms.CustomControls.Notifier
             this.NotificationPane.Visible = false;
         }
 
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+
+        }
+
         public void NotifySuccess(string text)
         {
+            this.NotificationPane.Attributes["class"] = "alert alert-dismissible alert-success";
             this.NotificationPane.Visible = true;
-            this.NotificationPane.CssClass = "alert alert-dismissible alert-success";
             this.NotificationMessage.Text = text;
         }
 
         public void NotifyError(string text)
         {
+            this.NotificationPane.Attributes["class"] = "alert alert-dismissible alert-error";
             this.NotificationPane.Visible = true;
-            this.NotificationPane.CssClass = "alert alert-dismissible alert-error";
             this.NotificationMessage.Text = text;
         }
     }

@@ -45,6 +45,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
             {
                 this.SubjectsList.ClearSelection();
                 this.ClassNameTextBox.Text = string.Empty;
+                
                 this.Notifier.NotifySuccess("Stana");
             }
             else
