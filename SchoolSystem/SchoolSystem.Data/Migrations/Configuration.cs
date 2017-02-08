@@ -104,84 +104,84 @@ namespace SchoolSystem.Data.Migrations
             {
                 Id = 1,
                 Name = "Български",
-                ImageUrl = "~/Image/subject_images/subject1.png"
+                ImageUrl = "~/Images/subject_images/subject1.png"
             });
 
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 2,
                 Name = "Литература",
-                ImageUrl = "~/Image/subject_images/subject2.png"
+                ImageUrl = "~/Images/subject_images/subject2.png"
             });
 
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 3,
                 Name = "Математика",
-                ImageUrl = "~/Image/subject_images/subject3.png"
+                ImageUrl = "~/Images/subject_images/subject3.png"
             });
 
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 4,
                 Name = "Биология",
-                ImageUrl = "~/Image/subject_images/subject4.png"
+                ImageUrl = "~/Images/subject_images/subject4.png"
             });
 
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 5,
                 Name = "Физика",
-                ImageUrl = "~/Image/subject_images/subject5.png"
+                ImageUrl = "~/Images/subject_images/subject5.png"
             });
 
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 6,
                 Name = "Химия",
-                ImageUrl = "~/Image/subject_images/subject6.png"
+                ImageUrl = "~/Images/subject_images/subject6.png"
             });
 
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 7,
                 Name = "Музика",
-                ImageUrl = "~/Image/subject_images/subject7.png"
+                ImageUrl = "~/Images/subject_images/subject7.png"
             });
 
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 8,
                 Name = "Рисуване",
-                ImageUrl = "~/Image/subject_images/subject8.png"
+                ImageUrl = "~/Images/subject_images/subject8.png"
             });
 
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 9,
                 Name = "Информатика",
-                ImageUrl = "~/Image/subject_images/subject9.png"
+                ImageUrl = "~/Images/subject_images/subject12.png"
             });
 
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 10,
                 Name = "География",
-                ImageUrl = "~/Image/subject_images/subject10.png"
+                ImageUrl = "~/Images/subject_images/subject16.png"
             });
 
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 11,
                 Name = "Физкултура",
-                ImageUrl = "~/Image/subject_images/subject11.png"
+                ImageUrl = "~/Images/subject_images/subject23.png"
             });
 
             context.Subjects.AddOrUpdate(new Subject()
             {
                 Id = 12,
                 Name = "История",
-                ImageUrl = "~/Image/subject_images/subject12.png"
+                ImageUrl = "~/Images/subject_images/subject24.png"
             });
 
             context.SaveChanges();

@@ -68,6 +68,8 @@
     <Compile Include="NewsDataServiceTest\GetImportantNews_Should.cs" />
     <Compile Include="NewsDataServiceTest\GetNews_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScheduleDataServiceTests\Constructor_Should.cs" />
+    <Compile Include="ScheduleDataServiceTests\GetTodaysSchedule_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\Constructorr_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\CreateSubject_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\GetAllSubjects_Should.cs" />

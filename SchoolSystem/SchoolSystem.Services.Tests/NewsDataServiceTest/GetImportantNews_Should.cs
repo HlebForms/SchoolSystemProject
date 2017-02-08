@@ -172,7 +172,6 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
             Assert.AreEqual(actualResult[0].CreatedOn.ToString("dd:HH:mm:ss"), expectedResult[2].CreatedOn.ToString("dd:HH:mm:ss"));
         }
 
-
         [Test]
         public void MapDataCorrectly()
         {

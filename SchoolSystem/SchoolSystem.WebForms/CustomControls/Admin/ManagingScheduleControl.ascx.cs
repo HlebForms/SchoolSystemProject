@@ -35,7 +35,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 this.DaysOfWeekDropDown.DataSource = this.Model.DaysOfWeek;
                 this.DaysOfWeekDropDown.DataBind();
 
-                RaiseBindShceduleDataEvent();
+                RaiseBindShceduleDataEvent(); 
             }
         }
 
@@ -62,7 +62,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
 
                     var endHourDropDown = e.Item.FindControl("EndHourDropDown") as DropDownList;
                     var endHour = int.Parse(endHourDropDown.SelectedValue);
-                    var endHourAsDateTime = new DateTime(2016, 1, 1, startHour, 0, 0);
+                    var endHourAsDateTime = new DateTime(2016, 1, 1, endHour, 0, 0);
 
                     this.ScheduleList_InsertItem(classId, dayOfWeekId, selectedSubjectId, startHourDateTime, endHourAsDateTime);
                     break;

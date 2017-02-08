@@ -131,9 +131,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 280px;
 }
 
-.program-item {
-}
-
 .time {
     margin-left: 15px;
 }
@@ -158,12 +155,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .subject-info {
     font-size: 18px;
-    margin-left: 100px;
+    width:115px;
+    /*border:1px solid black;*/
+    float:right;
 }
 
 .subject-image {
     display: inline-block;
     margin-top: -30px;
+    width:75px;
+    height:75px;
 }
 
 hr {
@@ -212,12 +213,25 @@ hr {
     height: 330px;
 }
 
-.comments-list, .importantNews-list {
+.schedule-container {
+    overflow: auto;
+    height: 340px;
+}
+
+.comments-list, .importantNews-list, .schedule-list {
     list-style: none;
     padding: 0;
 }
 
 .comment-list-item {
+    border-bottom: 1px solid #2196F3;
+    padding-bottom: 5px;
+    margin: 5px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.schedule-list-item {
     border-bottom: 1px solid #2196F3;
     padding-bottom: 5px;
     margin: 5px;
@@ -270,32 +284,29 @@ hr {
     vertical-align: middle;
     border: 1px solid #c8cbcd;
 }
-<<<<<<< HEAD
 
 .upload-button {
     opacity: 0;
-	z-index: -1;
+    z-index: -1;
 }
 
-select{
-  background-color:white !important; 
+select {
+    background-color: white !important;
 }
 
 .table td:nth-child(1) {
-    padding-left:0;
+    padding-left: 0;
 }
 
 .table th:nth-child(1) {
-    padding-left:0;
+    padding-left: 0;
 }
 
 
 .table td {
-    padding-left:30px;
+    padding-left: 30px;
 }
 
-.table th { 
-    padding-left:30px;
+.table th {
+    padding-left: 30px;
 }
-=======
->>>>>>> admin

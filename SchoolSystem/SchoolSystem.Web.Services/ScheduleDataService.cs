@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SchoolSystem.Data.Models.CustomModels;
+using Bytes2you.Validation;
 
 namespace SchoolSystem.Web.Services
 {
@@ -28,6 +29,14 @@ namespace SchoolSystem.Web.Services
             Func<IUnitOfWork> unitOfWork
             )
         {
+            Guard.WhenArgument(subjectRepo, "subjectRepo").IsNull().Throw();
+            Guard.WhenArgument(userRepo, "userRepo").IsNull().Throw();
+            Guard.WhenArgument(teacherRepo, "teacherRepo").IsNull().Throw();
+            Guard.WhenArgument(subjectClassOfStudentsDaysOfWeekRepo, "subjectClassOfStudentsDaysOfWeekRepo").IsNull().Throw();
+            Guard.WhenArgument(daysOfWeekRepo, "daysOfWeekRepo").IsNull().Throw();
+            Guard.WhenArgument(studentRepo, "studentRepo").IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
+
             this.studentRepo = studentRepo;
             this.subjectRepo = subjectRepo;
             this.userRepo = userRepo;
@@ -39,17 +48,18 @@ namespace SchoolSystem.Web.Services
 
         public IEnumerable<StudentSchedule> GetTodaysSchedule(DayOfWeek dayOfWeek, string username)
         {
-            //var userId = this.userRepo.GetFirst(x => x.UserName == username).Id;
-            // STOQN
-            //var userId = "8c8a33cb-ae6e-453c-aae6-fef949a3c370"; 
-            // KIRO
+            var user = this.userRepo.GetFirst(x => x.UserName == username);
+            Guard.WhenArgument(user, "user").IsNull().Throw();
+            var userId = user.Id;
 
-            var userId = this.userRepo.GetFirst(x => x.UserName == username).Id;
+            var userClassOfStudents = this.studentRepo.GetFirst(x => x.Id == userId);
+            Guard.WhenArgument(userClassOfStudents, "userClassOfStudents").IsNull().Throw();
+            var userClassOfStudentsId = userClassOfStudents.ClassOfStudentsId;
 
-            var userClassId = this.studentRepo.GetFirst(x => x.Id == userId).ClassOfStudentsId;
             var daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
-                .GetAll(x => x.ClassOfStudentsId == userClassId && x.DaysOfWeek.Id == (int)dayOfWeek, y => y)
+                .GetAll(x => x.ClassOfStudentsId == userClassOfStudentsId && x.DaysOfWeek.Id == (int)dayOfWeek, y => y)
                 .ToList();
+            Guard.WhenArgument(daySchedule, "daySchedule").IsNull().Throw();
 
             var result = new List<StudentSchedule>();
 
@@ -59,15 +69,15 @@ namespace SchoolSystem.Web.Services
                 var teacherName = userRepo.GetFirst(x => x.Id == teacherId).LastName;
 
                 result.Add(
-                    new StudentSchedule()
-                    {
-                        SubjectId = schedule.SubjectId,
-                        SubjectName = schedule.SubjectClassOfStudents.Subject.Name,
-                        ImageUrl = schedule.SubjectClassOfStudents.Subject.ImageUrl,
-                        TeacherName = teacherName,
-                        StartHour = schedule.StartHour,
-                        EndHour = schedule.EndHour
-                    }
+                        new StudentSchedule()
+                        {
+                            SubjectId = schedule.SubjectId,
+                            SubjectName = schedule.SubjectClassOfStudents.Subject.Name,
+                            ImageUrl = schedule.SubjectClassOfStudents.Subject.ImageUrl,
+                            TeacherName = teacherName,
+                            StartHour = schedule.StartHour,
+                            EndHour = schedule.EndHour
+                        }
                     );
             }
 
