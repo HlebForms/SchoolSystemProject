@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Web;
 using WebFormsMvp;
 using WebFormsMvp.Web;
@@ -9,7 +8,6 @@ using SchoolSystem.WebForms.Account.Models;
 using SchoolSystem.WebForms.Account.Presenters;
 using SchoolSystem.WebForms.Account.Views;
 using SchoolSystem.WebForms.Account.Views.EventArguments;
-using System.Web.UI.WebControls;
 
 namespace SchoolSystem.WebForms.Account
 {
@@ -74,7 +72,7 @@ namespace SchoolSystem.WebForms.Account
             }
             else
             {
-                this.Notifier.NotifyError(result.Errors.FirstOrDefault());
+                this.Notifier.NotifyError(string.Join(Environment.NewLine, result.Errors));
             }
         }
 
