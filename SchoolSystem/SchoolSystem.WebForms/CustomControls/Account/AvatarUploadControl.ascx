@@ -10,7 +10,7 @@
                 <asp:Image Width="200" Height="200" runat="server" ID="UserAvatar" />
             </div>
 
-            <asp:FileUpload ID="AvatarUpload" runat="server" CssClass="upload-button" />
+            <asp:FileUpload ID="AvatarUpload" runat="server" CssClass="upload-button" AllowMultiple="true" />
             <asp:Label AssociatedControlID="AvatarUpload" runat="server" CssClass="upload-button-modified btn btn-warning">
         Избери аватар
             </asp:Label>
@@ -22,7 +22,7 @@
         </div>
     </ContentTemplate>
     <Triggers>
-          <asp:PostBackTrigger ControlID = "UploadAvatarBtn" />
+        <asp:PostBackTrigger ControlID="UploadAvatarBtn" />
     </Triggers>
 </asp:UpdatePanel>
 

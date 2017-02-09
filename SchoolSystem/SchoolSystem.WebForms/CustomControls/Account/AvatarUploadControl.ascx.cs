@@ -8,6 +8,7 @@ using SchoolSystem.WebForms.CustomControls.Account.Views.EventArguments;
 using WebFormsMvp;
 using WebFormsMvp.Web;
 using System.IO;
+using System.Web.UI;
 
 namespace SchoolSystem.WebForms.CustomControls.Account
 {
@@ -19,10 +20,14 @@ namespace SchoolSystem.WebForms.CustomControls.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.EventGetUserAvatar(this, new GetUserAvatarEventArgs() { LoggedUseUserName = this.Context.User.Identity.Name });
-            this.UserAvatar.ImageUrl = this.Model.UserAvatarUrl;
+            ScriptManager.GetCurrent(this.Page).RegisterPostBackControl(this.UploadAvatarBtn);
+            if (!this.IsPostBack)
+            {
+                this.EventGetUserAvatar(this, new GetUserAvatarEventArgs() { LoggedUseUserName = this.Context.User.Identity.Name });
+                this.UserAvatar.ImageUrl = this.Model.UserAvatarUrl;
+            }
         }
-         
+
         protected void UploadAvatarBtn_Click(object sender, EventArgs e)
         {
             if (this.AvatarUpload.HasFile)

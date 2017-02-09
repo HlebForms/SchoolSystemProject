@@ -25,5 +25,8 @@
             </asp:MultiView>
 
         </ContentTemplate>
+        <Triggers>
+            <asp:PostBackTrigger ControlID ="Tab1" />
+        </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
