@@ -10,13 +10,23 @@
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="SubjectNameTextBox" CssClass="form-control"> </asp:TextBox>
                 <br />
-                <asp:Button
-                    runat="server"
-                    Text="Създай предмет"
-                    ID="AddSubjectBtn"
-                    CssClass="btn btn-primary"
-                    OnClick="AddSubjectBtn_Click" />
+
             </div>
         </div>
+        <div class="form-group">
+            <asp:FileUpload ID="SubjectPicture" runat="server" CssClass="upload-button" />
+            <asp:Label AssociatedControlID="SubjectPicture" runat="server" CssClass="upload-button-modified btn btn-warning">
+        Избери картинка на предмета
+            </asp:Label>
+            <asp:Button
+                runat="server"
+                Text="Създай предмет"
+                ID="AddSubjectBtn"
+                CssClass="btn btn-primary"
+                OnClick="AddSubjectBtn_Click" />
+        </div>
     </ContentTemplate>
+     <Triggers>
+        <asp:PostBackTrigger ControlID = "AddSubjectBtn" />
+    </Triggers>
 </asp:UpdatePanel>

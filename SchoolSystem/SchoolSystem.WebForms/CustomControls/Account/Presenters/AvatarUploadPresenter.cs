@@ -54,6 +54,7 @@ namespace SchoolSystem.WebForms.CustomControls.Account.Presenters
             try
             {
                 uploadedFile.SaveAs(e.AvatarStorateLocation);
+                // TODO Maaybe make interception
                 this.accountManagementService.UploadAvatar(e.LoggedUserUserName, e.UserAvatarUrl);
                 this.View.Model.StatusMessage = "Аватарът е качен";
             }

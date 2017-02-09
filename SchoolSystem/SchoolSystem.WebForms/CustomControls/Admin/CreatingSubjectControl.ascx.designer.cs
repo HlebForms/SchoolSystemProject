@@ -31,6 +31,15 @@ namespace SchoolSystem.WebForms.CustomControls.Admin {
         protected global::System.Web.UI.WebControls.TextBox SubjectNameTextBox;
         
         /// <summary>
+        /// SubjectPicture control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload SubjectPicture;
+        
+        /// <summary>
         /// AddSubjectBtn control.
         /// </summary>
         /// <remarks>

@@ -31,9 +31,10 @@ namespace SchoolSystem.Web.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public bool CreateSubject(string subjectName)
+        public bool CreateSubject(string subjectName,string subjectPictureUrl)
         {
-            Guard.WhenArgument(subjectName, "subjectName").IsNull().Throw();
+            Guard.WhenArgument(subjectName, "subjectName").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(subjectPictureUrl, "subjectPictureUrl").IsNullOrEmpty().Throw();
 
             var allSubjectNames = this.subjectRepo.GetAll().Select(x => x.Name).ToList();
 
@@ -47,11 +48,11 @@ namespace SchoolSystem.Web.Services
             {
                 this.subjectRepo.Add(new Subject()
                 {
-                    Name = subjectName
+                    Name = subjectName,
+                    ImageUrl = subjectPictureUrl
                 });
 
-                uow.Commit();
-                return true;
+               return uow.Commit();
             }
         }
 

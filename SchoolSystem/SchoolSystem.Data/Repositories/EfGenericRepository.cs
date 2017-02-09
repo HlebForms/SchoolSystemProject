@@ -29,7 +29,7 @@ namespace SchoolSystem.Data.Repositories
         {
             get
             {
-                throw new NotImplementedException();
+                return this.DbSet;
             }
         }
 

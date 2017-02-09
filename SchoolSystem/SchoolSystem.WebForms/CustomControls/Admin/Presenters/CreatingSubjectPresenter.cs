@@ -26,7 +26,9 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
 
         private void CreateSubject(object sender, CreatingSubjectEventArgs e)
         {
-            var result = this.subjectManagementService.CreateSubject(e.SubjectName);
+            e.AvatarFile.SaveAs(e.SubjectPictureStoragePath);
+
+            var result = this.subjectManagementService.CreateSubject(e.SubjectName, e.SubjectPictureUrl);
 
             if (result)
             {
