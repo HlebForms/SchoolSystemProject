@@ -3,18 +3,26 @@
 
 
 <uc1:Notifier runat="server" ID="Notifier" />
-<div class="form-group">
-    <div class="col-md-10">
-        <asp:Image Width="200" Height="200" runat="server" ID="UserAvatar" />
-    </div>
+<asp:UpdatePanel runat="server">
+    <ContentTemplate>
+        <div class="form-group">
+            <div class="col-md-10">
+                <asp:Image Width="200" Height="200" runat="server" ID="UserAvatar" />
+            </div>
 
-    <asp:FileUpload ID="AvatarUpload" runat="server" CssClass="upload-button" />
-    <asp:Label AssociatedControlID="AvatarUpload" runat="server" CssClass="upload-button-modified btn btn-warning">
+            <asp:FileUpload ID="AvatarUpload" runat="server" CssClass="upload-button" />
+            <asp:Label AssociatedControlID="AvatarUpload" runat="server" CssClass="upload-button-modified btn btn-warning">
         Избери аватар
-    </asp:Label>
-    <asp:Button ID="UploadAvatarBtn"
-        runat="server"
-        OnClick="UploadAvatarBtn_Click"
-        Text="Качи"
-        CssClass="btn btn-primary" />
-</div>
+            </asp:Label>
+            <asp:Button ID="UploadAvatarBtn"
+                runat="server"
+                OnClick="UploadAvatarBtn_Click"
+                Text="Качи"
+                CssClass="btn btn-primary" />
+        </div>
+    </ContentTemplate>
+    <Triggers>
+          <asp:PostBackTrigger ControlID = "UploadAvatarBtn" />
+    </Triggers>
+</asp:UpdatePanel>
+

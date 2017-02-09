@@ -25,7 +25,7 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
 
             Assert.Throws<ArgumentNullException>(() =>
             {
-                service.CreateSubject(null);
+                service.CreateSubject(null,"test");
             });
         }
 
@@ -38,7 +38,7 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
 
             var service = new SubjectManagementService(mockedRepo, mockedSubjClassRepo.Object,() => mockedUow);
 
-            Assert.That(() => service.CreateSubject(null),
+            Assert.That(() => service.CreateSubject(null, "test"),
                 Throws.ArgumentNullException.With.Message.Contain("subjectName"));
         }
 
@@ -46,15 +46,15 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
         public void ReturnFalse_WhenThereIsSubjectWithThatNameAlready()
         {
             var mockedRepo = new Mock<IRepository<Subject>>();
-            var mockedUow = new Mock<IUnitOfWork>().Object;
+            var mockedUow = new Mock<IUnitOfWork>();
             var mockedSubjClassRepo = new Mock<IRepository<SubjectClassOfStudents>>();
 
-            var service = new SubjectManagementService(mockedRepo.Object, mockedSubjClassRepo.Object,() => mockedUow);
+            var service = new SubjectManagementService(mockedRepo.Object, mockedSubjClassRepo.Object,() => mockedUow.Object);
             var subject = new Subject() { Name = "test" };
 
             mockedRepo.Setup(x => x.GetAll()).Returns(new List<Subject>() { subject });
 
-            var result = service.CreateSubject(subject.Name);
+            var result = service.CreateSubject(subject.Name, "test");
 
             Assert.IsFalse(result);
         }
@@ -63,14 +63,15 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
         public void ReturnTrue_WhenSubjectIsCreatedSuccesfully()
         {
             var mockedRepo = new Mock<IRepository<Subject>>();
-            var mockedUow = new Mock<IUnitOfWork>().Object;
+            var mockedUow = new Mock<IUnitOfWork>();
             var mockedSubjClassRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
+            mockedUow.Setup(x => x.Commit()).Returns(true);
 
-            var service = new SubjectManagementService(mockedRepo.Object, mockedSubjClassRepo,() => mockedUow);
+            var service = new SubjectManagementService(mockedRepo.Object, mockedSubjClassRepo,() => mockedUow.Object);
 
             mockedRepo.Setup(x => x.GetAll()).Returns(new List<Subject>() { });
 
-            var result = service.CreateSubject("test");
+            var result = service.CreateSubject("test", "test");
 
             Assert.IsTrue(result);
         }
@@ -87,7 +88,7 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
             var service = new SubjectManagementService(mockedSupjectRepo.Object, mockedSubjClassRepo.Object, () => mockedUow.Object);
             mockedSupjectRepo.Setup(x => x.Add(It.IsAny<Subject>()));
 
-            var result = service.CreateSubject("test");
+            var result = service.CreateSubject("test", "test");
 
             mockedSupjectRepo.Verify(x => x.Add(It.IsAny<Subject>()), Times.Once);
         }
@@ -104,7 +105,7 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
             mockedUow.Setup(x => x.Commit());
 
             var service = new SubjectManagementService(mockedRepo.Object, mockedSubjClassRepo.Object,() => mockedUow.Object);
-            var result = service.CreateSubject("test");
+            var result = service.CreateSubject("test", "test");
 
             mockedUow.Verify(x => x.Commit(), Times.Once);
         }

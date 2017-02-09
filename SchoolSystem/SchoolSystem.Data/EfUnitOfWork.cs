@@ -19,7 +19,7 @@ namespace SchoolSystem.Data
 
         public bool Commit()
         {
-            return this.context.SaveChanges() == 1;
+            return this.context.SaveChanges() > 0;
         }
 
         public void Dispose()
