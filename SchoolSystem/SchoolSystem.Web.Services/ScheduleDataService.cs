@@ -65,9 +65,6 @@ namespace SchoolSystem.Web.Services
 
             foreach (var schedule in daySchedule)
             {
-                //var teacherId = teacherRepo.GetFirst(x => x.Subjects.Any(y => y.Id == schedule.SubjectId)).Id;
-                ////var teacherId = this.subjectRepo.GetFirst(x => x.Id == schedule.SubjectId).TeacherId;
-                //var teacherName = userRepo.GetFirst(x => x.Id == teacherId).LastName;
                 var teacherName = subjectRepo
                     .GetFirst(x => x.Id == schedule.SubjectId)
                     .Teacher

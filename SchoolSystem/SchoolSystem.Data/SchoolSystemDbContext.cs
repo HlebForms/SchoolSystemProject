@@ -36,6 +36,8 @@ namespace SchoolSystem.Data
 
         public IDbSet<ClassOfStudents> ClassOfStudents { get; set; }
 
+        public IDbSet<SubjectClassOfStudents> SubjectClassOfStudents { get; set; }
+
         public IDbSet<SubjectStudent> SubjectStudent { get; set; }
 
         public IDbSet<DaysOfWeek> DaysOfWeek { get; set; }

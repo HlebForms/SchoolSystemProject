@@ -34,31 +34,36 @@ namespace SchoolSystem.Data.Migrations
             context.Marks.AddOrUpdate(new Mark()
             {
                 Id = 1,
-                Name = "Слаб"
+                Name = "Слаб",
+                Value = 2
             });
 
             context.Marks.AddOrUpdate(new Mark()
             {
                 Id = 2,
-                Name = "Среден"
+                Name = "Среден",
+                Value = 3
             });
 
             context.Marks.AddOrUpdate(new Mark()
             {
                 Id = 3,
-                Name = "Добър"
+                Name = "Добър",
+                Value = 4
             });
 
             context.Marks.AddOrUpdate(new Mark()
             {
                 Id = 4,
-                Name = "Много добър"
+                Name = "Много добър",
+                Value = 5
             });
 
             context.Marks.AddOrUpdate(new Mark()
             {
                 Id = 5,
-                Name = "Отличен"
+                Name = "Отличен",
+                Value = 6
             });
         }
 
