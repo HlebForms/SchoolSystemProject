@@ -79,7 +79,7 @@
                                 <asp:Button
                                     runat="server"
                                     ID="InsertBtn"
-                                    CommandName="add"
+                                    CommandName="addGrade"
                                     Text="Добави оценка" />
                             </td>
                         </tr>

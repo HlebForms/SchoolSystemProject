@@ -107,7 +107,41 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
 
         protected void GradesList_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
+            var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
 
+            if (e.CommandName == "addGrade")
+            {
+                var studentsDropDown = e.Item.FindControl("StudentsDropDown") as DropDownList;
+                var markDropDown = e.Item.FindControl("MarksDropDown") as DropDownList;
+
+                var markToAdd = int.Parse(markDropDown.SelectedValue);
+                var student = studentsDropDown.SelectedValue;
+
+                var st = kernel.SubjectStudent
+                    .FirstOrDefault(x => x.StudentId == student && x.MarkId == markToAdd);
+
+
+                if (st == null)
+                {
+                    kernel.SubjectStudent.Add(new SubjectStudent()
+                    {
+                        SubjectId = int.Parse(SubjectsDropDown.SelectedValue),
+                        MarkId = markToAdd,
+                        StudentId = student,
+                        Count = 1
+                    });
+
+                    kernel.SaveChanges();
+                }
+                else
+                {
+                    kernel.SubjectStudent
+                        .FirstOrDefault(x => x.StudentId == student && x.MarkId == markToAdd).Count++;
+
+                    kernel.SaveChanges();
+                }
+
+            }
         }
     }
 
