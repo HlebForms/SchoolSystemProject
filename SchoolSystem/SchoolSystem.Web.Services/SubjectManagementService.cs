@@ -65,7 +65,7 @@ namespace SchoolSystem.Web.Services
         {
             return this.subjectClassOfStudentsRepo
                 .GetAll(x => x.ClassOfStudentsId == classId, x => x.Subject)
-                .Where(x => x.Teachers.Count != 0);
+                .Where(x => x.Teacher != null);
         }
     }
 }

@@ -65,8 +65,14 @@ namespace SchoolSystem.Web.Services
 
             foreach (var schedule in daySchedule)
             {
-                var teacherId = teacherRepo.GetFirst(x => x.SubjectId == schedule.SubjectId).Id;
-                var teacherName = userRepo.GetFirst(x => x.Id == teacherId).LastName;
+                //var teacherId = teacherRepo.GetFirst(x => x.Subjects.Any(y => y.Id == schedule.SubjectId)).Id;
+                ////var teacherId = this.subjectRepo.GetFirst(x => x.Id == schedule.SubjectId).TeacherId;
+                //var teacherName = userRepo.GetFirst(x => x.Id == teacherId).LastName;
+                var teacherName = subjectRepo
+                    .GetFirst(x => x.Id == schedule.SubjectId)
+                    .Teacher
+                    .User
+                    .LastName;
 
                 result.Add(
                         new StudentSchedule()
@@ -103,8 +109,6 @@ namespace SchoolSystem.Web.Services
                     StartHour = x.StartHour,
                     EndHour = x.EndHour
                 });
-
-
 
             return content;
         }

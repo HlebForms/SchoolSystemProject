@@ -61,13 +61,17 @@ namespace SchoolSystem.Web.Services
         {
             Guard.WhenArgument(teacherId, "teacherId").IsNullOrEmpty().Throw();
 
+            var subject = this.subjectsRepo.GetFirst(x => x.Id == subjectId);
+
             using (var uow = this.unitOfWork())
             {
                 this.teacherRepo.Add(new Teacher()
                 {
                     Id = teacherId,
-                    SubjectId = subjectId
+                    Subjects = new HashSet<Subject>() { subject }
                 });
+
+                subject.TeacherId = teacherId;
 
                 uow.Commit();
             }

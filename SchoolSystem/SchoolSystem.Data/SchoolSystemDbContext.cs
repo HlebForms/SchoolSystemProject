@@ -26,6 +26,8 @@ namespace SchoolSystem.Data
 
         public IDbSet<Teacher> Teachers { get; set; }
 
+        public IDbSet<Mark> Marks { get; set; }
+
         public IDbSet<Student> Students { get; set; }
 
         public IDbSet<Newsfeed> NewsFeed { get; set; }
