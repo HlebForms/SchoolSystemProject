@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Ninject;
 using SchoolSystem.Data;
+using SchoolSystem.Data.Models;
 using SchoolSystem.WebForms.App_Start;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
 
                 this.SubjectsDropDown.DataSource = kernel.Subjects.Where(x => x.TeacherId == teacherId).ToList();
                 this.SubjectsDropDown.DataBind();
+
             }
         }
 
@@ -51,47 +53,20 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
             var subjectid = int.Parse(this.SubjectsDropDown.SelectedValue);
             var classOfStudentsid = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
 
-
-
-            //var result = kernel
-            //    .SubjectClassOfStudents
-            //    .Where(x => x.SubjectId == subjectid && x.ClassOfStudentsId == classOfStudentsid)
-            //    .Select(x => x.ClassOfStudents
-            //                .Students
-            //                .Select(y => new Grades
-            //                {
-            //                    StudentName = y.User.FirstName + " " + y.User.LastName,
-            //                    Marks = y.StudentSubj.Select(z => new Ocenka() { Name = z.Mark.Name, Count = z.Count })
-            //                })).ToList();
-
-
-
-
-            //var result = kernel
-            //     .SubjectStudent
-            //     .Where(x => x.SubjectId == subjectid && x.Student.ClassOfStudentsId == classOfStudentsid)
-            //     .Select(x => new StudenGrade
-            //     {
-            //         Name = x.Student.User.FirstName,
-            //         Grade = x.Mark.Value,
-            //         GradeCount = x.Count
-            //     })
-            //     .ToList();
-
-
             var result = kernel
                 .SubjectStudent
                 .Where(x => x.SubjectId == subjectid && x.Student.ClassOfStudentsId == classOfStudentsid)
                 .ToList()
                .Select(x => new
                {
-                   Name = x.Student.User.UserName,
+                   Name = x.Student.User,
                    Marks = string.Join(", ", Enumerable.Repeat(x.Mark.Value, x.Count))
                })
                .GroupBy(x => x.Name)
                .Select(x => new Model
                {
-                   Name = x.Key,
+                   Name = x.Key.FirstName + " " + x.Key.LastName,
+                   StudentId = x.Key.Id,
                    grades = x.Select(z => z.Marks)
                })
                 .ToList();
@@ -107,8 +82,41 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
             //var result = kernel.ClassOfStudents.Where(x => x.Id == classOfStudentsid);
 
         }
+
+        public IEnumerable<CustomStudent> PopulateStudentsDropDown()
+        {
+            var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
+
+            var res = kernel.Students.Select(x => new CustomStudent
+            {
+                Fullname = x.User.FirstName + " " + x.User.LastName,
+                Id = x.Id
+            }).ToList();
+
+            return res;
+        }
+
+        public IEnumerable<Mark> PopulateMarksDropDown()
+        {
+            var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
+
+            var res = kernel.Marks.ToList();
+
+            return res;
+        }
+
+        protected void GradesList_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+
+        }
     }
 
+    public class CustomStudent
+    {
+        public string Id { get; set; }
+
+        public string Fullname { get; set; }
+    }
     public class StudenGrade
     {
         public string Name { get; set; }
@@ -120,6 +128,8 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
 
     public class Model
     {
+        public string StudentId { get; set; }
+
         public string Name { get; set; }
 
         public IEnumerable<string> grades { get; set; }

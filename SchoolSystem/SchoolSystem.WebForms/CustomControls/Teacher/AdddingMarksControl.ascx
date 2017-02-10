@@ -36,7 +36,9 @@
         <div class="form-group">
             <div class="col-md-10">
                 <asp:ListView runat="server" ID="GradesList"
-                    ItemType="SchoolSystem.WebForms.CustomControls.Teacher.Model">
+                    ItemType="SchoolSystem.WebForms.CustomControls.Teacher.Model"
+                    InsertItemPosition="LastItem"
+                    OnItemCommand="GradesList_ItemCommand">
                     <LayoutTemplate>
                         <table>
                             <tr>
@@ -53,6 +55,35 @@
                             <td><%#: string.Join(", ",Item.grades )%></td>
                         </tr>
                     </ItemTemplate>
+                    <InsertItemTemplate>
+                        <tr>
+                            <td>
+                                <asp:DropDownList
+                                    ID="StudentsDropDown"
+                                    runat="server"
+                                    SelectMethod="PopulateStudentsDropDown"
+                                    DataValueField="Id"
+                                    DataTextField="FullName">
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                <asp:DropDownList
+                                    ID="MarksDropDown"
+                                    runat="server"
+                                    SelectMethod="PopulateMarksDropDown"
+                                    DataValueField="Id"
+                                    DataTextField="Name">
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                <asp:Button
+                                    runat="server"
+                                    ID="InsertBtn"
+                                    CommandName="add"
+                                    Text="Добави оценка" />
+                            </td>
+                        </tr>
+                    </InsertItemTemplate>
                 </asp:ListView>
             </div>
     </ContentTemplate>
