@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolSystem.Data.Models
 {
     public class Student
     {
         private ICollection<SubjectStudent> studentSubj;
-        //private ICollection<SubjectClassOfStudents> subjecClassOfStudents;
+
         public Student()
         {
             this.studentSubj = new HashSet<SubjectStudent>();
-            //this.subjecClassOfStudents = new HashSet<SubjectClassOfStudents>();
         }
 
         [Key, ForeignKey("User")]
