@@ -9,10 +9,12 @@ using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.CustomControls.Teacher.Views
 {
-    public interface IAddingMarksView : IView<AddingMarksModel>
+    public interface IManagingMarksView : IView<ManagingMarksModel>
     {
         event EventHandler<BindSubjectsEventArgs> EventBindSubjects;
 
         event EventHandler<BindClassesEventArgs> EventBindClasses;
+
+        event EventHandler<BindMarksEventArgs> EventBindMarks;
     }
 }

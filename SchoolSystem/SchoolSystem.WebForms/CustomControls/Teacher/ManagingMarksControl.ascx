@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdddingMarksControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Teacher.AdddingMarksControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ManagingMarksControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Teacher.AdddingMarksControl" %>
 
 <h4>Teache area</h4>
 <asp:UpdatePanel runat="server" UpdateMode="Conditional">
@@ -36,14 +36,15 @@
         <div class="form-group">
             <div class="col-md-10">
                 <asp:ListView runat="server" ID="GradesList"
-                    ItemType="SchoolSystem.WebForms.CustomControls.Teacher.Model"
+                    ItemType="SchoolSystem.Data.Models.CustomModels.SchoolReportCard"
                     InsertItemPosition="LastItem"
                     OnItemInserting="GradesList_ItemInserting"
                     OnItemCommand="GradesList_ItemCommand">
                     <LayoutTemplate>
                         <table>
                             <tr>
-                                <th>Име на ученика</th>
+                                <th>Име</th>
+                                <th>Фамилия</th>
                                 <th>Оценки</th>
                             </tr>
                             <tr id="itemPlaceholder" runat="server">
@@ -52,8 +53,9 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                         <tr>
-                            <td><%#: Item.Name %></td>
-                            <td><%#: string.Join(", ",Item.grades )%></td>
+                            <td><%#: Item.FirstName %></td>
+                            <td><%#: Item.LastName %></td>
+                            <td><%#: string.Join(", ",Item.Grades )%></td>
                         </tr>
                     </ItemTemplate>
                     <InsertItemTemplate>

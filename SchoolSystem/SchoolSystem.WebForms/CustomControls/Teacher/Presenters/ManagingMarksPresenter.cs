@@ -10,25 +10,35 @@ using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.CustomControls.Teacher.Presenters
 {
-    public class AddingMarksPresenter : Presenter<IAddingMarksView>
+    public class ManagingMarksPresenter : Presenter<IManagingMarksView>
     {
         private readonly ISubjectManagementService subjectManagementService;
         private readonly IClassOfStudentsManagementService classOfStudentsManagementService;
+        private readonly IMarksManagementService marksManagementService;
 
-        public AddingMarksPresenter(
-            IAddingMarksView view,
+        public ManagingMarksPresenter(
+            IManagingMarksView view,
             ISubjectManagementService subjectManagementService,
-            IClassOfStudentsManagementService classOfStudentsManagementService)
+            IClassOfStudentsManagementService classOfStudentsManagementService,
+            IMarksManagementService marksManagementService)
             : base(view)
         {
             Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNull().Throw();
             Guard.WhenArgument(classOfStudentsManagementService, "classOfStudentsManagementService").IsNull().Throw();
+            Guard.WhenArgument(marksManagementService, "marksManagementService").IsNull().Throw();
 
             this.subjectManagementService = subjectManagementService;
             this.classOfStudentsManagementService = classOfStudentsManagementService;
+            this.marksManagementService = marksManagementService;
 
             this.View.EventBindSubjects += View_EventBindSubjects;
             this.View.EventBindClasses += View_EventBindClasses;
+            this.View.EventBindMarks += View_EventBindMarks;
+        }
+
+        private void View_EventBindMarks(object sender, BindMarksEventArgs e)
+        {
+            this.View.Model.SchoolReportCard = this.marksManagementService.GetMarks(e.SubjectId, e.ClassOfStudentsId);
         }
 
         private void View_EventBindClasses(object sender, BindClassesEventArgs e)

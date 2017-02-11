@@ -7,10 +7,11 @@ using System.Web;
 
 namespace SchoolSystem.WebForms.CustomControls.Teacher.Models
 {
-    public class AddingMarksModel
+    public class ManagingMarksModel
     {
         public IEnumerable<ClassOfStudents> StudentClasses { get; internal set; }
         public IEnumerable<SubjectBasicInfo> Subjects { get; set; }
 
+        public IEnumerable<SchoolReportCard> SchoolReportCard { get; set; }
     }
 }

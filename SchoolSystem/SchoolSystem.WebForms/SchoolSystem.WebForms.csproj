@@ -205,7 +205,7 @@
     <Content Include="CustomControls\Admin\ManagingScheduleControl.ascx" />
     <Content Include="CustomControls\Home\NewsfeedControl.ascx" />
     <Content Include="CustomControls\Home\StudentScheduleControl.ascx" />
-    <Content Include="CustomControls\Teacher\AdddingMarksControl.ascx" />
+    <Content Include="CustomControls\Teacher\ManagingMarksControl.ascx" />
     <Content Include="Images\avatars\modified-avatar.png" />
     <Content Include="Images\avatars\simple-avatar.png" />
     <Content Include="Images\background.jpg" />
@@ -452,20 +452,20 @@
     <Compile Include="CustomControls\Notifier\Notifier.ascx.designer.cs">
       <DependentUpon>Notifier.ascx</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\Teacher\AdddingMarksControl.ascx.cs">
-      <DependentUpon>AdddingMarksControl.ascx</DependentUpon>
+    <Compile Include="CustomControls\Teacher\ManagingMarksControl.ascx.cs">
+      <DependentUpon>ManagingMarksControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CustomControls\Teacher\AdddingMarksControl.ascx.designer.cs">
-      <DependentUpon>AdddingMarksControl.ascx</DependentUpon>
+    <Compile Include="CustomControls\Teacher\ManagingMarksControl.ascx.designer.cs">
+      <DependentUpon>ManagingMarksControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\Teacher\Models\AddingMarksModel.cs" />
-    <Compile Include="CustomControls\Teacher\Presenters\AddingMarksPresenter.cs" />
+    <Compile Include="CustomControls\Teacher\Models\ManagingMarksModel.cs" />
+    <Compile Include="CustomControls\Teacher\Presenters\ManagingMarksPresenter.cs" />
     <Compile Include="CustomControls\Teacher\Views\EventArguments\BindClassesEventArgs.cs" />
-    <Compile Include="CustomControls\Teacher\Views\EventArguments\BindStudentsListEventArgs.cs" />
+    <Compile Include="CustomControls\Teacher\Views\EventArguments\BindMarksEventArgs.cs" />
     <Compile Include="CustomControls\Teacher\Views\EventArguments\BindSubjectsEventArgs.cs" />
     <Compile Include="CustomControls\Teacher\Views\EventArguments\InserMarkEventArgs.cs" />
-    <Compile Include="CustomControls\Teacher\Views\IAddingMarksView.cs" />
+    <Compile Include="CustomControls\Teacher\Views\IManagingMarksView.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

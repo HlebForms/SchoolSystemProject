@@ -19,11 +19,12 @@ using SchoolSystem.WebForms.CustomControls.Teacher.Presenters;
 
 namespace SchoolSystem.WebForms.CustomControls.Teacher
 {
-    [PresenterBinding(typeof(AddingMarksPresenter))]
-    public partial class AdddingMarksControl : MvpUserControl<AddingMarksModel>, IAddingMarksView
+    [PresenterBinding(typeof(ManagingMarksPresenter))]
+    public partial class AdddingMarksControl : MvpUserControl<ManagingMarksModel>, IManagingMarksView
     {
         public event EventHandler<BindSubjectsEventArgs> EventBindSubjects;
         public event EventHandler<BindClassesEventArgs> EventBindClasses;
+        public event EventHandler<BindMarksEventArgs> EventBindMarks;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,44 +41,28 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
                 this.SubjectsDropDown.DataSource = this.Model.Subjects;
                 this.SubjectsDropDown.DataBind();
 
-                var subjectId = int.Parse(this.SubjectsDropDown.SelectedValue);
-                this.EventBindClasses(this, new BindClassesEventArgs()
-                {
-                    SubjectId = subjectId
-                });
-
-                this.ClassOfStudentsDropDown.DataSource = this.Model.StudentClasses;
-                this.ClassOfStudentsDropDown.DataBind();
-
-                this.BindGradeList();
-
-
-                //var classes = kernel
-                //    .SubjectClassOfStudents.Where(x => x.SubjectId == subjectId)
-                //    .Select(x => new
-                //    {
-                //        Id = x.ClassOfStudentsId,
-                //        Name = x.ClassOfStudents.Name
-                //    }).ToList();
+                this.RiseEventBindClassOfStudentsDropDown();
             }
 
         }
 
+        private void RiseEventBindClassOfStudentsDropDown()
+        {
+            var subjectId = int.Parse(this.SubjectsDropDown.SelectedValue);
+            this.EventBindClasses(this, new BindClassesEventArgs()
+            {
+                SubjectId = subjectId
+            });
+
+            this.ClassOfStudentsDropDown.DataSource = this.Model.StudentClasses;
+            this.ClassOfStudentsDropDown.DataBind();
+
+            this.BindGradeList();
+        }
+
         protected void SubjectsDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
-
-            var subjectId = int.Parse(this.SubjectsDropDown.SelectedValue);
-            var classes = kernel
-                .SubjectClassOfStudents.Where(x => x.SubjectId == subjectId)
-                .Select(x => new
-                {
-                    Id = x.ClassOfStudentsId,
-                    Name = x.ClassOfStudents.Name
-                }).ToList();
-
-            this.ClassOfStudentsDropDown.DataSource = classes;
-            this.ClassOfStudentsDropDown.DataBind();
+            this.RiseEventBindClassOfStudentsDropDown();
 
             this.BindGradeList();
         }
@@ -94,27 +79,33 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
             var subjectid = int.Parse(this.SubjectsDropDown.SelectedValue);
             var classOfStudentsid = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
 
-            var result = kernel
-                .SubjectStudent
-                .Where(x => x.SubjectId == subjectid && x.Student.ClassOfStudentsId == classOfStudentsid)
-                .ToList()
-               .Select(x => new
-               {
-                   Name = x.Student.User,
-                   Marks = string.Join(", ", Enumerable.Repeat(x.Mark.Value, x.Count))
-               })
-               .GroupBy(x => x.Name)
-               .Select(x => new Model
-               {
-                   Name = x.Key.FirstName + " " + x.Key.LastName,
-                   StudentId = x.Key.Id,
-                   grades = x.Select(z => z.Marks)
-               })
-                .ToList();
+            this.EventBindMarks(this, new BindMarksEventArgs()
+            {
+                ClassOfStudentsId = classOfStudentsid,
+                SubjectId = subjectid
+            });
 
-
-            this.GradesList.DataSource = result;
+            this.GradesList.DataSource = this.Model.SchoolReportCard;
             this.GradesList.DataBind();
+
+            //var result = kernel
+            //    .SubjectStudent
+            //    .Where(x => x.SubjectId == subjectid && x.Student.ClassOfStudentsId == classOfStudentsid)
+            //    .ToList()
+            //   .Select(x => new
+            //   {
+            //       Name = x.Student.User,
+            //       Marks = string.Join(", ", Enumerable.Repeat(x.Mark.Value, x.Count))
+            //   })
+            //   .GroupBy(x => x.Name)
+            //   .Select(x => new Model
+            //   {
+            //       Name = x.Key.FirstName + " " + x.Key.LastName,
+            //       StudentId = x.Key.Id,
+            //       grades = x.Select(z => z.Marks)
+            //   })
+            //    .ToList();
+
         }
 
         public IEnumerable<Mark> PopulateMarksDropDown()
