@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using SchoolSystem.Data.Models;
+using SchoolSystem.Data.Models.CustomModels;
 
 namespace SchoolSystem.Web.Services.Contracts
 {
@@ -10,5 +11,7 @@ namespace SchoolSystem.Web.Services.Contracts
         IEnumerable<Subject> GetAllSubjects();
 
         IEnumerable<Subject> GetSubjectsForSpecificClass(int classId);
+
+        IEnumerable<SubjectBasicInfo> GetSubjectsPerTeacher(string teacherName, bool isAdmin);
     }
 }

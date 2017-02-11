@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdddingMarksControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Teacher.AdddingMarksControl" %>
 
 <h4>Teache area</h4>
-<asp:UpdatePanel runat="server">
+<asp:UpdatePanel runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="SubjectsDropDown" CssClass="col-md-2 control-label">Премет</asp:Label>
@@ -57,14 +57,15 @@
                         </tr>
                     </ItemTemplate>
                     <InsertItemTemplate>
-                        <tr runat="server" id="InsertTemplate">
+                        <tr>
                             <td>
                                 <asp:DropDownList
                                     ID="StudentsDropDown"
                                     runat="server"
                                     DataValueField="Id"
                                     DataTextField="FullName"
-                                    Visible="false"
+                                    SelectMethod="Test"
+                                    Visible="true"
                                     CssClass="form-control">
                                 </asp:DropDownList>
                             </td>
@@ -75,23 +76,16 @@
                                     SelectMethod="PopulateMarksDropDown"
                                     DataValueField="Id"
                                     DataTextField="Name"
-                                    Visible="false"
+                                    Visible="true"
                                     CssClass="form-control">
                                 </asp:DropDownList>
                             </td>
                             <td>
                                 <asp:Button
                                     runat="server"
-                                    ID="Button1"
-                                    CommandName="bindStudents"
-                                    Text="отвори панела за оценяване"
-                                    CssClass="btn btn-small btn-success" />
-                                <asp:Button
-                                    runat="server"
                                     ID="InsertBtn"
                                     CommandName="Insert"
                                     Text="Добави оценка"
-                                    Visible="false"
                                     CssClass="btn btn-small btn-primary" />
                             </td>
                         </tr>

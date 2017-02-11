@@ -459,6 +459,13 @@
     <Compile Include="CustomControls\Teacher\AdddingMarksControl.ascx.designer.cs">
       <DependentUpon>AdddingMarksControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\Teacher\Models\AddingMarksModel.cs" />
+    <Compile Include="CustomControls\Teacher\Presenters\AddingMarksPresenter.cs" />
+    <Compile Include="CustomControls\Teacher\Views\EventArguments\BIndStudentsEventArgs.cs" />
+    <Compile Include="CustomControls\Teacher\Views\EventArguments\BindStudentsListEventArgs.cs" />
+    <Compile Include="CustomControls\Teacher\Views\EventArguments\BindSubjectsEventArgs.cs" />
+    <Compile Include="CustomControls\Teacher\Views\EventArguments\InserMarkEventArgs.cs" />
+    <Compile Include="CustomControls\Teacher\Views\IAddingMarksView.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

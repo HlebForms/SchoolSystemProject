@@ -7,6 +7,7 @@ using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Contracts;
 
 using Bytes2you.Validation;
+using SchoolSystem.Data.Models.CustomModels;
 
 namespace SchoolSystem.Web.Services
 {
@@ -31,7 +32,7 @@ namespace SchoolSystem.Web.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public bool CreateSubject(string subjectName,string subjectPictureUrl)
+        public bool CreateSubject(string subjectName, string subjectPictureUrl)
         {
             Guard.WhenArgument(subjectName, "subjectName").IsNullOrEmpty().Throw();
             Guard.WhenArgument(subjectPictureUrl, "subjectPictureUrl").IsNullOrEmpty().Throw();
@@ -52,7 +53,7 @@ namespace SchoolSystem.Web.Services
                     ImageUrl = subjectPictureUrl
                 });
 
-               return uow.Commit();
+                return uow.Commit();
             }
         }
 
@@ -67,5 +68,32 @@ namespace SchoolSystem.Web.Services
                 .GetAll(x => x.ClassOfStudentsId == classId, x => x.Subject)
                 .Where(x => x.Teacher != null);
         }
+
+        public IEnumerable<SubjectBasicInfo> GetSubjectsPerTeacher(string teacherName, bool isAdmin)
+        {
+            IEnumerable<SubjectBasicInfo> result = null;
+
+            if (isAdmin)
+            {
+                result = this.subjectRepo.GetAll(null,
+                                  x => new SubjectBasicInfo
+                                  {
+                                      Id = x.Id,
+                                      Name = x.Name
+                                  });
+            }
+            else
+            {
+                result = this.subjectRepo.GetAll(x => x.Teacher.User.UserName == teacherName,
+                   x => new SubjectBasicInfo
+                   {
+                       Id = x.Id,
+                       Name = x.Name
+                   });
+            }
+
+            return result;
+        }
+
     }
 }
