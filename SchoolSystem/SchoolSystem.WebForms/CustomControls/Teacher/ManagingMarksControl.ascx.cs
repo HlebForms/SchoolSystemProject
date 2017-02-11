@@ -25,6 +25,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
         public event EventHandler<BindSubjectsEventArgs> EventBindSubjects;
         public event EventHandler<BindClassesEventArgs> EventBindClasses;
         public event EventHandler<BindMarksEventArgs> EventBindMarks;
+        public event EventHandler<InserMarkEventArgs> EventInsertMark;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -74,8 +75,6 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
 
         private void BindGradeList()
         {
-            var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
-
             var subjectid = int.Parse(this.SubjectsDropDown.SelectedValue);
             var classOfStudentsid = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
 
@@ -87,25 +86,6 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
 
             this.GradesList.DataSource = this.Model.SchoolReportCard;
             this.GradesList.DataBind();
-
-            //var result = kernel
-            //    .SubjectStudent
-            //    .Where(x => x.SubjectId == subjectid && x.Student.ClassOfStudentsId == classOfStudentsid)
-            //    .ToList()
-            //   .Select(x => new
-            //   {
-            //       Name = x.Student.User,
-            //       Marks = string.Join(", ", Enumerable.Repeat(x.Mark.Value, x.Count))
-            //   })
-            //   .GroupBy(x => x.Name)
-            //   .Select(x => new Model
-            //   {
-            //       Name = x.Key.FirstName + " " + x.Key.LastName,
-            //       StudentId = x.Key.Id,
-            //       grades = x.Select(z => z.Marks)
-            //   })
-            //    .ToList();
-
         }
 
         public IEnumerable<Mark> PopulateMarksDropDown()
@@ -131,27 +111,37 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
                 var student = studentsDropDown.SelectedValue;
                 var subjectid = int.Parse(this.SubjectsDropDown.SelectedValue);
 
-                var st = kernel.SubjectStudent
-                    .FirstOrDefault(x => x.StudentId == student && x.MarkId == markToAdd && x.SubjectId == subjectid);
-
-
-                if (st == null)
+                this.EventInsertMark(this, new InserMarkEventArgs()
                 {
-                    kernel.SubjectStudent.Add(new SubjectStudent()
-                    {
-                        SubjectId = int.Parse(SubjectsDropDown.SelectedValue),
-                        MarkId = markToAdd,
-                        StudentId = student,
-                        Count = 1
-                    });
+                    MarkId = markToAdd,
+                    StudentId = student,
+                    SubjectId = subjectid
+                });
 
-                    kernel.SaveChanges();
-                }
-                else
-                {
-                    st.Count++;
-                    kernel.SaveChanges();
-                }
+
+
+
+                //var st = kernel.SubjectStudent
+                //    .FirstOrDefault(x => x.StudentId == student && x.MarkId == markToAdd && x.SubjectId == subjectid);
+
+
+                //if (st == null)
+                //{
+                //    kernel.SubjectStudent.Add(new SubjectStudent()
+                //    {
+                //        SubjectId = int.Parse(SubjectsDropDown.SelectedValue),
+                //        MarkId = markToAdd,
+                //        StudentId = student,
+                //        Count = 1
+                //    });
+
+                //    kernel.SaveChanges();
+                //}
+                //else
+                //{
+                //    st.Count++;
+                //    kernel.SaveChanges();
+                //}
 
             }
         }
@@ -184,24 +174,5 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
 
         public string Fullname { get; set; }
     }
-    public class StudenGrade
-    {
-        public string Name { get; set; }
-
-        public int Grade { get; set; }
-
-        public int GradeCount { get; set; }
-
-    }
-
-    public class Model
-    {
-        public string StudentId { get; set; }
-
-        public string Name { get; set; }
-
-        public IEnumerable<string> grades { get; set; }
-    }
-
 
 }

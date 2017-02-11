@@ -34,6 +34,12 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher.Presenters
             this.View.EventBindSubjects += View_EventBindSubjects;
             this.View.EventBindClasses += View_EventBindClasses;
             this.View.EventBindMarks += View_EventBindMarks;
+            this.View.EventInsertMark += View_EventInsertMark;
+        }
+
+        private void View_EventInsertMark(object sender, InserMarkEventArgs e)
+        {
+            this.marksManagementService.AddMark(e.StudentId, e.SubjectId, e.MarkId);
         }
 
         private void View_EventBindMarks(object sender, BindMarksEventArgs e)

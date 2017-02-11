@@ -16,5 +16,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher.Views
         event EventHandler<BindClassesEventArgs> EventBindClasses;
 
         event EventHandler<BindMarksEventArgs> EventBindMarks;
+
+        event EventHandler<InserMarkEventArgs> EventInsertMark;
     }
 }
