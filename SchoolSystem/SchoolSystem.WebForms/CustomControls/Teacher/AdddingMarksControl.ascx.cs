@@ -80,20 +80,13 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
             //     .ToList();
 
             //var result = kernel.ClassOfStudents.Where(x => x.Id == classOfStudentsid);
-
+            //Response.Redirect(Request.Url.AbsolutePath + "?class=" + classOfStudentsid);
         }
 
-        public IEnumerable<CustomStudent> PopulateStudentsDropDown()
+        public void PopulateStudentsDropDown()
         {
-            var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
 
-            var res = kernel.Students.Select(x => new CustomStudent
-            {
-                Fullname = x.User.FirstName + " " + x.User.LastName,
-                Id = x.Id
-            }).ToList();
 
-            return res;
         }
 
         public IEnumerable<Mark> PopulateMarksDropDown()
@@ -109,16 +102,17 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
         {
             var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
 
-            if (e.CommandName == "addGrade")
+            if (e.CommandName == "Insert")
             {
                 var studentsDropDown = e.Item.FindControl("StudentsDropDown") as DropDownList;
                 var markDropDown = e.Item.FindControl("MarksDropDown") as DropDownList;
 
                 var markToAdd = int.Parse(markDropDown.SelectedValue);
                 var student = studentsDropDown.SelectedValue;
+                var subjectid = int.Parse(this.SubjectsDropDown.SelectedValue);
 
                 var st = kernel.SubjectStudent
-                    .FirstOrDefault(x => x.StudentId == student && x.MarkId == markToAdd);
+                    .FirstOrDefault(x => x.StudentId == student && x.MarkId == markToAdd && x.SubjectId == subjectid);
 
 
                 if (st == null)
@@ -135,13 +129,66 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
                 }
                 else
                 {
-                    kernel.SubjectStudent
-                        .FirstOrDefault(x => x.StudentId == student && x.MarkId == markToAdd).Count++;
-
+                    //kernel.SubjectStudent
+                    //    .FirstOrDefault(x => x.StudentId == student && x.MarkId == markToAdd).Count++;
+                    st.Count++;
                     kernel.SaveChanges();
                 }
 
+                var addGradeBtn = e.Item.FindControl("Button1") as Button;
+                addGradeBtn.Visible = false;
+
             }
+            else if (e.CommandName == "bindStudents")
+            {
+                var studentsDd = e.Item.FindControl("StudentsDropDown") as DropDownList;
+
+                int classId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
+
+                var res = kernel.Students.Where(x => x.ClassOfStudentsId == classId)
+                    .Select(x => new CustomStudent
+                    {
+                        Fullname = x.User.FirstName + " " + x.User.LastName,
+                        Id = x.Id
+                    }).ToList();
+
+                studentsDd.DataSource = res;
+                studentsDd.DataBind();
+
+                var insertBtn = e.Item.FindControl("InsertBtn") as Button;
+                insertBtn.Visible = true;
+            }
+        }
+
+        protected void GradesList_ItemInserting(object sender, ListViewInsertEventArgs e)
+        {
+            var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
+            var teacherId = this.Page.User.Identity.GetUserId();
+
+            var subjectid = int.Parse(this.SubjectsDropDown.SelectedValue);
+            var classOfStudentsid = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
+
+            var result = kernel
+                .SubjectStudent
+                .Where(x => x.SubjectId == subjectid && x.Student.ClassOfStudentsId == classOfStudentsid)
+                .ToList()
+               .Select(x => new
+               {
+                   Name = x.Student.User,
+                   Marks = string.Join(", ", Enumerable.Repeat(x.Mark.Value, x.Count))
+               })
+               .GroupBy(x => x.Name)
+               .Select(x => new Model
+               {
+                   Name = x.Key.FirstName + " " + x.Key.LastName,
+                   StudentId = x.Key.Id,
+                   grades = x.Select(z => z.Marks)
+               })
+                .ToList();
+
+
+            this.GradesList.DataSource = result;
+            this.GradesList.DataBind();
         }
     }
 

@@ -38,6 +38,7 @@
                 <asp:ListView runat="server" ID="GradesList"
                     ItemType="SchoolSystem.WebForms.CustomControls.Teacher.Model"
                     InsertItemPosition="LastItem"
+                    OnItemInserting="GradesList_ItemInserting"
                     OnItemCommand="GradesList_ItemCommand">
                     <LayoutTemplate>
                         <table>
@@ -61,7 +62,6 @@
                                 <asp:DropDownList
                                     ID="StudentsDropDown"
                                     runat="server"
-                                    SelectMethod="PopulateStudentsDropDown"
                                     DataValueField="Id"
                                     DataTextField="FullName">
                                 </asp:DropDownList>
@@ -78,9 +78,15 @@
                             <td>
                                 <asp:Button
                                     runat="server"
+                                    ID="Button1"
+                                    CommandName="bindStudents"
+                                    Text="отвори панела за оценяване" />
+                                <asp:Button
+                                    runat="server"
                                     ID="InsertBtn"
-                                    CommandName="addGrade"
-                                    Text="Добави оценка" />
+                                    CommandName="Insert"
+                                    Text="Добави оценка"
+                                    Visible="false" />
                             </td>
                         </tr>
                     </InsertItemTemplate>
