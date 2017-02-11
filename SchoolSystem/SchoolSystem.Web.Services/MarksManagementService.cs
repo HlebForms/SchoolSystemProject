@@ -1,12 +1,12 @@
-﻿using SchoolSystem.Web.Services.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using SchoolSystem.Web.Services.Contracts;
 using SchoolSystem.Data.Models.CustomModels;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Contracts;
+
 using Bytes2you.Validation;
 
 namespace SchoolSystem.Web.Services
@@ -14,17 +14,21 @@ namespace SchoolSystem.Web.Services
     public class MarksManagementService : IMarksManagementService
     {
         private readonly IRepository<SubjectStudent> subjectStudenRepo;
+        private readonly IRepository<Mark> marksRepo;
         private readonly Func<IUnitOfWork> unitOfWork;
 
         public MarksManagementService(
             IRepository<SubjectStudent> subjectStudenRepo,
+            IRepository<Mark> marksRepo,
             Func<IUnitOfWork> unitOfWork
             )
         {
             Guard.WhenArgument(subjectStudenRepo, "subjectStudenRepo").IsNull().Throw();
+            Guard.WhenArgument(marksRepo, "marksRepo").IsNull().Throw();
             Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
 
             this.subjectStudenRepo = subjectStudenRepo;
+            this.marksRepo = marksRepo;
             this.unitOfWork = unitOfWork;
         }
 
@@ -60,6 +64,11 @@ namespace SchoolSystem.Web.Services
                     uow.Commit();
                 }
             }
+        }
+
+        public IEnumerable<Mark> GetAllMarks()
+        {
+            return this.marksRepo.GetAll();
         }
 
         public IEnumerable<SchoolReportCard> GetMarks(int subjectId, int classOfStudentsId)

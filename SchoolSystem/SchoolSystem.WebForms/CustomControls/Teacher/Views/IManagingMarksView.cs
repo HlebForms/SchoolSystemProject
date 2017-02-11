@@ -1,10 +1,7 @@
-﻿using SchoolSystem.WebForms.CustomControls.Teacher.Models;
+﻿using System;
+
+using SchoolSystem.WebForms.CustomControls.Teacher.Models;
 using SchoolSystem.WebForms.CustomControls.Teacher.Views.EventArguments;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.CustomControls.Teacher.Views
@@ -15,8 +12,12 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher.Views
 
         event EventHandler<BindClassesEventArgs> EventBindClasses;
 
-        event EventHandler<BindMarksEventArgs> EventBindMarks;
+        event EventHandler<BindReortCardEventArgs> EventBindSchoolReportCard;
 
         event EventHandler<InserMarkEventArgs> EventInsertMark;
+
+        event EventHandler<BindStudentsEventArgs> EventBindStudents;
+
+        event EventHandler EventBindMarks;
     }
 }

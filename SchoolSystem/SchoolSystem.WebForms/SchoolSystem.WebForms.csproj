@@ -462,7 +462,8 @@
     <Compile Include="CustomControls\Teacher\Models\ManagingMarksModel.cs" />
     <Compile Include="CustomControls\Teacher\Presenters\ManagingMarksPresenter.cs" />
     <Compile Include="CustomControls\Teacher\Views\EventArguments\BindClassesEventArgs.cs" />
-    <Compile Include="CustomControls\Teacher\Views\EventArguments\BindMarksEventArgs.cs" />
+    <Compile Include="CustomControls\Teacher\Views\EventArguments\BindReortCardEventArgs.cs" />
+    <Compile Include="CustomControls\Teacher\Views\EventArguments\BindStudentsEventArgs.cs" />
     <Compile Include="CustomControls\Teacher\Views\EventArguments\BindSubjectsEventArgs.cs" />
     <Compile Include="CustomControls\Teacher\Views\EventArguments\InserMarkEventArgs.cs" />
     <Compile Include="CustomControls\Teacher\Views\IManagingMarksView.cs" />

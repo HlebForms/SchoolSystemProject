@@ -2,8 +2,8 @@
 
 namespace SchoolSystem.WebForms.CustomControls.Teacher.Views.EventArguments
 {
-    public class BindClassesEventArgs : EventArgs
+    public class BindStudentsEventArgs : EventArgs
     {
-        public int SubjectId { get; internal set; }
+        public int ClassId { get; set; }
     }
 }

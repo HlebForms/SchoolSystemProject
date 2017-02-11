@@ -35,11 +35,11 @@
         </div>
         <div class="form-group">
             <div class="col-md-10">
-                <asp:ListView runat="server" ID="GradesList"
+                <asp:ListView runat="server" ID="SchoolReportCardListView"
                     ItemType="SchoolSystem.Data.Models.CustomModels.SchoolReportCard"
                     InsertItemPosition="LastItem"
-                    OnItemInserting="GradesList_ItemInserting"
-                    OnItemCommand="GradesList_ItemCommand">
+                    OnItemInserting="SchoolReportCardListView_ItemInserting"
+                    OnItemCommand="SchoolReportCardListView_ItemCommand">
                     <LayoutTemplate>
                         <table>
                             <tr>
@@ -64,9 +64,10 @@
                                 <asp:DropDownList
                                     ID="StudentsDropDown"
                                     runat="server"
+                                    ItemType="SchoolSystem.Data.Models.CustomModels.StudentInfo"
                                     DataValueField="Id"
                                     DataTextField="FullName"
-                                    SelectMethod="Test"
+                                    SelectMethod="PopulateStudentsDropDown"
                                     Visible="true"
                                     CssClass="form-control">
                                 </asp:DropDownList>

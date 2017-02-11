@@ -7,6 +7,7 @@ using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Contracts;
 
 using Bytes2you.Validation;
+using SchoolSystem.Data.Models.CustomModels;
 
 namespace SchoolSystem.Web.Services
 {

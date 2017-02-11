@@ -15,6 +15,7 @@ namespace SchoolSystem.WebForms.App_Start.Bindings
             this.Bind<IAccountManagementService>().To<AccountManagementService>();
             this.Bind<INewsDataService>().To<NewsDataService>();
             this.Bind<IMarksManagementService>().To<MarksManagementService>();
+            this.Bind<IStudentManagementService>().To<StudentManagementService>();
         }
     }
 }

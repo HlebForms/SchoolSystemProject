@@ -1,21 +1,17 @@
-﻿using Microsoft.AspNet.Identity;
-using Ninject;
-using SchoolSystem.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
+
 using SchoolSystem.Data.Models;
-using SchoolSystem.WebForms.App_Start;
+using SchoolSystem.Data.Models.CustomModels;
 using SchoolSystem.WebForms.CustomControls.Teacher.Models;
 using SchoolSystem.WebForms.CustomControls.Teacher.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using WebFormsMvp.Web;
 using SchoolSystem.WebForms.CustomControls.Teacher.Views.EventArguments;
 using SchoolSystem.Data.Models.Common;
-using WebFormsMvp;
 using SchoolSystem.WebForms.CustomControls.Teacher.Presenters;
+
+using WebFormsMvp.Web;
+using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.CustomControls.Teacher
 {
@@ -24,15 +20,15 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
     {
         public event EventHandler<BindSubjectsEventArgs> EventBindSubjects;
         public event EventHandler<BindClassesEventArgs> EventBindClasses;
-        public event EventHandler<BindMarksEventArgs> EventBindMarks;
+        public event EventHandler<BindReortCardEventArgs> EventBindSchoolReportCard;
         public event EventHandler<InserMarkEventArgs> EventInsertMark;
+        public event EventHandler<BindStudentsEventArgs> EventBindStudents;
+        public event EventHandler EventBindMarks;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
-                var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
-
                 this.EventBindSubjects(this, new BindSubjectsEventArgs()
                 {
                     IsAdmin = this.Page.User.IsInRole(UserType.Admin),
@@ -58,49 +54,45 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
             this.ClassOfStudentsDropDown.DataSource = this.Model.StudentClasses;
             this.ClassOfStudentsDropDown.DataBind();
 
-            this.BindGradeList();
+            this.BindSchoolReportCard();
         }
 
         protected void SubjectsDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.RiseEventBindClassOfStudentsDropDown();
 
-            this.BindGradeList();
+            this.BindSchoolReportCard();
         }
 
         protected void ClassOfStudentsDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.BindGradeList();
+            this.BindSchoolReportCard();
         }
 
-        private void BindGradeList()
+        private void BindSchoolReportCard()
         {
             var subjectid = int.Parse(this.SubjectsDropDown.SelectedValue);
             var classOfStudentsid = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
 
-            this.EventBindMarks(this, new BindMarksEventArgs()
+            this.EventBindSchoolReportCard(this, new BindReortCardEventArgs()
             {
                 ClassOfStudentsId = classOfStudentsid,
                 SubjectId = subjectid
             });
 
-            this.GradesList.DataSource = this.Model.SchoolReportCard;
-            this.GradesList.DataBind();
+            this.SchoolReportCardListView.DataSource = this.Model.SchoolReportCard;
+            this.SchoolReportCardListView.DataBind();
         }
 
         public IEnumerable<Mark> PopulateMarksDropDown()
         {
-            var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
+            this.EventBindMarks(this, null);
 
-            var res = kernel.Marks.ToList();
-
-            return res;
+            return this.Model.Marks;
         }
 
-        protected void GradesList_ItemCommand(object sender, ListViewCommandEventArgs e)
+        protected void SchoolReportCardListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
-
             var studentsDropDown = e.Item.FindControl("StudentsDropDown") as DropDownList;
             var markDropDown = e.Item.FindControl("MarksDropDown") as DropDownList;
 
@@ -117,62 +109,22 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
                     StudentId = student,
                     SubjectId = subjectid
                 });
-
-
-
-
-                //var st = kernel.SubjectStudent
-                //    .FirstOrDefault(x => x.StudentId == student && x.MarkId == markToAdd && x.SubjectId == subjectid);
-
-
-                //if (st == null)
-                //{
-                //    kernel.SubjectStudent.Add(new SubjectStudent()
-                //    {
-                //        SubjectId = int.Parse(SubjectsDropDown.SelectedValue),
-                //        MarkId = markToAdd,
-                //        StudentId = student,
-                //        Count = 1
-                //    });
-
-                //    kernel.SaveChanges();
-                //}
-                //else
-                //{
-                //    st.Count++;
-                //    kernel.SaveChanges();
-                //}
-
             }
         }
 
-        public IEnumerable<CustomStudent> Test()
+        public IEnumerable<StudentInfo> PopulateStudentsDropDown()
         {
-            var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
+            this.EventBindStudents(this, new BindStudentsEventArgs()
+            {
+                ClassId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue)
+            });
 
-            int classId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
-
-            var res = kernel.Students.Where(x => x.ClassOfStudentsId == classId)
-                .Select(x => new CustomStudent
-                {
-                    Fullname = x.User.FirstName + " " + x.User.LastName,
-                    Id = x.Id
-                }).ToList();
-
-            return res;
+            return this.Model.Students;
         }
 
-        protected void GradesList_ItemInserting(object sender, ListViewInsertEventArgs e)
+        protected void SchoolReportCardListView_ItemInserting(object sender, ListViewInsertEventArgs e)
         {
-            this.BindGradeList();
+            this.BindSchoolReportCard();
         }
     }
-
-    public class CustomStudent
-    {
-        public string Id { get; set; }
-
-        public string Fullname { get; set; }
-    }
-
 }
