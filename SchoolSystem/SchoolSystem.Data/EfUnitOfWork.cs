@@ -1,10 +1,5 @@
 ﻿using SchoolSystem.Data.Contracts;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolSystem.Data
 {
@@ -24,8 +19,7 @@ namespace SchoolSystem.Data
 
         public void Dispose()
         {
-            //TODO: ASK VIKTOR!!!
-            //this.context.Dispose(); ??
+            // Let ninject do it 
         }
     }
 }

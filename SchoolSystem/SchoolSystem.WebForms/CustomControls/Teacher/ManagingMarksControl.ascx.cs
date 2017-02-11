@@ -38,12 +38,65 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
                 this.SubjectsDropDown.DataSource = this.Model.Subjects;
                 this.SubjectsDropDown.DataBind();
 
-                this.RiseEventBindClassOfStudentsDropDown();
+                this.BindClassOfStudentsDropDown();
             }
-
         }
 
-        private void RiseEventBindClassOfStudentsDropDown()
+        public IEnumerable<StudentInfo> PopulateStudentsDropDown()
+        {
+            this.EventBindStudents(this, new BindStudentsEventArgs()
+            {
+                ClassId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue)
+            });
+
+            return this.Model.Students;
+        }
+
+        public IEnumerable<Mark> PopulateMarksDropDown()
+        {
+            this.EventBindMarks(this, null);
+
+            return this.Model.Marks;
+        }
+
+        protected void SubjectsDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.BindClassOfStudentsDropDown();
+
+            this.BindSchoolReportCard();
+        }
+
+        protected void ClassOfStudentsDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.BindSchoolReportCard();
+        }
+
+        protected void SchoolReportCardListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            var studentsDropDown = e.Item.FindControl("StudentsDropDown") as DropDownList;
+            var markDropDown = e.Item.FindControl("MarksDropDown") as DropDownList;
+
+            if (e.CommandName == "Insert")
+            {
+                var markToAdd = int.Parse(markDropDown.SelectedValue);
+                var student = studentsDropDown.SelectedValue;
+                var subjectid = int.Parse(this.SubjectsDropDown.SelectedValue);
+
+                this.EventInsertMark(this, new InserMarkEventArgs()
+                {
+                    MarkId = markToAdd,
+                    StudentId = student,
+                    SubjectId = subjectid
+                });
+            }
+        }
+
+        protected void SchoolReportCardListView_ItemInserting(object sender, ListViewInsertEventArgs e)
+        {
+            this.BindSchoolReportCard();
+        }
+
+        private void BindClassOfStudentsDropDown()
         {
             var subjectId = int.Parse(this.SubjectsDropDown.SelectedValue);
             this.EventBindClasses(this, new BindClassesEventArgs()
@@ -54,18 +107,6 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
             this.ClassOfStudentsDropDown.DataSource = this.Model.StudentClasses;
             this.ClassOfStudentsDropDown.DataBind();
 
-            this.BindSchoolReportCard();
-        }
-
-        protected void SubjectsDropDown_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.RiseEventBindClassOfStudentsDropDown();
-
-            this.BindSchoolReportCard();
-        }
-
-        protected void ClassOfStudentsDropDown_SelectedIndexChanged(object sender, EventArgs e)
-        {
             this.BindSchoolReportCard();
         }
 
@@ -82,49 +123,6 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
 
             this.SchoolReportCardListView.DataSource = this.Model.SchoolReportCard;
             this.SchoolReportCardListView.DataBind();
-        }
-
-        public IEnumerable<Mark> PopulateMarksDropDown()
-        {
-            this.EventBindMarks(this, null);
-
-            return this.Model.Marks;
-        }
-
-        protected void SchoolReportCardListView_ItemCommand(object sender, ListViewCommandEventArgs e)
-        {
-            var studentsDropDown = e.Item.FindControl("StudentsDropDown") as DropDownList;
-            var markDropDown = e.Item.FindControl("MarksDropDown") as DropDownList;
-
-            if (e.CommandName == "Insert")
-            {
-
-                var markToAdd = int.Parse(markDropDown.SelectedValue);
-                var student = studentsDropDown.SelectedValue;
-                var subjectid = int.Parse(this.SubjectsDropDown.SelectedValue);
-
-                this.EventInsertMark(this, new InserMarkEventArgs()
-                {
-                    MarkId = markToAdd,
-                    StudentId = student,
-                    SubjectId = subjectid
-                });
-            }
-        }
-
-        public IEnumerable<StudentInfo> PopulateStudentsDropDown()
-        {
-            this.EventBindStudents(this, new BindStudentsEventArgs()
-            {
-                ClassId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue)
-            });
-
-            return this.Model.Students;
-        }
-
-        protected void SchoolReportCardListView_ItemInserting(object sender, ListViewInsertEventArgs e)
-        {
-            this.BindSchoolReportCard();
         }
     }
 }

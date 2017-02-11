@@ -50,6 +50,7 @@ namespace SchoolSystem.Web.Services
                         SubjectId = subjectId,
                         MarkId = markId,
                         StudentId = studentId,
+                        Student = this.subjectStudenRepo.GetAll(x => x.StudentId == studentId, x => x.Student).FirstOrDefault(),
                         Count = 1
                     });
 

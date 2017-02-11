@@ -41,7 +41,7 @@
                     OnItemInserting="SchoolReportCardListView_ItemInserting"
                     OnItemCommand="SchoolReportCardListView_ItemCommand">
                     <LayoutTemplate>
-                        <table>
+                        <table runat="server" class="table table-striped table-hover">
                             <tr>
                                 <th>Име</th>
                                 <th>Фамилия</th>
@@ -93,9 +93,6 @@
                             </td>
                         </tr>
                     </InsertItemTemplate>
-                    <EmptyDataTemplate>
-                        <h4>Няма въведени оценки по съответната дисциплина!</h4>
-                    </EmptyDataTemplate>
                 </asp:ListView>
             </div>
     </ContentTemplate>
