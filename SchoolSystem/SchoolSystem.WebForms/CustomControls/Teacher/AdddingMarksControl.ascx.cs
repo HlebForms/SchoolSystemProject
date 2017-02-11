@@ -25,7 +25,24 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
                 this.SubjectsDropDown.DataSource = kernel.Subjects.Where(x => x.TeacherId == teacherId).ToList();
                 this.SubjectsDropDown.DataBind();
 
+                var subjectId = int.Parse(this.SubjectsDropDown.SelectedValue);
+                var classes = kernel
+                    .SubjectClassOfStudents.Where(x => x.SubjectId == subjectId)
+                    .Select(x => new
+                    {
+                        Id = x.ClassOfStudentsId,
+                        Name = x.ClassOfStudents.Name
+                    }).ToList();
+
+                this.ClassOfStudentsDropDown.DataSource = classes;
+                this.ClassOfStudentsDropDown.DataBind();
+
+
+                var classOfStudentsid = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
+                
+                this.BindGradeList();
             }
+
         }
 
         protected void SubjectsDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -43,12 +60,18 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
 
             this.ClassOfStudentsDropDown.DataSource = classes;
             this.ClassOfStudentsDropDown.DataBind();
+
+            this.BindGradeList();
         }
 
         protected void ClassOfStudentsDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.BindGradeList();
+        }
+
+        private void BindGradeList()
+        {
             var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
-            var teacherId = this.Page.User.Identity.GetUserId();
 
             var subjectid = int.Parse(this.SubjectsDropDown.SelectedValue);
             var classOfStudentsid = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
@@ -74,19 +97,6 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
 
             this.GradesList.DataSource = result;
             this.GradesList.DataBind();
-            //var result = kernel
-            //     .SubjectStudent
-            //     .Where(x => x.SubjectId == subjectid && x.Student.ClassOfStudentsId == classOfStudentsid)
-            //     .ToList();
-
-            //var result = kernel.ClassOfStudents.Where(x => x.Id == classOfStudentsid);
-            //Response.Redirect(Request.Url.AbsolutePath + "?class=" + classOfStudentsid);
-        }
-
-        public void PopulateStudentsDropDown()
-        {
-
-
         }
 
         public IEnumerable<Mark> PopulateMarksDropDown()
@@ -102,10 +112,12 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
         {
             var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
 
+            var studentsDropDown = e.Item.FindControl("StudentsDropDown") as DropDownList;
+            var markDropDown = e.Item.FindControl("MarksDropDown") as DropDownList;
+            var addGradeBtn = e.Item.FindControl("Button1") as Button;
+
             if (e.CommandName == "Insert")
             {
-                var studentsDropDown = e.Item.FindControl("StudentsDropDown") as DropDownList;
-                var markDropDown = e.Item.FindControl("MarksDropDown") as DropDownList;
 
                 var markToAdd = int.Parse(markDropDown.SelectedValue);
                 var student = studentsDropDown.SelectedValue;
@@ -129,15 +141,11 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
                 }
                 else
                 {
-                    //kernel.SubjectStudent
-                    //    .FirstOrDefault(x => x.StudentId == student && x.MarkId == markToAdd).Count++;
                     st.Count++;
                     kernel.SaveChanges();
                 }
 
-                var addGradeBtn = e.Item.FindControl("Button1") as Button;
-                addGradeBtn.Visible = false;
-
+                addGradeBtn.Visible = true;
             }
             else if (e.CommandName == "bindStudents")
             {
@@ -155,6 +163,10 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
                 studentsDd.DataSource = res;
                 studentsDd.DataBind();
 
+                markDropDown.Visible = true;
+                studentsDropDown.Visible = true;
+                addGradeBtn.Visible = false;
+
                 var insertBtn = e.Item.FindControl("InsertBtn") as Button;
                 insertBtn.Visible = true;
             }
@@ -162,33 +174,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
 
         protected void GradesList_ItemInserting(object sender, ListViewInsertEventArgs e)
         {
-            var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
-            var teacherId = this.Page.User.Identity.GetUserId();
-
-            var subjectid = int.Parse(this.SubjectsDropDown.SelectedValue);
-            var classOfStudentsid = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
-
-            var result = kernel
-                .SubjectStudent
-                .Where(x => x.SubjectId == subjectid && x.Student.ClassOfStudentsId == classOfStudentsid)
-                .ToList()
-               .Select(x => new
-               {
-                   Name = x.Student.User,
-                   Marks = string.Join(", ", Enumerable.Repeat(x.Mark.Value, x.Count))
-               })
-               .GroupBy(x => x.Name)
-               .Select(x => new Model
-               {
-                   Name = x.Key.FirstName + " " + x.Key.LastName,
-                   StudentId = x.Key.Id,
-                   grades = x.Select(z => z.Marks)
-               })
-                .ToList();
-
-
-            this.GradesList.DataSource = result;
-            this.GradesList.DataBind();
+            this.BindGradeList();
         }
     }
 
@@ -203,6 +189,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
         public string Name { get; set; }
 
         public int Grade { get; set; }
+
         public int GradeCount { get; set; }
 
     }

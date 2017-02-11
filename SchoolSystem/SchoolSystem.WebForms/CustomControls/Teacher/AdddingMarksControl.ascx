@@ -57,13 +57,15 @@
                         </tr>
                     </ItemTemplate>
                     <InsertItemTemplate>
-                        <tr>
+                        <tr runat="server" id="InsertTemplate">
                             <td>
                                 <asp:DropDownList
                                     ID="StudentsDropDown"
                                     runat="server"
                                     DataValueField="Id"
-                                    DataTextField="FullName">
+                                    DataTextField="FullName"
+                                    Visible="false"
+                                    CssClass="form-control">
                                 </asp:DropDownList>
                             </td>
                             <td>
@@ -72,7 +74,9 @@
                                     runat="server"
                                     SelectMethod="PopulateMarksDropDown"
                                     DataValueField="Id"
-                                    DataTextField="Name">
+                                    DataTextField="Name"
+                                    Visible="false"
+                                    CssClass="form-control">
                                 </asp:DropDownList>
                             </td>
                             <td>
@@ -80,16 +84,21 @@
                                     runat="server"
                                     ID="Button1"
                                     CommandName="bindStudents"
-                                    Text="отвори панела за оценяване" />
+                                    Text="отвори панела за оценяване"
+                                    CssClass="btn btn-small btn-success" />
                                 <asp:Button
                                     runat="server"
                                     ID="InsertBtn"
                                     CommandName="Insert"
                                     Text="Добави оценка"
-                                    Visible="false" />
+                                    Visible="false"
+                                    CssClass="btn btn-small btn-primary" />
                             </td>
                         </tr>
                     </InsertItemTemplate>
+                    <EmptyDataTemplate>
+                        <h4>Няма въведени оценки по съответната дисциплина!</h4>
+                    </EmptyDataTemplate>
                 </asp:ListView>
             </div>
     </ContentTemplate>
