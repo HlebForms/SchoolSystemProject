@@ -12,5 +12,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher.Views
     public interface IAddingMarksView : IView<AddingMarksModel>
     {
         event EventHandler<BindSubjectsEventArgs> EventBindSubjects;
+
+        event EventHandler<BindClassesEventArgs> EventBindClasses;
     }
 }

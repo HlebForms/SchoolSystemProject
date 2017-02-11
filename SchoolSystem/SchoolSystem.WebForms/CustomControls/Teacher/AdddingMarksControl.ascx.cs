@@ -23,18 +23,13 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
     public partial class AdddingMarksControl : MvpUserControl<AddingMarksModel>, IAddingMarksView
     {
         public event EventHandler<BindSubjectsEventArgs> EventBindSubjects;
+        public event EventHandler<BindClassesEventArgs> EventBindClasses;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
                 var kernel = NinjectWebCommon.Kernel.Get<SchoolSystemDbContext>();
-
-                //var teacherId = this.Page.User.Identity.GetUserId();
-
-                //this.SubjectsDropDown.DataSource = kernel.Subjects.Where(x => x.TeacherId == teacherId).ToList();
-                //this.SubjectsDropDown.DataBind();
-
 
                 this.EventBindSubjects(this, new BindSubjectsEventArgs()
                 {
@@ -46,19 +41,24 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
                 this.SubjectsDropDown.DataBind();
 
                 var subjectId = int.Parse(this.SubjectsDropDown.SelectedValue);
-                var classes = kernel
-                    .SubjectClassOfStudents.Where(x => x.SubjectId == subjectId)
-                    .Select(x => new
-                    {
-                        Id = x.ClassOfStudentsId,
-                        Name = x.ClassOfStudents.Name
-                    }).ToList();
+                this.EventBindClasses(this, new BindClassesEventArgs()
+                {
+                    SubjectId = subjectId
+                });
 
-                this.ClassOfStudentsDropDown.DataSource = classes;
+                this.ClassOfStudentsDropDown.DataSource = this.Model.StudentClasses;
                 this.ClassOfStudentsDropDown.DataBind();
 
                 this.BindGradeList();
 
+
+                //var classes = kernel
+                //    .SubjectClassOfStudents.Where(x => x.SubjectId == subjectId)
+                //    .Select(x => new
+                //    {
+                //        Id = x.ClassOfStudentsId,
+                //        Name = x.ClassOfStudents.Name
+                //    }).ToList();
             }
 
         }

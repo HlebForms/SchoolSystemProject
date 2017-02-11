@@ -19,8 +19,10 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
+
             mockedSubjectsRepo.Setup(x => x.GetAll());
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
 
             var result = service.GetAllSubjects();
 
@@ -33,11 +35,12 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
 
             IEnumerable<Subject> subjects = new List<Subject>();
 
             mockedSubjectsRepo.Setup(x => x.GetAll()).Returns(subjects);
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
             var result = service.GetAllSubjects();
 
             Assert.AreSame(subjects, result);

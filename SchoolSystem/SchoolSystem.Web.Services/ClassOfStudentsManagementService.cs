@@ -14,17 +14,23 @@ namespace SchoolSystem.Web.Services
     {
         private readonly IRepository<Subject> subjectsRepo;
         private readonly IRepository<ClassOfStudents> classOfStudentsRepo;
+        private readonly IRepository<SubjectClassOfStudents> subjectClassOfStudnetsrepo;
         private readonly Func<IUnitOfWork> unitOfWork;
 
-        public ClassOfStudentsManagementService(IRepository<Subject> subjectsRepo,
-               IRepository<ClassOfStudents> classOfStudentsRepo, Func<IUnitOfWork> unitOfWork)
+        public ClassOfStudentsManagementService(
+                IRepository<Subject> subjectsRepo,
+                IRepository<ClassOfStudents> classOfStudentsRepo,
+                IRepository<SubjectClassOfStudents> subjectClassOfStudnetsrepo,
+                Func<IUnitOfWork> unitOfWork)
         {
             Guard.WhenArgument(subjectsRepo, "subjectsRepo").IsNull().Throw();
             Guard.WhenArgument(classOfStudentsRepo, "classOfStudentsRepo").IsNull().Throw();
+            Guard.WhenArgument(subjectClassOfStudnetsrepo, "subjectClassOfStudnetsrepo").IsNull().Throw();
             Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
 
             this.subjectsRepo = subjectsRepo;
             this.classOfStudentsRepo = classOfStudentsRepo;
+            this.subjectClassOfStudnetsrepo = subjectClassOfStudnetsrepo;
             this.unitOfWork = unitOfWork;
         }
 
@@ -90,5 +96,11 @@ namespace SchoolSystem.Web.Services
         {
             return this.classOfStudentsRepo.GetAll();
         }
+
+        public IEnumerable<ClassOfStudents> GetAllClassesWithSpecifiedSubject(int subjectId)
+        {
+            return this.subjectClassOfStudnetsrepo.GetAll(x => x.SubjectId == subjectId, x => x.ClassOfStudents);
+        }
+
     }
 }

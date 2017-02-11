@@ -19,8 +19,10 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
+
             mockedClassOfStudentsRepo.Setup(x => x.GetAll());
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
 
             var result = service.GetAllClasses();
 
@@ -33,9 +35,11 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
+
             IEnumerable<ClassOfStudents> expected = new List<ClassOfStudents>();
             mockedClassOfStudentsRepo.Setup(x => x.GetAll()).Returns(expected);
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
 
             var result = service.GetAllClasses();
 

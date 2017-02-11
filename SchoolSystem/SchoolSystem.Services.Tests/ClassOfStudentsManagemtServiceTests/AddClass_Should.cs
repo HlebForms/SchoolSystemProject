@@ -21,9 +21,10 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
         {
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
 
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
             IEnumerable<string> subjectIds = new List<string>();
 
             Assert.Throws<ArgumentNullException>(() =>
@@ -38,8 +39,10 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
 
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+
             IEnumerable<string> subjectIds = new List<string>();
 
             Assert.Throws<ArgumentException>(() =>
@@ -54,8 +57,9 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
 
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
             IEnumerable<string> subjectIds = new List<string>();
 
             Assert.That(() =>
@@ -70,8 +74,9 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
 
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
             IEnumerable<string> subjectIds = new List<string>();
 
             Assert.That(() =>
@@ -87,7 +92,9 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
 
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
+
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
 
             Assert.Throws<ArgumentNullException>(() =>
             {
@@ -101,8 +108,9 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
 
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
 
             Assert.That(() =>
             {
@@ -116,10 +124,12 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
 
             mockedUnitOfWork.Setup(x => x.Commit());
             mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(new List<string>());
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
 
             service.AddClass(NotNullString, new List<string>());
 
@@ -132,12 +142,14 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
 
             mockedUnitOfWork.Setup(x => x.Commit());
             mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(new List<string>());
             mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
 
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
             var nonEmptyList = new List<string>() { "2" };
 
             service.AddClass(NotNullString, nonEmptyList);
@@ -151,12 +163,13 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
 
             mockedUnitOfWork.Setup(x => x.Commit());
             mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(new List<string>());
             mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
 
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
             var emptyList = new List<string>();
 
             service.AddClass(NotNullString, emptyList);
@@ -170,6 +183,7 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
             mockedUnitOfWork.Setup(x => x.Commit());
 
             string className = NotNullString;
@@ -177,7 +191,8 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
 
             mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(classNames);
             mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
             var nonEmptyList = new List<string>() { "2" };
 
             var result = service.AddClass(NotNullString, nonEmptyList);
@@ -191,6 +206,8 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
+
             mockedUnitOfWork.Setup(x => x.Commit());
 
             IEnumerable<string> classNames = new List<string>() { };
@@ -198,7 +215,7 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(classNames);
             mockedClassOfStudentsRepo.Setup(x => x.Add(It.IsAny<ClassOfStudents>()));
             mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
             var nonEmptyList = new List<string>() { "2" };
 
             service.AddClass(NotNullString, nonEmptyList);
@@ -212,6 +229,8 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
+
             mockedUnitOfWork.Setup(x => x.Commit());
 
             IEnumerable<string> classNames = new List<string>() { };
@@ -219,7 +238,7 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             mockedClassOfStudentsRepo.Setup(x => x.GetAll(null, y => y.Name)).Returns(classNames);
             mockedClassOfStudentsRepo.Setup(x => x.Add(It.IsAny<ClassOfStudents>()));
             mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
             var nonEmptyList = new List<string>() { "2" };
 
             service.AddClass(NotNullString, nonEmptyList);
@@ -233,6 +252,8 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>();
+
             mockedUnitOfWork.Setup(x => x.Commit()).Returns(true);
 
             IEnumerable<string> classNames = new List<string>();
@@ -241,7 +262,7 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
 
             mockedSubjectsRepo.Setup(x => x.GetFirst(It.IsAny<Expression<Func<Subject, bool>>>())).Returns(new Subject());
 
-            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
+            var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo.Object, () => mockedUnitOfWork.Object);
             var nonEmptyList = new List<string>() { "2" };
 
             var result = service.AddClass(NotNullString, nonEmptyList);

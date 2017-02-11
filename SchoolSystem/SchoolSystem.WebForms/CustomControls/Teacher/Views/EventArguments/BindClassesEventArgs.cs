@@ -5,7 +5,8 @@ using System.Web;
 
 namespace SchoolSystem.WebForms.CustomControls.Teacher.Views.EventArguments
 {
-    public class BIndStudentsEventArgs : EventArgs
+    public class BindClassesEventArgs : EventArgs
     {
+        public int SubjectId { get; internal set; }
     }
 }

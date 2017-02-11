@@ -12,5 +12,7 @@ namespace SchoolSystem.Web.Services.Contracts
         IEnumerable<Subject> GetAllSubjects();
 
         IEnumerable<ClassOfStudents> GetAllClasses();
+
+        IEnumerable<ClassOfStudents> GetAllClassesWithSpecifiedSubject(int subjectId);
     }
 }

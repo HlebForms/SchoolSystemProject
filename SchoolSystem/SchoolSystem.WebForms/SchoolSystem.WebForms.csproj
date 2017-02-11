@@ -461,7 +461,7 @@
     </Compile>
     <Compile Include="CustomControls\Teacher\Models\AddingMarksModel.cs" />
     <Compile Include="CustomControls\Teacher\Presenters\AddingMarksPresenter.cs" />
-    <Compile Include="CustomControls\Teacher\Views\EventArguments\BIndStudentsEventArgs.cs" />
+    <Compile Include="CustomControls\Teacher\Views\EventArguments\BindClassesEventArgs.cs" />
     <Compile Include="CustomControls\Teacher\Views\EventArguments\BindStudentsListEventArgs.cs" />
     <Compile Include="CustomControls\Teacher\Views\EventArguments\BindSubjectsEventArgs.cs" />
     <Compile Include="CustomControls\Teacher\Views\EventArguments\InserMarkEventArgs.cs" />
