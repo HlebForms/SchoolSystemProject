@@ -8,7 +8,7 @@ namespace SchoolSystem.Web.Services.Contracts
     {
         void CreateStudent(string studentId, int classOfStudentId);
 
-        void CreateTeacher(string teacherId, int subjectId);
+        void CreateTeacher(string teacherId, IEnumerable<int> subjectId);
 
         IEnumerable<IdentityRole> GetAllUserRoles();
     }

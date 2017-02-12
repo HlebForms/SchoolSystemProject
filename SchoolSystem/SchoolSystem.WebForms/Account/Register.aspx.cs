@@ -8,6 +8,8 @@ using SchoolSystem.WebForms.Account.Models;
 using SchoolSystem.WebForms.Account.Presenters;
 using SchoolSystem.WebForms.Account.Views;
 using SchoolSystem.WebForms.Account.Views.EventArguments;
+using System.Web.UI.WebControls;
+using System.Linq;
 
 namespace SchoolSystem.WebForms.Account
 {
@@ -25,13 +27,13 @@ namespace SchoolSystem.WebForms.Account
                 this.UserTypeDropDown.DataSource = this.Model.UserRoles;
                 this.UserTypeDropDown.DataBind();
 
-                this.SubjectDropDown.DataSource = this.Model.Subjects;
-                this.SubjectDropDown.DataBind();
-                this.ClassContainer.Visible = false;
+                this.AvailableSubjectsList.DataSource = this.Model.Subjects;
+                this.AvailableSubjectsList.DataBind();
+                this.SubjectContainer.Visible = false;
 
                 this.ClassDropDown.DataSource = this.Model.ClassOfStudents;
                 this.ClassDropDown.DataBind();
-                this.SubjectContainer.Visible = false;
+                this.ClassContainer.Visible = false;
             }
         }
 
@@ -54,7 +56,14 @@ namespace SchoolSystem.WebForms.Account
 
             if (selectedRole == UserType.Teacher)
             {
-                eventArgs.SubjectId = int.Parse(this.SubjectDropDown.SelectedItem.Value);
+                var subjects = this.AvailableSubjectsList
+                    .Items
+                    .Cast<ListItem>()
+                    .Where(i => i.Selected)
+                    .Select(x => int.Parse(x.Value))
+                    .ToList();
+
+               eventArgs.SubjectIds = subjects;
             }
             else if (selectedRole == UserType.Student)
             {

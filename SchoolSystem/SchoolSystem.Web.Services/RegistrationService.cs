@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 using SchoolSystem.Data.Models;
 using SchoolSystem.Web.Services.Contracts;
+using System.Linq;
 
 namespace SchoolSystem.Web.Services
 {
@@ -43,21 +44,24 @@ namespace SchoolSystem.Web.Services
             return this.userRolesRepo.GetAll();
         }
 
-        public void CreateTeacher(string teacherId, int subjectId)
+        public void CreateTeacher(string teacherId, IEnumerable<int> subjectId)
         {
             Guard.WhenArgument(teacherId, "teacherId").IsNullOrEmpty().Throw();
 
-            var subject = this.subjectsRepo.GetFirst(x => x.Id == subjectId);
-
             using (var uow = this.unitOfWork())
             {
+                var subjects = this.subjectsRepo
+                    .GetAll(x => subjectId.Contains(x.Id), x => x)
+                    .Select(x =>
+                    {
+                        x.TeacherId = teacherId;
+                        return x;
+                    }).ToList();
+
                 this.teacherRepo.Add(new Teacher()
                 {
                     Id = teacherId,
-                    Subjects = new HashSet<Subject>() { subject }
                 });
-
-                subject.TeacherId = teacherId;
 
                 uow.Commit();
             }

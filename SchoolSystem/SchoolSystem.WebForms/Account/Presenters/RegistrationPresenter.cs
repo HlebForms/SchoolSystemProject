@@ -48,7 +48,7 @@ namespace SchoolSystem.WebForms.Account.Presenters
         {
             this.View.Model.UserRoles = this.registrationService.GetAllUserRoles();
             this.View.Model.ClassOfStudents = this.classOfStudentsManagementService.GetAllClasses();
-            this.View.Model.Subjects = this.subjectManagementService.GetAllSubjects();
+            this.View.Model.Subjects = this.subjectManagementService.GetAllAvailableSubjects();
         }
 
         private void RegisterUser(object sender, RegistrationPageEventArgs e)
@@ -78,7 +78,7 @@ namespace SchoolSystem.WebForms.Account.Presenters
 
             if (e.UserType == UserType.Teacher)
             {
-                this.registrationService.CreateTeacher(user.Id, e.SubjectId);
+                this.registrationService.CreateTeacher(user.Id, e.SubjectIds);
             }
             else if (e.UserType == UserType.Student)
             {

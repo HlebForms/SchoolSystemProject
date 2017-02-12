@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Microsoft.Owin;
+using System.Collections.Generic;
 
 namespace SchoolSystem.WebForms.Account.Views.EventArguments
 {
@@ -22,7 +23,7 @@ namespace SchoolSystem.WebForms.Account.Views.EventArguments
 
         public IOwinContext OwinCtx { get; set; }
 
-        public int SubjectId { get; set; }
+        public IEnumerable<int> SubjectIds { get; set; }
 
         public int ClassOfSudentsId { get; set; }
     }

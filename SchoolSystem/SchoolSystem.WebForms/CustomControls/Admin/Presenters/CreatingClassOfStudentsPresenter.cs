@@ -23,8 +23,8 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
             : base(view)
         {
 
-            Guard.WhenArgument(classOfStudentsManagementService, "classOfStudentsManagementService").IsNotNull().Throw();
-            Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNotNull().Throw();
+            Guard.WhenArgument(classOfStudentsManagementService, "classOfStudentsManagementService").IsNull().Throw();
+            Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNull().Throw();
 
             this.classOfStudentsManagementService = classOfStudentsManagementService;
             this.subjectManagementService = subjectManagementService;

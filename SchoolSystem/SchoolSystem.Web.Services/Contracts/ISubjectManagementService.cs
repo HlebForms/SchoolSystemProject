@@ -14,5 +14,11 @@ namespace SchoolSystem.Web.Services.Contracts
         IEnumerable<Subject> GetSubjectsForSpecificClass(int classId);
 
         IEnumerable<SubjectBasicInfo> GetSubjectsPerTeacher(string teacherName, bool isAdmin);
+
+        /// <summary>
+        /// Gets the subjects with no assigned teacher
+        /// </summary>
+        /// <returns> IEnumerable<Subject> </returns>
+        IEnumerable<SubjectBasicInfo> GetAllAvailableSubjects();
     }
 }

@@ -27,16 +27,15 @@
                 </div>
 
                 <div class="form-group" runat="server" id="SubjectContainer">
-                    <asp:Label runat="server" AssociatedControlID="SubjectDropDown" CssClass="col-md-2 control-label">Предмет</asp:Label>
-                    <div class="col-md-10">
-                        <asp:DropDownList
-                            runat="server"
-                            ID="SubjectDropDown"
-                            CssClass="form-control"
-                            Width="285"
-                            DataValueField="Id"
-                            DataTextField="Name">
-                        </asp:DropDownList>
+                    <asp:Label runat="server" AssociatedControlID="AvailableSubjectsList" CssClass="col-md-2 control-label">Свободни предмети</asp:Label>
+                    <div class="col-md-10 checkbox-scrollbar-container">
+                        <asp:CheckBoxList 
+                            ID="AvailableSubjectsList" 
+                            runat ="server"
+                            DataValueField ="Id"
+                            DataTextField="Name"
+                            With ="285">
+                        </asp:CheckBoxList>
                     </div>
                 </div>
 
