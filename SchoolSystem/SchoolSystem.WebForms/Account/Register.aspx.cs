@@ -1,36 +1,38 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
-using WebFormsMvp;
-using WebFormsMvp.Web;
+using System.Web.UI.WebControls;
 
 using SchoolSystem.Data.Models.Common;
 using SchoolSystem.WebForms.Account.Models;
 using SchoolSystem.WebForms.Account.Presenters;
 using SchoolSystem.WebForms.Account.Views;
 using SchoolSystem.WebForms.Account.Views.EventArguments;
-using System.Web.UI.WebControls;
-using System.Linq;
+
+using WebFormsMvp;
+using WebFormsMvp.Web;
 
 namespace SchoolSystem.WebForms.Account
 {
     [PresenterBinding(typeof(RegistrationPresenter))]
     public partial class Register : MvpPage<RegistrationModel>, IRegisterView
     {
-        public event EventHandler<EventArgs> EventBindPageData;
         public event EventHandler<RegistrationPageEventArgs> EventRegisterUser;
+        public event EventHandler EventGetAvailableSubjects;
+        public event EventHandler EventGetClassesOfStudents;
+        public event EventHandler EventGetUserRoles;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
-                this.EventBindPageData(this, e);
+                this.EventGetUserRoles(this, e);
                 this.UserTypeDropDown.DataSource = this.Model.UserRoles;
                 this.UserTypeDropDown.DataBind();
 
-                this.AvailableSubjectsList.DataSource = this.Model.Subjects;
-                this.AvailableSubjectsList.DataBind();
                 this.SubjectContainer.Visible = false;
 
+                this.EventGetClassesOfStudents(this, e);
                 this.ClassDropDown.DataSource = this.Model.ClassOfStudents;
                 this.ClassDropDown.DataBind();
                 this.ClassContainer.Visible = false;
@@ -88,6 +90,7 @@ namespace SchoolSystem.WebForms.Account
         protected void UserTypeDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedRole = this.UserTypeDropDown.SelectedItem.Text;
+            this.BindAvailabeSubjects();
 
             if (selectedRole == UserType.Student)
             {
@@ -106,6 +109,13 @@ namespace SchoolSystem.WebForms.Account
             }
         }
 
+        private void BindAvailabeSubjects()
+        {
+            this.EventGetAvailableSubjects(this, null);
+            this.AvailableSubjectsList.DataSource = this.Model.Subjects;
+            this.AvailableSubjectsList.DataBind();
+        }
+
         private void ResetInputInFields()
         {
             this.Email.Text = string.Empty;
@@ -113,6 +123,10 @@ namespace SchoolSystem.WebForms.Account
             this.LastNameTextBox.Text = string.Empty;
             this.Password.Text = string.Empty;
             this.ConfirmPassword.Text = string.Empty;
+
+            this.SubjectContainer.Visible = false;
+            this.ClassContainer.Visible = false;
+            this.UserTypeDropDown.SelectedIndex = 0;
         }
     }
 }

@@ -41,13 +41,23 @@ namespace SchoolSystem.WebForms.Account.Presenters
             this.classOfStudentsManagementService = classOfStudentsManagementService;
 
             this.View.EventRegisterUser += RegisterUser;
-            this.View.EventBindPageData += BindPageData;
+            this.View.EventGetClassesOfStudents += View_EventGetClassesOfStudents;
+            this.View.EventGetUserRoles += View_EventGetUserRoles;
+            this.View.EventGetAvailableSubjects += View_EventGetAvailableSubjects;
         }
 
-        private void BindPageData(object sender, EventArgs e)
+        private void View_EventGetClassesOfStudents(object sender, EventArgs e)
+        {
+            this.View.Model.ClassOfStudents = this.classOfStudentsManagementService.GetAllClasses();
+        }
+
+        private void View_EventGetUserRoles(object sender, EventArgs e)
         {
             this.View.Model.UserRoles = this.registrationService.GetAllUserRoles();
-            this.View.Model.ClassOfStudents = this.classOfStudentsManagementService.GetAllClasses();
+        }
+
+        private void View_EventGetAvailableSubjects(object sender, EventArgs e)
+        {
             this.View.Model.Subjects = this.subjectManagementService.GetAllAvailableSubjects();
         }
 

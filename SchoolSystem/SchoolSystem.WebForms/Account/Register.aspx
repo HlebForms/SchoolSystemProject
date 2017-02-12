@@ -5,11 +5,12 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <asp:UpdatePanel runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <custom:Notifier runat="server" ID="Notifier" />
-
             <div class="form-horizontal">
                 <h4>Добавяне на нов потребител</h4>
                 <hr />
+
+                <custom:Notifier runat="server" ID="Notifier" />
+
                 <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="UserTypeDropDown" CssClass="col-md-2 control-label">Тип на потребителя</asp:Label>
                     <div class="col-md-10">
@@ -29,12 +30,12 @@
                 <div class="form-group" runat="server" id="SubjectContainer">
                     <asp:Label runat="server" AssociatedControlID="AvailableSubjectsList" CssClass="col-md-2 control-label">Свободни предмети</asp:Label>
                     <div class="col-md-10 checkbox-scrollbar-container">
-                        <asp:CheckBoxList 
-                            ID="AvailableSubjectsList" 
-                            runat ="server"
-                            DataValueField ="Id"
+                        <asp:CheckBoxList
+                            ID="AvailableSubjectsList"
+                            runat="server"
+                            DataValueField="Id"
                             DataTextField="Name"
-                            With ="285">
+                            With="285">
                         </asp:CheckBoxList>
                     </div>
                 </div>

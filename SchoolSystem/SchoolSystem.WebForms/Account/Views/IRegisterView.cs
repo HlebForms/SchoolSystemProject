@@ -1,6 +1,8 @@
-﻿using SchoolSystem.WebForms.Account.Models;
+﻿using System;
+
+using SchoolSystem.WebForms.Account.Models;
 using SchoolSystem.WebForms.Account.Views.EventArguments;
-using System;
+
 using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.Account.Views
@@ -9,6 +11,10 @@ namespace SchoolSystem.WebForms.Account.Views
     {
         event EventHandler<RegistrationPageEventArgs> EventRegisterUser;
 
-        event EventHandler<EventArgs> EventBindPageData;
+        event EventHandler EventGetClassesOfStudents;
+
+        event EventHandler EventGetAvailableSubjects;
+
+        event EventHandler EventGetUserRoles;
     }
 }
