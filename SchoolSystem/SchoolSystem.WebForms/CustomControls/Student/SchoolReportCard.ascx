@@ -6,7 +6,7 @@
             runat="server"
             ID="ScoolReportCardGrid"
             AutoGenerateColumns="false"
-            ItemType="SchoolSystem.WebForms.CustomControls.Student.StudentMarks"
+            ItemType="SchoolSystem.Data.Models.CustomModels.StudentMarks"
             AllowSorting="true"
             OnSorting="ScoolReportCardGrid_Sorting">
             <Columns>

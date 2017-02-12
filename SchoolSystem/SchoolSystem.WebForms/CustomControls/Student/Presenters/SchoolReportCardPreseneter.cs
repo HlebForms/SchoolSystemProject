@@ -18,7 +18,7 @@ namespace SchoolSystem.WebForms.CustomControls.Student.Presenters
             IMarksManagementService marksManagementService
             ) : base(view)
         {
-            Guard.WhenArgument(marksManagementService, "marksManagementService").IsNotNull().Throw();
+            Guard.WhenArgument(marksManagementService, "marksManagementService").IsNull().Throw();
 
             this.View.EvenGetStudentMarks += View_EvenGetStudentMarks;
 
