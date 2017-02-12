@@ -18,19 +18,27 @@ namespace SchoolSystem.WebForms.Account.Presenters
     {
         private readonly IRegistrationService registrationService;
         private readonly IAccountManagementService accountManagementSerivce;
+        private readonly ISubjectManagementService subjectManagementService;
+        private readonly IClassOfStudentsManagementService classOfStudentsManagementService;
 
         public RegistrationPresenter(
             IRegisterView view,
             IRegistrationService registrationService,
+            ISubjectManagementService subjectManagementService,
+            IClassOfStudentsManagementService classOfStudentsManagementService,
             IAccountManagementService accountManagementSerivce)
             : base(view)
         {
 
             Guard.WhenArgument(registrationService, "registrationService").IsNull().Throw();
+            Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNull().Throw();
+            Guard.WhenArgument(classOfStudentsManagementService, "classOfStudentsManagementService").IsNull().Throw();
             Guard.WhenArgument(accountManagementSerivce, "accountManagementSerivce").IsNull().Throw();
 
             this.registrationService = registrationService;
             this.accountManagementSerivce = accountManagementSerivce;
+            this.subjectManagementService = subjectManagementService;
+            this.classOfStudentsManagementService = classOfStudentsManagementService;
 
             this.View.EventRegisterUser += RegisterUser;
             this.View.EventBindPageData += BindPageData;
@@ -39,8 +47,8 @@ namespace SchoolSystem.WebForms.Account.Presenters
         private void BindPageData(object sender, EventArgs e)
         {
             this.View.Model.UserRoles = this.registrationService.GetAllUserRoles();
-            this.View.Model.ClassOfStudents = this.registrationService.GetClassOfStudents();
-            this.View.Model.Subjects = this.registrationService.GetAllSubjects();
+            this.View.Model.ClassOfStudents = this.classOfStudentsManagementService.GetAllClasses();
+            this.View.Model.Subjects = this.subjectManagementService.GetAllSubjects();
         }
 
         private void RegisterUser(object sender, RegistrationPageEventArgs e)

@@ -9,8 +9,6 @@ namespace SchoolSystem.Web.Services.Contracts
 
         void AddSubjectsToClass();
 
-        IEnumerable<Subject> GetAllSubjects();
-
         IEnumerable<ClassOfStudents> GetAllClasses();
 
         IEnumerable<ClassOfStudents> GetAllClassesWithSpecifiedSubject(int subjectId);

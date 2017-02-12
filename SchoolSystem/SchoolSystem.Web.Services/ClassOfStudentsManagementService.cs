@@ -37,14 +37,15 @@ namespace SchoolSystem.Web.Services
 
         public void AddSubjectsToClass()
         {
-            throw new NotImplementedException();
-        }
+            var id = 1;
 
-        public IEnumerable<Subject> GetAllSubjects()
-        {
-            return this.subjectsRepo.GetAll();
+            this.subjectClassOfStudnetsrepo.Add(new SubjectClassOfStudents()
+            {
+                SubjectId = id,
+                ClassOfStudentsId = id
+            });
         }
-
+        
         public bool AddClass(string name, IEnumerable<string> subjecIds)
         {
             Guard.WhenArgument(name, "name").IsNullOrEmpty().Throw();

@@ -12,10 +12,6 @@ namespace SchoolSystem.Web.Services.Contracts
 
         void CreateTeacher(string teacherId, int subjectId);
 
-        IEnumerable<Subject> GetAllSubjects();
-
         IEnumerable<IdentityRole> GetAllUserRoles();
-
-        IEnumerable<ClassOfStudents> GetClassOfStudents();
     }
 }

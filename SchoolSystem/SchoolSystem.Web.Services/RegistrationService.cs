@@ -12,7 +12,6 @@ namespace SchoolSystem.Web.Services
     {
         private readonly IRepository<IdentityRole> userRolesRepo;
         private readonly IRepository<Subject> subjectsRepo;
-        private readonly IRepository<ClassOfStudents> classOfStudentsRepo;
         private readonly IRepository<Student> studentRepo;
         private readonly IRepository<Teacher> teacherRepo;
         private readonly Func<IUnitOfWork> unitOfWork;
@@ -20,7 +19,6 @@ namespace SchoolSystem.Web.Services
         public RegistrationService(
             IRepository<IdentityRole> userRolesRepo,
             IRepository<Subject> subjectsRepo,
-            IRepository<ClassOfStudents> classOfStudentsRepo,
             IRepository<Student> studentRepo,
             IRepository<Teacher> teacherRepo,
             Func<IUnitOfWork> unitOfWork
@@ -28,33 +26,20 @@ namespace SchoolSystem.Web.Services
         {
             Guard.WhenArgument(userRolesRepo, "userRolesRepo").IsNull().Throw();
             Guard.WhenArgument(subjectsRepo, "subjectsRepo").IsNull().Throw();
-            Guard.WhenArgument(classOfStudentsRepo, "classOfStudentsRepo").IsNull().Throw();
             Guard.WhenArgument(studentRepo, "studentRepo").IsNull().Throw();
             Guard.WhenArgument(teacherRepo, "teacherRepo").IsNull().Throw();
             Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
 
             this.userRolesRepo = userRolesRepo;
             this.subjectsRepo = subjectsRepo;
-            this.classOfStudentsRepo = classOfStudentsRepo;
             this.studentRepo = studentRepo;
             this.teacherRepo = teacherRepo;
             this.unitOfWork = unitOfWork;
         }
 
-
         public IEnumerable<IdentityRole> GetAllUserRoles()
         {
             return this.userRolesRepo.GetAll();
-        }
-
-        public IEnumerable<ClassOfStudents> GetClassOfStudents()
-        {
-            return this.classOfStudentsRepo.GetAll();
-        }
-
-        public IEnumerable<Subject> GetAllSubjects()
-        {
-            return this.subjectsRepo.GetAll();
         }
 
         public void CreateTeacher(string teacherId, int subjectId)
