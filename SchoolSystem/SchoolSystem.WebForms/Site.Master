@@ -90,7 +90,6 @@
                         <ContentTemplate>
                             <ul class="nav navbar-nav">
                                 <li><a runat="server" href="~/Teacher/TeacherArea.aspx">TeacherArea</a></li>
-                                <li><a runat="server" href="#">Нещо друго</a></li>
                             </ul>
                         </ContentTemplate>
                     </asp:RoleGroup>
@@ -99,7 +98,7 @@
                     <asp:RoleGroup Roles="Student">
                         <ContentTemplate>
                             <ul class="nav navbar-nav">
-                                <li><a runat="server" href="#">Предмети</a></li>
+                                <li><a runat="server" href="~/Student/SchoolReportCard.aspx">Бележник</a></li>
                             </ul>
                         </ContentTemplate>
                     </asp:RoleGroup>
