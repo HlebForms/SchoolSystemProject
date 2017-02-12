@@ -200,6 +200,7 @@
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Content\404.css" />
+    <Content Include="Content\student-school.css" />
     <Content Include="CustomControls\Account\AvatarUploadControl.ascx" />
     <Content Include="CustomControls\Account\LoginControl.ascx" />
     <Content Include="CustomControls\Account\PasswordChanger.ascx" />
