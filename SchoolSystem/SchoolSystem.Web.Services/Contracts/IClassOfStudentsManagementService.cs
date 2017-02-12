@@ -1,5 +1,6 @@
-﻿using SchoolSystem.Data.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+using SchoolSystem.Data.Models;
 
 namespace SchoolSystem.Web.Services.Contracts
 {
@@ -7,7 +8,7 @@ namespace SchoolSystem.Web.Services.Contracts
     {
         bool AddClass(string name, IEnumerable<string> subjecIds);
 
-        void AddSubjectsToClass();
+        void AddSubjectsToClass(int classId, int subjectId);
 
         IEnumerable<ClassOfStudents> GetAllClasses();
 

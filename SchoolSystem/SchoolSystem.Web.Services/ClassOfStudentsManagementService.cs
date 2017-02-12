@@ -13,6 +13,7 @@ namespace SchoolSystem.Web.Services
 {
     public class ClassOfStudentsManagementService : IClassOfStudentsManagementService
     {
+        // TODO subjects repo is not used (maybe remove it)
         private readonly IRepository<Subject> subjectsRepo;
         private readonly IRepository<ClassOfStudents> classOfStudentsRepo;
         private readonly IRepository<SubjectClassOfStudents> subjectClassOfStudnetsrepo;
@@ -35,17 +36,6 @@ namespace SchoolSystem.Web.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public void AddSubjectsToClass()
-        {
-            var id = 1;
-
-            this.subjectClassOfStudnetsrepo.Add(new SubjectClassOfStudents()
-            {
-                SubjectId = id,
-                ClassOfStudentsId = id
-            });
-        }
-        
         public bool AddClass(string name, IEnumerable<string> subjecIds)
         {
             Guard.WhenArgument(name, "name").IsNullOrEmpty().Throw();
@@ -104,5 +94,18 @@ namespace SchoolSystem.Web.Services
             return this.subjectClassOfStudnetsrepo.GetAll(x => x.SubjectId == subjectId, x => x.ClassOfStudents);
         }
 
+        public void AddSubjectsToClass(int classId, int subjectId)
+        {
+            using (var uow = this.unitOfWork())
+            {
+                this.subjectClassOfStudnetsrepo.Add(new SubjectClassOfStudents()
+                {
+                    SubjectId = subjectId,
+                    ClassOfStudentsId = classId
+                });
+
+                uow.Commit();
+            }
+        }
     }
 }

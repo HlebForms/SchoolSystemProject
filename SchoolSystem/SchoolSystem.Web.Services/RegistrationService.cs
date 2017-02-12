@@ -1,10 +1,11 @@
 ﻿using Bytes2you.Validation;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SchoolSystem.Data.Contracts;
-using SchoolSystem.Data.Models;
-using SchoolSystem.Web.Services.Contracts;
 using System;
 using System.Collections.Generic;
+
+using SchoolSystem.Data.Models;
+using SchoolSystem.Web.Services.Contracts;
 
 namespace SchoolSystem.Web.Services
 {

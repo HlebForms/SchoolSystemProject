@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 
-using SchoolSystem.Data.Models;
-
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SchoolSystem.Web.Services.Contracts
