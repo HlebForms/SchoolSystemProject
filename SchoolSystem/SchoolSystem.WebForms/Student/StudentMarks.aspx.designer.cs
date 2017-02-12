@@ -13,12 +13,12 @@ namespace SchoolSystem.WebForms.Student {
     public partial class SchoolReportCard {
         
         /// <summary>
-        /// SchoolReportCard control.
+        /// SchoolReportCardControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SchoolSystem.WebForms.CustomControls.Student.SchoolReportCard SchoolReportCard;
+        protected global::SchoolSystem.WebForms.CustomControls.Student.SchoolReportCard SchoolReportCardControl;
     }
 }

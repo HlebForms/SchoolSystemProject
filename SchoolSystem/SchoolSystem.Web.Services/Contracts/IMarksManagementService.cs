@@ -12,5 +12,7 @@ namespace SchoolSystem.Web.Services.Contracts
         void AddMark(string studentId, int subjectId, int markId);
 
         IEnumerable<Mark> GetAllMarks();
+
+        IEnumerable<StudentMarks> GetMarksForStudent(string studentName);
     }
 }

@@ -282,7 +282,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
-    <Content Include="Student\SchoolReportCard.aspx" />
+    <Content Include="Student\StudentMarks.aspx" />
     <Content Include="Teacher\TeacherArea.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -454,6 +454,8 @@
     <Compile Include="CustomControls\Notifier\Notifier.ascx.designer.cs">
       <DependentUpon>Notifier.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\Student\Models\SchoolReportCardModel.cs" />
+    <Compile Include="CustomControls\Student\Presenters\SchoolReportCardPreseneter.cs" />
     <Compile Include="CustomControls\Student\SchoolReportCard.ascx.cs">
       <DependentUpon>SchoolReportCard.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -461,6 +463,8 @@
     <Compile Include="CustomControls\Student\SchoolReportCard.ascx.designer.cs">
       <DependentUpon>SchoolReportCard.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\Student\Views\EventArguments\GetStudentMarksEventArgs.cs" />
+    <Compile Include="CustomControls\Student\Views\ISchoolReporCardView.cs" />
     <Compile Include="CustomControls\Teacher\ManagingMarksControl.ascx.cs">
       <DependentUpon>ManagingMarksControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -505,12 +509,12 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Student\SchoolReportCard.aspx.cs">
-      <DependentUpon>SchoolReportCard.aspx</DependentUpon>
+    <Compile Include="Student\StudentMarks.aspx.cs">
+      <DependentUpon>StudentMarks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Student\SchoolReportCard.aspx.designer.cs">
-      <DependentUpon>SchoolReportCard.aspx</DependentUpon>
+    <Compile Include="Student\StudentMarks.aspx.designer.cs">
+      <DependentUpon>StudentMarks.aspx</DependentUpon>
     </Compile>
     <Compile Include="Teacher\TeacherArea.aspx.cs">
       <DependentUpon>TeacherArea.aspx</DependentUpon>
@@ -529,9 +533,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="CustomControls\Student\Models\" />
-    <Folder Include="CustomControls\Student\Presenters\" />
-    <Folder Include="CustomControls\Student\Views\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchoolSystem.Data.Models\SchoolSystem.Data.Models.csproj">

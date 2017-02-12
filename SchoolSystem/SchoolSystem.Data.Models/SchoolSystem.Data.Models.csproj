@@ -67,6 +67,7 @@
     <Compile Include="CustomModels\NewsModel.cs" />
     <Compile Include="CustomModels\SchoolReportCard.cs" />
     <Compile Include="CustomModels\StudentInfo.cs" />
+    <Compile Include="CustomModels\StudentMarks.cs" />
     <Compile Include="CustomModels\StudentSchedule.cs" />
     <Compile Include="CustomModels\SubjectBasicInfo.cs" />
     <Compile Include="DaysOfWeek.cs" />

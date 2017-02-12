@@ -91,5 +91,28 @@ namespace SchoolSystem.Web.Services
 
             return result;
         }
+
+        public IEnumerable<StudentMarks> GetMarksForStudent(string studentName)
+        {
+            Guard.WhenArgument(studentName, "studentName").IsNullOrEmpty().Throw();
+
+            //var result = this.subjectStudenRepo
+            //        .GetAll(x => x.StudentId == studentId, x => x)
+            //        .Select(x => new
+            //        {
+            //            Name = x.Subject.Name,
+            //            MarkPerSubject = Enumerable.Repeat(x.Mark.Value, x.Count)
+            //        })
+            //        .GroupBy(x=>x.Name)
+            //        .Select(x => new StudentMarks()
+            //        {
+            //            SubjectName = x.Key,
+            //            Marks = x.Select(z => z.MarkPerSubject)
+            //        });
+
+
+
+            return null;
+        }
     }
 }
