@@ -41,9 +41,7 @@ namespace SchoolSystem.Web.Services
             Guard.WhenArgument(name, "name").IsNullOrEmpty().Throw();
             Guard.WhenArgument(subjecIds, "subjecIds").IsNull().Throw();
 
-            var allClassesNames = this.classOfStudentsRepo.GetAll(null, x => x.Name);
-
-            if (allClassesNames.Any(x => x == name))
+            if (this.IsClassNameUnique(name))
             {
                 return false;
             }
@@ -57,18 +55,15 @@ namespace SchoolSystem.Web.Services
                     };
 
                     // adding subjects for the class
-                    var subjectsForTheClass = new HashSet<SubjectClassOfStudents>();
-
                     foreach (var subject in subjecIds)
                     {
-                        subjectsForTheClass.Add(new SubjectClassOfStudents()
+                        this.subjectClassOfStudnetsrepo.Add(new SubjectClassOfStudents()
                         {
                             SubjectId = int.Parse(subject),
                             ClassOfStudents = classOfStudents
                         });
                     }
 
-                    classOfStudents.SubjectClassOfStudents = subjectsForTheClass;
                     this.classOfStudentsRepo.Add(classOfStudents);
 
                     return uow.Commit();
@@ -101,6 +96,13 @@ namespace SchoolSystem.Web.Services
 
                 return uow.Commit();
             }
+        }
+
+        private bool IsClassNameUnique(string name)
+        {
+            var allClassesNames = this.classOfStudentsRepo.GetAll(null, x => x.Name);
+
+            return allClassesNames.Any(x => x == name);
         }
     }
 }
