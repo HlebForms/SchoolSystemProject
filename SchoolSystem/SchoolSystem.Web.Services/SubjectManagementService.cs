@@ -22,7 +22,6 @@ namespace SchoolSystem.Web.Services
             IRepository<SubjectClassOfStudents> subjectClassOfStudentsRepo,
             Func<IUnitOfWork> unitOfWork)
         {
-
             Guard.WhenArgument(subjectRepo, "subjectRepo").IsNull().Throw();
             Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
             Guard.WhenArgument(subjectClassOfStudentsRepo, "subjectClassOfStudentsRepo").IsNull().Throw();
@@ -101,13 +100,41 @@ namespace SchoolSystem.Web.Services
                 alreadyAssignedSubjectsIds = new List<int>();
             }
 
-            var result = this.subjectRepo.GetAll(x=> !alreadyAssignedSubjectsIds.Contains(x.Id),x => new SubjectBasicInfo()
+            var result = this.subjectRepo.GetAll(x => !alreadyAssignedSubjectsIds.Contains(x.Id), x => new SubjectBasicInfo()
             {
                 Id = x.Id,
                 Name = x.Name
             });
 
             return result;
+        }
+
+        public bool AddSubjectsToTeacher(string teacherId, IEnumerable<int> subjectIds)
+        {
+            Guard.WhenArgument(teacherId, "teacherId").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(subjectIds, "subjectIds").IsNullOrEmpty().Throw();
+
+            var subjects = this.subjectRepo.GetAll(x => subjectIds.Contains(x.Id), x => x);
+
+            if (subjects == null)
+            {
+                return false;
+            }
+
+            if (subjectIds.Count() != subjects.Count())
+            {
+                return false;
+            }
+
+            using (var uow = this.unitOfWork())
+            {
+                foreach (var subject in subjects)
+                {
+                    subject.TeacherId = teacherId;
+                }
+
+                return uow.Commit();
+            }
         }
     }
 }

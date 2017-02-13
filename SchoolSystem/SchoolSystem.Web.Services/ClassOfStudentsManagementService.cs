@@ -93,6 +93,7 @@ namespace SchoolSystem.Web.Services
         {
             return this.subjectClassOfStudnetsrepo.GetAll(x => x.SubjectId == subjectId, x => x.ClassOfStudents);
         }
+
         public bool AddSubjectsToClass(int classId, IEnumerable<int> subjectIds)
         {
             using (var uow = this.unitOfWork())
