@@ -43,14 +43,6 @@ namespace SchoolSystem.Web.Services
 
             var allClassesNames = this.classOfStudentsRepo.GetAll(null, x => x.Name);
 
-            var subjects = new HashSet<Subject>();
-            foreach (var subj in subjecIds)
-            {
-                var subjId = int.Parse(subj);
-                var subject = this.subjectsRepo.GetFirst(x => x.Id == subjId);
-                subjects.Add(subject);
-            }
-
             if (allClassesNames.Any(x => x == name))
             {
                 return false;
@@ -67,11 +59,11 @@ namespace SchoolSystem.Web.Services
                     // adding subjects for the class
                     var subjectsForTheClass = new HashSet<SubjectClassOfStudents>();
 
-                    foreach (var subject in subjects)
+                    foreach (var subject in subjecIds)
                     {
                         subjectsForTheClass.Add(new SubjectClassOfStudents()
                         {
-                            SubjectId = subject.Id,
+                            SubjectId = int.Parse(subject),
                             ClassOfStudents = classOfStudents
                         });
                     }

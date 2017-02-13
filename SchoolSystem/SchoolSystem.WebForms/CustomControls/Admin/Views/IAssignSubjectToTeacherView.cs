@@ -10,7 +10,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Views
 {
     public interface IAssignSubjectToTeacherView : IView<AssignSubjectToTeacherModel>
     {
-        event EventHandler EventGetTeachersWithouthSubjects;
+        event EventHandler EventGetTeacher;
 
         event EventHandler EventGetSubjectsWithoutTeacher;
     }

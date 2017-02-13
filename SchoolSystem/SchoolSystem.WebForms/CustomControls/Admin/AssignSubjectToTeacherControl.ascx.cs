@@ -13,5 +13,10 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
         {
 
         }
+
+        protected void TeacherDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
