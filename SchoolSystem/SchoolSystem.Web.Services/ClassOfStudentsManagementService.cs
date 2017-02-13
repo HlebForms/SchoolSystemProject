@@ -93,18 +93,20 @@ namespace SchoolSystem.Web.Services
         {
             return this.subjectClassOfStudnetsrepo.GetAll(x => x.SubjectId == subjectId, x => x.ClassOfStudents);
         }
-
-        public void AddSubjectsToClass(int classId, int subjectId)
+        public bool AddSubjectsToClass(int classId, IEnumerable<int> subjectIds)
         {
             using (var uow = this.unitOfWork())
             {
-                this.subjectClassOfStudnetsrepo.Add(new SubjectClassOfStudents()
+                foreach (var subjectId in subjectIds)
                 {
-                    SubjectId = subjectId,
-                    ClassOfStudentsId = classId
-                });
+                    this.subjectClassOfStudnetsrepo.Add(new SubjectClassOfStudents()
+                    {
+                        SubjectId = subjectId,
+                        ClassOfStudentsId = classId
+                    });
+                }
 
-                uow.Commit();
+                return uow.Commit();
             }
         }
     }

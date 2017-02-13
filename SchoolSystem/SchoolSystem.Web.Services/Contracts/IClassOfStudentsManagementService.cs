@@ -8,7 +8,7 @@ namespace SchoolSystem.Web.Services.Contracts
     {
         bool AddClass(string name, IEnumerable<string> subjecIds);
 
-        void AddSubjectsToClass(int classId, int subjectId);
+        bool AddSubjectsToClass(int classId, IEnumerable<int> subjectIds);
 
         IEnumerable<ClassOfStudents> GetAllClasses();
 

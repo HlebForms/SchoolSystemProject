@@ -58,7 +58,7 @@ namespace SchoolSystem.WebForms.Account.Presenters
 
         private void View_EventGetAvailableSubjects(object sender, EventArgs e)
         {
-            this.View.Model.Subjects = this.subjectManagementService.GetAllAvailableSubjects();
+            this.View.Model.Subjects = this.subjectManagementService.GetAllSubjectsWithoutTeacher();
         }
 
         private void RegisterUser(object sender, RegistrationPageEventArgs e)

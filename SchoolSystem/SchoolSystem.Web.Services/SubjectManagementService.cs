@@ -57,7 +57,7 @@ namespace SchoolSystem.Web.Services
             }
         }
 
-        public IEnumerable<SubjectBasicInfo> GetAllAvailableSubjects()
+        public IEnumerable<SubjectBasicInfo> GetAllSubjectsWithoutTeacher()
         {
             return this.subjectRepo.GetAll(x => x.Teacher == null,
                 x => new SubjectBasicInfo()
@@ -73,7 +73,7 @@ namespace SchoolSystem.Web.Services
             return this.subjectRepo.GetAll();
         }
 
-        public IEnumerable<Subject> GetSubjectsForSpecificClass(int classId)
+        public IEnumerable<Subject> GetAllSubjectsAlreadyAssignedToTheClass(int classId)
         {
             return this.subjectClassOfStudentsRepo
                 .GetAll(x => x.ClassOfStudentsId == classId, x => x.Subject)
@@ -106,5 +106,22 @@ namespace SchoolSystem.Web.Services
             return result;
         }
 
+        public IEnumerable<SubjectBasicInfo> GetSubjectsNotYetAssignedToTheClass(int classId)
+        {
+            var alreadyAssignedSubjectsIds = this.GetAllSubjectsAlreadyAssignedToTheClass(classId).Select(x => x.Id);
+
+            if (alreadyAssignedSubjectsIds == null)
+            {
+                alreadyAssignedSubjectsIds = new List<int>();
+            }
+
+            var result = this.subjectRepo.GetAll(x=> !alreadyAssignedSubjectsIds.Contains(x.Id),x => new SubjectBasicInfo()
+            {
+                Id = x.Id,
+                Name = x.Name
+            });
+
+            return result;
+        }
     }
 }

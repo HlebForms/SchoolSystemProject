@@ -204,6 +204,7 @@
     <Content Include="CustomControls\Account\AvatarUploadControl.ascx" />
     <Content Include="CustomControls\Account\LoginControl.ascx" />
     <Content Include="CustomControls\Account\PasswordChanger.ascx" />
+    <Content Include="CustomControls\Admin\AssignSubjectsToClassOfStudentsControl.ascx" />
     <Content Include="CustomControls\Admin\ManagingScheduleControl.ascx" />
     <Content Include="CustomControls\Home\NewsfeedControl.ascx" />
     <Content Include="CustomControls\Home\StudentScheduleControl.ascx" />
@@ -392,6 +393,13 @@
     <Compile Include="CustomControls\Account\Views\EventArguments\PasswordChangeEventArgs.cs" />
     <Compile Include="CustomControls\Account\Views\IAvatarUploadView.cs" />
     <Compile Include="CustomControls\Account\Views\IPasswordChangeView.cs" />
+    <Compile Include="CustomControls\Admin\AssignSubjectsToClassOfStudentsControl.ascx.cs">
+      <DependentUpon>AssignSubjectsToClassOfStudentsControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Admin\AssignSubjectsToClassOfStudentsControl.ascx.designer.cs">
+      <DependentUpon>AssignSubjectsToClassOfStudentsControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\Admin\ManagingScheduleControl.ascx.cs">
       <DependentUpon>ManagingScheduleControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -413,18 +421,23 @@
     <Compile Include="CustomControls\Admin\CreatingSubjectControl.ascx.designer.cs">
       <DependentUpon>CreatingSubjectControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\Admin\Models\AssignSubjectsToClassOfStudentsModel.cs" />
     <Compile Include="CustomControls\Admin\Models\CreatingClassOfStudentsModel.cs" />
     <Compile Include="CustomControls\Admin\Models\ManagingScheduleControlModel.cs" />
     <Compile Include="CustomControls\Admin\Models\CreatingSubjcetModel.cs" />
+    <Compile Include="CustomControls\Admin\Presenters\AssignSubjectsToClassOfStudentsPresenter.cs" />
     <Compile Include="CustomControls\Admin\Presenters\CreatingClassOfStudentsPresenter.cs" />
     <Compile Include="CustomControls\Admin\Presenters\ManagingSchedulePresenter.cs" />
     <Compile Include="CustomControls\Admin\Presenters\CreatingSubjectPresenter.cs" />
+    <Compile Include="CustomControls\Admin\Views\EventArguments\AssignSubjectsToClassOfStudentsEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\BindSubjectsForClassEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\AddingSubjectToScheduleEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingClassOfStudentsEventArgs.cs" />
+    <Compile Include="CustomControls\Admin\Views\EventArguments\GetAvailableSubjectsForTheClassEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\ManagingScheduleEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingSubjectEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\RemovingSubjectFromScheduleEventArgs.cs" />
+    <Compile Include="CustomControls\Admin\Views\IAssignSubjectsToClassOfStudentsView.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingClassOfStudentsView.cs" />
     <Compile Include="CustomControls\Admin\Views\IManagingScheduleView.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingSubjectView.cs" />

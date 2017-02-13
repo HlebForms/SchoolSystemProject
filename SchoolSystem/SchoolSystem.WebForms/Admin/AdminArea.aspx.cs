@@ -51,5 +51,11 @@ namespace SchoolSystem.WebForms.Admin
                 count++;
             }
         }
+
+        protected void Tab4_Click(object sender, EventArgs e)
+        {
+            this.MultiView1.ActiveViewIndex = 3;
+            Active_Tabs();
+        }
     }
 }
