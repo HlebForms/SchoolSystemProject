@@ -48,7 +48,7 @@ namespace SchoolSystem.Web.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<StudentSchedule> GetTodaysSchedule(DayOfWeek dayOfWeek, string username)
+        public IEnumerable<StudentSchedule> GetStudentScheduleForTheDay(DayOfWeek dayOfWeek, string username)
         {
             var user = this.userRepo.GetFirst(x => x.UserName == username);
             Guard.WhenArgument(user, "user").IsNull().Throw();
@@ -67,11 +67,17 @@ namespace SchoolSystem.Web.Services
 
             foreach (var schedule in daySchedule)
             {
-                var teacherName = subjectRepo
+                // TODO Trqbva li v programata zadaljitelno da ima ime na daskala
+                var teacher = subjectRepo
                     .GetFirst(x => x.Id == schedule.SubjectId)
-                    .Teacher
-                    .User
-                    .LastName;
+                    .Teacher;
+                //.User
+                //.LastName;
+                var teacherName = "Неизвестен";
+                if (teacher != null)
+                {
+                    teacherName = teacher.User.LastName;
+                }
 
                 result.Add(
                         new StudentSchedule()

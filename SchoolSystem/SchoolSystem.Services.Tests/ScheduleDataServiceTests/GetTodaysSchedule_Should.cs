@@ -55,7 +55,7 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
                              .Returns(new Teacher());
 
 
-            var ex = Assert.Throws<ArgumentNullException>(() => scheduleService.GetTodaysSchedule(It.IsAny<DayOfWeek>(), "user4"));
+            var ex = Assert.Throws<ArgumentNullException>(() => scheduleService.GetStudentScheduleForTheDay(It.IsAny<DayOfWeek>(), "user4"));
             Assert.That(ex.ParamName, Is.EqualTo("user"));
         }
 
@@ -108,7 +108,7 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
                              .Returns(new Teacher());
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => scheduleService.GetTodaysSchedule(It.IsAny<DayOfWeek>(), "user3"));
+                () => scheduleService.GetStudentScheduleForTheDay(It.IsAny<DayOfWeek>(), "user3"));
             Assert.That(ex.ParamName, Is.EqualTo("userClassOfStudents"));
         }
 
@@ -170,7 +170,7 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
                              .Returns(new Teacher());
 
             var ex = Assert.Throws<ArgumentNullException>(
-                     () => scheduleService.GetTodaysSchedule(It.IsAny<DayOfWeek>(), "user3"));
+                     () => scheduleService.GetStudentScheduleForTheDay(It.IsAny<DayOfWeek>(), "user3"));
             Assert.That(ex.ParamName, Is.EqualTo("userClassOfStudents"));
         }
 

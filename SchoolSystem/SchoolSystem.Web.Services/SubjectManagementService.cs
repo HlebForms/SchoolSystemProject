@@ -73,11 +73,11 @@ namespace SchoolSystem.Web.Services
 
         public IEnumerable<Subject> GetAllSubjectsAlreadyAssignedToTheClass(int classId)
         {
-            //TODO Trqbva li da ima teacher ili ne 
+            //TODO Trqbva li da ima teacher ili ne.. Ako e null veche ne garmi 
 
             return this.subjectClassOfStudentsRepo
-                .GetAll(x => x.ClassOfStudentsId == classId, x => x.Subject)
-                .Where(x => x.Teacher != null);
+                .GetAll(x => x.ClassOfStudentsId == classId, x => x.Subject);
+                //.Where(x => x.Teacher != null);
         }
 
         public IEnumerable<SubjectBasicInfo> GetSubjectsPerTeacher(string teacherName)

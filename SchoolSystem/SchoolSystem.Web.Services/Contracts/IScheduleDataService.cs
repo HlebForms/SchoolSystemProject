@@ -8,7 +8,7 @@ namespace SchoolSystem.Web.Services.Contracts
 {
     public interface IScheduleDataService
     {
-        IEnumerable<StudentSchedule> GetTodaysSchedule(DayOfWeek dayOfWeek, string username);
+        IEnumerable<StudentSchedule> GetStudentScheduleForTheDay(DayOfWeek dayOfWeek, string username);
 
         IEnumerable<DaysOfWeek> GetAllDaysOfWeek();
 
