@@ -8,7 +8,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher.Views
 {
     public interface IManagingMarksView : IView<ManagingMarksModel>
     {
-        event EventHandler<BindSubjectsEventArgs> EventBindSubjects;
+        event EventHandler<BindSubjectsEventArgs> EventBindSubjectsForTheSelectedTeacher;
 
         event EventHandler<BindClassesEventArgs> EventBindClasses;
 

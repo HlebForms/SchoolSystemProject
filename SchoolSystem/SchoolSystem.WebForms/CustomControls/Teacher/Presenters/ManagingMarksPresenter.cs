@@ -35,7 +35,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher.Presenters
             this.marksManagementService = marksManagementService;
             this.studentManagementService = studentManagementService;
 
-            this.View.EventBindSubjects += View_EventBindSubjects;
+            this.View.EventBindSubjectsForTheSelectedTeacher += View_EventBindSubjects;
             this.View.EventBindClasses += View_EventBindClasses;
             this.View.EventBindSchoolReportCard += View_EventBindSchoolReportCard;
             this.View.EventInsertMark += View_EventInsertMark;
@@ -70,7 +70,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher.Presenters
 
         private void View_EventBindSubjects(object sender, BindSubjectsEventArgs e)
         {
-            this.View.Model.Subjects = this.subjectManagementService.GetSubjectsPerTeacher(e.TecherName, e.IsAdmin);
+            this.View.Model.Subjects = this.subjectManagementService.GetSubjectsPerTeacher(e.TecherName);
         }
     }
 }

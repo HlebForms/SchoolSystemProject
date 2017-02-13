@@ -65,7 +65,6 @@ namespace SchoolSystem.Web.Services
                     Id = x.Id,
                     Name = x.Name
                 });
-
         }
 
         public IEnumerable<Subject> GetAllSubjects()
@@ -75,39 +74,26 @@ namespace SchoolSystem.Web.Services
 
         public IEnumerable<Subject> GetAllSubjectsAlreadyAssignedToTheClass(int classId)
         {
+            //TODO Trqbva li da ima teacher ili ne 
+
             return this.subjectClassOfStudentsRepo
                 .GetAll(x => x.ClassOfStudentsId == classId, x => x.Subject)
                 .Where(x => x.Teacher != null);
         }
 
-        public IEnumerable<SubjectBasicInfo> GetSubjectsPerTeacher(string teacherName, bool isAdmin)
+        public IEnumerable<SubjectBasicInfo> GetSubjectsPerTeacher(string teacherName)
         {
-            IEnumerable<SubjectBasicInfo> result = null;
-
-            if (isAdmin)
-            {
-                result = this.subjectRepo.GetAll(null,
-                                  x => new SubjectBasicInfo
-                                  {
-                                      Id = x.Id,
-                                      Name = x.Name
-                                  });
-            }
-            else
-            {
-                result = this.subjectRepo.GetAll(x => x.Teacher.User.UserName == teacherName,
+            return this.subjectRepo.GetAll(x => x.Teacher.User.UserName == teacherName,
                    x => new SubjectBasicInfo
                    {
                        Id = x.Id,
                        Name = x.Name
-                   });
-            }
-
-            return result;
+                   }); ;
         }
 
         public IEnumerable<SubjectBasicInfo> GetSubjectsNotYetAssignedToTheClass(int classId)
         {
+            //TODO Trqbva li da ima teacher ili ne 
             var alreadyAssignedSubjectsIds = this.GetAllSubjectsAlreadyAssignedToTheClass(classId).Select(x => x.Id);
 
             if (alreadyAssignedSubjectsIds == null)

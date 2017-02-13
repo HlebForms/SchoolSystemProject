@@ -18,7 +18,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
     [PresenterBinding(typeof(ManagingMarksPresenter))]
     public partial class AdddingMarksControl : MvpUserControl<ManagingMarksModel>, IManagingMarksView
     {
-        public event EventHandler<BindSubjectsEventArgs> EventBindSubjects;
+        public event EventHandler<BindSubjectsEventArgs> EventBindSubjectsForTheSelectedTeacher;
         public event EventHandler<BindClassesEventArgs> EventBindClasses;
         public event EventHandler<BindReortCardEventArgs> EventBindSchoolReportCard;
         public event EventHandler<InserMarkEventArgs> EventInsertMark;
@@ -29,9 +29,8 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
         {
             if (!this.IsPostBack)
             {
-                this.EventBindSubjects(this, new BindSubjectsEventArgs()
+                this.EventBindSubjectsForTheSelectedTeacher(this, new BindSubjectsEventArgs()
                 {
-                    IsAdmin = this.Page.User.IsInRole(UserType.Admin),
                     TecherName = this.Page.User.Identity.Name
                 });
 
