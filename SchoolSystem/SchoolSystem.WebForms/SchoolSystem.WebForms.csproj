@@ -435,6 +435,7 @@
     <Compile Include="CustomControls\Admin\Models\ManagingScheduleControlModel.cs" />
     <Compile Include="CustomControls\Admin\Models\CreatingSubjcetModel.cs" />
     <Compile Include="CustomControls\Admin\Presenters\AssignSubjectsToClassOfStudentsPresenter.cs" />
+    <Compile Include="CustomControls\Admin\Presenters\AssignSubjectToTeacherPresenter.cs" />
     <Compile Include="CustomControls\Admin\Presenters\CreatingClassOfStudentsPresenter.cs" />
     <Compile Include="CustomControls\Admin\Presenters\ManagingSchedulePresenter.cs" />
     <Compile Include="CustomControls\Admin\Presenters\CreatingSubjectPresenter.cs" />

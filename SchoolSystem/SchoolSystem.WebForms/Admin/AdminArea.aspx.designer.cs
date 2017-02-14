@@ -58,6 +58,15 @@ namespace SchoolSystem.WebForms.Admin {
         protected global::System.Web.UI.WebControls.Button Tab4;
         
         /// <summary>
+        /// Tab5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Tab5;
+        
+        /// <summary>
         /// MultiView1 control.
         /// </summary>
         /// <remarks>
@@ -110,5 +119,23 @@ namespace SchoolSystem.WebForms.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::SchoolSystem.WebForms.CustomControls.Admin.AssignSubjectsToClassOfStudentsControl AssignSubjectsToClassOfStudentsControl;
+        
+        /// <summary>
+        /// AssignSubjectsToTeacher control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View AssignSubjectsToTeacher;
+        
+        /// <summary>
+        /// AssignSubjectToTeacherControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SchoolSystem.WebForms.CustomControls.Admin.AssignSubjectToTeacherControl AssignSubjectToTeacherControl;
     }
 }

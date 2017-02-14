@@ -12,12 +12,24 @@
                     runat="server"
                     ID="TeacherDropDown"
                     ItemType="SchoolSystem.Data.Models.CustomModels.TeacherBasicInfo"
-                    AutoPostBack="true"
                     DataValueField="Id"
                     DataTextField="Fullname"
                     CssClass="form-control"
                     Width="285"
                     OnSelectedIndexChanged="TeacherDropDown_SelectedIndexChanged" />
+            </div>
+        </div>
+         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="SubjectsWithoutTeacherCheboxList" CssClass="col-md-2 control-label">Учител</asp:Label>
+            <div class="col-md-10">
+                <asp:CheckBoxList
+                    runat="server"
+                    ID="SubjectsWithoutTeacherCheboxList"
+                    ItemType="SchoolSystem.Data.Models.CustomModels.SubjectBasicInfo"
+                    DataValueField="Id"
+                    DataTextField="Name"
+                    CssClass="form-control"
+                    Width="285" />
             </div>
         </div>
     </ContentTemplate>

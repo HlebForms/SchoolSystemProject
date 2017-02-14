@@ -8,6 +8,8 @@
     Namespace="AjaxControlToolkit"
     TagPrefix="ajaxtoolkit" %>
 <%@ Register Src="~/CustomControls/Admin/AssignSubjectsToClassOfStudentsControl.ascx" TagPrefix="custom" TagName="AssignSubjectsToClassOfStudentsControl" %>
+<%@ Register Src="~/CustomControls/Admin/AssignSubjectToTeacherControl.ascx" TagPrefix="custom" TagName="AssignSubjectToTeacherControl" %>
+
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -25,6 +27,10 @@
 
                 <asp:Button Text="Добавяне на предмет към клас" BorderStyle="None" ID="Tab4" CssClass="btn btn-default tab" runat="server"
                     OnClick="Tab4_Click" />
+
+                 <asp:Button Text="Добавяне на предмет към учител" BorderStyle="None" ID="Tab5" CssClass="btn btn-default tab" runat="server"
+                    OnClick="Tab5_Click" />
+
             </asp:Label>
 
             <asp:MultiView ID="MultiView1" runat="server">
@@ -39,6 +45,9 @@
                 </asp:View>
                 <asp:View runat="server" ID="AssigningSubjectsToClass">
                     <custom:AssignSubjectsToClassOfStudentsControl runat="server" id="AssignSubjectsToClassOfStudentsControl" />
+                </asp:View>
+                  <asp:View runat="server" ID="AssignSubjectsToTeacher">
+                      <custom:AssignSubjectToTeacherControl runat="server" ID="AssignSubjectToTeacherControl" />
                 </asp:View>
             </asp:MultiView>
         </ContentTemplate>

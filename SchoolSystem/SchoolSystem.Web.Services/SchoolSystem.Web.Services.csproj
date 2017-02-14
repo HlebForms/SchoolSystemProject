@@ -100,6 +100,7 @@
     <Compile Include="Contracts\IStudentManagementService.cs" />
     <Compile Include="Contracts\ISubjectManagementService.cs" />
     <Compile Include="Contracts\IAccountManagementService.cs" />
+    <Compile Include="Contracts\ITeacherManagementService.cs" />
     <Compile Include="MarksManagementService.cs" />
     <Compile Include="NewsDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="ScheduleDataService.cs" />
     <Compile Include="StudentManagementService.cs" />
     <Compile Include="SubjectManagementService.cs" />
+    <Compile Include="TeacherManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

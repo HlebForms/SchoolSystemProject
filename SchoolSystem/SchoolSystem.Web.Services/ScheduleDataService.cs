@@ -59,25 +59,19 @@ namespace SchoolSystem.Web.Services
             var userClassOfStudentsId = userClassOfStudents.ClassOfStudentsId;
 
             var daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
-                .GetAll(x => x.ClassOfStudentsId == userClassOfStudentsId && x.DaysOfWeek.Id == (int)dayOfWeek, y => y)
-                .ToList();
+                .GetAll(x => x.ClassOfStudentsId == userClassOfStudentsId && x.DaysOfWeek.Id == (int)dayOfWeek, y => y);
+
             Guard.WhenArgument(daySchedule, "daySchedule").IsNull().Throw();
 
             var result = new List<StudentSchedule>();
 
             foreach (var schedule in daySchedule)
             {
-                // TODO Trqbva li v programata zadaljitelno da ima ime na daskala
-                var teacher = subjectRepo
-                    .GetFirst(x => x.Id == schedule.SubjectId)
-                    .Teacher;
-                //.User
-                //.LastName;
-                var teacherName = "Неизвестен";
-                if (teacher != null)
-                {
-                    teacherName = teacher.User.LastName;
-                }
+                var teacherName = subjectRepo
+                    .GetFirst(x => x.Id == schedule.SubjectId, x => x.Teacher, x => x.Teacher.User)
+                    .Teacher
+                    .User
+                    .LastName;
 
                 result.Add(
                         new StudentSchedule()

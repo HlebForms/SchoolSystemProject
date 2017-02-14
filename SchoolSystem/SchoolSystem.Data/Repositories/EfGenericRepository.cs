@@ -119,5 +119,17 @@ namespace SchoolSystem.Data.Repositories
             var foundEntity = this.DbSet.FirstOrDefault(filterExpression);
             return foundEntity;
         }
+
+        public T GetFirst(Expression<Func<T, bool>> filterExpression, params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> result = this.DbSet;
+
+            if (includes != null)
+            {
+                result = includes.Aggregate(result, (current, include) => current.Include(include));
+            }
+
+            return result.OfType<T>().FirstOrDefault(filterExpression);
+        }
     }
 }

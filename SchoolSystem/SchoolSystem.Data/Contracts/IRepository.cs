@@ -19,6 +19,8 @@ namespace SchoolSystem.Data.Contracts
 
         T GetFirst(Expression<Func<T, bool>> filterExpression);
 
+        T GetFirst(Expression<Func<T, bool>> filterExpression, params Expression<Func<T, object>>[] includes);
+
         T GetById(object id);
 
         void Add(T entity);
