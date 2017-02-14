@@ -35,7 +35,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
 
         private void GetAllSubjects(object sender, EventArgs e)
         {
-            this.View.Model.Subjects = this.subjectManagementService.GetAllSubjects();
+            this.View.Model.Subjects = this.subjectManagementService.GetAllSubjectsWithTeacher();
         }
 
         private void CreateClassOfStudents(object sender, CreatingClassOfStudentsEventArgs e)

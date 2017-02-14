@@ -13,6 +13,12 @@ namespace SchoolSystem.Web.Services.Contracts
 
         IEnumerable<Subject> GetAllSubjectsAlreadyAssignedToTheClass(int classId);
 
+        /// <summary>
+        /// Gets subjects with assigned teachers
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<SubjectBasicInfo> GetAllSubjectsWithTeacher();
+
         IEnumerable<SubjectBasicInfo> GetSubjectsPerTeacher(string teacherName);
 
         /// <summary>

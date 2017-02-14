@@ -71,6 +71,18 @@ namespace SchoolSystem.Web.Services
             return this.subjectRepo.GetAll();
         }
 
+        public IEnumerable<SubjectBasicInfo> GetAllSubjectsWithTeacher()
+        {
+            return this.subjectRepo
+              .GetAll(x => x.TeacherId != null
+              , x => new SubjectBasicInfo()
+              {
+                  Id = x.Id,
+                  Name = x.Name
+              });
+
+        }
+
         public IEnumerable<Subject> GetAllSubjectsAlreadyAssignedToTheClass(int classId)
         {
             return this.subjectClassOfStudentsRepo
