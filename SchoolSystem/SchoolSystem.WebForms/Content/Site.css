@@ -38,8 +38,8 @@ footer {
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
-input[type="text"],
 input[type="password"],
+input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="select"] {
@@ -195,6 +195,12 @@ hr {
     margin-left: 30px;
 }
 
+.add-class-button {
+    margin-top: 10px;
+    margin-left: 210px;
+}
+
+
 .add-subject-button {
     margin-top: 10px;
     margin-left: 140px;
@@ -207,11 +213,21 @@ hr {
     display: inline-block;
     margin-left: 10px;
     margin-top: 10px;
-    border-bottom:1px solid #2196F3;
+    border-bottom: 1px solid #2196F3;
+}
+
+.checkbox-scrollbar-container-subjects {
+    overflow: auto;
+    height: 200px;
+    width: 280px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid #2196F3;
 }
 
 .class-of-students-dropdown {
-    width: 400px;
+    width: 400px !important;
     margin-left: 50px;
 }
 
@@ -220,6 +236,10 @@ hr {
     text-align: right;
     padding-left: 50px;
     vertical-align: top;
+}
+
+.control-label {
+    font-size: 16px;
 }
 
 .newsfeed-header-text, .importantNews-header-text {
