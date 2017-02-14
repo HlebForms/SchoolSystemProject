@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebFormsMvp;
 using WebFormsMvp.Web;
+using SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin
 {
@@ -17,6 +18,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
     {
         public event EventHandler EventGetSubjectsWithoutTeacher;
         public event EventHandler EventGetTeacher;
+        public event EventHandler<AssignSubjectsToTeacherEventArgs> EventAssignSubjectsToTeacher;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,15 +28,52 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 this.TeacherDropDown.DataSource = this.Model.Teachers;
                 this.TeacherDropDown.DataBind();
 
-                this.EventGetSubjectsWithoutTeacher(this, e);
-                this.SubjectsWithoutTeacherCheboxList.DataSource = this.Model.SubjectsWithoutTeacher;
-                this.SubjectsWithoutTeacherCheboxList.DataBind();
+                this.BindSubjectsCheckboxList(e);
             }
+        }
+
+        private void BindSubjectsCheckboxList(EventArgs e)
+        {
+            this.EventGetSubjectsWithoutTeacher(this, e);
+            this.SubjectsWithoutTeacherCheboxList.DataSource = this.Model.SubjectsWithoutTeacher;
+            this.SubjectsWithoutTeacherCheboxList.DataBind();
         }
 
         protected void TeacherDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void AssignSubjectsToTeacherBtn_Click(object sender, EventArgs e)
+        {
+            var selectedSubjectsIds = this.SubjectsWithoutTeacherCheboxList.Items
+                   .Cast<ListItem>()
+                   .Where(i => i.Selected)
+                   .Select(x => int.Parse(x.Value))
+                   .ToList();
+
+            if (selectedSubjectsIds.Count == 0)
+            {
+                this.Notifier.NotifyError("Моля изберете поне един предмет от списъка!");
+                return;
+            }
+
+            this.EventAssignSubjectsToTeacher(this, new AssignSubjectsToTeacherEventArgs()
+            {
+                TeacherId = this.TeacherDropDown.SelectedValue,
+                SubjectIds = selectedSubjectsIds
+            });
+
+            if (this.Model.IsAddingSuccessfull)
+            {
+                this.Notifier.NotifySuccess("Предметите са добавени успешно");
+                this.BindSubjectsCheckboxList(e);
+            }
+            else
+            {
+                this.Notifier.NotifySuccess("Възникна грешка! Опитайте отново!");
+
+            }
         }
     }
 }

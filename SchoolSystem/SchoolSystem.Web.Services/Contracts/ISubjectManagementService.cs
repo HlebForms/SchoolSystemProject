@@ -33,5 +33,7 @@ namespace SchoolSystem.Web.Services.Contracts
         /// <param name="classId"></param>
         /// <returns></returns>
         IEnumerable<SubjectBasicInfo> GetSubjectsNotYetAssignedToTheClass(int classId);
+
+        bool AddSubjectsToTeacher(string teacherId, IEnumerable<int> subjectIds);
     }
 }

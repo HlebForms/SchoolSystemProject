@@ -1,4 +1,5 @@
 ﻿using SchoolSystem.WebForms.CustomControls.Admin.Models;
+using SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Views
         event EventHandler EventGetTeacher;
 
         event EventHandler EventGetSubjectsWithoutTeacher;
+
+        event EventHandler<AssignSubjectsToTeacherEventArgs> EventAssignSubjectsToTeacher;
     }
 }

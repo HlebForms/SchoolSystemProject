@@ -444,6 +444,7 @@
     <Compile Include="CustomControls\Admin\Presenters\ManagingSchedulePresenter.cs" />
     <Compile Include="CustomControls\Admin\Presenters\CreatingSubjectPresenter.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\AssignSubjectsToClassOfStudentsEventArgs.cs" />
+    <Compile Include="CustomControls\Admin\Views\EventArguments\AssignSubjectsToTeacherEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\BindSubjectsForClassEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\AddingSubjectToScheduleEventArgs.cs" />
     <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingClassOfStudentsEventArgs.cs" />

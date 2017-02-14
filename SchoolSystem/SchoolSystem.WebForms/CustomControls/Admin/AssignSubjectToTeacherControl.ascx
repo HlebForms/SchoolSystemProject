@@ -19,7 +19,7 @@
                     OnSelectedIndexChanged="TeacherDropDown_SelectedIndexChanged" />
             </div>
         </div>
-         <div class="form-group">
+        <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="SubjectsWithoutTeacherCheboxList" CssClass="col-md-2 control-label">Учител</asp:Label>
             <div class="col-md-10">
                 <asp:CheckBoxList
@@ -31,6 +31,13 @@
                     CssClass="form-control"
                     Width="285" />
             </div>
+        </div>
+        <div>
+            <asp:Button ID="AssignSubjectsToTeacherBtn"
+                runat="server"
+                OnClick="AssignSubjectsToTeacherBtn_Click"
+                Text="Добави предметите" 
+                CssClass="btn btn-success"/>
         </div>
     </ContentTemplate>
 </asp:UpdatePanel>

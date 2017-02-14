@@ -11,5 +11,6 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Models
         public IEnumerable<TeacherBasicInfo> Teachers { get; set; }
 
         public IEnumerable<SubjectBasicInfo> SubjectsWithoutTeacher { get; set; }
+        public bool IsAddingSuccessfull { get; internal set; }
     }
 }
