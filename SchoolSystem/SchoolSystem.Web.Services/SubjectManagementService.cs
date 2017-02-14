@@ -74,22 +74,23 @@ namespace SchoolSystem.Web.Services
         public IEnumerable<Subject> GetAllSubjectsAlreadyAssignedToTheClass(int classId)
         {
             return this.subjectClassOfStudentsRepo
-             .GetAll(x => x.ClassOfStudentsId == classId && x.Subject.TeacherId != null,
-             x => x.Subject,
-             x => x.Subject);
+                .GetAll(x => x.ClassOfStudentsId == classId
+                && x.Subject.TeacherId != null,
+                x => x.Subject,
+                x => x.Subject);
         }
 
 
         public IEnumerable<SubjectBasicInfo> GetSubjectsPerTeacher(string teacherName)
         {
-           return this.subjectRepo.GetAll(x => x.Teacher.User.UserName == teacherName,
-                   x => new SubjectBasicInfo
-                   {
-                       Id = x.Id,
-                       Name = x.Name
-                   },
-                   x=>x.Teacher,
-                   x => x.Teacher.User); ;
+            return this.subjectRepo.GetAll(x => x.Teacher.User.UserName == teacherName,
+                    x => new SubjectBasicInfo
+                    {
+                        Id = x.Id,
+                        Name = x.Name
+                    },
+                    x => x.Teacher,
+                    x => x.Teacher.User); ;
         }
 
         public IEnumerable<SubjectBasicInfo> GetSubjectsNotYetAssignedToTheClass(int classId)
@@ -100,14 +101,15 @@ namespace SchoolSystem.Web.Services
                  x => x.SubjectId,
                  x => x.Subject);
 
-            //this.GetAllSubjectsAlreadyAssignedToTheClass(classId).Select(x => x.Id);
-
             if (alreadyAssignedSubjectsIds == null)
             {
                 alreadyAssignedSubjectsIds = new List<int>();
             }
 
-            var result = this.subjectRepo.GetAll(x => !alreadyAssignedSubjectsIds.Contains(x.Id), x => new SubjectBasicInfo()
+            var result = this.subjectRepo.GetAll(x =>
+            !alreadyAssignedSubjectsIds.Contains(x.Id)
+            && x.TeacherId != null,
+            x => new SubjectBasicInfo()
             {
                 Id = x.Id,
                 Name = x.Name
