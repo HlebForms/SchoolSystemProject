@@ -55,18 +55,21 @@ namespace SchoolSystem.Web.Services
             var userClassOfStudents = this.studentRepo.GetFirst(x => x.Id == userId);
             Guard.WhenArgument(userClassOfStudents, "userClassOfStudents").IsNull().Throw();
             var userClassOfStudentsId = userClassOfStudents.ClassOfStudentsId;
+            IEnumerable<SubjectClassOfStudentsDaysOfWeek> daySchedule = new List<SubjectClassOfStudentsDaysOfWeek>();
 
-            var daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
-                .GetAll(x => x.ClassOfStudentsId == userClassOfStudentsId && x.DaysOfWeek.Id == (int)dayOfWeek, y => y)
-                .ToList();
-            Guard.WhenArgument(daySchedule, "daySchedule").IsNull().Throw();
+            daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
+                .GetAll(x => x.ClassOfStudentsId == userClassOfStudentsId && x.DaysOfWeek.Id == 3, y => y);
 
             var result = new List<StudentSchedule>();
 
             foreach (var schedule in daySchedule)
             {
-                var teacherId = teacherRepo.GetFirst(x => x.SubjectId == schedule.SubjectId).Id;
-                var teacherName = userRepo.GetFirst(x => x.Id == teacherId).LastName;
+                var teacher = teacherRepo.GetFirst(x => x.SubjectId == schedule.SubjectId);
+                Guard.WhenArgument(teacher, "teacher").IsNull().Throw();
+                var teacherId = teacher.Id;
+                var teacherName = teacher.User.LastName;
+                //var teacherName = userRepo.GetFirst(x => x.Id == teacherId).LastName;
+
 
                 result.Add(
                         new StudentSchedule()
@@ -103,8 +106,6 @@ namespace SchoolSystem.Web.Services
                     StartHour = x.StartHour,
                     EndHour = x.EndHour
                 });
-
-
 
             return content;
         }

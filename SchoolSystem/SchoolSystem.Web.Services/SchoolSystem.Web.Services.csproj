@@ -93,11 +93,13 @@
     <Compile Include="AccountManagementService.cs" />
     <Compile Include="ClassOfStudentsManagementService.cs" />
     <Compile Include="Contracts\IClassOfStudentsManagementService.cs" />
+    <Compile Include="Contracts\IEmailSenderService.cs" />
     <Compile Include="Contracts\INewsDataService.cs" />
     <Compile Include="Contracts\IRegistrationService.cs" />
     <Compile Include="Contracts\IScheduleDataService.cs" />
     <Compile Include="Contracts\ISubjectManagementService.cs" />
     <Compile Include="Contracts\IAccountManagementService.cs" />
+    <Compile Include="EmailSenderService.cs" />
     <Compile Include="NewsDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationService.cs" />

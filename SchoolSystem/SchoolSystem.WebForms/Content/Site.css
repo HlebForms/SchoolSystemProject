@@ -3,20 +3,22 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
     color: #2196F3;
-    /*background-image: url("../Images/background.jpg");
-    background-size: 500px;*/
+    background-image: url("../Images/background.png");
+    /*background-size: 210px;*/
 }
 
 .body-content {
 }
 
-/*footer {
-    position: relative;
+footer {
+    /*position: relative;
     right: 80px;
     bottom: 20px;
     left: 5px;
-    padding: 1rem;
-}*/
+    padding: 1rem;*/
+    background-color:white;
+    height:90px;
+}
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */

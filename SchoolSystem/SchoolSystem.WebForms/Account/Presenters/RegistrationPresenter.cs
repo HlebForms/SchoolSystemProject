@@ -18,19 +18,23 @@ namespace SchoolSystem.WebForms.Account.Presenters
     {
         private readonly IRegistrationService registrationService;
         private readonly IAccountManagementService accountManagementSerivce;
+        private readonly IEmailSenderService emailSender;
 
         public RegistrationPresenter(
             IRegisterView view,
             IRegistrationService registrationService,
-            IAccountManagementService accountManagementSerivce)
+            IAccountManagementService accountManagementSerivce,
+            IEmailSenderService emailSender)
             : base(view)
         {
 
             Guard.WhenArgument(registrationService, "registrationService").IsNull().Throw();
             Guard.WhenArgument(accountManagementSerivce, "accountManagementSerivce").IsNull().Throw();
+            Guard.WhenArgument(emailSender, "emailSender").IsNull().Throw();
 
             this.registrationService = registrationService;
             this.accountManagementSerivce = accountManagementSerivce;
+            this.emailSender = emailSender;
 
             this.View.EventRegisterUser += RegisterUser;
             this.View.EventBindPageData += BindPageData;
@@ -65,6 +69,8 @@ namespace SchoolSystem.WebForms.Account.Presenters
             };
 
             IdentityResult result = manager.Create(user, e.Password);
+
+            this.emailSender.SendEmail(e.Email, e.Password);
 
             manager.AddToRole(user.Id, e.UserType);
 
