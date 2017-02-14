@@ -56,7 +56,7 @@ namespace SchoolSystem.Web.Services
                     {
                         x.TeacherId = teacherId;
                         return x;
-                    }).ToList();
+                    });
 
                 this.teacherRepo.Add(new Teacher()
                 {
