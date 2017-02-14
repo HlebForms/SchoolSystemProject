@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolSystem.Data.Models
 {
     public class Subject
     {
         private ICollection<SubjectStudent> studentSubj;
-        private ICollection<Teacher> teachers;
-        //private ICollection<ClassOfStudents> classOfStudents;
+        //private ICollection<Teacher> teachers;
         private ICollection<SubjectClassOfStudents> subjecClassOfStudents;
 
         public Subject()
         {
             this.studentSubj = new HashSet<SubjectStudent>();
-            this.teachers = new HashSet<Teacher>();
-            //this.classOfStudents = new HashSet<ClassOfStudents>();
+            //this.teachers = new HashSet<Teacher>();
             this.subjecClassOfStudents = new HashSet<SubjectClassOfStudents>();
         }
 
@@ -37,18 +31,16 @@ namespace SchoolSystem.Data.Models
             set { this.studentSubj = value; }
         }
 
-        public virtual ICollection<Teacher> Teachers
-        {
-            get { return this.teachers; }
+        public string TeacherId { get; set; }
 
-            set { this.teachers = value; }
-        }
-
-        //public virtual ICollection<ClassOfStudents> ClassOfStudents
+        [ForeignKey("TeacherId")]
+        public virtual Teacher Teacher { get; set; }
+        //public virtual ICollection<Teacher> Teachers
         //{
-        //    get { return this.classOfStudents; }
-        //    set { this.classOfStudents = value; }
-        //}
+        //    get { return this.teachers; }
+
+        //    set { this.teachers = value; }
+        //}       
 
         public bool IsDeleted { get; set; } = false;
 

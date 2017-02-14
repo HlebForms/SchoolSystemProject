@@ -17,11 +17,12 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
         {
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
 
             Assert.DoesNotThrow(() =>
             {
-                var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+                var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo, mockedUnitOfWork.Object);
             });
         }
 
@@ -31,10 +32,11 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
         {
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
 
             Assert.Throws<ArgumentNullException>(() =>
             {
-                var service = new ClassOfStudentsManagementService(null, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+                var service = new ClassOfStudentsManagementService(null, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo, mockedUnitOfWork.Object);
             });
         }
 
@@ -43,10 +45,11 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
         {
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
 
             Assert.That(() =>
             {
-                var service = new ClassOfStudentsManagementService(null, mockedClassOfStudentsRepo.Object, mockedUnitOfWork.Object);
+                var service = new ClassOfStudentsManagementService(null, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo, mockedUnitOfWork.Object);
             }, Throws.ArgumentNullException.With.Message.Contain("subjectsRepo"));
 
         }
@@ -56,10 +59,11 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
         {
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
 
             Assert.Throws<ArgumentNullException>(() =>
             {
-                var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, null, mockedUnitOfWork.Object);
+                var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, null, mockedSubjectClassOfStudentsRepo, mockedUnitOfWork.Object);
             });
         }
 
@@ -69,10 +73,11 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
         {
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
 
             Assert.That(() =>
             {
-                var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, null, mockedUnitOfWork.Object);
+                var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, null, mockedSubjectClassOfStudentsRepo, mockedUnitOfWork.Object);
             }, Throws.ArgumentNullException.With.Message.Contain("classOfStudentsRepo"));
         }
 
@@ -81,11 +86,12 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
         {
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
 
 
             Assert.Throws<ArgumentNullException>(() =>
             {
-                var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, null);
+                var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo, null);
             });
         }
 
@@ -94,11 +100,12 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
         {
             var mockedSubjectsRepo = new Mock<IRepository<Subject>>();
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
+            var mockedSubjectClassOfStudentsRepo = new Mock<IRepository<SubjectClassOfStudents>>().Object;
 
 
             Assert.That(() =>
             {
-                var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, null);
+                var service = new ClassOfStudentsManagementService(mockedSubjectsRepo.Object, mockedClassOfStudentsRepo.Object, mockedSubjectClassOfStudentsRepo, null);
             }, Throws.ArgumentNullException.With.Message.Contain("unitOfWork"));
         }
     }

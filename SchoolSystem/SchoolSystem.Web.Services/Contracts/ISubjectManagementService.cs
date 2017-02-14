@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+
 using SchoolSystem.Data.Models;
+using SchoolSystem.Data.Models.CustomModels;
 
 namespace SchoolSystem.Web.Services.Contracts
 {
@@ -9,6 +11,21 @@ namespace SchoolSystem.Web.Services.Contracts
 
         IEnumerable<Subject> GetAllSubjects();
 
-        IEnumerable<Subject> GetSubjectsForSpecificClass(int classId);
+        IEnumerable<Subject> GetAllSubjectsAlreadyAssignedToTheClass(int classId);
+
+        IEnumerable<SubjectBasicInfo> GetSubjectsPerTeacher(string teacherName);
+
+        /// <summary>
+        /// Gets the subjects with no assigned teacher
+        /// </summary>
+        /// <returns> IEnumerable<Subject> </returns>
+        IEnumerable<SubjectBasicInfo> GetAllSubjectsWithoutTeacher();
+
+        /// <summary>
+        /// Gets the subjects that are not assigned to the specified class yet.
+        /// </summary>
+        /// <param name="classId"></param>
+        /// <returns></returns>
+        IEnumerable<SubjectBasicInfo> GetSubjectsNotYetAssignedToTheClass(int classId);
     }
 }

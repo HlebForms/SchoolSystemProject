@@ -1,14 +1,9 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using SchoolSystem.Data.Contracts;
+﻿using SchoolSystem.Data.Contracts;
 using SchoolSystem.Data.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SchoolSystem.Data
 {
@@ -26,6 +21,8 @@ namespace SchoolSystem.Data
 
         public IDbSet<Teacher> Teachers { get; set; }
 
+        public IDbSet<Mark> Marks { get; set; }
+
         public IDbSet<Student> Students { get; set; }
 
         public IDbSet<Newsfeed> NewsFeed { get; set; }
@@ -33,6 +30,8 @@ namespace SchoolSystem.Data
         public IDbSet<Subject> Subjects { get; set; }
 
         public IDbSet<ClassOfStudents> ClassOfStudents { get; set; }
+
+        public IDbSet<SubjectClassOfStudents> SubjectClassOfStudents { get; set; }
 
         public IDbSet<SubjectStudent> SubjectStudent { get; set; }
 

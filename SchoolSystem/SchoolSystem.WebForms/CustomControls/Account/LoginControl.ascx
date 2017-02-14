@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <asp:Button runat="server" OnClick="LogIn" Text="Вход в системата" CssClass="btn btn-primary" />
+                        <asp:Button runat="server" OnClick="LogIn" Text="Вход в системата" CssClass="btn btn-success" />
                     </div>
                 </div>
             </div>

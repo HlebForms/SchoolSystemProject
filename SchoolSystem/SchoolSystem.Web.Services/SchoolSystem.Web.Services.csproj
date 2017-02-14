@@ -90,21 +90,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountManagementService.cs" />
-    <Compile Include="ClassOfStudentsManagementService.cs" />
+    <Compile Include="Services\AccountManagementService.cs" />
+    <Compile Include="Services\ClassOfStudentsManagementService.cs" />
     <Compile Include="Contracts\IClassOfStudentsManagementService.cs" />
     <Compile Include="Contracts\IEmailSenderService.cs" />
+    <Compile Include="Contracts\IMarksManagementService.cs" />
     <Compile Include="Contracts\INewsDataService.cs" />
+    <Compile Include="Contracts\IPasswordGeneratorService.cs" />
     <Compile Include="Contracts\IRegistrationService.cs" />
     <Compile Include="Contracts\IScheduleDataService.cs" />
+    <Compile Include="Contracts\IStudentManagementService.cs" />
     <Compile Include="Contracts\ISubjectManagementService.cs" />
     <Compile Include="Contracts\IAccountManagementService.cs" />
-    <Compile Include="EmailSenderService.cs" />
-    <Compile Include="NewsDataService.cs" />
+    <Compile Include="Services\EmailSenderService.cs" />
+    <Compile Include="Contracts\ITeacherManagementService.cs" />
+    <Compile Include="Services\MarksManagementService.cs" />
+    <Compile Include="Services\NewsDataService.cs" />
+    <Compile Include="Services\PasswordGeneratorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrationService.cs" />
-    <Compile Include="ScheduleDataService.cs" />
-    <Compile Include="SubjectManagementService.cs" />
+    <Compile Include="Services\RegistrationService.cs" />
+    <Compile Include="Services\ScheduleDataService.cs" />
+    <Compile Include="Services\StudentManagementService.cs" />
+    <Compile Include="Services\SubjectManagementService.cs" />
+    <Compile Include="Services\TeacherManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -118,6 +126,10 @@
     <ProjectReference Include="..\SchoolSystem.Data\SchoolSystem.Data.csproj">
       <Project>{B70B597E-506D-40A8-AA41-DB825675AEAA}</Project>
       <Name>SchoolSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchoolSystem.Web.Providers\SchoolSystem.Web.Providers.csproj">
+      <Project>{CF993672-BCFC-4C89-B19B-8B32EE4EE879}</Project>
+      <Name>SchoolSystem.Web.Providers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

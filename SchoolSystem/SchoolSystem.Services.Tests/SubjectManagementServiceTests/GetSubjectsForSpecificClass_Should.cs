@@ -30,9 +30,15 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
 
             var subjectsManagementService = new SubjectManagementService(mockedSubjectRepo.Object, mockedSubjClassRepo.Object, () => mockedUow);
 
-            subjectsManagementService.GetSubjectsForSpecificClass(It.IsAny<int>());
+            subjectsManagementService
+                .GetAllSubjectsAlreadyAssignedToTheClass(It.IsAny<int>());
 
-            mockedSubjClassRepo.Verify(x => x.GetAll(It.IsAny<Expression<Func<SubjectClassOfStudents, bool>>>(), It.IsAny<Expression<Func<SubjectClassOfStudents, Subject>>>()), Times.Once);
+            mockedSubjClassRepo.Verify(
+                x => x.GetAll(
+                It.IsAny<Expression<Func<SubjectClassOfStudents, bool>>>(),
+                It.IsAny<Expression<Func<SubjectClassOfStudents, Subject>>>(),
+                It.IsAny<Expression<Func<SubjectClassOfStudents, object>>>()),
+                Times.Once);
         }
     }
 }

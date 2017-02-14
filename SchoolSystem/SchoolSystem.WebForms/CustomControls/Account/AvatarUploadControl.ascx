@@ -18,7 +18,7 @@
                 runat="server"
                 OnClick="UploadAvatarBtn_Click"
                 Text="Качи"
-                CssClass="btn btn-primary" />
+                CssClass="btn btn-success" />
         </div>
     </ContentTemplate>
     <Triggers>

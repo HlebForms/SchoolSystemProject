@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolSystem.Data.Models
+namespace SchoolSystem.Web.Providers.Contracts
 {
-    public class ClassOfStudentsSchedule
+    public interface IRandomProvider
     {
-        public int Id { get; set; }
-
-
+        int GetRandomNumber(int min, int max);
     }
 }

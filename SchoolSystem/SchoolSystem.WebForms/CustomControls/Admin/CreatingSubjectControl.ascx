@@ -22,7 +22,7 @@
                 runat="server"
                 Text="Създай предмет"
                 ID="AddSubjectBtn"
-                CssClass="btn btn-primary"
+                CssClass="btn btn-success"
                 OnClick="AddSubjectBtn_Click" />
         </div>
     </ContentTemplate>

@@ -62,7 +62,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin.Presenters
 
         private void BindSubjectsForSpecificClass(object sender, BindSubjectsForClassEventArgs e)
         {
-            this.View.Model.SubjectForCurrentClass = this.subjectManagementService.GetSubjectsForSpecificClass(e.ClassId);
+            this.View.Model.SubjectForCurrentClass = this.subjectManagementService.GetAllSubjectsAlreadyAssignedToTheClass(e.ClassId);
         }
 
         private void BindDaysOfWeek(object sender, EventArgs e)

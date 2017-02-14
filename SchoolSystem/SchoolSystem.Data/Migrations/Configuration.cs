@@ -26,6 +26,45 @@ namespace SchoolSystem.Data.Migrations
             this.ClassOfStudentsSeeder(context);
             this.UsersSeeder(context);
             this.DaysOfWeekSeeder(context);
+            this.MarksSeeder(context);
+        }
+
+        private void MarksSeeder(SchoolSystemDbContext context)
+        {
+            context.Marks.AddOrUpdate(new Mark()
+            {
+                Id = 1,
+                Name = "Слаб",
+                Value = 2
+            });
+
+            context.Marks.AddOrUpdate(new Mark()
+            {
+                Id = 2,
+                Name = "Среден",
+                Value = 3
+            });
+
+            context.Marks.AddOrUpdate(new Mark()
+            {
+                Id = 3,
+                Name = "Добър",
+                Value = 4
+            });
+
+            context.Marks.AddOrUpdate(new Mark()
+            {
+                Id = 4,
+                Name = "Много добър",
+                Value = 5
+            });
+
+            context.Marks.AddOrUpdate(new Mark()
+            {
+                Id = 5,
+                Name = "Отличен",
+                Value = 6
+            });
         }
 
         private void DaysOfWeekSeeder(SchoolSystemDbContext context)

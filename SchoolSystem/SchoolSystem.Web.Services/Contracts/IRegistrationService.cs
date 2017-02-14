@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 
-using SchoolSystem.Data.Models;
-
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SchoolSystem.Web.Services.Contracts
@@ -10,12 +8,8 @@ namespace SchoolSystem.Web.Services.Contracts
     {
         void CreateStudent(string studentId, int classOfStudentId);
 
-        void CreateTeacher(string teacherId, int subjectId);
-
-        IEnumerable<Subject> GetAllSubjects();
+        void CreateTeacher(string teacherId, IEnumerable<int> subjectId);
 
         IEnumerable<IdentityRole> GetAllUserRoles();
-
-        IEnumerable<ClassOfStudents> GetClassOfStudents();
     }
 }

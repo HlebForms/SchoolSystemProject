@@ -14,20 +14,20 @@ namespace SchoolSystem.WebForms.App_Start
     using Data.Contracts;
     using Data;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -70,11 +70,13 @@ namespace SchoolSystem.WebForms.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind(typeof(ISchoolSystemDBContext)).To(typeof(SchoolSystemDbContext));
-        
+
             kernel.Load(
                new MvpBindings(),
                new ServicesModule(),
-               new DataConfig());
-        }        
+               new DataConfig(),
+               new ProvidersModule());
+
+        }
     }
 }

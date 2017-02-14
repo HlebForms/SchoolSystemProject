@@ -1,10 +1,12 @@
-﻿using SchoolSystem.Data.Contracts;
-using SchoolSystem.Data.Models;
-using SchoolSystem.Web.Services.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
+using SchoolSystem.Data.Contracts;
+using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Models.CustomModels;
+using SchoolSystem.Web.Services.Contracts;
+
 using Bytes2you.Validation;
 
 namespace SchoolSystem.Web.Services
@@ -46,7 +48,7 @@ namespace SchoolSystem.Web.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<StudentSchedule> GetTodaysSchedule(DayOfWeek dayOfWeek, string username)
+        public IEnumerable<StudentSchedule> GetStudentScheduleForTheDay(DayOfWeek dayOfWeek, string username)
         {
             var user = this.userRepo.GetFirst(x => x.UserName == username);
             Guard.WhenArgument(user, "user").IsNull().Throw();
@@ -55,21 +57,21 @@ namespace SchoolSystem.Web.Services
             var userClassOfStudents = this.studentRepo.GetFirst(x => x.Id == userId);
             Guard.WhenArgument(userClassOfStudents, "userClassOfStudents").IsNull().Throw();
             var userClassOfStudentsId = userClassOfStudents.ClassOfStudentsId;
-            IEnumerable<SubjectClassOfStudentsDaysOfWeek> daySchedule = new List<SubjectClassOfStudentsDaysOfWeek>();
 
-            daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
-                .GetAll(x => x.ClassOfStudentsId == userClassOfStudentsId && x.DaysOfWeek.Id == 3, y => y);
+            var daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
+                .GetAll(x => x.ClassOfStudentsId == userClassOfStudentsId && x.DaysOfWeek.Id == (int)dayOfWeek, y => y);
+
+            Guard.WhenArgument(daySchedule, "daySchedule").IsNull().Throw();
 
             var result = new List<StudentSchedule>();
 
             foreach (var schedule in daySchedule)
             {
-                var teacher = teacherRepo.GetFirst(x => x.SubjectId == schedule.SubjectId);
-                Guard.WhenArgument(teacher, "teacher").IsNull().Throw();
-                var teacherId = teacher.Id;
-                var teacherName = teacher.User.LastName;
-                //var teacherName = userRepo.GetFirst(x => x.Id == teacherId).LastName;
-
+                var teacherName = subjectRepo
+                    .GetFirst(x => x.Id == schedule.SubjectId, x => x.Teacher, x => x.Teacher.User)
+                    .Teacher
+                    .User
+                    .LastName;
 
                 result.Add(
                         new StudentSchedule()

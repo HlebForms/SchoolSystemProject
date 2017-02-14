@@ -35,14 +35,14 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 this.DaysOfWeekDropDown.DataSource = this.Model.DaysOfWeek;
                 this.DaysOfWeekDropDown.DataBind();
 
-                RaiseBindShceduleDataEvent(); 
+                this.BindShceduleData();
             }
 
         }
 
         public void DaysOfWeekDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RaiseBindShceduleDataEvent();
+            this.BindShceduleData();
         }
 
         protected void ScheduleList_ItemCommand(object sender, ListViewCommandEventArgs e)
@@ -114,15 +114,15 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
 
         protected void ScheduleList_ItemDeleting(object sender, ListViewDeleteEventArgs e)
         {
-            RaiseBindShceduleDataEvent();
+            this.BindShceduleData();
         }
 
         protected void ScheduleList_ItemInserting(object sender, ListViewInsertEventArgs e)
         {
-            RaiseBindShceduleDataEvent();
+            this.BindShceduleData();
         }
 
-        private void RaiseBindShceduleDataEvent()
+        private void BindShceduleData()
         {
             this.EventBindScheduleData(this, new ManagingScheduleEventArgs()
             {

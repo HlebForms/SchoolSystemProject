@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolSystem.Data.Models
 {
@@ -16,13 +11,17 @@ namespace SchoolSystem.Data.Models
         [Key, Column(Order = 1)]
         public int SubjectId { get; set; }
 
+        [Key, Column(Order = 2)]
+        public int MarkId { get; set; }
+
+        public int Count { get; set; }
+
+        public virtual Mark Mark { get; set; }
+
         public virtual Student Student { get; set; }
 
         public virtual Subject Subject { get; set; }
 
-        public int Mark { get; set; }
-
         public bool IsDeleted { get; set; } = false;
-
     }
 }

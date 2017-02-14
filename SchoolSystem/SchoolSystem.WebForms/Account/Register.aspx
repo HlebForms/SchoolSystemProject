@@ -5,11 +5,12 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <asp:UpdatePanel runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <custom:Notifier runat="server" ID="Notifier" />
-
             <div class="form-horizontal">
                 <h4>Добавяне на нов потребител</h4>
                 <hr />
+
+                <custom:Notifier runat="server" ID="Notifier" />
+
                 <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="UserTypeDropDown" CssClass="col-md-2 control-label">Тип на потребителя</asp:Label>
                     <div class="col-md-10">
@@ -27,16 +28,15 @@
                 </div>
 
                 <div class="form-group" runat="server" id="SubjectContainer">
-                    <asp:Label runat="server" AssociatedControlID="SubjectDropDown" CssClass="col-md-2 control-label">Предмет</asp:Label>
-                    <div class="col-md-10">
-                        <asp:DropDownList
+                    <asp:Label runat="server" AssociatedControlID="AvailableSubjectsList" CssClass="col-md-2 control-label">Свободни предмети</asp:Label>
+                    <div class="col-md-10 checkbox-scrollbar-container">
+                        <asp:CheckBoxList
+                            ID="AvailableSubjectsList"
                             runat="server"
-                            ID="SubjectDropDown"
-                            CssClass="form-control"
-                            Width="285"
                             DataValueField="Id"
-                            DataTextField="Name">
-                        </asp:DropDownList>
+                            DataTextField="Name"
+                            With="285">
+                        </asp:CheckBoxList>
                     </div>
                 </div>
 
@@ -82,26 +82,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Парола</asp:Label>
-                    <div class="col-md-10">
-                        <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
-                            CssClass="text-danger" ErrorMessage="Моля, въведете парола" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Потвърди паролата</asp:Label>
-                    <div class="col-md-10">
-                        <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
-                            CssClass="text-danger" Display="Dynamic" ErrorMessage="Полето е задължително" />
-                        <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
-                            CssClass="text-danger" Display="Dynamic" ErrorMessage="Паролите не съвпадат" />
-                    </div>
-                </div>
-                <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <asp:Button runat="server" OnClick="CreateUser_Click" Text="Регистрация" CssClass="btn btn-primary" />
+                        <asp:Button runat="server" OnClick="CreateUser_Click" Text="Регистрация" CssClass="btn btn-success" />
                     </div>
                 </div>
             </div>

@@ -23,7 +23,7 @@ namespace SchoolSystem.WebForms.CustomControls.Home.Presenter
         private void BindScheduleData(object sender, StudentScheduleEventargs e)
         {
             var dayOfWeek = DateTime.Now.DayOfWeek;
-            this.View.Model.StudentSchedule = service.GetTodaysSchedule(dayOfWeek, e.Username);
+            this.View.Model.StudentSchedule = service.GetStudentScheduleForTheDay(dayOfWeek, e.Username);
 
         }
     }

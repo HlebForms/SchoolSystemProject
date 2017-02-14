@@ -10,14 +10,19 @@ body {
 .body-content {
 }
 
+#MainContent_ctl00 {
+    background-color: white;
+    border: 1px solid #2196F3;
+    height: 450px;
+}
+
 footer {
-    /*position: relative;
+    position: fixed;
     right: 80px;
-    bottom: 20px;
-    left: 5px;
-    padding: 1rem;*/
-    background-color:white;
-    height:90px;
+    left: 80px;
+    bottom: 0;
+    background-color: white;
+    height: 90px;
 }
 
 /* Wrapping element */
@@ -123,9 +128,20 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid #2196F3;
 }
 
+.tabs {
+    margin-top: 10px;
+    display: inline-block;
+}
+
 .tab {
     margin: 2px;
+    border: 1px solid #2196F3 !important;
 }
+
+    .tab:hover {
+        background-color: #2196F3;
+        color: white;
+    }
 
 .news-feed {
     border: 2px solid #2196F3;
@@ -157,16 +173,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .subject-info {
     font-size: 18px;
-    width:115px;
+    width: 115px;
     /*border:1px solid black;*/
-    float:right;
+    float: right;
 }
 
 .subject-image {
     display: inline-block;
     margin-top: -30px;
-    width:75px;
-    height:75px;
+    width: 75px;
+    height: 75px;
 }
 
 hr {
@@ -175,10 +191,35 @@ hr {
     color: #2196F3;
 }
 
+.add-subject-header {
+    margin-left: 30px;
+}
+
+.add-subject-button {
+    margin-top: 10px;
+    margin-left: 140px;
+}
+
 .checkbox-scrollbar-container {
     overflow: auto;
-    height: 150px;
+    height: 200px;
     width: 400px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-bottom:1px solid #2196F3;
+}
+
+.class-of-students-dropdown {
+    width: 400px;
+    margin-left: 50px;
+}
+
+.dropdown-label {
+    font-size: 16px;
+    text-align: right;
+    padding-left: 50px;
+    vertical-align: top;
 }
 
 .newsfeed-header-text, .importantNews-header-text {
@@ -311,4 +352,9 @@ select {
 
 .table th {
     padding-left: 30px;
+}
+
+.nav > li > a:hover {
+    background-color: #2196F3;
+    color: white;
 }

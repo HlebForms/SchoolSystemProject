@@ -15,6 +15,10 @@ namespace SchoolSystem.WebForms.App_Start.Bindings
             this.Bind<IAccountManagementService>().To<AccountManagementService>();
             this.Bind<INewsDataService>().To<NewsDataService>();
             this.Bind<IEmailSenderService>().To<EmailSenderService>();
+            this.Bind<IMarksManagementService>().To<MarksManagementService>();
+            this.Bind<IStudentManagementService>().To<StudentManagementService>();
+            this.Bind<ITeacherManagementService>().To<TeacherManagementService>();
+            this.Bind<IPasswordGeneratorService>().To<PasswordGeneratorService>();
         }
     }
 }

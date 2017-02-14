@@ -62,12 +62,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassOfStudents.cs" />
-    <Compile Include="ClassOfStudentsSchedule.cs" />
     <Compile Include="Common\UserType.cs" />
     <Compile Include="CustomModels\ManagingScheduleModel.cs" />
     <Compile Include="CustomModels\NewsModel.cs" />
+    <Compile Include="CustomModels\SchoolReportCard.cs" />
+    <Compile Include="CustomModels\StudentInfo.cs" />
+    <Compile Include="CustomModels\StudentMarks.cs" />
     <Compile Include="CustomModels\StudentSchedule.cs" />
+    <Compile Include="CustomModels\SubjectBasicInfo.cs" />
+    <Compile Include="CustomModels\TeacherBasicInfo.cs" />
     <Compile Include="DaysOfWeek.cs" />
+    <Compile Include="Mark.cs" />
     <Compile Include="Newsfeed.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="SubjectClassOfStudents.cs" />

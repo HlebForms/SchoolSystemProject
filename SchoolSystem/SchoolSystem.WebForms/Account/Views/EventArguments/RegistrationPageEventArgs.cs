@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Microsoft.Owin;
+using System.Collections.Generic;
 
 namespace SchoolSystem.WebForms.Account.Views.EventArguments
 {
@@ -14,15 +15,15 @@ namespace SchoolSystem.WebForms.Account.Views.EventArguments
 
         public string LastName { get; set; }
 
-        public string Password { get; set; }
+        //public string Password { get; set; }
 
-        public string ConfirmedPassword { get; set; }
+        //public string ConfirmedPassword { get; set; }
 
         public string UserType { get; set; }
 
         public IOwinContext OwinCtx { get; set; }
 
-        public int SubjectId { get; set; }
+        public IEnumerable<int> SubjectIds { get; set; }
 
         public int ClassOfSudentsId { get; set; }
     }
