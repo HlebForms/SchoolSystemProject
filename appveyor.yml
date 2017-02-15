@@ -11,10 +11,10 @@ build:
   verbosity: minimal
   
 environment:
-	COVERALLS_REPO_TOKEN:
-		secure: zci2S1m4AL/jI+KRkzmcBrgsVlBp2CaSo18rmj6VBXJRmc0wmhSinVS0r8xRxQZr
+  COVERALLS_REPO_TOKEN:
+    secure: iTbJ6RKNkqgvD5Xip1HRNTkivSUEVnb1SOP2JyR6pQ53NNY8Lw/227Xhryo0XawW
 
 after_test:
-		- SchoolSystem\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"SchoolSystem\packages\NUnit.ConsoleRunner.3.6.0\tools\nunit3-console.exe" -targetargs:"/domain:single SchoolSystem\SchoolSystem.Services.Tests\bin\Debug\SchoolSystem.Services.Tests.dll" -output:cover.xml
+  - SchoolSystem\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"SchoolSystem\packages\NUnit.ConsoleRunner.3.6.0\tools\nunit3-console.exe" -targetargs:"/domain:single SchoolSystem\SchoolSystem.Services.Tests\bin\Debug\SchoolSystem.Services.Tests.dll" -output:cover.xml
 
-        - SchoolSystem\packages\coveralls.io.1.3.4\tools\coveralls.net.exe --opencover cover.xml
+  - SchoolSystem\packages\coveralls.io.1.3.4\tools\coveralls.net.exe --opencover cover.xml
