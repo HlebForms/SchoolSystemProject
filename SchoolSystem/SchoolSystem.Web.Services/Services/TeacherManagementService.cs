@@ -1,9 +1,5 @@
 ﻿using SchoolSystem.Web.Services.Contracts;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SchoolSystem.Data.Models.CustomModels;
 using SchoolSystem.Data.Contracts;
 using SchoolSystem.Data.Models;
@@ -32,7 +28,7 @@ namespace SchoolSystem.Web.Services
                     LastName = x.User.LastName,
                     UserName = x.User.UserName
                 },
-            x => x.User);
+            i => i.User);
 
         }
     }

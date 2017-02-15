@@ -14,7 +14,7 @@ namespace SchoolSystem.Web.Services.Contracts
         
         IEnumerable<DaysOfWeek> GetAllDaysOfWeek();
 
-        IEnumerable<ManagingScheduleModel> GetTodaysSchedule(int dayOfWeekId, int classId);
+        IEnumerable<ManagingScheduleModel> GetSchedulePerDay(int dayOfWeekId, int classId);
 
         bool AddSubjectToSchedule(int classId, int subjectId, int dayOfWeekId, DateTime startHour, DateTime endHour);
 

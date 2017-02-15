@@ -28,7 +28,8 @@ namespace SchoolSystem.Web.Services
                 {
                     Id = x.Id,
                     Fullname = x.User.FirstName + x.User.LastName
-                });
+                },
+                i => i.User);
         }
     }
 }

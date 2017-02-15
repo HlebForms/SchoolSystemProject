@@ -13,8 +13,6 @@ namespace SchoolSystem.Web.Services
 {
     public class ClassOfStudentsManagementService : IClassOfStudentsManagementService
     {
-        // TODO subjects repo is not used (maybe remove it)
-        private readonly IRepository<Subject> subjectsRepo;
         private readonly IRepository<ClassOfStudents> classOfStudentsRepo;
         private readonly IRepository<SubjectClassOfStudents> subjectClassOfStudnetsrepo;
         private readonly Func<IUnitOfWork> unitOfWork;
@@ -25,12 +23,10 @@ namespace SchoolSystem.Web.Services
                 IRepository<SubjectClassOfStudents> subjectClassOfStudnetsrepo,
                 Func<IUnitOfWork> unitOfWork)
         {
-            Guard.WhenArgument(subjectsRepo, "subjectsRepo").IsNull().Throw();
             Guard.WhenArgument(classOfStudentsRepo, "classOfStudentsRepo").IsNull().Throw();
             Guard.WhenArgument(subjectClassOfStudnetsrepo, "subjectClassOfStudnetsrepo").IsNull().Throw();
             Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
 
-            this.subjectsRepo = subjectsRepo;
             this.classOfStudentsRepo = classOfStudentsRepo;
             this.subjectClassOfStudnetsrepo = subjectClassOfStudnetsrepo;
             this.unitOfWork = unitOfWork;

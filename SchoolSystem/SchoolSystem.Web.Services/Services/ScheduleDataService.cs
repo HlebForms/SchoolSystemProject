@@ -135,7 +135,7 @@ namespace SchoolSystem.Web.Services
             return this.daysOfWeekRepo.GetAll();
         }
 
-        public IEnumerable<ManagingScheduleModel> GetTodaysSchedule(int dayOfWeekId, int classId)
+        public IEnumerable<ManagingScheduleModel> GetSchedulePerDay(int dayOfWeekId, int classId)
         {
             var data = new List<ManagingScheduleModel>();
 
@@ -148,7 +148,9 @@ namespace SchoolSystem.Web.Services
                     Subject = x.SubjectClassOfStudents.Subject,
                     StartHour = x.StartHour,
                     EndHour = x.EndHour
-                });
+                },
+                i => i.SubjectClassOfStudents,
+                i => i.SubjectClassOfStudents.Subject);
 
             return content;
         }
@@ -173,11 +175,9 @@ namespace SchoolSystem.Web.Services
                 }
                 catch (Exception e)
                 {
-                    // nqma da se dobavi - pk confilct
+                    return false;
                 }
             }
-
-            return false;
         }
 
         public void RemoveSubjectFromSchedule(int classId, int daysOfWeekId, int subjectId)

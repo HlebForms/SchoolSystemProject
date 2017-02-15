@@ -48,7 +48,6 @@ namespace SchoolSystem.Web.Services
                         SubjectId = subjectId,
                         MarkId = markId,
                         StudentId = studentId,
-                        Student = this.subjectStudenRepo.GetAll(x => x.StudentId == studentId, x => x.Student).FirstOrDefault(),
                         Count = 1
                     });
 
@@ -73,7 +72,10 @@ namespace SchoolSystem.Web.Services
         public IEnumerable<SchoolReportCard> GetMarks(int subjectId, int classOfStudentsId)
         {
             var result = this.subjectStudenRepo
-                .GetAll(x => x.SubjectId == subjectId && x.Student.ClassOfStudentsId == classOfStudentsId, x => x)
+                .GetAll(x => x.SubjectId == subjectId && x.Student.ClassOfStudentsId == classOfStudentsId,
+                s => s,
+                i => i.Student,
+                i => i.Student.User)
                 .Select(x => new
                 {
                     Name = x.Student.User,
@@ -95,7 +97,11 @@ namespace SchoolSystem.Web.Services
             Guard.WhenArgument(studentName, "studentName").IsNullOrEmpty().Throw();
 
             var result = this.subjectStudenRepo
-                    .GetAll(x => x.Student.User.UserName == studentName, x => x)
+                    .GetAll(x => x.Student.User.UserName == studentName,
+                    s => s,
+                    i => i.Subject,
+                    i => i.Student,
+                    i => i.Student.User)
                     .Select(x => new
                     {
                         Name = x.Subject.Name,

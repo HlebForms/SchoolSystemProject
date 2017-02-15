@@ -153,13 +153,15 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
             mockedSubjectClassOfStudentsDaysOfWeekRepo
             .Setup(x => x.GetAll(
                    It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, bool>>>(),
-                   It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, ManagingScheduleModel>>>())
+                   It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, ManagingScheduleModel>>>(),
+                   It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, object>>[]>())
              ).Returns(
                 (Expression<Func<SubjectClassOfStudentsDaysOfWeek, bool>> predicate,
-                 Expression<Func<SubjectClassOfStudentsDaysOfWeek, ManagingScheduleModel>> expression) =>
+                 Expression<Func<SubjectClassOfStudentsDaysOfWeek, ManagingScheduleModel>> expression,
+                 Expression<Func<SubjectClassOfStudentsDaysOfWeek, object>>[] include) =>
                 actual.Where(predicate.Compile()).Select(expression.Compile()));
 
-            var expected = scheduleService.GetTodaysSchedule(1, 1);
+            var expected = scheduleService.GetSchedulePerDay(1, 1);
 
             Assert.AreEqual(actual.Count(), expected.Count());
         }
@@ -202,13 +204,15 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
             mockedSubjectClassOfStudentsDaysOfWeekRepo
             .Setup(x => x.GetAll(
                    It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, bool>>>(),
-                   It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, ManagingScheduleModel>>>())
+                   It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, ManagingScheduleModel>>>(),
+                   It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, object>>[]>())
              ).Returns(
                 (Expression<Func<SubjectClassOfStudentsDaysOfWeek, bool>> predicate,
-                 Expression<Func<SubjectClassOfStudentsDaysOfWeek, ManagingScheduleModel>> expression) =>
+                 Expression<Func<SubjectClassOfStudentsDaysOfWeek, ManagingScheduleModel>> expression,
+                 Expression<Func<SubjectClassOfStudentsDaysOfWeek, object>>[] include) =>
                 actual.Where(predicate.Compile()).Select(expression.Compile()));
 
-            var expected = scheduleService.GetTodaysSchedule(1, 1).ToList();
+            var expected = scheduleService.GetSchedulePerDay(1, 1).ToList();
 
             Assert.AreSame(actual[0].DaysOfWeek, expected[0].DaysOfWeek);
             Assert.AreEqual(actual[0].StartHour, expected[0].StartHour);
@@ -236,12 +240,13 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
                       mockedStudentRepo.Object,
                       mockedUnitOfWork.Object);
 
-            scheduleService.GetTodaysSchedule(It.IsAny<int>(), It.IsAny<int>());
+            scheduleService.GetSchedulePerDay(It.IsAny<int>(), It.IsAny<int>());
 
             mockedSubjectClassOfStudentsDaysOfWeekRepo.Verify(
                     x => x.GetAll(
                      It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, bool>>>(),
-                     It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, ManagingScheduleModel>>>()),
+                     It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, ManagingScheduleModel>>>(),
+                     It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, object>>[]>()),
                      Times.Once);
         }
     }

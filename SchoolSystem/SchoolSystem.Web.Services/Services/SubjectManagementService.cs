@@ -88,8 +88,8 @@ namespace SchoolSystem.Web.Services
             return this.subjectClassOfStudentsRepo
                 .GetAll(x => x.ClassOfStudentsId == classId
                 && x.Subject.TeacherId != null,
-                x => x.Subject,
-                x => x.Subject);
+                s => s.Subject,
+                i => i.Subject);
         }
 
 
@@ -101,8 +101,8 @@ namespace SchoolSystem.Web.Services
                         Id = x.Id,
                         Name = x.Name
                     },
-                    x => x.Teacher,
-                    x => x.Teacher.User); ;
+                    s => s.Teacher,
+                    i => i.Teacher.User);
         }
 
         public IEnumerable<SubjectBasicInfo> GetSubjectsNotYetAssignedToTheClass(int classId)
@@ -110,8 +110,8 @@ namespace SchoolSystem.Web.Services
             var alreadyAssignedSubjectsIds = this.subjectClassOfStudentsRepo
                  .GetAll(x => x.ClassOfStudentsId == classId
                  && x.Subject.TeacherId != null,
-                 x => x.SubjectId,
-                 x => x.Subject);
+                 s => s.SubjectId,
+                 i => i.Subject);
 
             if (alreadyAssignedSubjectsIds == null)
             {
@@ -121,10 +121,10 @@ namespace SchoolSystem.Web.Services
             var result = this.subjectRepo.GetAll(x =>
             !alreadyAssignedSubjectsIds.Contains(x.Id)
             && x.TeacherId != null,
-            x => new SubjectBasicInfo()
+            s => new SubjectBasicInfo()
             {
-                Id = x.Id,
-                Name = x.Name
+                Id = s.Id,
+                Name = s.Name
             });
 
             return result;
