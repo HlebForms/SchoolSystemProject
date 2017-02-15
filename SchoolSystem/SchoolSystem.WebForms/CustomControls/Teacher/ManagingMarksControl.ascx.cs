@@ -4,14 +4,13 @@ using System.Web.UI.WebControls;
 
 using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Models.CustomModels;
-using SchoolSystem.WebForms.CustomControls.Teacher.Models;
-using SchoolSystem.WebForms.CustomControls.Teacher.Views;
-using SchoolSystem.WebForms.CustomControls.Teacher.Views.EventArguments;
-using SchoolSystem.Data.Models.Common;
-using SchoolSystem.WebForms.CustomControls.Teacher.Presenters;
 
 using WebFormsMvp.Web;
 using WebFormsMvp;
+using SchoolSystem.MVP.Teacher.Views.EventArguments;
+using SchoolSystem.MVP.Teacher.Presenters;
+using SchoolSystem.MVP.Teacher.Models;
+using SchoolSystem.MVP.Teacher.Views;
 
 namespace SchoolSystem.WebForms.CustomControls.Teacher
 {

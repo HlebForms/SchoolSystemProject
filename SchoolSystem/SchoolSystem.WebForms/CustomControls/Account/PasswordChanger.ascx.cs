@@ -2,13 +2,12 @@
 using System.Web;
 using System.Web.UI;
 
-using SchoolSystem.WebForms.CustomControls.Account.Models;
-using SchoolSystem.WebForms.CustomControls.Account.Views;
-using SchoolSystem.WebForms.CustomControls.Account.Views.EventArguments;
-using SchoolSystem.WebForms.CustomControls.Account.Presenters;
-
 using WebFormsMvp;
 using WebFormsMvp.Web;
+using SchoolSystem.MVP.Account.Presenters;
+using SchoolSystem.MVP.Account.Views.EventArguments;
+using SchoolSystem.MVP.Account.Models;
+using SchoolSystem.MVP.Account.Views;
 
 namespace SchoolSystem.WebForms.CustomControls.Account
 {

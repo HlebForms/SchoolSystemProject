@@ -4,13 +4,13 @@ using System.Web;
 using System.Web.UI.WebControls;
 
 using SchoolSystem.Data.Models.Common;
-using SchoolSystem.WebForms.Account.Models;
-using SchoolSystem.WebForms.Account.Presenters;
-using SchoolSystem.WebForms.Account.Views;
-using SchoolSystem.WebForms.Account.Views.EventArguments;
 
 using WebFormsMvp;
 using WebFormsMvp.Web;
+using SchoolSystem.MVP.Account.Presenters;
+using SchoolSystem.MVP.Account.Models;
+using SchoolSystem.MVP.Account.Views;
+using SchoolSystem.MVP.Account.Views.EventArguments;
 
 namespace SchoolSystem.WebForms.Account
 {

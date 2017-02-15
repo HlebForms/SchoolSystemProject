@@ -2,13 +2,12 @@
 using System.Linq;
 using System.Web.UI.WebControls;
 
-using SchoolSystem.WebForms.CustomControls.Admin.Models;
-using SchoolSystem.WebForms.CustomControls.Admin.Presenters;
-using SchoolSystem.WebForms.CustomControls.Admin.Views;
-using SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments;
-
 using WebFormsMvp;
 using WebFormsMvp.Web;
+using SchoolSystem.MVP.Admin.Presenters;
+using SchoolSystem.MVP.Admin.Views.EventArguments;
+using SchoolSystem.MVP.Admin.Models;
+using SchoolSystem.MVP.Admin.Views;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin
 {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
-using SchoolSystem.WebForms.CustomControls.Account.Models;
-using SchoolSystem.WebForms.CustomControls.Account.Presenters;
-using SchoolSystem.WebForms.CustomControls.Account.Views;
-using SchoolSystem.WebForms.CustomControls.Account.Views.EventArguments;
+using SchoolSystem.MVP.Account.Models;
+using SchoolSystem.MVP.Account.Presenters;
+using SchoolSystem.MVP.Account.Views;
+using SchoolSystem.MVP.Account.Views.EventArguments;
 using SchoolSystem.WebForms.Identity;
 using System;
 using System.Web;

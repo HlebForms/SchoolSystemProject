@@ -1,15 +1,12 @@
-﻿using SchoolSystem.WebForms.CustomControls.Admin.Models;
-using SchoolSystem.WebForms.CustomControls.Admin.Presenters;
-using SchoolSystem.WebForms.CustomControls.Admin.Views;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebFormsMvp;
 using WebFormsMvp.Web;
-using SchoolSystem.WebForms.CustomControls.Admin.Views.EventArguments;
+using SchoolSystem.MVP.Admin.Presenters;
+using SchoolSystem.MVP.Admin.Models;
+using SchoolSystem.MVP.Admin.Views;
+using SchoolSystem.MVP.Admin.Views.EventArguments;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin
 {

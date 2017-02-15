@@ -1,14 +1,13 @@
 ﻿using System;
 
-using SchoolSystem.WebForms.CustomControls.Account.Models;
-using SchoolSystem.WebForms.CustomControls.Account.Presenters;
-using SchoolSystem.WebForms.CustomControls.Account.Views;
-using SchoolSystem.WebForms.CustomControls.Account.Views.EventArguments;
-
 using WebFormsMvp;
 using WebFormsMvp.Web;
 using System.IO;
 using System.Web.UI;
+using SchoolSystem.MVP.Account.Views.EventArguments;
+using SchoolSystem.MVP.Account.Presenters;
+using SchoolSystem.MVP.Account.Models;
+using SchoolSystem.MVP.Account.Views;
 
 namespace SchoolSystem.WebForms.CustomControls.Account
 {

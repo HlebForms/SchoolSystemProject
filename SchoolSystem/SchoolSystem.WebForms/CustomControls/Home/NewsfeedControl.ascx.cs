@@ -1,20 +1,12 @@
-﻿using SchoolSystem.WebForms.App_Start;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
+﻿using System;
 using System.Web.UI.WebControls;
-using Ninject;
-using SchoolSystem.Data;
-using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Models.Common;
 using WebFormsMvp;
-using SchoolSystem.WebForms.CustomControls.Home.Presenter;
 using WebFormsMvp.Web;
-using SchoolSystem.WebForms.CustomControls.Home.Models;
-using SchoolSystem.WebForms.CustomControls.Home.Views;
-using SchoolSystem.WebForms.CustomControls.Home.Views.EventArguments;
+using SchoolSystem.MVP.Home.Views.EventArguments;
+using SchoolSystem.MVP.Home.Presenter;
+using SchoolSystem.MVP.Home.Models;
+using SchoolSystem.MVP.Home.Views;
 
 namespace SchoolSystem.WebForms.CustomControls.Home
 {

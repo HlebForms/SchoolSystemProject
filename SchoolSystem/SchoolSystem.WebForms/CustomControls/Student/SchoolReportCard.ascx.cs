@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Web.UI.WebControls;
-using SchoolSystem.WebForms.CustomControls.Student.Models;
-
-using SchoolSystem.WebForms.CustomControls.Student.Presenters;
-using SchoolSystem.WebForms.CustomControls.Student.Views;
-using SchoolSystem.WebForms.CustomControls.Student.Views.EventArguments;
 
 using WebFormsMvp;
 using WebFormsMvp.Web;
+using SchoolSystem.MVP.Student.Presenters;
+using SchoolSystem.MVP.Student.Models;
+using SchoolSystem.MVP.Student.Views.EventArguments;
+using SchoolSystem.MVP.Student.Views;
 
 namespace SchoolSystem.WebForms.CustomControls.Student
 {

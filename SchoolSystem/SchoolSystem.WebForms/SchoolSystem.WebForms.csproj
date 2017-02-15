@@ -321,10 +321,6 @@
       <DependentUpon>Manage.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\Bindings\ProvidersModule.cs" />
-    <Compile Include="CustomControls\Account\Models\LoginModel.cs" />
-    <Compile Include="Account\Models\RegistrationModel.cs" />
-    <Compile Include="CustomControls\Account\Presenters\LoginPresenter.cs" />
-    <Compile Include="Account\Presenters\RegistrationPresenter.cs" />
     <Compile Include="Account\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -332,10 +328,6 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\Account\Views\EventArguments\LoginPageEventtArgs.cs" />
-    <Compile Include="Account\Views\EventArguments\RegistrationPageEventArgs.cs" />
-    <Compile Include="CustomControls\Account\Views\ILoginView.cs" />
-    <Compile Include="Account\Views\IRegisterView.cs" />
     <Compile Include="Admin\AdminArea.aspx.cs">
       <DependentUpon>AdminArea.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -382,8 +374,6 @@
     <Compile Include="CustomControls\Account\LoginControl.ascx.designer.cs">
       <DependentUpon>LoginControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\Account\Models\AvatarUploadModel.cs" />
-    <Compile Include="CustomControls\Account\Models\PasswordChangeModel.cs" />
     <Compile Include="CustomControls\Account\PasswordChanger.ascx.cs">
       <DependentUpon>PasswordChanger.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -391,13 +381,6 @@
     <Compile Include="CustomControls\Account\PasswordChanger.ascx.designer.cs">
       <DependentUpon>PasswordChanger.ascx</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\Account\Presenters\AvatarUploadPresenter.cs" />
-    <Compile Include="CustomControls\Account\Presenters\PasswordChangerPresenter.cs" />
-    <Compile Include="CustomControls\Account\Views\EventArguments\AvatarUploadEventArgs.cs" />
-    <Compile Include="CustomControls\Account\Views\EventArguments\GetUserAvatarEventArgs.cs" />
-    <Compile Include="CustomControls\Account\Views\EventArguments\PasswordChangeEventArgs.cs" />
-    <Compile Include="CustomControls\Account\Views\IAvatarUploadView.cs" />
-    <Compile Include="CustomControls\Account\Views\IPasswordChangeView.cs" />
     <Compile Include="CustomControls\Admin\AssignSubjectsToClassOfStudentsControl.ascx.cs">
       <DependentUpon>AssignSubjectsToClassOfStudentsControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -433,32 +416,6 @@
     <Compile Include="CustomControls\Admin\CreatingSubjectControl.ascx.designer.cs">
       <DependentUpon>CreatingSubjectControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\Admin\Models\AssignSubjectsToClassOfStudentsModel.cs" />
-    <Compile Include="CustomControls\Admin\Models\AssignSubjectToTeacherModel.cs" />
-    <Compile Include="CustomControls\Admin\Models\CreatingClassOfStudentsModel.cs" />
-    <Compile Include="CustomControls\Admin\Models\ManagingScheduleControlModel.cs" />
-    <Compile Include="CustomControls\Admin\Models\CreatingSubjcetModel.cs" />
-    <Compile Include="CustomControls\Admin\Presenters\AssignSubjectsToClassOfStudentsPresenter.cs" />
-    <Compile Include="CustomControls\Admin\Presenters\AssignSubjectToTeacherPresenter.cs" />
-    <Compile Include="CustomControls\Admin\Presenters\CreatingClassOfStudentsPresenter.cs" />
-    <Compile Include="CustomControls\Admin\Presenters\ManagingSchedulePresenter.cs" />
-    <Compile Include="CustomControls\Admin\Presenters\CreatingSubjectPresenter.cs" />
-    <Compile Include="CustomControls\Admin\Views\EventArguments\AssignSubjectsToClassOfStudentsEventArgs.cs" />
-    <Compile Include="CustomControls\Admin\Views\EventArguments\AssignSubjectsToTeacherEventArgs.cs" />
-    <Compile Include="CustomControls\Admin\Views\EventArguments\BindSubjectsForClassEventArgs.cs" />
-    <Compile Include="CustomControls\Admin\Views\EventArguments\AddingSubjectToScheduleEventArgs.cs" />
-    <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingClassOfStudentsEventArgs.cs" />
-    <Compile Include="CustomControls\Admin\Views\EventArguments\GetAvailableSubjectsForTheClassEventArgs.cs" />
-    <Compile Include="CustomControls\Admin\Views\EventArguments\ManagingScheduleEventArgs.cs" />
-    <Compile Include="CustomControls\Admin\Views\EventArguments\CreatingSubjectEventArgs.cs" />
-    <Compile Include="CustomControls\Admin\Views\EventArguments\RemovingSubjectFromScheduleEventArgs.cs" />
-    <Compile Include="CustomControls\Admin\Views\IAssignSubjectsToClassOfStudentsView.cs" />
-    <Compile Include="CustomControls\Admin\Views\IAssignSubjectToTeacherView.cs" />
-    <Compile Include="CustomControls\Admin\Views\ICreatingClassOfStudentsView.cs" />
-    <Compile Include="CustomControls\Admin\Views\IManagingScheduleView.cs" />
-    <Compile Include="CustomControls\Admin\Views\ICreatingSubjectView.cs" />
-    <Compile Include="CustomControls\Home\Models\NewsfeedModel.cs" />
-    <Compile Include="CustomControls\Home\Models\ScheduleControlModel.cs" />
     <Compile Include="CustomControls\Home\NewsfeedControl.ascx.cs">
       <DependentUpon>NewsfeedControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -466,8 +423,6 @@
     <Compile Include="CustomControls\Home\NewsfeedControl.ascx.designer.cs">
       <DependentUpon>NewsfeedControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\Home\Presenter\NewsfeedPresenter.cs" />
-    <Compile Include="CustomControls\Home\Presenter\StudentSchedulePresenter.cs" />
     <Compile Include="CustomControls\Home\ScheduleControl.ascx.cs">
       <DependentUpon>ScheduleControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -475,10 +430,6 @@
     <Compile Include="CustomControls\Home\ScheduleControl.ascx.designer.cs">
       <DependentUpon>ScheduleControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\Home\Views\EventArguments\AddNewsEventargs.cs" />
-    <Compile Include="CustomControls\Home\Views\EventArguments\StudentScheduleEventargs.cs" />
-    <Compile Include="CustomControls\Home\Views\INewsfeedView.cs" />
-    <Compile Include="CustomControls\Home\Views\IStudentScheduleView.cs" />
     <Compile Include="CustomControls\Notifier\Notifier.ascx.cs">
       <DependentUpon>Notifier.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -486,8 +437,6 @@
     <Compile Include="CustomControls\Notifier\Notifier.ascx.designer.cs">
       <DependentUpon>Notifier.ascx</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\Student\Models\SchoolReportCardModel.cs" />
-    <Compile Include="CustomControls\Student\Presenters\SchoolReportCardPreseneter.cs" />
     <Compile Include="CustomControls\Student\SchoolReportCard.ascx.cs">
       <DependentUpon>SchoolReportCard.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -495,8 +444,6 @@
     <Compile Include="CustomControls\Student\SchoolReportCard.ascx.designer.cs">
       <DependentUpon>SchoolReportCard.ascx</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\Student\Views\EventArguments\GetStudentMarksEventArgs.cs" />
-    <Compile Include="CustomControls\Student\Views\ISchoolReporCardView.cs" />
     <Compile Include="CustomControls\Teacher\ManagingMarksControl.ascx.cs">
       <DependentUpon>ManagingMarksControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -504,14 +451,6 @@
     <Compile Include="CustomControls\Teacher\ManagingMarksControl.ascx.designer.cs">
       <DependentUpon>ManagingMarksControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\Teacher\Models\ManagingMarksModel.cs" />
-    <Compile Include="CustomControls\Teacher\Presenters\ManagingMarksPresenter.cs" />
-    <Compile Include="CustomControls\Teacher\Views\EventArguments\BindClassesEventArgs.cs" />
-    <Compile Include="CustomControls\Teacher\Views\EventArguments\BindReortCardEventArgs.cs" />
-    <Compile Include="CustomControls\Teacher\Views\EventArguments\BindStudentsEventArgs.cs" />
-    <Compile Include="CustomControls\Teacher\Views\EventArguments\BindSubjectsEventArgs.cs" />
-    <Compile Include="CustomControls\Teacher\Views\EventArguments\InserMarkEventArgs.cs" />
-    <Compile Include="CustomControls\Teacher\Views\IManagingMarksView.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -581,6 +520,10 @@
     <ProjectReference Include="..\SchoolSystem.Data\SchoolSystem.Data.csproj">
       <Project>{B70B597E-506D-40A8-AA41-DB825675AEAA}</Project>
       <Name>SchoolSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchoolSystem.MVP\SchoolSystem.MVP.csproj">
+      <Project>{E0724B47-3227-44C6-8639-A411AE604449}</Project>
+      <Name>SchoolSystem.MVP</Name>
     </ProjectReference>
     <ProjectReference Include="..\SchoolSystem.Web.Providers\SchoolSystem.Web.Providers.csproj">
       <Project>{CF993672-BCFC-4C89-B19B-8B32EE4EE879}</Project>
