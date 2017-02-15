@@ -74,7 +74,7 @@ namespace SchoolSystem.Web.Services
 
             var daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
                 .GetAll(x => x.ClassOfStudentsId == userClassOfStudentsId
-                        && x.DaysOfWeek.Id == 2,
+                        && x.DaysOfWeek.Id == (int)dayOfWeek,
                         x => new ScheduleModel()
                         {
                             SubjectId = x.SubjectId,
@@ -111,7 +111,7 @@ namespace SchoolSystem.Web.Services
 
             var subjects =
                 this.subjectClassOfStudentsDaysOfWeekRepo
-                .GetAll(x => x.DaysOfWeekId == 2 &&
+                .GetAll(x => x.DaysOfWeekId == (int)dayOfWeek &&
                         subjectIds.Contains(x.SubjectId),
                         x => new ScheduleModel
                         {
