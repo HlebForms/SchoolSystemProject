@@ -7,18 +7,17 @@
         <custom:Notifier runat="server" ID="Notifier" />
         <div>
             <asp:Label runat="server" AssociatedControlID="ClassOfStudentsDropDown" CssClass="dropdown-label">Клас</asp:Label>
-                <asp:DropDownList
-                    runat="server"
-                    ID="ClassOfStudentsDropDown"
-                    ItemType="SchoolSystem.Data.Models.ClassOfStudents"
-                    AutoPostBack="true"
-                    DataValueField="Id"
-                    DataTextField="Name"
-                    CssClass="class-of-students-dropdown"
-                    OnSelectedIndexChanged="ClassOfStudentsDropDown_SelectedIndexChanged" />
-            </div>
+            <asp:DropDownList
+                runat="server"
+                ID="ClassOfStudentsDropDown"
+                ItemType="SchoolSystem.Data.Models.ClassOfStudents"
+                AutoPostBack="true"
+                DataValueField="Id"
+                DataTextField="Name"
+                CssClass="class-of-students-dropdown"
+                OnSelectedIndexChanged="ClassOfStudentsDropDown_SelectedIndexChanged" />
         </div>
-        <div >
+        <div>
             <asp:Label runat="server" AssociatedControlID="" CssClass="dropdown-label">Предмети</asp:Label>
             <div class="checkbox-scrollbar-container">
                 <asp:CheckBoxList
@@ -26,7 +25,7 @@
                     ID="AvailableSubjectsCheckboxList"
                     ItemType="SchoolSystem.Data.Models.CustomModels.SubjectBasicInfo"
                     DataValueField="Id"
-                    DataTextField="Name"/>
+                    DataTextField="Name" />
             </div>
         </div>
         <div class="add-subject-button">

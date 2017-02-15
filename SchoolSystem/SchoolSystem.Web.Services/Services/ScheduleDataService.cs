@@ -8,6 +8,8 @@ using SchoolSystem.Data.Models.CustomModels;
 using SchoolSystem.Web.Services.Contracts;
 
 using Bytes2you.Validation;
+using SchoolSystem.Data;
+using System.Data.Entity;
 
 namespace SchoolSystem.Web.Services
 {
@@ -48,45 +50,84 @@ namespace SchoolSystem.Web.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<StudentSchedule> GetStudentScheduleForTheDay(DayOfWeek dayOfWeek, string username)
+        public IEnumerable<ScheduleModel> GetStudentScheduleForTheDay(DayOfWeek dayOfWeek, string username)
         {
+            Guard.WhenArgument(username, "username").IsNullOrEmpty().Throw();
+
             var user = this.userRepo.GetFirst(x => x.UserName == username);
-            Guard.WhenArgument(user, "user").IsNull().Throw();
+
+            if (user == null)
+            {
+                return new List<ScheduleModel>();
+            }
+
             var userId = user.Id;
 
             var userClassOfStudents = this.studentRepo.GetFirst(x => x.Id == userId);
-            Guard.WhenArgument(userClassOfStudents, "userClassOfStudents").IsNull().Throw();
+
+            if (userClassOfStudents == null)
+            {
+                return new List<ScheduleModel>();
+            }
+
             var userClassOfStudentsId = userClassOfStudents.ClassOfStudentsId;
 
             var daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
-                .GetAll(x => x.ClassOfStudentsId == userClassOfStudentsId && x.DaysOfWeek.Id == (int)dayOfWeek, y => y);
-
-            Guard.WhenArgument(daySchedule, "daySchedule").IsNull().Throw();
-
-            var result = new List<StudentSchedule>();
-
-            foreach (var schedule in daySchedule)
-            {
-                var teacherName = subjectRepo
-                    .GetFirst(x => x.Id == schedule.SubjectId, x => x.Teacher, x => x.Teacher.User)
-                    .Teacher
-                    .User
-                    .LastName;
-
-                result.Add(
-                        new StudentSchedule()
+                .GetAll(x => x.ClassOfStudentsId == userClassOfStudentsId
+                        && x.DaysOfWeek.Id == 2,
+                        x => new ScheduleModel()
                         {
-                            SubjectId = schedule.SubjectId,
-                            SubjectName = schedule.SubjectClassOfStudents.Subject.Name,
-                            ImageUrl = schedule.SubjectClassOfStudents.Subject.ImageUrl,
-                            TeacherName = teacherName,
-                            StartHour = schedule.StartHour,
-                            EndHour = schedule.EndHour
-                        }
-                    );
+                            SubjectId = x.SubjectId,
+                            SubjectName = x.SubjectClassOfStudents.Subject.Name,
+                            ImageUrl = x.SubjectClassOfStudents.Subject.ImageUrl,
+                            TeacherName = x.SubjectClassOfStudents.Subject.Teacher.User.LastName,
+                            StartHour = x.StartHour,
+                            EndHour = x.EndHour
+                        },
+                        x => x.SubjectClassOfStudents.Subject,
+                        x => x.SubjectClassOfStudents.Subject.Teacher.User);
+
+            return daySchedule.OrderBy(x => x.StartHour);
+        }
+
+        public IEnumerable<ScheduleModel> GetTeacherScheduleForTheDay(DayOfWeek dayOfWeek, string username)
+        {
+            Guard.WhenArgument(username, "username").IsNullOrEmpty().Throw();
+
+            var user = this.userRepo.GetFirst(x => x.UserName == username);
+            if (user == null)
+            {
+                return new List<ScheduleModel>();
             }
 
-            return result;
+            var userId = user.Id;
+
+            var subjectIds = this.subjectRepo.GetAll(x => x.TeacherId == userId, y => y.Id);
+
+            if (subjectIds.Count() == 0)
+            {
+                return new List<ScheduleModel>();
+            }
+
+            var subjects =
+                this.subjectClassOfStudentsDaysOfWeekRepo
+                .GetAll(x => x.DaysOfWeekId == 2 &&
+                        subjectIds.Contains(x.SubjectId),
+                        x => new ScheduleModel
+                        {
+                            SubjectId = x.SubjectId,
+                            SubjectName = x.SubjectClassOfStudents.Subject.Name,
+                            ClassName = x.SubjectClassOfStudents.ClassOfStudents.Name,
+                            ImageUrl = x.SubjectClassOfStudents.Subject.ImageUrl,
+                            StartHour = x.StartHour,
+                            EndHour = x.EndHour
+                        },
+                        x => x.SubjectClassOfStudents,
+                        x => x.SubjectClassOfStudents.Subject,
+                        x => x.SubjectClassOfStudents.ClassOfStudents
+                        );
+
+            return subjects.OrderBy(x => x.StartHour);
         }
 
         public IEnumerable<DaysOfWeek> GetAllDaysOfWeek()

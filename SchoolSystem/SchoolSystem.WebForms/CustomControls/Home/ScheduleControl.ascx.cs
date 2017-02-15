@@ -15,10 +15,11 @@ using SchoolSystem.Data.Models.Common;
 
 namespace SchoolSystem.WebForms.CustomControls.Home
 {
-    [PresenterBinding(typeof(StudentSchedulePresenter))]
-    public partial class StudentScheduleControl : MvpUserControl<StudentScheduleModel>, IStudentScheduleView
+    [PresenterBinding(typeof(SchedulePresenter))]
+    public partial class ScheduleControl : MvpUserControl<ScheduleControlModel>, IScheduleView
     {
-        public event EventHandler<StudentScheduleEventargs> EventBindScheduleData;
+        public event EventHandler<ScheduleEventargs> EventBindStudentScheduleData;
+        public event EventHandler<ScheduleEventargs> EventBindTeacherScheduleData;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,17 +27,25 @@ namespace SchoolSystem.WebForms.CustomControls.Home
             {
                 var loggedUserName = this.Context.User.Identity.Name;
 
-                var args = new StudentScheduleEventargs()
+                var args = new ScheduleEventargs()
                 {
                     Username = loggedUserName
                 };
 
                 if (this.Context.User.IsInRole(UserType.Student))
                 {
-                    this.EventBindScheduleData(this, args);
+                    this.EventBindStudentScheduleData(this, args);
 
-                    this.schedule.DataSource = this.Model.StudentSchedule;
-                    this.schedule.DataBind();
+                    this.Schedule.DataSource = this.Model.StudentSchedule;
+                    this.Schedule.DataBind();
+                }
+
+                if (this.Context.User.IsInRole(UserType.Teacher))
+                {
+                    this.EventBindTeacherScheduleData(this, args);
+
+                    this.Schedule.DataSource = this.Model.TeacherSchedule;
+                    this.Schedule.DataBind();
                 }
             }
         }

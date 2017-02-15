@@ -29,7 +29,7 @@
 
                 <div class="form-group" runat="server" id="SubjectContainer">
                     <asp:Label runat="server" AssociatedControlID="AvailableSubjectsList" CssClass="col-md-2 control-label">Свободни предмети</asp:Label>
-                    <div class="col-md-10 checkbox-scrollbar-container">
+                    <div class="col-md-10 checkbox-scrollbar-container-register">
                         <asp:CheckBoxList
                             ID="AvailableSubjectsList"
                             runat="server"

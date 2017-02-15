@@ -12,8 +12,9 @@ body {
 
 #MainContent_ctl00 {
     background-color: white;
-    border: 1px solid #2196F3;
     height: 450px;
+    overflow-y:auto;
+    overflow-x:hidden;
 }
 
 footer {
@@ -173,7 +174,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .subject-info {
     font-size: 18px;
-    width: 115px;
+    width: 125px;
     /*border:1px solid black;*/
     float: right;
 }
@@ -206,6 +207,21 @@ hr {
     margin-left: 140px;
 }
 
+.add-subject-button-teacher {
+    margin-top: 10px;
+    margin-left: 150px;
+}
+
+.checkbox-scrollbar-container-register {
+    overflow: auto;
+    height: 140px;
+    width: 400px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid #2196F3;
+}
+
 .checkbox-scrollbar-container {
     overflow: auto;
     height: 200px;
@@ -222,6 +238,16 @@ hr {
     width: 280px;
     display: inline-block;
     margin-left: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid #2196F3;
+}
+
+.checkbox-scrollbar-container-teacher {
+    overflow: auto;
+    height: 200px;
+    width: 280px;
+    display: inline-block;
+    margin-left: 25px;
     margin-top: 10px;
     border-bottom: 1px solid #2196F3;
 }

@@ -6,12 +6,9 @@ using System.Web;
 
 namespace SchoolSystem.WebForms.CustomControls.Home.Models
 {
-    public class StudentScheduleModel
+    public class ScheduleControlModel
     {
-        public IEnumerable<StudentSchedule> StudentSchedule { get; set; }
-     
-
-
-
+        public IEnumerable<ScheduleModel> StudentSchedule { get; set; }
+        public IEnumerable<ScheduleModel> TeacherSchedule { get; set; }
     }
 }

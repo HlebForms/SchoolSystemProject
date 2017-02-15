@@ -9,8 +9,10 @@ using WebFormsMvp;
 
 namespace SchoolSystem.WebForms.CustomControls.Home.Views
 {
-    public interface IStudentScheduleView : IView<StudentScheduleModel>
+    public interface IScheduleView : IView<ScheduleControlModel>
     {
-        event EventHandler<StudentScheduleEventargs> EventBindScheduleData;
+        event EventHandler<ScheduleEventargs> EventBindStudentScheduleData;
+
+        event EventHandler<ScheduleEventargs> EventBindTeacherScheduleData;
     }
 }

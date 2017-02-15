@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SchoolSystem.WebForms.CustomControls.Home.Views.EventArguments
 {
-    public class StudentScheduleEventargs : EventArgs
+    public class ScheduleEventargs : EventArgs
     {
         public string Username { get; set; }
     }

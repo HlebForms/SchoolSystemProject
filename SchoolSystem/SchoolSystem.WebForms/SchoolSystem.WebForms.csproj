@@ -208,7 +208,7 @@
     <Content Include="CustomControls\Admin\AssignSubjectToTeacherControl.ascx" />
     <Content Include="CustomControls\Admin\ManagingScheduleControl.ascx" />
     <Content Include="CustomControls\Home\NewsfeedControl.ascx" />
-    <Content Include="CustomControls\Home\StudentScheduleControl.ascx" />
+    <Content Include="CustomControls\Home\ScheduleControl.ascx" />
     <Content Include="Images\avatars\admin%40admin.com.jpg" />
     <Content Include="CustomControls\Student\SchoolReportCard.ascx" />
     <Content Include="CustomControls\Teacher\ManagingMarksControl.ascx" />
@@ -458,7 +458,7 @@
     <Compile Include="CustomControls\Admin\Views\IManagingScheduleView.cs" />
     <Compile Include="CustomControls\Admin\Views\ICreatingSubjectView.cs" />
     <Compile Include="CustomControls\Home\Models\NewsfeedModel.cs" />
-    <Compile Include="CustomControls\Home\Models\StudentScheduleModel.cs" />
+    <Compile Include="CustomControls\Home\Models\ScheduleControlModel.cs" />
     <Compile Include="CustomControls\Home\NewsfeedControl.ascx.cs">
       <DependentUpon>NewsfeedControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -468,12 +468,12 @@
     </Compile>
     <Compile Include="CustomControls\Home\Presenter\NewsfeedPresenter.cs" />
     <Compile Include="CustomControls\Home\Presenter\StudentSchedulePresenter.cs" />
-    <Compile Include="CustomControls\Home\StudentScheduleControl.ascx.cs">
-      <DependentUpon>StudentScheduleControl.ascx</DependentUpon>
+    <Compile Include="CustomControls\Home\ScheduleControl.ascx.cs">
+      <DependentUpon>ScheduleControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CustomControls\Home\StudentScheduleControl.ascx.designer.cs">
-      <DependentUpon>StudentScheduleControl.ascx</DependentUpon>
+    <Compile Include="CustomControls\Home\ScheduleControl.ascx.designer.cs">
+      <DependentUpon>ScheduleControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\Home\Views\EventArguments\AddNewsEventargs.cs" />
     <Compile Include="CustomControls\Home\Views\EventArguments\StudentScheduleEventargs.cs" />
@@ -595,6 +595,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

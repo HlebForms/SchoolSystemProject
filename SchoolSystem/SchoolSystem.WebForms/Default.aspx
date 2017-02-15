@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" ValidateRequest="false" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SchoolSystem.WebForms._Default" %>
 
-<%@ Register Src="~/CustomControls/Home/StudentScheduleControl.ascx" TagPrefix="custom" TagName="StudentScheduleControl" %>
+<%@ Register Src="~/CustomControls/Home/ScheduleControl.ascx" TagPrefix="custom" TagName="ScheduleControl" %>
 <%@ Register Src="~/CustomControls/Home/NewsfeedControl.ascx" TagPrefix="custom" TagName="NewsfeedControl" %>
 <%@ Register Src="~/CustomControls/Account/LoginControl.ascx" TagPrefix="custom" TagName="LoginControl" %>
 
@@ -15,7 +15,7 @@
                 </AnonymousTemplate>
 
                 <LoggedInTemplate>
-                    <custom:StudentScheduleControl runat="server" ID="StudentScheduleControl" />
+                    <custom:ScheduleControl runat="server" ID="ScheduleControl" />
                 </LoggedInTemplate>
 
             </asp:LoginView>
