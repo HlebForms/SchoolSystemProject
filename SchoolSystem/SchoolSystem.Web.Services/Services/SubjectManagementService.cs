@@ -56,10 +56,10 @@ namespace SchoolSystem.Web.Services
             }
         }
 
-        public IEnumerable<SubjectBasicInfo> GetAllSubjectsWithoutTeacher()
+        public IEnumerable<SubjectBasicInfoModel> GetAllSubjectsWithoutTeacher()
         {
             return this.subjectRepo.GetAll(x => x.Teacher == null,
-                x => new SubjectBasicInfo()
+                x => new SubjectBasicInfoModel()
                 {
                     Id = x.Id,
                     Name = x.Name
@@ -71,11 +71,11 @@ namespace SchoolSystem.Web.Services
             return this.subjectRepo.GetAll();
         }
 
-        public IEnumerable<SubjectBasicInfo> GetAllSubjectsWithTeacher()
+        public IEnumerable<SubjectBasicInfoModel> GetAllSubjectsWithTeacher()
         {
             return this.subjectRepo
               .GetAll(x => x.TeacherId != null
-              , x => new SubjectBasicInfo()
+              , x => new SubjectBasicInfoModel()
               {
                   Id = x.Id,
                   Name = x.Name
@@ -93,10 +93,10 @@ namespace SchoolSystem.Web.Services
         }
 
 
-        public IEnumerable<SubjectBasicInfo> GetSubjectsPerTeacher(string teacherName)
+        public IEnumerable<SubjectBasicInfoModel> GetSubjectsPerTeacher(string teacherName)
         {
             return this.subjectRepo.GetAll(x => x.Teacher.User.UserName == teacherName,
-                    x => new SubjectBasicInfo
+                    x => new SubjectBasicInfoModel
                     {
                         Id = x.Id,
                         Name = x.Name
@@ -105,7 +105,7 @@ namespace SchoolSystem.Web.Services
                     i => i.Teacher.User);
         }
 
-        public IEnumerable<SubjectBasicInfo> GetSubjectsNotYetAssignedToTheClass(int classId)
+        public IEnumerable<SubjectBasicInfoModel> GetSubjectsNotYetAssignedToTheClass(int classId)
         {
             var alreadyAssignedSubjectsIds = this.subjectClassOfStudentsRepo
                  .GetAll(x => x.ClassOfStudentsId == classId
@@ -121,7 +121,7 @@ namespace SchoolSystem.Web.Services
             var result = this.subjectRepo.GetAll(x =>
             !alreadyAssignedSubjectsIds.Contains(x.Id)
             && x.TeacherId != null,
-            s => new SubjectBasicInfo()
+            s => new SubjectBasicInfoModel()
             {
                 Id = s.Id,
                 Name = s.Name

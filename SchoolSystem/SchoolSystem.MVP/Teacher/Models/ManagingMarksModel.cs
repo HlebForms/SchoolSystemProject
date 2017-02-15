@@ -8,11 +8,11 @@ namespace SchoolSystem.MVP.Teacher.Models
     {
         public IEnumerable<ClassOfStudents> StudentClasses { get;  set; }
 
-        public IEnumerable<SubjectBasicInfo> Subjects { get; set; }
+        public IEnumerable<SubjectBasicInfoModel> Subjects { get; set; }
 
-        public IEnumerable<SchoolReportCard> SchoolReportCard { get; set; }
+        public IEnumerable<SchoolReportCardModel> SchoolReportCard { get; set; }
 
-        public IEnumerable<StudentInfo> Students { get;  set; }
+        public IEnumerable<StudentInfoModel> Students { get;  set; }
 
         public IEnumerable<Mark> Marks { get; set; }
     }

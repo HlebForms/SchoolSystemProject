@@ -18,10 +18,10 @@ namespace SchoolSystem.Web.Services
             this.teachersRepo = teachersRepo;
         }
 
-        public IEnumerable<TeacherBasicInfo> GetAllTeachers()
+        public IEnumerable<TeacherBasicInfoModel> GetAllTeachers()
         {
             return this.teachersRepo.GetAll(null,
-                x => new TeacherBasicInfo()
+                x => new TeacherBasicInfoModel()
                 {
                     Id = x.Id,
                     FirstName = x.User.FirstName,

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Data.Models.CustomModels
 {
-    public class SchoolReportCard
+    public class SchoolReportCardModel
     {
         public string StudentId { get; set; }
 

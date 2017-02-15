@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolSystem.Data.Models.CustomModels
 {
-    public class StudentMarks
+    public class StudentMarksModel
     {
         public string SubjectName { get; set; }
 

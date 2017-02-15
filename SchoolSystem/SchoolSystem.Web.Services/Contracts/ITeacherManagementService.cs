@@ -9,6 +9,6 @@ namespace SchoolSystem.Web.Services.Contracts
 {
     public interface ITeacherManagementService
     {
-        IEnumerable<TeacherBasicInfo> GetAllTeachers();
+        IEnumerable<TeacherBasicInfoModel> GetAllTeachers();
     }
 }

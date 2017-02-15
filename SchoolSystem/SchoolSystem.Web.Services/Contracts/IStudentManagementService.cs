@@ -6,6 +6,6 @@ namespace SchoolSystem.Web.Services.Contracts
 {
     public interface IStudentManagementService
     {
-        IEnumerable<StudentInfo> GetAllStudentsFromClass(int classId);
+        IEnumerable<StudentInfoModel> GetAllStudentsFromClass(int classId);
     }
 }

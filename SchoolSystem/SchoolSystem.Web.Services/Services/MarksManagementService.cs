@@ -69,7 +69,7 @@ namespace SchoolSystem.Web.Services
             return this.marksRepo.GetAll();
         }
 
-        public IEnumerable<SchoolReportCard> GetMarks(int subjectId, int classOfStudentsId)
+        public IEnumerable<SchoolReportCardModel> GetMarks(int subjectId, int classOfStudentsId)
         {
             var result = this.subjectStudenRepo
                 .GetAll(x => x.SubjectId == subjectId && x.Student.ClassOfStudentsId == classOfStudentsId,
@@ -82,7 +82,7 @@ namespace SchoolSystem.Web.Services
                     Marks = string.Join(", ", Enumerable.Repeat(x.Mark.Value, x.Count))
                 })
                 .GroupBy(x => x.Name)
-                .Select(x => new SchoolReportCard()
+                .Select(x => new SchoolReportCardModel()
                 {
                     FirstName = x.Key.FirstName,
                     LastName = x.Key.LastName,
@@ -92,7 +92,7 @@ namespace SchoolSystem.Web.Services
             return result;
         }
 
-        public IEnumerable<StudentMarks> GetMarksForStudent(string studentName)
+        public IEnumerable<StudentMarksModel> GetMarksForStudent(string studentName)
         {
             Guard.WhenArgument(studentName, "studentName").IsNullOrEmpty().Throw();
 
@@ -108,7 +108,7 @@ namespace SchoolSystem.Web.Services
                         MarkPerSubject = Enumerable.Repeat(x.Mark.Value, x.Count)
                     })
                     .GroupBy(x => x.Name)
-                    .Select(x => new StudentMarks()
+                    .Select(x => new StudentMarksModel()
                     {
                         SubjectName = x.Key,
                         Marks = x.SelectMany(z => z.MarkPerSubject)

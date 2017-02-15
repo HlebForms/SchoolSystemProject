@@ -1,6 +1,6 @@
 ﻿namespace SchoolSystem.Data.Models.CustomModels
 {
-    public class SubjectBasicInfo
+    public class SubjectBasicInfoModel
     {
         public int Id { get; set; }
 

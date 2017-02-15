@@ -20,11 +20,11 @@ namespace SchoolSystem.Web.Services
             this.studentsRepo = studentsRepo;
         }
 
-        public IEnumerable<StudentInfo> GetAllStudentsFromClass(int classId)
+        public IEnumerable<StudentInfoModel> GetAllStudentsFromClass(int classId)
         {
             return this.studentsRepo
                 .GetAll(x => x.ClassOfStudentsId == classId,
-                x => new StudentInfo()
+                x => new StudentInfoModel()
                 {
                     Id = x.Id,
                     Fullname = x.User.FirstName + x.User.LastName

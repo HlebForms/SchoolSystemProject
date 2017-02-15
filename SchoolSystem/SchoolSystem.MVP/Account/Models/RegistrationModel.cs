@@ -16,6 +16,6 @@ namespace SchoolSystem.MVP.Account.Models
 
         public IEnumerable<ClassOfStudents> ClassOfStudents { get; set; }
 
-        public IEnumerable<SubjectBasicInfo> Subjects { get; set; }
+        public IEnumerable<SubjectBasicInfoModel> Subjects { get; set; }
     }
 }

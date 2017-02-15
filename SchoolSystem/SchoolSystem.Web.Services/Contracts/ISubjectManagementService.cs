@@ -17,22 +17,22 @@ namespace SchoolSystem.Web.Services.Contracts
         /// Gets subjects with assigned teachers
         /// </summary>
         /// <returns></returns>
-        IEnumerable<SubjectBasicInfo> GetAllSubjectsWithTeacher();
+        IEnumerable<SubjectBasicInfoModel> GetAllSubjectsWithTeacher();
 
-        IEnumerable<SubjectBasicInfo> GetSubjectsPerTeacher(string teacherName);
+        IEnumerable<SubjectBasicInfoModel> GetSubjectsPerTeacher(string teacherName);
 
         /// <summary>
         /// Gets the subjects with no assigned teacher
         /// </summary>
         /// <returns> IEnumerable<Subject> </returns>
-        IEnumerable<SubjectBasicInfo> GetAllSubjectsWithoutTeacher();
+        IEnumerable<SubjectBasicInfoModel> GetAllSubjectsWithoutTeacher();
 
         /// <summary>
         /// Gets the subjects that are not assigned to the specified class yet.
         /// </summary>
         /// <param name="classId"></param>
         /// <returns></returns>
-        IEnumerable<SubjectBasicInfo> GetSubjectsNotYetAssignedToTheClass(int classId);
+        IEnumerable<SubjectBasicInfoModel> GetSubjectsNotYetAssignedToTheClass(int classId);
 
         bool AddSubjectsToTeacher(string teacherId, IEnumerable<int> subjectIds);
     }

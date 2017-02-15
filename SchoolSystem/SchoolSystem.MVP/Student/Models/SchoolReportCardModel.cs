@@ -5,6 +5,6 @@ namespace SchoolSystem.MVP.Student.Models
 {
     public class SchoolReportCardModel
     {
-        public IEnumerable<StudentMarks> StudentMarks { get; set; }
+        public IEnumerable<StudentMarksModel> StudentMarks { get; set; }
     }
 }

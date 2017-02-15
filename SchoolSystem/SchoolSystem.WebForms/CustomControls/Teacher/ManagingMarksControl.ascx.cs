@@ -40,7 +40,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
             }
         }
 
-        public IEnumerable<StudentInfo> PopulateStudentsDropDown()
+        public IEnumerable<StudentInfoModel> PopulateStudentsDropDown()
         {
             this.EventBindStudents(this, new BindStudentsEventArgs()
             {

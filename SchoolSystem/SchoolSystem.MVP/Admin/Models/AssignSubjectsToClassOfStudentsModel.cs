@@ -7,7 +7,7 @@ namespace SchoolSystem.MVP.Admin.Models
 {
     public class AssignSubjectsToClassOfStudentsModel
     {
-        public IEnumerable<SubjectBasicInfo> AvailableSubjects { get; set; }
+        public IEnumerable<SubjectBasicInfoModel> AvailableSubjects { get; set; }
 
         public IEnumerable<ClassOfStudents> ClassOfStudents { get; set; }
 

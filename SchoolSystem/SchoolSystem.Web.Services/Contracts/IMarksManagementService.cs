@@ -7,12 +7,12 @@ namespace SchoolSystem.Web.Services.Contracts
 {
     public interface IMarksManagementService
     {
-        IEnumerable<SchoolReportCard> GetMarks(int subjectId, int classOfStudentsId);
+        IEnumerable<SchoolReportCardModel> GetMarks(int subjectId, int classOfStudentsId);
 
         void AddMark(string studentId, int subjectId, int markId);
 
         IEnumerable<Mark> GetAllMarks();
 
-        IEnumerable<StudentMarks> GetMarksForStudent(string studentName);
+        IEnumerable<StudentMarksModel> GetMarksForStudent(string studentName);
     }
 }
