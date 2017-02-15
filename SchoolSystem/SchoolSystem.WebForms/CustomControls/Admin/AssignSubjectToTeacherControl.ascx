@@ -10,7 +10,7 @@
             <asp:DropDownList
                 runat="server"
                 ID="TeacherDropDown"
-                ItemType="SchoolSystem.Data.Models.CustomModels.TeacherBasicInfo"
+                ItemType="SchoolSystem.Data.Models.CustomModels.TeacherBasicInfoModel"
                 DataValueField="Id"
                 DataTextField="Fullname"
                 CssClass="class-of-students-dropdown"

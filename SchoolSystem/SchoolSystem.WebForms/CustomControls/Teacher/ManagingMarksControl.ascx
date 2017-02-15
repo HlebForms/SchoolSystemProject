@@ -36,7 +36,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 <asp:ListView runat="server" ID="SchoolReportCardListView"
-                    ItemType="SchoolSystem.Data.Models.CustomModels.SchoolReportCard"
+                    ItemType="SchoolSystem.Data.Models.CustomModels.SchoolReportCardModel"
                     InsertItemPosition="LastItem"
                     OnItemInserting="SchoolReportCardListView_ItemInserting"
                     OnItemCommand="SchoolReportCardListView_ItemCommand">
@@ -64,7 +64,7 @@
                                 <asp:DropDownList
                                     ID="StudentsDropDown"
                                     runat="server"
-                                    ItemType="SchoolSystem.Data.Models.CustomModels.StudentInfo"
+                                    ItemType="SchoolSystem.Data.Models.CustomModels.StudentInfoModel"
                                     DataValueField="Id"
                                     DataTextField="FullName"
                                     SelectMethod="PopulateStudentsDropDown"

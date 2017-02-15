@@ -8,7 +8,7 @@
                 runat="server"
                 ID="ScoolReportCardGrid"
                 AutoGenerateColumns="false"
-                ItemType="SchoolSystem.Data.Models.CustomModels.StudentMarks"
+                ItemType="SchoolSystem.Data.Models.CustomModels.StudentMarksModel"
                 AllowSorting="true"
                 OnSorting="ScoolReportCardGrid_Sorting"
                 CssClass="table table-striped table-hover student-marks-table">
