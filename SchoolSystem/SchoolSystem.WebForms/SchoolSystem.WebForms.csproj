@@ -521,6 +521,10 @@
       <Project>{B70B597E-506D-40A8-AA41-DB825675AEAA}</Project>
       <Name>SchoolSystem.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SchoolSystem.Identity\SchoolSystem.Identity.csproj">
+      <Project>{959224F3-74B7-489F-9FB0-A81BAE49C0EF}</Project>
+      <Name>SchoolSystem.Identity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolSystem.MVP\SchoolSystem.MVP.csproj">
       <Project>{E0724B47-3227-44C6-8639-A411AE604449}</Project>
       <Name>SchoolSystem.MVP</Name>

@@ -156,6 +156,10 @@
       <Project>{EA0DD209-F3AB-4C35-87E2-E947456D6F78}</Project>
       <Name>SchoolSystem.Data.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SchoolSystem.Identity\SchoolSystem.Identity.csproj">
+      <Project>{959224F3-74B7-489F-9FB0-A81BAE49C0EF}</Project>
+      <Name>SchoolSystem.Identity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolSystem.Web.Services\SchoolSystem.Web.Services.csproj">
       <Project>{85342024-9A31-45A3-B8DC-9F7D09708BC1}</Project>
       <Name>SchoolSystem.Web.Services</Name>

@@ -10,6 +10,7 @@ using Bytes2you.Validation;
 using SchoolSystem.MVP.Account.Views;
 using SchoolSystem.MVP.Account.Views.EventArguments;
 using Microsoft.AspNet.Identity.Owin;
+using SchoolSystem.Identity.Managers;
 
 namespace SchoolSystem.MVP.Account.Presenters
 {
