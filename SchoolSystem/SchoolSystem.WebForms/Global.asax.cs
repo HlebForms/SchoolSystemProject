@@ -1,8 +1,5 @@
-﻿using SchoolSystem.Data;
-using SchoolSystem.Data.Migrations;
-using SchoolSystem.WebForms.App_Start;
+﻿using SchoolSystem.WebForms.App_Start;
 using System;
-using System.Data.Entity;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
