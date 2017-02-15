@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystem.Services.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystem.Web.Providers", "SchoolSystem.Web.Providers\SchoolSystem.Web.Providers.csproj", "{CF993672-BCFC-4C89-B19B-8B32EE4EE879}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cover", "Cover", "{9A58536B-11DF-440F-B269-EE3F665B9E62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coveralls", "CoverAll\Coveralls.csproj", "{4957A7D5-D500-416E-8DD5-E5CDA0E040A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,10 @@ Global
 		{CF993672-BCFC-4C89-B19B-8B32EE4EE879}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF993672-BCFC-4C89-B19B-8B32EE4EE879}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF993672-BCFC-4C89-B19B-8B32EE4EE879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4957A7D5-D500-416E-8DD5-E5CDA0E040A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4957A7D5-D500-416E-8DD5-E5CDA0E040A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4957A7D5-D500-416E-8DD5-E5CDA0E040A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4957A7D5-D500-416E-8DD5-E5CDA0E040A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +70,6 @@ Global
 		{B70B597E-506D-40A8-AA41-DB825675AEAA} = {4172AD10-9393-4681-A2A5-2333D7D92539}
 		{F8231C1B-9205-4921-AF9B-1253FE4EA67A} = {FC2E4BB1-407A-4358-8C1B-4AB9518A2AD5}
 		{CF993672-BCFC-4C89-B19B-8B32EE4EE879} = {89322974-BD37-4A95-A2AE-DCEB030B092A}
+		{4957A7D5-D500-416E-8DD5-E5CDA0E040A5} = {9A58536B-11DF-440F-B269-EE3F665B9E62}
 	EndGlobalSection
 EndGlobal
