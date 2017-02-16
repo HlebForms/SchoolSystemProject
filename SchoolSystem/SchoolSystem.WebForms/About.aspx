@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="SchoolSystem.WebForms.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %>.</h2>
-    <h3>Your application description page.</h3>
-    <p>Use this area to provide additional information.</p>
+    <div class="about-wrapper">
+        <h2>Училищна система</h2>
+        <br />
+        <h4>Контакти</h4>
+        <p>Администратор: helbforms@gmail.com</p>
+    </div>
 </asp:Content>

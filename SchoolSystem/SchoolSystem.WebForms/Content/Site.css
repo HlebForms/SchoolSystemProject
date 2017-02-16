@@ -10,13 +10,22 @@ body {
 .body-content {
 }
 
-#MainContent_ctl00, 
-#MainContent_AdddingMarksControl_ctl00, 
+#MainContent_ctl00,
+#MainContent_AdddingMarksControl_ctl00,
 #MainContent_SchoolReportCardControl_ctl00 {
     background-color: white;
-    height: 450px;
-    overflow-y:auto;
-    overflow-x:hidden;
+    height: 390px;
+    margin-top: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #2196F3;
+}
+
+.about-wrapper {
+    width: 500px;
+    background-color: white;
+    height: 420px;
+    margin-top: 10px;
 }
 
 footer {
@@ -26,6 +35,15 @@ footer {
     bottom: 0;
     background-color: white;
     height: 90px;
+}
+
+.about {
+    float: right;
+    margin-right: 20px;
+}
+
+a:hover {
+    color: #ffc700 !important;
 }
 
 /* Wrapping element */
@@ -58,6 +76,12 @@ input[type="select"] {
     .body-content {
         padding: 0;
     }
+
+
+
+    footer {
+        position: unset;
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -69,6 +93,10 @@ input[type="select"] {
             display: block !important;
         }
 
+    .news-feed {
+        height: 830px !important;
+    }
+
     .navbar-header .collapse, .navbar-toggle {
         display: block !important;
     }
@@ -76,17 +104,53 @@ input[type="select"] {
     .navbar-header {
         float: none;
     }
+
+    footer {
+        position: unset;
+    }
 }
 
-@media (max-width:950px) {
+@media (max-width:1000px) {
     .news-feed {
         position: absolute;
+    }
+
+    footer {
+        position: unset;
+    }
+     .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+        .navbar-collapse.collapse.in {
+            display: block !important;
+        }
+
+    .news-feed {
+        height: 830px !important;
+    }
+
+    .navbar-header .collapse, .navbar-toggle {
+        display: block !important;
+    }
+
+    .navbar-header {
+        float: none;
+    }
+
+    footer {
+        position: unset;
     }
 }
 
 @media (max-width:750px) {
-    .news-feed {
-        position: initial;
+    .news-feed{
+        position:initial;
+        height:400px !important;
+    }
+
+    footer {
+        position: unset;
     }
 }
 
@@ -236,7 +300,7 @@ hr {
 
 .checkbox-scrollbar-container-subjects {
     overflow: auto;
-    height: 200px;
+    height: 180px;
     width: 280px;
     display: inline-block;
     margin-left: 10px;

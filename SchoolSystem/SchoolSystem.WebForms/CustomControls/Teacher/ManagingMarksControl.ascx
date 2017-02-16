@@ -1,10 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ManagingMarksControl.ascx.cs" Inherits="SchoolSystem.WebForms.CustomControls.Teacher.AdddingMarksControl" %>
 
-<h4>Teache area</h4>
+<h4>Оценяване</h4>
 <asp:UpdatePanel runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="SubjectsDropDown" CssClass="col-md-2 control-label">Премет</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="SubjectsDropDown" CssClass="col-md-2 control-label">Предмет</asp:Label>
             <div class="col-md-10">
                 <asp:DropDownList
                     runat="server"
@@ -89,7 +89,7 @@
                                     ID="InsertBtn"
                                     CommandName="Insert"
                                     Text="Добави оценка"
-                                    CssClass="btn btn-small btn-primary" />
+                                    CssClass="btn btn-small btn-success" />
                             </td>
                         </tr>
                     </InsertItemTemplate>
