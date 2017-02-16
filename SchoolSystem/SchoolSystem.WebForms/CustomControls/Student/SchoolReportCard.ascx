@@ -11,9 +11,7 @@
                 ItemType="SchoolSystem.Data.Models.CustomModels.StudentMarksModel"
                 AllowSorting="true"
                 OnSorting="ScoolReportCardGrid_Sorting"
-                CssClass="table table-striped table-hover student-marks-table"
-                CurrentSortDir="ASC"
-                CurrentSortField="DESC">
+                CssClass="table table-striped table-hover student-marks-table">
                 <Columns>
                     <asp:TemplateField HeaderText="Име на предмета" SortExpression="ByName" HeaderStyle-CssClass="student-marks-table-header">
                         <ItemTemplate>
