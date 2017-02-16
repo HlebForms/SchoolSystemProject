@@ -37,49 +37,50 @@ namespace SchoolSystem.WebForms.CustomControls.Student
 
         protected void ScoolReportCardGrid_Sorting(object sender, GridViewSortEventArgs e)
         {
-            //SortDirection sortDir = this.ViewState["sortExpression"] == null ? e.SortDirection : this.ViewState["sortExpression"];
+            string sortDir = 
+                this.ViewState["sortDirection"] == null ?
+                e.SortDirection.ToString() 
+                : this.ViewState["sortDirection"].ToString();
 
-            //switch (e.SortExpression)
-            //{
-            //    case "ByName":
+            this.BindGridView();
 
-            //        if (sortDir == "Ascending")
-            //        {
-            //            this.BindGridView();
-            //            this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderBy(x => x.SubjectName);
-            //            this.ScoolReportCardGrid.DataBind();
+            switch (e.SortExpression)
+            {
+                case "ByName":
 
-            //            this.ViewState["sortExpression"] = SortDirection.Descending;
-            //        }
-            //        else
-            //        {
-            //            this.BindGridView();
-            //            this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderByDescending(x => x.SubjectName); ;
-            //            this.ScoolReportCardGrid.DataBind();
-            //            this.ViewState["sortExpression"] = SortDirection.Ascending;
-            //        }
-            //        break;
+                    if (sortDir == "Ascending")
+                    {
+                        this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderBy(x => x.SubjectName);
+                        this.ScoolReportCardGrid.DataBind();
+                        this.ViewState["sortDirection"] = SortDirection.Descending;
+                    }
+                    else
+                    {
+                        this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderByDescending(x => x.SubjectName); ;
+                        this.ScoolReportCardGrid.DataBind();
+                        this.ViewState["sortDirection"] = SortDirection.Ascending;
+                    }
+                    break;
 
-            //    case "ByAverage":
-            //        if (e.SortDirection == SortDirection.Ascending)
-            //        {
-            //            this.BindGridView();
-            //            this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderBy(x => x.Average);
-            //            this.ScoolReportCardGrid.DataBind();
-            //            this.ViewState["sortExpression"] = SortDirection.Descending;
-            //        }
-            //        else
-            //        {
-            //            this.BindGridView();
-            //            this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderByDescending(x => x.Average);
-            //            this.ScoolReportCardGrid.DataBind();
-            //            this.ViewState["sortExpression"] = e.SortExpression + " " + "ASC";
-            //            this.ViewState["sortExpression"] = SortDirection.Ascending;
-            //        }
-            //        break;
-            //    default:
-            //        break;
+                case "ByAverage":
+
+                    if (sortDir == "Ascending")
+                    {
+                        this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderBy(x => x.Average);
+                        this.ScoolReportCardGrid.DataBind();
+                        this.ViewState["sortDirection"] = SortDirection.Descending;
+                    }
+                    else
+                    {
+                        this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderByDescending(x => x.Average);
+                        this.ScoolReportCardGrid.DataBind();
+                        this.ViewState["sortDirection"] = SortDirection.Ascending;
+                    }
+                    break;
+                default:
+                    break;
             }
+
         }
     }
 }

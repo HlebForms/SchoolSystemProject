@@ -36,7 +36,7 @@ namespace SchoolSystem.WebForms.CustomControls.Account
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                        IdentityHelper.RedirectToReturnUrl("/", Response);
                         break;
                     case SignInStatus.Failure:
                     default:
