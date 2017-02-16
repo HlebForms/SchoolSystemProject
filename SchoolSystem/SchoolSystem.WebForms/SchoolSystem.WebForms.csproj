@@ -195,6 +195,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.html" />
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
@@ -217,6 +218,8 @@
     <Content Include="Images\avatars\student%40student.com.jpg" />
     <Content Include="Images\background-old.jpg" />
     <Content Include="Images\background.png" />
+    <Content Include="Images\error-pages\404.png" />
+    <Content Include="Images\error-pages\bg1.png" />
     <Content Include="Images\subject_images\subject1.png" />
     <Content Include="Images\subject_images\subject10.png" />
     <Content Include="Images\subject_images\subject11.png" />
@@ -256,7 +259,6 @@
     <Content Include="Account\Web.config" />
     <Content Include="Admin\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="PageNotFound.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -460,13 +462,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="PageNotFound.aspx.cs">
-      <DependentUpon>PageNotFound.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PageNotFound.aspx.designer.cs">
-      <DependentUpon>PageNotFound.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
