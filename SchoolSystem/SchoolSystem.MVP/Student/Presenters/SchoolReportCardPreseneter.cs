@@ -1,10 +1,10 @@
-﻿
-using SchoolSystem.Web.Services.Contracts;
+﻿using SchoolSystem.Web.Services.Contracts;
+
+using SchoolSystem.MVP.Student.Views;
+using SchoolSystem.MVP.Student.Views.EventArguments;
 
 using Bytes2you.Validation;
 using WebFormsMvp;
-using SchoolSystem.MVP.Student.Views;
-using SchoolSystem.MVP.Student.Views.EventArguments;
 
 namespace SchoolSystem.MVP.Student.Presenters
 {

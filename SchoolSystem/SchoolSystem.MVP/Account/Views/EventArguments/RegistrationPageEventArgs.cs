@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using Microsoft.Owin;
-using System.Collections.Generic;
 
 namespace SchoolSystem.MVP.Account.Views.EventArguments
 {
@@ -14,10 +14,6 @@ namespace SchoolSystem.MVP.Account.Views.EventArguments
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
-        //public string Password { get; set; }
-
-        //public string ConfirmedPassword { get; set; }
 
         public string UserType { get; set; }
 

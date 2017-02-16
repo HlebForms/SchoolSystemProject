@@ -29,12 +29,5 @@ namespace SchoolSystem.Data.Models
         }
 
         public bool IsDeleted { get; set; } = false;
-
-        //public virtual ICollection<SubjectClassOfStudents> SubjecClassOfStudents
-        //{
-        //    get { return this.subjecClassOfStudents; }
-
-        //    set { this.subjecClassOfStudents = value; }
-        //}
     }
 }

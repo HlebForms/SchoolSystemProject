@@ -1,8 +1,10 @@
-﻿using SchoolSystem.Web.Services.Contracts;
-using System;
-using WebFormsMvp;
-using SchoolSystem.MVP.Admin.Views.EventArguments;
+﻿using System;
+
 using SchoolSystem.MVP.Admin.Views;
+using SchoolSystem.MVP.Admin.Views.EventArguments;
+using SchoolSystem.Web.Services.Contracts;
+
+using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Admin.Presenters
 {

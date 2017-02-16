@@ -1,9 +1,10 @@
-﻿using SchoolSystem.Data.Contracts;
-using SchoolSystem.Data.Models;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 using Microsoft.AspNet.Identity.EntityFramework;
+
+using SchoolSystem.Data.Contracts;
+using SchoolSystem.Data.Models;
 
 namespace SchoolSystem.Data
 {
@@ -12,11 +13,6 @@ namespace SchoolSystem.Data
         public SchoolSystemDbContext()
             : base("SchoolSystemDB", throwIfV1Schema: false)
         {
-        }
-
-        public static SchoolSystemDbContext Create()
-        {
-            return new SchoolSystemDbContext();
         }
 
         public IDbSet<Teacher> Teachers { get; set; }
@@ -36,6 +32,11 @@ namespace SchoolSystem.Data
         public IDbSet<SubjectStudent> SubjectStudent { get; set; }
 
         public IDbSet<DaysOfWeek> DaysOfWeek { get; set; }
+
+        public static SchoolSystemDbContext Create()
+        {
+            return new SchoolSystemDbContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

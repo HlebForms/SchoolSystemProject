@@ -1,5 +1,6 @@
-﻿using SchoolSystem.Data.Models.CustomModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+using SchoolSystem.Data.Models.CustomModels;
 
 namespace SchoolSystem.MVP.Home.Models
 {
@@ -8,6 +9,5 @@ namespace SchoolSystem.MVP.Home.Models
         public IEnumerable<NewsModel> Newsfeed { get; set; }
 
         public IEnumerable<NewsModel> ImportantNews { get; set; }
-
     }
 }

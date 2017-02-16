@@ -6,7 +6,7 @@ namespace SchoolSystem.Data.Models
 {
     public class SubjectClassOfStudentsDaysOfWeek
     {
-        [Key, Column(Order = 0) ,ForeignKey("DaysOfWeek")]
+        [Key, Column(Order = 0), ForeignKey("DaysOfWeek")]
         public int DaysOfWeekId { get; set; }
 
         [Key, Column(Order = 1), ForeignKey("SubjectClassOfStudents")]

@@ -1,9 +1,11 @@
-﻿using SchoolSystem.Web.Services.Contracts;
-using System;
-using WebFormsMvp;
-using Bytes2you.Validation;
+﻿using System;
+
+using SchoolSystem.Web.Services.Contracts;
 using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.MVP.Admin.Views;
+
+using Bytes2you.Validation;
+using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Admin.Presenters
 {
@@ -19,7 +21,6 @@ namespace SchoolSystem.MVP.Admin.Presenters
             )
             : base(view)
         {
-
             Guard.WhenArgument(classOfStudentsManagementService, "classOfStudentsManagementService").IsNull().Throw();
             Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNull().Throw();
 

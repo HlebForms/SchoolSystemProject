@@ -1,16 +1,16 @@
 ﻿using System;
 
 using SchoolSystem.Data.Models;
-using SchoolSystem.Web.Services.Contracts;
 using SchoolSystem.Data.Models.Common;
-
-using WebFormsMvp;
-using Microsoft.AspNet.Identity;
-using Bytes2you.Validation;
+using SchoolSystem.Identity.Managers;
 using SchoolSystem.MVP.Account.Views;
 using SchoolSystem.MVP.Account.Views.EventArguments;
+using SchoolSystem.Web.Services.Contracts;
+
+using Bytes2you.Validation;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using SchoolSystem.Identity.Managers;
+using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Account.Presenters
 {
@@ -33,7 +33,6 @@ namespace SchoolSystem.MVP.Account.Presenters
             IPasswordGeneratorService passwordService)
             : base(view)
         {
-
             Guard.WhenArgument(registrationService, "registrationService").IsNull().Throw();
             Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNull().Throw();
             Guard.WhenArgument(classOfStudentsManagementService, "classOfStudentsManagementService").IsNull().Throw();

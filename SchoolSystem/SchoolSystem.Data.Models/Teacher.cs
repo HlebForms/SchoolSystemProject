@@ -5,7 +5,7 @@ namespace SchoolSystem.Data.Models
 {
     public class Teacher
     {
-        private  ICollection<Subject> subjects;
+        private ICollection<Subject> subjects;
 
         public Teacher()
         {
@@ -17,16 +17,12 @@ namespace SchoolSystem.Data.Models
 
         public virtual User User { get; set; }
 
-        //public virtual Subject Subject { get; set; }
-
-        //public int SubjectId { get; set; }
-
         public virtual ICollection<Subject> Subjects
         {
             get { return this.subjects; }
             set { this.subjects = value; }
         }
-        public bool IsDeleted { get; set; } = false;
 
+        public bool IsDeleted { get; set; } = false;
     }
 }

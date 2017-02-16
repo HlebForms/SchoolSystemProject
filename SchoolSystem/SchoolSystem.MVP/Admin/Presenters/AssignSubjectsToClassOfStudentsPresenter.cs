@@ -1,10 +1,10 @@
 ﻿using System;
 
+using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.Web.Services.Contracts;
 
 using Bytes2you.Validation;
 using WebFormsMvp;
-using SchoolSystem.MVP.Admin.Views;
 
 namespace SchoolSystem.MVP.Admin.Presenters
 {

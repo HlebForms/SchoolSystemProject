@@ -1,18 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using System.Linq;
+
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
+using SchoolSystem.Data.Models;
+using SchoolSystem.Data.Models.Common;
+
 namespace SchoolSystem.Data.Migrations
 {
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using Models;
-    using Models.Common;
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
     public sealed class Configuration : DbMigrationsConfiguration<SchoolSystem.Data.SchoolSystemDbContext>
     {
-
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
@@ -118,7 +118,6 @@ namespace SchoolSystem.Data.Migrations
 
         private void ClassOfStudentsSeeder(SchoolSystemDbContext context)
         {
-
             context.ClassOfStudents.AddOrUpdate(new ClassOfStudents()
             {
                 Id = 1,
@@ -268,38 +267,6 @@ namespace SchoolSystem.Data.Migrations
                 userManager.Create(adminUser, "admin123");
                 userManager.AddToRole(adminUser.Id, UserType.Admin);
             }
-
-            //if (!context.Users.Any(u => u.UserName == "teacher@teacher.com"))
-            //{
-            //    var teacherUser = new User { UserName = "teacher@teacher.com" };
-
-
-            //    userManager.Create(teacherUser, "teacher123");
-            //    userManager.AddToRole(teacherUser.Id, UserType.Teacher);
-            //    context.Teachers.AddOrUpdate(new Teacher()
-            //    {
-            //        Id = teacherUser.Id,
-            //        SubjectId = 1,
-            //    });
-
-            //    context.SaveChanges();
-            //}
-
-
-            //if (!context.Users.Any(u => u.UserName == "student@student.com"))
-            //{
-            //    var studentUser = new User { UserName = "student@student.com" };
-
-            //    userManager.Create(studentUser, "student123");
-            //    userManager.AddToRole(studentUser.Id, UserType.Student);
-
-            //    context.Students.AddOrUpdate(new Student()
-            //    {
-            //        Id = studentUser.Id,
-            //        ClassOfStudentsId = 1,
-
-            //    });
-            //}
         }
     }
 }

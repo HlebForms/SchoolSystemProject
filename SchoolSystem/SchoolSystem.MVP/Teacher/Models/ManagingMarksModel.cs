@@ -1,6 +1,7 @@
-﻿using SchoolSystem.Data.Models;
+﻿using System.Collections.Generic;
+
+using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Models.CustomModels;
-using System.Collections.Generic;
 
 namespace SchoolSystem.MVP.Teacher.Models
 {

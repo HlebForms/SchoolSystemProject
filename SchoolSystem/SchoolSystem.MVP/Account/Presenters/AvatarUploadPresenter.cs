@@ -1,7 +1,9 @@
-﻿using Bytes2you.Validation;
+﻿using System;
+
 using SchoolSystem.MVP.Account.Views;
 using SchoolSystem.Web.Services.Contracts;
-using System;
+
+using Bytes2you.Validation;
 using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Account.Presenters
@@ -11,6 +13,7 @@ namespace SchoolSystem.MVP.Account.Presenters
         private const int MaximumSizeOfAvatar = 5 * 1000 * 1000;
 
         private readonly IAccountManagementService accountManagementService;
+
         public AvatarUploadPresenter(
             IAvatarUploadView view,
             IAccountManagementService accountManagementService)
@@ -50,11 +53,12 @@ namespace SchoolSystem.MVP.Account.Presenters
             try
             {
                 uploadedFile.SaveAs(e.AvatarStorateLocation);
+
                 // TODO Maaybe make interception
                 this.accountManagementService.UploadAvatar(e.LoggedUserUserName, e.UserAvatarUrl);
                 this.View.Model.StatusMessage = "Аватарът е качен";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 this.View.Model.StatusMessage = "Моля, опитайте отново!";
             }

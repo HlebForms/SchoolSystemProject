@@ -1,19 +1,25 @@
 ﻿using System;
-using WebFormsMvp;
-using SchoolSystem.Web.Services.Contracts;
+
 using SchoolSystem.MVP.Home.Views;
 using SchoolSystem.MVP.Home.Views.EventArguments;
+using SchoolSystem.Web.Services.Contracts;
+
+using Bytes2you.Validation;
+using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Home.Presenter
 {
     public class SchedulePresenter : Presenter<IScheduleView>
     {
-        private readonly IScheduleDataService service;
+        private readonly IScheduleDataService scheduleDataService;
 
-        public SchedulePresenter(IScheduleView view, IScheduleDataService service)
+        public SchedulePresenter(IScheduleView view, IScheduleDataService scheduleDataService)
             : base(view)
         {
-            this.service = service;
+            Guard.WhenArgument(scheduleDataService, "scheduleDataService").IsNull().Throw();
+
+            this.scheduleDataService = scheduleDataService;
+
             this.View.EventBindStudentScheduleData += this.BindStudentScheduleData;
             this.View.EventBindTeacherScheduleData += this.BindTeacherScheduleData;
         }
@@ -21,13 +27,13 @@ namespace SchoolSystem.MVP.Home.Presenter
         private void BindStudentScheduleData(object sender, ScheduleEventargs e)
         {
             var dayOfWeek = DateTime.Now.DayOfWeek;
-            this.View.Model.StudentSchedule = service.GetStudentScheduleForTheDay(dayOfWeek, e.Username);
+            this.View.Model.StudentSchedule = scheduleDataService.GetStudentScheduleForTheDay(dayOfWeek, e.Username);
         }
 
         private void BindTeacherScheduleData(object sender, ScheduleEventargs e)
         {
             var dayOfWeek = DateTime.Now.DayOfWeek;
-            this.View.Model.TeacherSchedule = service.GetTeacherScheduleForTheDay(dayOfWeek, e.Username);
+            this.View.Model.TeacherSchedule = scheduleDataService.GetTeacherScheduleForTheDay(dayOfWeek, e.Username);
         }
     }
 }

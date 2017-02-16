@@ -8,6 +8,5 @@ namespace SchoolSystem.MVP.Admin.Views.EventArguments
         public string ClassName { get; set; }
 
         public IEnumerable<string> SubjectIds{ get; set; }
-
     }
 }

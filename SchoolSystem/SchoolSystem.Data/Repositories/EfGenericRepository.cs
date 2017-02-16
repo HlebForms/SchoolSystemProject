@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
-
-using SchoolSystem.Data.Contracts;
+using System.Linq;
+using System.Linq.Expressions;
 
 using Bytes2you.Validation;
+
+using SchoolSystem.Data.Contracts;
 
 namespace SchoolSystem.Data.Repositories
 {
@@ -21,10 +21,6 @@ namespace SchoolSystem.Data.Repositories
             this.DbSet = this.Context.Set<T>();
         }
 
-        protected DbContext Context { get; private set; }
-
-        protected DbSet<T> DbSet { get; private set; }
-
         public IQueryable<T> All
         {
             get
@@ -32,6 +28,10 @@ namespace SchoolSystem.Data.Repositories
                 return this.DbSet;
             }
         }
+
+        protected DbContext Context { get; private set; }
+
+        protected DbSet<T> DbSet { get; private set; }
 
         public void Add(T entity)
         {
@@ -63,6 +63,7 @@ namespace SchoolSystem.Data.Repositories
             {
                 result = result.Where(filterExpression);
             }
+
             if (selectExpression != null)
             {
                 return result.Select(selectExpression).ToList();
@@ -79,7 +80,6 @@ namespace SchoolSystem.Data.Repositories
             params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> result = this.DbSet;
-
 
             if (includes != null)
             {
@@ -100,8 +100,6 @@ namespace SchoolSystem.Data.Repositories
                 return result.OfType<T1>().ToList();
             }
         }
-
-
 
         public T GetById(object id)
         {

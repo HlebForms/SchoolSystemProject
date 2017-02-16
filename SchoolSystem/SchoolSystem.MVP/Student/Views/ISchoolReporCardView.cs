@@ -1,6 +1,8 @@
-﻿using SchoolSystem.MVP.Student.Models;
+﻿using System;
+
+using SchoolSystem.MVP.Student.Models;
 using SchoolSystem.MVP.Student.Views.EventArguments;
-using System;
+
 using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Student.Views

@@ -11,6 +11,7 @@ namespace SchoolSystem.MVP.Admin.Models
         public IEnumerable<TeacherBasicInfoModel> Teachers { get; set; }
 
         public IEnumerable<SubjectBasicInfoModel> SubjectsWithoutTeacher { get; set; }
+
         public bool IsAddingSuccessfull { get; internal set; }
     }
 }

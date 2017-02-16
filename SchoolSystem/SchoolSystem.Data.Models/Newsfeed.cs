@@ -22,6 +22,5 @@ namespace SchoolSystem.Data.Models
         public bool IsImportant { get; set; }
 
         public bool IsDeleted { get; set; } = false;
-
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System;
+
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
@@ -6,7 +8,6 @@ using Owin;
 using SchoolSystem.Data;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Identity.Managers;
-using System;
 
 namespace SchoolSystem.Identity.Configurations
 {
@@ -33,6 +34,7 @@ namespace SchoolSystem.Identity.Configurations
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
             });
+
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
@@ -44,6 +46,5 @@ namespace SchoolSystem.Identity.Configurations
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
         }
-
     }
 }

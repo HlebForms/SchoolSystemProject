@@ -13,7 +13,6 @@ namespace SchoolSystem.Data.Models
             this.subjectClassOfStudentsDaysOfWeek = new HashSet<SubjectClassOfStudentsDaysOfWeek>();
         }
 
-
         [Key, Column(Order = 0)]
         public int SubjectId { get; set; }
 
@@ -30,6 +29,5 @@ namespace SchoolSystem.Data.Models
 
             set { this.subjectClassOfStudentsDaysOfWeek = value; }
         }
-
     }
 }

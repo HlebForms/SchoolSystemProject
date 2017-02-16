@@ -1,6 +1,7 @@
-﻿using SchoolSystem.MVP.Account.Models;
+﻿using System;
+
+using SchoolSystem.MVP.Account.Models;
 using SchoolSystem.MVP.Account.Views.EventArguments;
-using System;
 
 using WebFormsMvp;
 

@@ -1,5 +1,6 @@
-﻿using SchoolSystem.Data.Contracts;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+
+using SchoolSystem.Data.Contracts;
 
 namespace SchoolSystem.Data
 {
