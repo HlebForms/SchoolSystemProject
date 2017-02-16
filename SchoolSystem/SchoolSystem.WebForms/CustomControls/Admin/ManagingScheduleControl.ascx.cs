@@ -52,18 +52,19 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
             switch (e.CommandName)
             {
                 case ("Insert"):
-                    var subjectDropDown = e.Item.FindControl("AddingSubjectDropDown") as DropDownList;
+                    var subjectDropDown = e.Item.FindControl("AddingSubjectDropDown") as DropDownList; 
                     var selectedSubjectId = int.Parse(subjectDropDown.SelectedValue);
 
                     var startHourDropDown = e.Item.FindControl("StartHourDropDown") as DropDownList;
                     var startHour = int.Parse(startHourDropDown.SelectedValue);
 
                     // public DateTime(int year, int month, int day, int hour, int minute, int second);
-                    var startHourDateTime = new DateTime(2016, 1, 1, startHour, 0, 0);
+                    var currentYear = DateTime.Now.Year;
+                    var startHourDateTime = new DateTime(currentYear, 1, 1, startHour, 0, 0);
 
                     var endHourDropDown = e.Item.FindControl("EndHourDropDown") as DropDownList;
                     var endHour = int.Parse(endHourDropDown.SelectedValue);
-                    var endHourAsDateTime = new DateTime(2016, 1, 1, endHour, 0, 0);
+                    var endHourAsDateTime = new DateTime(currentYear, 1, 1, endHour, 0, 0);
 
                     this.ScheduleList_InsertItem(classId, dayOfWeekId, selectedSubjectId, startHourDateTime, endHourAsDateTime);
                     break;

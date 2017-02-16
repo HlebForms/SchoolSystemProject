@@ -195,12 +195,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="500.html" />
+    <Content Include="400.html" />
     <Content Include="404.html" />
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Content\404.css" />
+    <Content Include="Content\error-pages.css" />
     <Content Include="Content\student-school.css" />
     <Content Include="CustomControls\Account\AvatarUploadControl.ascx" />
     <Content Include="CustomControls\Account\LoginControl.ascx" />
@@ -218,7 +220,9 @@
     <Content Include="Images\avatars\student%40student.com.jpg" />
     <Content Include="Images\background-old.jpg" />
     <Content Include="Images\background.png" />
+    <Content Include="Images\error-pages\400.png" />
     <Content Include="Images\error-pages\404.png" />
+    <Content Include="Images\error-pages\500.png" />
     <Content Include="Images\error-pages\bg1.png" />
     <Content Include="Images\subject_images\subject1.png" />
     <Content Include="Images\subject_images\subject10.png" />
