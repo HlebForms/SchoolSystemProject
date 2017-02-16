@@ -37,37 +37,48 @@ namespace SchoolSystem.WebForms.CustomControls.Student
 
         protected void ScoolReportCardGrid_Sorting(object sender, GridViewSortEventArgs e)
         {
+            //SortDirection sortDir = this.ViewState["sortExpression"] == null ? e.SortDirection : this.ViewState["sortExpression"];
 
-            switch (e.SortExpression)
-            {
-                case "ByName":
+            //switch (e.SortExpression)
+            //{
+            //    case "ByName":
 
-                    if (e.SortDirection == SortDirection.Ascending)
-                    {
-                        this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderBy(x => x.SubjectName);
-                        this.ScoolReportCardGrid.DataBind();
-                    }
-                    else
-                    {
-                        this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderByDescending(x => x.SubjectName); ;
-                        this.ScoolReportCardGrid.DataBind();
-                    }
-                    break;
+            //        if (sortDir == "Ascending")
+            //        {
+            //            this.BindGridView();
+            //            this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderBy(x => x.SubjectName);
+            //            this.ScoolReportCardGrid.DataBind();
 
-                case "ByAverage":
-                    if (e.SortDirection == SortDirection.Ascending)
-                    {
-                        this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderBy(x => x.Average);
-                        this.ScoolReportCardGrid.DataBind();
-                    }
-                    else
-                    {
-                        this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderBy(x => x.Average);
-                        this.ScoolReportCardGrid.DataBind();
-                    }
-                    break;
-                default:
-                    break;
+            //            this.ViewState["sortExpression"] = SortDirection.Descending;
+            //        }
+            //        else
+            //        {
+            //            this.BindGridView();
+            //            this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderByDescending(x => x.SubjectName); ;
+            //            this.ScoolReportCardGrid.DataBind();
+            //            this.ViewState["sortExpression"] = SortDirection.Ascending;
+            //        }
+            //        break;
+
+            //    case "ByAverage":
+            //        if (e.SortDirection == SortDirection.Ascending)
+            //        {
+            //            this.BindGridView();
+            //            this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderBy(x => x.Average);
+            //            this.ScoolReportCardGrid.DataBind();
+            //            this.ViewState["sortExpression"] = SortDirection.Descending;
+            //        }
+            //        else
+            //        {
+            //            this.BindGridView();
+            //            this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderByDescending(x => x.Average);
+            //            this.ScoolReportCardGrid.DataBind();
+            //            this.ViewState["sortExpression"] = e.SortExpression + " " + "ASC";
+            //            this.ViewState["sortExpression"] = SortDirection.Ascending;
+            //        }
+            //        break;
+            //    default:
+            //        break;
             }
         }
     }

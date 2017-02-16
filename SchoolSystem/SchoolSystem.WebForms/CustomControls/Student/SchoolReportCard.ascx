@@ -11,19 +11,21 @@
                 ItemType="SchoolSystem.Data.Models.CustomModels.StudentMarksModel"
                 AllowSorting="true"
                 OnSorting="ScoolReportCardGrid_Sorting"
-                CssClass="table table-striped table-hover student-marks-table">
+                CssClass="table table-striped table-hover student-marks-table"
+                CurrentSortDir="ASC"
+                CurrentSortField="DESC">
                 <Columns>
-                    <asp:TemplateField HeaderText="Име на предмета" SortExpression="ByName">
+                    <asp:TemplateField HeaderText="Име на предмета" SortExpression="ByName" HeaderStyle-CssClass="student-marks-table-header">
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%#: Item.SubjectName %>'> </asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Оценки">
+                    <asp:TemplateField HeaderText="Оценки" HeaderStyle-CssClass="student-marks-table-header">
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%#: string.Join(" ", Item.Marks) %>'> </asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Среден Успех" SortExpression="ByAverage">
+                    <asp:TemplateField HeaderText="Среден Успех" SortExpression="ByAverage" HeaderStyle-CssClass="student-marks-table-header">
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%#: string.Format("{0:F2}",Item.Average) %>'> </asp:Label>
                         </ItemTemplate>

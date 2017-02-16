@@ -10,7 +10,9 @@ body {
 .body-content {
 }
 
-#MainContent_ctl00, #MainContent_AdddingMarksControl_ctl00 {
+#MainContent_ctl00, 
+#MainContent_AdddingMarksControl_ctl00, 
+#MainContent_SchoolReportCardControl_ctl00 {
     background-color: white;
     height: 450px;
     overflow-y:auto;

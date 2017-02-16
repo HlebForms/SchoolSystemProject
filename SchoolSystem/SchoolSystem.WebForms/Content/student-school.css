@@ -1,5 +1,16 @@
-﻿.student-marks-table{
-    border: 2px solid none;
-    width:50%;
-    margin: 0 auto
+﻿.student-marks-table {
+    border: 1px solid white;
+    width: 50%;
+    margin: 0 auto;
 }
+
+.student-marks-table-header {
+    background-color: #2196F3;
+    color: white;
+    font-size: 15px;
+}
+
+    .student-marks-table-header a {
+        color: white;
+        text-decoration: none;
+    }
