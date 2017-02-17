@@ -33,8 +33,8 @@ namespace SchoolSystem.WebForms.CustomControls.Account
             if (this.AvatarUpload.HasFile)
             {
                 var loggedUserUserName = this.Context.User.Identity.Name;
-                var postedFile = this.AvatarUpload.PostedFile;
-                var file = new HttpPostedFileWrapper(postedFile);
+                HttpPostedFile postedFile = this.AvatarUpload.PostedFile;
+                HttpPostedFileBase file = new HttpPostedFileWrapper(postedFile);
 
                 string extension = Path.GetExtension(postedFile.FileName);
                 string filename = loggedUserUserName + extension;

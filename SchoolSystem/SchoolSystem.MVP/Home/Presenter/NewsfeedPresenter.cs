@@ -22,7 +22,6 @@ namespace SchoolSystem.MVP.Home.Presenter
 
             this.View.EventAddNews += AddNews;
             this.View.EventBindNewsfeedData += this.BindNewsfeedData;
-            this.View.EventBindNewsfeedData += this.BindImportantNewsData;
         }
 
         private void AddNews(object sender, AddNewsEventargs e)
@@ -33,10 +32,6 @@ namespace SchoolSystem.MVP.Home.Presenter
         private void BindNewsfeedData(object sender, EventArgs e)
         {
             this.View.Model.Newsfeed = newsDataService.GetNews();
-        }
-
-        private void BindImportantNewsData(object sender, EventArgs e)
-        {
             this.View.Model.ImportantNews = newsDataService.GetImportantNews();
         }
     }
