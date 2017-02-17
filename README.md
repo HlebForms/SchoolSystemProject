@@ -3,3 +3,5 @@
 
 
 [![Coverage Status](https://coveralls.io/repos/github/HlebForms/SchoolSystemProject/badge.svg?branch=master)](https://coveralls.io/github/HlebForms/SchoolSystemProject?branch=master)
+
+[![Coverage Status](https://coveralls.io/repos/github/HlebForms/SchoolSystemProject/badge.svg?branch=master)](https://coveralls.io/github/HlebForms/SchoolSystemProject?branch=master)
