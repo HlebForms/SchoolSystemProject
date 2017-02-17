@@ -71,6 +71,9 @@
     <Compile Include="Admin\Presenters\AssignSubjectToTeacherPresenterTests\View_EventAssignSubjectsToTeacher_Should.cs" />
     <Compile Include="Admin\Presenters\AssignSubjectToTeacherPresenterTests\View_EventGetSubjectsWithoutTeacher_Should.cs" />
     <Compile Include="Admin\Presenters\AssignSubjectToTeacherPresenterTests\View_EventGetTeacher_Should.cs" />
+    <Compile Include="Home\Presenters\SchedulePresenterTests\BindStudentScheduleData_Should.cs" />
+    <Compile Include="Home\Presenters\SchedulePresenterTests\BindTeacherScheduleData_Should.cs" />
+    <Compile Include="Home\Presenters\SchedulePresenterTests\Constructor_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

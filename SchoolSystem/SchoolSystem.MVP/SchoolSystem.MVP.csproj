@@ -138,7 +138,7 @@
     <Compile Include="Home\Models\NewsfeedModel.cs" />
     <Compile Include="Home\Models\ScheduleControlModel.cs" />
     <Compile Include="Home\Presenter\NewsfeedPresenter.cs" />
-    <Compile Include="Home\Presenter\StudentSchedulePresenter.cs" />
+    <Compile Include="Home\Presenter\SchedulePresenter.cs" />
     <Compile Include="Home\Views\EventArguments\AddNewsEventargs.cs" />
     <Compile Include="Home\Views\EventArguments\StudentScheduleEventargs.cs" />
     <Compile Include="Home\Views\INewsfeedView.cs" />
