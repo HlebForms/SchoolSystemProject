@@ -5,6 +5,7 @@ using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
 
 using WebFormsMvp;
+using Bytes2you.Validation;
 
 namespace SchoolSystem.MVP.Admin.Presenters
 {
@@ -14,11 +15,8 @@ namespace SchoolSystem.MVP.Admin.Presenters
 
         public CreatingSubjectPresenter(ICreatingSubjectView view, ISubjectManagementService subjectManagementService) : base(view)
         {
-            if (subjectManagementService == null)
-            {
-                throw new ArgumentNullException("subjectManagementService");
-            }
-
+            Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNull().Throw();
+            
             this.subjectManagementService = subjectManagementService;
             this.View.EventCreateSubject += CreateSubject;
         }
@@ -27,16 +25,7 @@ namespace SchoolSystem.MVP.Admin.Presenters
         {
             e.AvatarFile.SaveAs(e.SubjectPictureStoragePath);
 
-            var result = this.subjectManagementService.CreateSubject(e.SubjectName, e.SubjectPictureUrl);
-
-            if (result)
-            {
-                this.View.Model.IsSuccesfull = true;
-            }
-            else
-            {
-                this.View.Model.IsSuccesfull = false;
-            }
+            this.View.Model.IsSuccesfull = this.subjectManagementService.CreateSubject(e.SubjectName, e.SubjectPictureUrl);
         }
     }
 }

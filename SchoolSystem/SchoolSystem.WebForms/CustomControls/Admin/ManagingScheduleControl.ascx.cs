@@ -126,8 +126,8 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
         {
             this.EventBindScheduleData(this, new ManagingScheduleEventArgs()
             {
-                ClassId = this.ClassOfStudentsDropDown.SelectedValue,
-                DayOfWeekId = this.DaysOfWeekDropDown.SelectedValue
+                ClassId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue),
+                DayOfWeekId = int.Parse(this.DaysOfWeekDropDown.SelectedValue)
             });
 
             this.ScheduleList.DataSource = this.Model.CurrentSchedule;

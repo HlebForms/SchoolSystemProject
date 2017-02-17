@@ -4,8 +4,8 @@ namespace SchoolSystem.MVP.Admin.Views.EventArguments
 {
     public class ManagingScheduleEventArgs : EventArgs
     {
-        public string ClassId { get; set; }
+        public int ClassId { get; set; }
 
-        public string DayOfWeekId { get; set; }
+        public int DayOfWeekId { get; set; }
     }
 }

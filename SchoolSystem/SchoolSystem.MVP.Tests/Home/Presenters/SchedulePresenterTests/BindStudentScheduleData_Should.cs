@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using Moq;
+using NUnit.Framework;
+using SchoolSystem.Data.Models.CustomModels;
+using SchoolSystem.MVP.Home.Models;
+using SchoolSystem.MVP.Home.Presenter;
+using SchoolSystem.MVP.Home.Views;
+using SchoolSystem.MVP.Home.Views.EventArguments;
+using SchoolSystem.Web.Services.Contracts;
+
+namespace SchoolSystem.MVP.Tests.Home.Presenters.SchedulePresenterTests
+{
+    [TestFixture]
+    public class BindStudentScheduleData_Should
+    {
+        [Test]
+        public void Set_StudentSchduleToModel_WhenArgumentsAreValid()
+        {
+            var mockedScheduleView = new Mock<IScheduleView>();
+            var mockedScheduleService = new Mock<IScheduleDataService>();
+
+            var expectedSchedule = new List<ScheduleModel>();
+            var mockedModel = new ScheduleControlModel() { StudentSchedule = expectedSchedule };
+            var userName = "Test1";
+
+            mockedScheduleView.SetupGet(x => x.Model)
+                .Returns(mockedModel);
+            mockedScheduleService.Setup(x => x.GetStudentScheduleForTheDay(It.IsAny<DayOfWeek>(), userName))
+                .Returns(expectedSchedule);
+
+            var schedulePresenter = new SchedulePresenter(mockedScheduleView.Object, mockedScheduleService.Object);
+
+            var args = new ScheduleEventargs() { Username = userName };
+
+            mockedScheduleView.Raise(x => x.EventBindStudentScheduleData += null, args);
+
+            CollectionAssert.AreEquivalent(expectedSchedule, mockedScheduleView.Object.Model.StudentSchedule);
+        }
+    }
+}

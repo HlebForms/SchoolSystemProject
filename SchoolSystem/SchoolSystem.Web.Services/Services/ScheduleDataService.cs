@@ -132,7 +132,7 @@ namespace SchoolSystem.Web.Services
 
         public IEnumerable<DaysOfWeek> GetAllDaysOfWeek()
         {
-            return this.daysOfWeekRepo.GetAll();
+            return this.daysOfWeekRepo.GetAll().OrderBy(x=>x.Id);
         }
 
         public IEnumerable<ManagingScheduleModel> GetSchedulePerDay(int dayOfWeekId, int classId)
