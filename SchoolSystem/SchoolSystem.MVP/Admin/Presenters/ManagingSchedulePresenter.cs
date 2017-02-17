@@ -5,6 +5,7 @@ using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
 
 using WebFormsMvp;
+using Bytes2you.Validation;
 
 namespace SchoolSystem.MVP.Admin.Presenters
 {
@@ -22,20 +23,10 @@ namespace SchoolSystem.MVP.Admin.Presenters
             )
             : base(view)
         {
-            if (scheduleService == null)
-            {
-                throw new ArgumentNullException("scheduleService");
-            }
 
-            if (classOfStudentsManagementService == null)
-            {
-                throw new ArgumentNullException("classOfStudentsManagementService");
-            }
-
-            if (subjectManagementService == null)
-            {
-                throw new ArgumentNullException("subjectManagementService");
-            }
+            Guard.WhenArgument(scheduleService, "scheduleService").IsNull().Throw();
+            Guard.WhenArgument(classOfStudentsManagementService, "classOfStudentsManagementService").IsNull().Throw();
+            Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNull().Throw();
 
             this.scheduleService = scheduleService;
             this.classOfStudentsManagementService = classOfStudentsManagementService;

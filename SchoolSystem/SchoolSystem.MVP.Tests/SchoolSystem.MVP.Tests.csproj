@@ -68,6 +68,18 @@
     <Compile Include="Admin\Presenters\AssignSubjectToTeacherPresenterTests\View_EventAssignSubjectsToTeacher_Should.cs" />
     <Compile Include="Admin\Presenters\AssignSubjectToTeacherPresenterTests\View_EventGetSubjectsWithoutTeacher_Should.cs" />
     <Compile Include="Admin\Presenters\AssignSubjectToTeacherPresenterTests\View_EventGetTeacher_Should.cs" />
+    <Compile Include="Admin\Presenters\CreatingClassOfStudentsPresenterTests\Constructor_Should.cs" />
+    <Compile Include="Admin\Presenters\CreatingClassOfStudentsPresenterTests\CreateClassOfStudents_Should.cs" />
+    <Compile Include="Admin\Presenters\CreatingClassOfStudentsPresenterTests\GetAllSubjects_Should.cs" />
+    <Compile Include="Admin\Presenters\CreatingSubjectPresenterTests\Constructor_Should.cs" />
+    <Compile Include="Admin\Presenters\CreatingSubjectPresenterTests\CreateSubject_Should.cs" />
+    <Compile Include="Admin\Presenters\ManagingSchedulePresenterTests\AddSubjectToSchedule_Should.cs" />
+    <Compile Include="Admin\Presenters\ManagingSchedulePresenterTests\BindDaysOfWeek_Should.cs" />
+    <Compile Include="Admin\Presenters\ManagingSchedulePresenterTests\BindScheduleData_Should.cs" />
+    <Compile Include="Admin\Presenters\ManagingSchedulePresenterTests\BindSubjectsForSpecificClass_Should.cs" />
+    <Compile Include="Admin\Presenters\ManagingSchedulePresenterTests\Constructor_Should.cs" />
+    <Compile Include="Admin\Presenters\ManagingSchedulePresenterTests\GetAllClasses_Should.cs" />
+    <Compile Include="Admin\Presenters\ManagingSchedulePresenterTests\RemoveSubjectFromSchedule_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

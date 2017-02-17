@@ -15,7 +15,7 @@ namespace SchoolSystem.MVP.Admin.Presenters
         private readonly ISubjectManagementService subjectManagementService;
 
         public CreatingClassOfStudentsPresenter(
-            ICreatingClassOfStudentsView view, 
+            ICreatingClassOfStudentsView view,
             IClassOfStudentsManagementService classOfStudentsManagementService,
             ISubjectManagementService subjectManagementService
             )
@@ -38,16 +38,7 @@ namespace SchoolSystem.MVP.Admin.Presenters
 
         private void CreateClassOfStudents(object sender, CreatingClassOfStudentsEventArgs e)
         {
-            var result = this.classOfStudentsManagementService.AddClass(e.ClassName, e.SubjectIds);
-
-            if (result)
-            {
-                this.View.Model.IsSuccesfull = true;
-            }
-            else
-            {
-                this.View.Model.IsSuccesfull = false;
-            }
+            this.View.Model.IsSuccesfull = this.classOfStudentsManagementService.AddClass(e.ClassName, e.SubjectIds);
         }
     }
 }
