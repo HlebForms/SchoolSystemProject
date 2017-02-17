@@ -2,12 +2,9 @@
 using NUnit.Framework;
 using SchoolSystem.MVP.Home.Presenter;
 using SchoolSystem.MVP.Home.Views;
+using SchoolSystem.MVP.Home.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolSystem.MVP.Tests.Home.Presenters.NewsfeedPresenterTests
 {
@@ -20,7 +17,18 @@ namespace SchoolSystem.MVP.Tests.Home.Presenters.NewsfeedPresenterTests
             var mockedNewsfeedView = new Mock<INewsfeedView>();
             var mockedNewsDataService = new Mock<INewsDataService>();
 
-            var newsDataPresenter = new  NewsfeedPresenter(mockedNewsfeedView.Object, mockedNewsDataService.Object);
+            var newsDataPresenter = new NewsfeedPresenter(mockedNewsfeedView.Object, mockedNewsDataService.Object);
+            var args = new AddNewsEventargs()
+            {
+                Content = It.IsAny<string>(),
+                CreatedOn = It.IsAny<DateTime>(),
+                IsImportant = It.IsAny<bool>(),
+                Username = It.IsAny<string>()
+            };
+
+            mockedNewsfeedView.Raise(x => x.EventAddNews += null, args);
+
+            mockedNewsDataService.Verify(x => x.AddNews(args.Username, args.Content, args.CreatedOn, args.IsImportant), Times.Once());
         }
     }
 }
