@@ -141,8 +141,8 @@ namespace SchoolSystem.Web.Services
 
             var content = this.subjectClassOfStudentsDaysOfWeekRepo.GetAll(
                 x => x.DaysOfWeekId == dayOfWeekId
-                && x.ClassOfStudentsId == classId
-                ,x => new ManagingScheduleModel()
+                && x.ClassOfStudentsId == classId,
+                x => new ManagingScheduleModel()
                 {
                     DaysOfWeek = x.DaysOfWeek,
                     Subject = x.SubjectClassOfStudents.Subject,
