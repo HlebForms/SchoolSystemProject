@@ -60,6 +60,14 @@
     <Compile Include="Account\Presenters\AvatarUploadPresenterTests\Constructor_Should.cs" />
     <Compile Include="Account\Presenters\AvatarUploadPresenterTests\View_EventGetUserAvatar_Should.cs" />
     <Compile Include="Account\Presenters\AvatarUploadPresenterTests\View_EventUploadAvatar_Should.cs" />
+    <Compile Include="Admin\Presenters\AssignSubjectsToClassOfStudentsPresenterTest\Constructor_Should.cs" />
+    <Compile Include="Admin\Presenters\AssignSubjectsToClassOfStudentsPresenterTest\View_EventAssignSubjectsToClassOfStudents_Should.cs" />
+    <Compile Include="Admin\Presenters\AssignSubjectsToClassOfStudentsPresenterTest\View_EventGetAllClassOfStudents_Should.cs" />
+    <Compile Include="Admin\Presenters\AssignSubjectsToClassOfStudentsPresenterTest\View_EventGetAvailableSubjectsForTheClass_Should.cs" />
+    <Compile Include="Admin\Presenters\AssignSubjectToTeacherPresenterTests\Constructor_Should.cs" />
+    <Compile Include="Admin\Presenters\AssignSubjectToTeacherPresenterTests\View_EventAssignSubjectsToTeacher_Should.cs" />
+    <Compile Include="Admin\Presenters\AssignSubjectToTeacherPresenterTests\View_EventGetSubjectsWithoutTeacher_Should.cs" />
+    <Compile Include="Admin\Presenters\AssignSubjectToTeacherPresenterTests\View_EventGetTeacher_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +75,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SchoolSystem.Data.Models\SchoolSystem.Data.Models.csproj">
+      <Project>{ea0dd209-f3ab-4c35-87e2-e947456d6f78}</Project>
+      <Name>SchoolSystem.Data.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolSystem.MVP\SchoolSystem.MVP.csproj">
       <Project>{E0724B47-3227-44C6-8639-A411AE604449}</Project>
       <Name>SchoolSystem.MVP</Name>

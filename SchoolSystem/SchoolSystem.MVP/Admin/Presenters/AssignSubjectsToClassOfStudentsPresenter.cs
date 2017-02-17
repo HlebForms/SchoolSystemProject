@@ -4,6 +4,7 @@ using Bytes2you.Validation;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.Web.Services.Contracts;
 using WebFormsMvp;
+using SchoolSystem.MVP.Admin.Views.EventArguments;
 
 namespace SchoolSystem.MVP.Admin.Presenters
 {
@@ -29,13 +30,13 @@ namespace SchoolSystem.MVP.Admin.Presenters
             this.View.EventAssignSubjectsToClassOfStudents += View_EventAssignSubjectsToClassOfStudents;
         }
 
-        private void View_EventAssignSubjectsToClassOfStudents(object sender, Views.EventArguments.AssignSubjectsToClassOfStudentsEventArgs e)
+        private void View_EventAssignSubjectsToClassOfStudents(object sender, AssignSubjectsToClassOfStudentsEventArgs e)
         {
             this.View.Model.IsAddingSubjectsSuccesfull =
                 this.classOfStudentManagementService.AddSubjectsToClass(e.ClassOfStudentsId, e.SubjectIdsToBeAdded);
         }
 
-        private void View_EventGetAvailableSubjectsForTheClass(object sender, Views.EventArguments.GetAvailableSubjectsForTheClassEventArgs e)
+        private void View_EventGetAvailableSubjectsForTheClass(object sender, GetAvailableSubjectsForTheClassEventArgs e)
         {
             this.View.Model.AvailableSubjects = 
                 subjectManagementService.GetSubjectsNotYetAssignedToTheClass(e.ClassOfStudentsId);
