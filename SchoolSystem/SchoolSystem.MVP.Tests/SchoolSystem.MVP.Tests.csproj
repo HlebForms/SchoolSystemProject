@@ -60,6 +60,8 @@
     <Compile Include="Account\Presenters\AvatarUploadPresenterTests\Constructor_Should.cs" />
     <Compile Include="Account\Presenters\AvatarUploadPresenterTests\View_EventGetUserAvatar_Should.cs" />
     <Compile Include="Account\Presenters\AvatarUploadPresenterTests\View_EventUploadAvatar_Should.cs" />
+    <Compile Include="Home\Presenters\NewsfeedPresenterTests\AddNews_Should.cs" />
+    <Compile Include="Home\Presenters\NewsfeedPresenterTests\Constructor_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
