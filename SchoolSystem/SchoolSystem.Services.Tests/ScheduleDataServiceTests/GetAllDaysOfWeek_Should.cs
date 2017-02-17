@@ -45,7 +45,7 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
 
             var expected = scheduleService.GetAllDaysOfWeek();
 
-            Assert.AreSame(expected, actual);
+            CollectionAssert.AreEquivalent(expected, actual);
         }
 
         [Test]

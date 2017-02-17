@@ -26,8 +26,8 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
             var model = new ManagingScheduleControlModel();
             var args = new ManagingScheduleEventArgs()
             {
-                ClassId = "1",
-                DayOfWeekId = "2"
+                ClassId = 1,
+                DayOfWeekId = 2
             };
 
             mockedView.SetupGet(x => x.Model).Returns(model);
