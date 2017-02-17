@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{8172D57B-B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystem.Identity", "SchoolSystem.Identity\SchoolSystem.Identity.csproj", "{959224F3-74B7-489F-9FB0-A81BAE49C0EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystem.MVP.Tests", "SchoolSystem.MVP.Tests\SchoolSystem.MVP.Tests.csproj", "{F211CFF0-9550-4EA0-B123-00D23E25DEFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{959224F3-74B7-489F-9FB0-A81BAE49C0EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{959224F3-74B7-489F-9FB0-A81BAE49C0EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{959224F3-74B7-489F-9FB0-A81BAE49C0EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F211CFF0-9550-4EA0-B123-00D23E25DEFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F211CFF0-9550-4EA0-B123-00D23E25DEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F211CFF0-9550-4EA0-B123-00D23E25DEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F211CFF0-9550-4EA0-B123-00D23E25DEFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,5 +95,6 @@ Global
 		{4957A7D5-D500-416E-8DD5-E5CDA0E040A5} = {9A58536B-11DF-440F-B269-EE3F665B9E62}
 		{E0724B47-3227-44C6-8639-A411AE604449} = {37CD7226-0852-4E0C-B6BC-330F5300494E}
 		{959224F3-74B7-489F-9FB0-A81BAE49C0EF} = {8172D57B-B1BD-44BE-A102-BC740746037C}
+		{F211CFF0-9550-4EA0-B123-00D23E25DEFA} = {FC2E4BB1-407A-4358-8C1B-4AB9518A2AD5}
 	EndGlobalSection
 EndGlobal

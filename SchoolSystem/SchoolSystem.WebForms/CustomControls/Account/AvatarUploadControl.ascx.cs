@@ -8,6 +8,7 @@ using SchoolSystem.MVP.Account.Views.EventArguments;
 using SchoolSystem.MVP.Account.Presenters;
 using SchoolSystem.MVP.Account.Models;
 using SchoolSystem.MVP.Account.Views;
+using System.Web;
 
 namespace SchoolSystem.WebForms.CustomControls.Account
 {
@@ -32,9 +33,10 @@ namespace SchoolSystem.WebForms.CustomControls.Account
             if (this.AvatarUpload.HasFile)
             {
                 var loggedUserUserName = this.Context.User.Identity.Name;
-                var file = this.AvatarUpload.PostedFile;
+                var postedFile = this.AvatarUpload.PostedFile;
+                var file = new HttpPostedFileWrapper(postedFile);
 
-                string extension = Path.GetExtension(file.FileName);
+                string extension = Path.GetExtension(postedFile.FileName);
                 string filename = loggedUserUserName + extension;
 
                 string avatarStoragePath = Server.MapPath("~/Images/avatars/") + filename;

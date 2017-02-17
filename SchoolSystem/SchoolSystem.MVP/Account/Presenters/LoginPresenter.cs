@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 
+using SchoolSystem.Identity.Managers;
 using SchoolSystem.MVP.Account.Views;
 using SchoolSystem.MVP.Account.Views.EventArguments;
-using SchoolSystem.Identity.Managers;
 
 using WebFormsMvp;
 

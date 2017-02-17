@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-using SchoolSystem.Data.Models.CustomModels;
-using SchoolSystem.Data.Models;
-
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+
+using SchoolSystem.Data.Models;
+using SchoolSystem.Data.Models.CustomModels;
 
 namespace SchoolSystem.MVP.Account.Models
 {

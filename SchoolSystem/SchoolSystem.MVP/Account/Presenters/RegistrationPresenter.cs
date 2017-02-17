@@ -1,15 +1,13 @@
 ﻿using System;
-
+using Bytes2you.Validation;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Models.Common;
 using SchoolSystem.Identity.Managers;
 using SchoolSystem.MVP.Account.Views;
 using SchoolSystem.MVP.Account.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-
-using Bytes2you.Validation;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Account.Presenters

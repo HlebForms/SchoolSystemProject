@@ -1,9 +1,10 @@
-﻿using SchoolSystem.Identity.Managers;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+
+using SchoolSystem.Identity.Managers;
 using SchoolSystem.MVP.Account.Views;
 using SchoolSystem.MVP.Account.Views.EventArguments;
 
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Account.Presenters

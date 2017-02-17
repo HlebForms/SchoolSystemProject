@@ -1,8 +1,7 @@
 ﻿using System;
 
-using SchoolSystem.MVP.Account.Models;
-
 using Microsoft.Owin;
+using SchoolSystem.MVP.Account.Models;
 
 namespace SchoolSystem.MVP.Account.Views.EventArguments
 {

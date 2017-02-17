@@ -7,6 +7,7 @@ using SchoolSystem.MVP.Admin.Presenters;
 using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.MVP.Admin.Models;
 using SchoolSystem.MVP.Admin.Views;
+using System.Web;
 
 namespace SchoolSystem.WebForms.CustomControls.Admin
 {
@@ -24,7 +25,9 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
         {
             if (this.SubjectPicture.HasFile)
             {
-                var file = this.SubjectPicture.PostedFile;
+                var subjectAvatarFile = this.SubjectPicture.PostedFile;
+
+                HttpPostedFileWrapper file = new HttpPostedFileWrapper(subjectAvatarFile);
 
                 string extension = Path.GetExtension(file.FileName);
                 string subjectName = this.SubjectNameTextBox.Text;
@@ -47,6 +50,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 if (this.Model.IsSuccesfull)
                 {
                     this.Notifier.NotifySuccess("Предметът е създаден!");
+                    this.SubjectNameTextBox.Text = string.Empty;
                 }
                 else
                 {

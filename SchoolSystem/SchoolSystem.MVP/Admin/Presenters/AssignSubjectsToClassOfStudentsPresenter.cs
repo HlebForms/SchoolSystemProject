@@ -1,9 +1,8 @@
 ﻿using System;
 
+using Bytes2you.Validation;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.Web.Services.Contracts;
-
-using Bytes2you.Validation;
 using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Admin.Presenters

@@ -1,9 +1,9 @@
 ﻿using System;
 
-using SchoolSystem.MVP.Account.Views;
-using SchoolSystem.Web.Services.Contracts;
-
 using Bytes2you.Validation;
+using SchoolSystem.MVP.Account.Views;
+using SchoolSystem.MVP.Account.Views.EventArguments;
+using SchoolSystem.Web.Services.Contracts;
 using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Account.Presenters
@@ -27,12 +27,12 @@ namespace SchoolSystem.MVP.Account.Presenters
             this.View.EventGetUserAvatar += View_EventGetUserAvatar;
         }
 
-        private void View_EventGetUserAvatar(object sender, Views.EventArguments.GetUserAvatarEventArgs e)
+        private void View_EventGetUserAvatar(object sender, GetUserAvatarEventArgs e)
         {
             this.View.Model.UserAvatarUrl = this.accountManagementService.GetUserAvatarUrl(e.LoggedUseUserName);
         }
 
-        private void View_EventUploadAvatar(object sender, Views.EventArguments.AvatarUploadEventArgs e)
+        private void View_EventUploadAvatar(object sender, AvatarUploadEventArgs e)
         {
             var uploadedFile = e.PostedFile;
 
