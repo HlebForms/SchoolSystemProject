@@ -5,11 +5,6 @@ using SchoolSystem.MVP.Admin.Presenters;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
 {
@@ -37,6 +32,7 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
                  );
 
             mockedView.Raise(x => x.EventRemoveSubjectFromSchedule += null, args);
+
             mockedScheduleService.Verify(x => x.RemoveSubjectFromSchedule(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once());
         }
     }

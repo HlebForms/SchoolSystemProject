@@ -21,20 +21,16 @@ namespace SchoolSystem.MVP.Tests.Home.Presenters.NewsfeedPresenterTests
 
             var newsDataPresenter = new NewsfeedPresenter(mockedNewsfeedView.Object, mockedNewsDataService.Object);
 
-            var newsfeed = new List<NewsModel>();
-            var importantNews = new List<NewsModel>();
-            var newsFeedModel = new NewsfeedModel()
-            {
-                ImportantNews = importantNews,
-                Newsfeed = newsfeed
-            };
+            var newsfeed = new List<NewsModel>() { new NewsModel(), new NewsModel() };
+            var importantNews = new List<NewsModel>() { new NewsModel(), new NewsModel() };
+            var newsFeedModel = new NewsfeedModel();
 
             mockedNewsfeedView.SetupGet(x => x.Model).Returns(newsFeedModel);
 
             mockedNewsfeedView.Raise(x => x.EventBindNewsfeedData += null, EventArgs.Empty);
 
-            Assert.AreSame(newsFeedModel.Newsfeed, mockedNewsfeedView.Object.Model.Newsfeed);
-            Assert.AreSame(newsFeedModel.ImportantNews, mockedNewsfeedView.Object.Model.ImportantNews);
+            CollectionAssert.AreEquivalent(newsFeedModel.Newsfeed, mockedNewsfeedView.Object.Model.Newsfeed);
+            CollectionAssert.AreEquivalent(newsFeedModel.ImportantNews, mockedNewsfeedView.Object.Model.ImportantNews);
         }
     }
 }

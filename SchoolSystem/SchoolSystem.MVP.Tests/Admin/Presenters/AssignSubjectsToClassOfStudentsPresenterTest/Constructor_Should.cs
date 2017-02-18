@@ -1,13 +1,9 @@
-﻿using Moq;
+﻿using System;
+using Moq;
 using NUnit.Framework;
 using SchoolSystem.MVP.Admin.Presenters;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.Web.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolSystem.MVP.Tests.Admin.Presenters.AssignSubjectsToClassOfStudentsPresenterTests
 {

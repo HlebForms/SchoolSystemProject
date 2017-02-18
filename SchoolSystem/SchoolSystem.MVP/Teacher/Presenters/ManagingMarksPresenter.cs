@@ -15,29 +15,29 @@ namespace SchoolSystem.MVP.Teacher.Presenters
         private readonly IStudentManagementService studentManagementService;
 
         public ManagingMarksPresenter(
-            IManagingMarksView view,
+            IManagingMarksView managingMarksView,
             ISubjectManagementService subjectManagementService,
             IClassOfStudentsManagementService classOfStudentsManagementService,
             IStudentManagementService studentManagementService,
             IMarksManagementService marksManagementService)
-            : base(view)
+            : base(managingMarksView)
         {
             Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNull().Throw();
             Guard.WhenArgument(classOfStudentsManagementService, "classOfStudentsManagementService").IsNull().Throw();
-            Guard.WhenArgument(marksManagementService, "marksManagementService").IsNull().Throw();
             Guard.WhenArgument(studentManagementService, "studentManagementService").IsNull().Throw();
+            Guard.WhenArgument(marksManagementService, "marksManagementService").IsNull().Throw();
 
             this.subjectManagementService = subjectManagementService;
             this.classOfStudentsManagementService = classOfStudentsManagementService;
             this.marksManagementService = marksManagementService;
             this.studentManagementService = studentManagementService;
 
-            this.View.EventBindSubjectsForTheSelectedTeacher += View_EventBindSubjects;
-            this.View.EventBindClasses += View_EventBindClasses;
-            this.View.EventBindSchoolReportCard += View_EventBindSchoolReportCard;
-            this.View.EventInsertMark += View_EventInsertMark;
-            this.View.EventBindStudents += View_EventBindStudents;
-            this.View.EventBindMarks += View_EventBindMarks;
+            this.View.EventBindSubjectsForTheSelectedTeacher += this.View_EventBindSubjects;
+            this.View.EventBindClasses += this.View_EventBindClasses;
+            this.View.EventBindSchoolReportCard += this.View_EventBindSchoolReportCard;
+            this.View.EventInsertMark += this.View_EventInsertMark;
+            this.View.EventBindStudents += this.View_EventBindStudents;
+            this.View.EventBindMarks += this.View_EventBindMarks;
         }
 
         private void View_EventBindMarks(object sender, EventArgs e)

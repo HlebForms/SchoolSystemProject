@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using System.Collections.Generic;
+using Moq;
 using NUnit.Framework;
 using SchoolSystem.Data.Models.CustomModels;
 using SchoolSystem.MVP.Student.Models;
@@ -6,7 +7,6 @@ using SchoolSystem.MVP.Student.Presenters;
 using SchoolSystem.MVP.Student.Views;
 using SchoolSystem.MVP.Student.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-using System.Collections.Generic;
 
 namespace SchoolSystem.MVP.Tests.Student.Presenters.SchoolReportCardPresenterTests
 {
@@ -22,13 +22,12 @@ namespace SchoolSystem.MVP.Tests.Student.Presenters.SchoolReportCardPresenterTes
             var studentName = "User1";
             var expectedMarks = new List<StudentMarksModel>()
             {
+                new StudentMarksModel(),
+                new StudentMarksModel(),
                 new StudentMarksModel()
             };
 
-            var mockedModel = new SchoolReportCardViewModel()
-            {
-                StudentMarks = expectedMarks
-            };
+            var mockedModel = new SchoolReportCardViewModel();
 
             mockedSchoolReportCardView
                 .SetupGet(x => x.Model)

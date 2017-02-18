@@ -89,6 +89,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student\Presenters\SchoolReportCardPresenterTests\Consturctor_Should.cs" />
     <Compile Include="Student\Presenters\SchoolReportCardPresenterTests\View_EvenGetStudentMarks_Should.cs" />
+    <Compile Include="Teacher\Presenters\ManagingMarksPresenterTests\Consturctor_Should.cs" />
+    <Compile Include="Teacher\Presenters\ManagingMarksPresenterTests\View_EventBindMarks_Should.cs" />
+    <Compile Include="Teacher\Presenters\ManagingMarksPresenterTests\View_EventBindStudents_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

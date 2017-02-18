@@ -5,11 +5,6 @@ using SchoolSystem.MVP.Admin.Presenters;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace SchoolSystem.MVP.Tests.Admin.Presenters.CreatingSubjectPresenterTests

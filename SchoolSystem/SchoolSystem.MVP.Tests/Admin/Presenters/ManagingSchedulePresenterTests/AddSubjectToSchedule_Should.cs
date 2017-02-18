@@ -1,11 +1,11 @@
-﻿using Moq;
+﻿using System;
+using Moq;
 using NUnit.Framework;
 using SchoolSystem.MVP.Admin.Models;
 using SchoolSystem.MVP.Admin.Presenters;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-using System;
 
 namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
 {

@@ -20,8 +20,12 @@ namespace SchoolSystem.MVP.Tests.Home.Presenters.SchedulePresenterTests
             var mockedScheduleView = new Mock<IScheduleView>();
             var mockedScheduleService = new Mock<IScheduleDataService>();
 
-            var expectedSchedule = new List<ScheduleModel>();
-            var mockedModel = new ScheduleControlModel() { StudentSchedule = expectedSchedule };
+            var expectedSchedule = new List<ScheduleModel>()
+            {
+                new ScheduleModel(), new ScheduleModel()
+            };
+
+            var mockedModel = new ScheduleControlModel();
             var userName = "Test1";
 
             mockedScheduleView.SetupGet(x => x.Model)
