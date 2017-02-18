@@ -12,7 +12,7 @@ using SchoolSystem.MVP.Student.Views;
 namespace SchoolSystem.WebForms.CustomControls.Student
 {
     [PresenterBinding(typeof(SchoolReportCardPreseneter))]
-    public partial class SchoolReportCard : MvpUserControl<SchoolReportCardModel>, ISchoolReporCardView
+    public partial class SchoolReportCard : MvpUserControl<SchoolReportCardViewModel>, ISchoolReporCardView
     {
         public event EventHandler<GetStudentMarksEventArgs> EvenGetStudentMarks;
 

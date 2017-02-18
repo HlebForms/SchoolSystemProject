@@ -1,10 +1,8 @@
 ﻿using System;
-
+using Bytes2you.Validation;
 using SchoolSystem.MVP.Home.Views;
 using SchoolSystem.MVP.Home.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-
-using Bytes2you.Validation;
 using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Home.Presenter

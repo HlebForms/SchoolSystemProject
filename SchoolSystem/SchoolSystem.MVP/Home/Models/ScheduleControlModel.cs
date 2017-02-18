@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 using SchoolSystem.Data.Models.CustomModels;
 
 namespace SchoolSystem.MVP.Home.Models

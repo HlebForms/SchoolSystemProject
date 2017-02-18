@@ -1,9 +1,7 @@
-﻿using SchoolSystem.Web.Services.Contracts;
-
+﻿using Bytes2you.Validation;
 using SchoolSystem.MVP.Student.Views;
 using SchoolSystem.MVP.Student.Views.EventArguments;
-
-using Bytes2you.Validation;
+using SchoolSystem.Web.Services.Contracts;
 using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Student.Presenters
@@ -14,12 +12,12 @@ namespace SchoolSystem.MVP.Student.Presenters
 
         public SchoolReportCardPreseneter(
             ISchoolReporCardView view,
-            IMarksManagementService marksManagementService
-            ) : base(view)
+            IMarksManagementService marksManagementService)
+            : base(view)
         {
             Guard.WhenArgument(marksManagementService, "marksManagementService").IsNull().Throw();
 
-            this.View.EvenGetStudentMarks += View_EvenGetStudentMarks;
+            this.View.EvenGetStudentMarks += this.View_EvenGetStudentMarks;
 
             this.marksManagementService = marksManagementService;
         }

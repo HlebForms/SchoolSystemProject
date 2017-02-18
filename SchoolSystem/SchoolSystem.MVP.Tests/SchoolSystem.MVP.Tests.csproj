@@ -87,6 +87,8 @@
     <Compile Include="Admin\Presenters\ManagingSchedulePresenterTests\GetAllClasses_Should.cs" />
     <Compile Include="Admin\Presenters\ManagingSchedulePresenterTests\RemoveSubjectFromSchedule_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student\Presenters\SchoolReportCardPresenterTests\Consturctor_Should.cs" />
+    <Compile Include="Student\Presenters\SchoolReportCardPresenterTests\View_EvenGetStudentMarks_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

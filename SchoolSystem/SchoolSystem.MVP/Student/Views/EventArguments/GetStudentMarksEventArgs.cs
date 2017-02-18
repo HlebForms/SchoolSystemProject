@@ -1,6 +1,8 @@
-﻿namespace SchoolSystem.MVP.Student.Views.EventArguments
+﻿using System;
+
+namespace SchoolSystem.MVP.Student.Views.EventArguments
 {
-    public class GetStudentMarksEventArgs
+    public class GetStudentMarksEventArgs : EventArgs
     {
         public string StudentName { get; set; }
     }

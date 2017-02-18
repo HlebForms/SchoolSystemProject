@@ -144,7 +144,7 @@
     <Compile Include="Home\Views\INewsfeedView.cs" />
     <Compile Include="Home\Views\IStudentScheduleView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student\Models\SchoolReportCardModel.cs" />
+    <Compile Include="Student\Models\SchoolReportCardViewModel.cs" />
     <Compile Include="Student\Presenters\SchoolReportCardPreseneter.cs" />
     <Compile Include="Student\Views\EventArguments\GetStudentMarksEventArgs.cs" />
     <Compile Include="Student\Views\ISchoolReporCardView.cs" />
