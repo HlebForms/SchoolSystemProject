@@ -9,6 +9,7 @@ using SchoolSystem.MVP.Account.Views;
 using SchoolSystem.MVP.Account.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
 using WebFormsMvp;
+using System.Collections.Generic;
 
 namespace SchoolSystem.MVP.Account.Presenters
 {
@@ -34,7 +35,7 @@ namespace SchoolSystem.MVP.Account.Presenters
             Guard.WhenArgument(registrationService, "registrationService").IsNull().Throw();
             Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNull().Throw();
             Guard.WhenArgument(classOfStudentsManagementService, "classOfStudentsManagementService").IsNull().Throw();
-            Guard.WhenArgument(accountManagementSerivce, "accountManagementSerivce").IsNull().Throw();
+            Guard.WhenArgument(accountManagementSerivce, "accountManagementService").IsNull().Throw();
             Guard.WhenArgument(emailSender, "emailSender").IsNull().Throw();
             Guard.WhenArgument(passwordService, "passwordService").IsNull().Throw();
 

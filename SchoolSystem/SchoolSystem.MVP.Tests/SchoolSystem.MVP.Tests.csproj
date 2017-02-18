@@ -34,6 +34,22 @@
       <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Moq, Version=4.5.30.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.5.30\lib\net45\Moq.dll</HintPath>
       <Private>True</Private>
@@ -43,6 +59,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -60,6 +77,10 @@
     <Compile Include="Account\Presenters\AvatarUploadPresenterTests\Constructor_Should.cs" />
     <Compile Include="Account\Presenters\AvatarUploadPresenterTests\View_EventGetUserAvatar_Should.cs" />
     <Compile Include="Account\Presenters\AvatarUploadPresenterTests\View_EventUploadAvatar_Should.cs" />
+    <Compile Include="Account\Presenters\RegistrationPresenterTests\Constructor_Should.cs" />
+    <Compile Include="Account\Presenters\RegistrationPresenterTests\View_EventGetAvailableSubjects_Should.cs" />
+    <Compile Include="Account\Presenters\RegistrationPresenterTests\View_EventGetClassesOfStudents_Should.cs" />
+    <Compile Include="Account\Presenters\RegistrationPresenterTests\View_EventGetUserRoles_Should.cs" />
     <Compile Include="Home\Presenters\NewsfeedPresenterTests\AddNews_Should.cs" />
     <Compile Include="Home\Presenters\NewsfeedPresenterTests\BindNewsFeedData_Should.cs" />
     <Compile Include="Home\Presenters\NewsfeedPresenterTests\Constructor_Should.cs" />
