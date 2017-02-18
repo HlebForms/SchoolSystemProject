@@ -1,12 +1,12 @@
-﻿using Moq;
+﻿using System;
+using System.Web;
+using Moq;
 using NUnit.Framework;
 using SchoolSystem.MVP.Account.Models;
 using SchoolSystem.MVP.Account.Presenters;
 using SchoolSystem.MVP.Account.Views;
 using SchoolSystem.MVP.Account.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-using System;
-using System.Web;
 
 namespace SchoolSystem.MVP.Tests.Account.Presenters.AvatarUploadPresenterTests
 {
@@ -66,7 +66,7 @@ namespace SchoolSystem.MVP.Tests.Account.Presenters.AvatarUploadPresenterTests
         [TestCase(6 * 1000 * 1000, "image/jpg")]
         [TestCase(7 * 1000 * 1000, "image/png")]
         [TestCase(82 * 1000 * 1000, "image/jpeg")]
-        public void NotCallCallSaveAsMethodFromTheFile_WhenContentTypesAreValidButContentLengthIsInvalid(int contentLength,string contentType)
+        public void NotCallCallSaveAsMethodFromTheFile_WhenContentTypesAreValidButContentLengthIsInvalid(int contentLength, string contentType)
         {
             var mockedAvatarUploadView = new Mock<IAvatarUploadView>();
             var mockedAccountManagementService = new Mock<IAccountManagementService>();
@@ -105,7 +105,7 @@ namespace SchoolSystem.MVP.Tests.Account.Presenters.AvatarUploadPresenterTests
             {
                 PostedFile = mockedFile.Object,
                 LoggedUserUserName = "User1",
-                UserAvatarUrl="~/path"
+                UserAvatarUrl = "~/path"
             };
 
             mockedAvatarUploadView.Raise(x => x.EventUploadAvatar += null, args);
@@ -142,7 +142,7 @@ namespace SchoolSystem.MVP.Tests.Account.Presenters.AvatarUploadPresenterTests
 
         [TestCase(1 * 1000 * 1000, "image/jpg")]
         [TestCase(5 * 1000 * 1000, "image/png")]
-        public void SetCorrectErrorMessage_WhenExceptionIsThrowsException(int validContentLength,string validContentType)
+        public void SetCorrectErrorMessage_WhenExceptionIsThrowsException(int validContentLength, string validContentType)
         {
             var mockedAvatarUploadView = new Mock<IAvatarUploadView>();
             var mockedAccountManagementService = new Mock<IAccountManagementService>();
@@ -160,7 +160,7 @@ namespace SchoolSystem.MVP.Tests.Account.Presenters.AvatarUploadPresenterTests
                 PostedFile = mockedFile.Object,
                 LoggedUserUserName = "User1",
                 UserAvatarUrl = "~/path",
-                AvatarStorateLocation="/random"
+                AvatarStorateLocation = "/random"
             };
 
             mockedFile.Setup(x => x.SaveAs(args.AvatarStorateLocation)).Throws(new Exception());

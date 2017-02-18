@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Bytes2you.Validation;
 using SchoolSystem.MVP.Account.Views;
 using SchoolSystem.MVP.Account.Views.EventArguments;
@@ -23,8 +22,8 @@ namespace SchoolSystem.MVP.Account.Presenters
 
             this.accountManagementService = accountManagementService;
 
-            this.View.EventUploadAvatar += View_EventUploadAvatar;
-            this.View.EventGetUserAvatar += View_EventGetUserAvatar;
+            this.View.EventUploadAvatar += this.View_EventUploadAvatar;
+            this.View.EventGetUserAvatar += this.View_EventGetUserAvatar;
         }
 
         private void View_EventGetUserAvatar(object sender, GetUserAvatarEventArgs e)

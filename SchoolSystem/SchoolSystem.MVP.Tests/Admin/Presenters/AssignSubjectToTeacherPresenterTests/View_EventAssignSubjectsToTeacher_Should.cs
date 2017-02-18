@@ -32,8 +32,7 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.AssignSubjectToTeacherPresente
             var presenter = new AssignSubjectToTeacherPresenter(
                   mockedView.Object,
                   mockedTeacherManagementService.Object,
-                  mockedSubjectManagementService.Object
-            );
+                  mockedSubjectManagementService.Object);
 
             mockedView.Raise(x => x.EventAssignSubjectsToTeacher += null, args);
 

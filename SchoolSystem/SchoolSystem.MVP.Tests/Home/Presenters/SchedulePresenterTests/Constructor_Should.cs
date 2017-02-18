@@ -14,7 +14,8 @@ namespace SchoolSystem.MVP.Tests.Home.Presenters.SchedulePresenterTests
         {
             var mockedScheduleView = new Mock<IScheduleView>();
 
-            Assert.That(() => new SchedulePresenter(mockedScheduleView.Object, null),
+            Assert.That(
+                () => new SchedulePresenter(mockedScheduleView.Object, null),
                 Throws.ArgumentNullException.With.Message.Contain("scheduleDataService"));
         }
 

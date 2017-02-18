@@ -45,8 +45,7 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
                mockedSubjectManagementService.Object,
                mockedClassOfStudentsManagementService.Object,
                mockedStudentManagementService.Object,
-               mockedMarkManagementService.Object
-               );
+               mockedMarkManagementService.Object);
 
             var args = new BindSchoolReportCardEventArgs()
             {

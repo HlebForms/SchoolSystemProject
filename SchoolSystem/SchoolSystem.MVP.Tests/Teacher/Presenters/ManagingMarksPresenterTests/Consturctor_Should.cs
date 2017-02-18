@@ -17,7 +17,8 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
             var mockedStudentManagementService = new Mock<IStudentManagementService>();
             var mockedMarkManagementService = new Mock<IMarksManagementService>();
 
-            Assert.That(() => new ManagingMarksPresenter(
+            Assert.That(
+                () => new ManagingMarksPresenter(
                 mockedManagingMarksView.Object,
                 null,
                 mockedClassOfStudentsManagementService.Object,
@@ -34,7 +35,8 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
             var mockedStudentManagementService = new Mock<IStudentManagementService>();
             var mockedMarkManagementService = new Mock<IMarksManagementService>();
 
-            Assert.That(() => new ManagingMarksPresenter(
+            Assert.That(
+                () => new ManagingMarksPresenter(
                 mockedManagingMarksView.Object,
                 mockedSubjectManagementService.Object,
                 null,
@@ -51,7 +53,8 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
             var mockedClassOfStudentsManagementService = new Mock<IClassOfStudentsManagementService>();
             var mockedStudentManagementService = new Mock<IStudentManagementService>();
 
-            Assert.That(() => new ManagingMarksPresenter(
+            Assert.That(
+                () => new ManagingMarksPresenter(
                 mockedManagingMarksView.Object,
                 mockedSubjectManagementService.Object,
                 mockedClassOfStudentsManagementService.Object,
@@ -68,7 +71,8 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
             var mockedClassOfStudentsManagementService = new Mock<IClassOfStudentsManagementService>();
             var mockedMarkManagementService = new Mock<IMarksManagementService>();
 
-            Assert.That(() => new ManagingMarksPresenter(
+            Assert.That(
+                () => new ManagingMarksPresenter(
                 mockedManagingMarksView.Object,
                 mockedSubjectManagementService.Object,
                 mockedClassOfStudentsManagementService.Object,
@@ -91,8 +95,7 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
                 mockedSubjectManagementService.Object,
                 mockedClassOfStudentsManagementService.Object,
                 mockedStudentManagementService.Object,
-                mockedMarkManagementService.Object
-                ));
+                mockedMarkManagementService.Object));
         }
     }
 }

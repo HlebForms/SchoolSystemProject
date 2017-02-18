@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using Moq;
 using NUnit.Framework;
+using SchoolSystem.Data.Models.CustomModels;
 using SchoolSystem.MVP.Admin.Models;
 using SchoolSystem.MVP.Admin.Presenters;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-using SchoolSystem.Data.Models.CustomModels;
 
 namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
 {
@@ -34,15 +34,13 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
                     mockedView.Object,
                     mockedScheduleService.Object,
                     mockedClassOfStudentsManagementService.Object,
-                    mockedSubjectManagementService.Object
-                 );
+                    mockedSubjectManagementService.Object);
 
             var expected = new List<ManagingScheduleModel>();
 
             mockedScheduleService
                .Setup(x => x.GetSchedulePerDay(It.IsAny<int>(), It.IsAny<int>()))
                .Returns(expected);
-
 
             mockedView.Raise(x => x.EventBindScheduleData += null, args);
 

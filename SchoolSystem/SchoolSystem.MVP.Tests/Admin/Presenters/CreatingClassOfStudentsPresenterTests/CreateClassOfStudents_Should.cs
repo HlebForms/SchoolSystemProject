@@ -15,7 +15,6 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.CreatingClassOfStudentsPresent
         [Test]
         public void Set_Model_IsSuccesfull_Property_Correctly()
         {
-
             var mockedView = new Mock<ICreatingClassOfStudentsView>();
             var mockedClassOfStudentsManagementService = new Mock<IClassOfStudentsManagementService>();
             var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
@@ -27,14 +26,13 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.CreatingClassOfStudentsPresent
 
             mockedView.SetupGet(x => x.Model).Returns(model);
             mockedClassOfStudentsManagementService
-                .Setup(x => x.AddClass(It.IsAny<string>(),It.IsAny<List<string>>()))
+                .Setup(x => x.AddClass(It.IsAny<string>(), It.IsAny<List<string>>()))
                 .Returns(expected);
 
             var presenter = new CreatingClassOfStudentsPresenter(
                 mockedView.Object,
                 mockedClassOfStudentsManagementService.Object,
-                mockedSubjectManagementService.Object
-                );
+                mockedSubjectManagementService.Object);
 
             mockedView.Raise(x => x.EventCreateClassOfStudents += null, args);
 

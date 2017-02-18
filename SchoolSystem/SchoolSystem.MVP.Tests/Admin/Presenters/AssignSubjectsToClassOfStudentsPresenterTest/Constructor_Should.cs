@@ -10,18 +10,17 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.AssignSubjectsToClassOfStudent
     [TestFixture]
     public class Constructor_Should
     {
-
         [Test]
         public void ThrowWhen_classOfStudentManagementService_IsNull()
         {
             var mockedView = new Mock<IAssignSubjectsToClassOfStudentsView>();
             var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
 
-          var ex = Assert.Throws<ArgumentNullException>(()=> new AssignSubjectsToClassOfStudentsPresenter(
-                mockedView.Object,
-                null,
-                mockedSubjectManagementService.Object
-                ));
+            var ex = Assert.Throws<ArgumentNullException>(
+                () => new AssignSubjectsToClassOfStudentsPresenter(
+                  mockedView.Object,
+                  null,
+                  mockedSubjectManagementService.Object));
 
             Assert.That(ex.ParamName, Is.EqualTo("classOfStudentManagementService"));
         }
@@ -32,11 +31,11 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.AssignSubjectsToClassOfStudent
             var mockedView = new Mock<IAssignSubjectsToClassOfStudentsView>();
             var mockedClassOfStudentManagementService = new Mock<IClassOfStudentsManagementService>();
 
-            var ex = Assert.Throws<ArgumentNullException>(() => new AssignSubjectsToClassOfStudentsPresenter(
+            var ex = Assert.Throws<ArgumentNullException>(
+                  () => new AssignSubjectsToClassOfStudentsPresenter(
                   mockedView.Object,
                   mockedClassOfStudentManagementService.Object,
-                  null
-                  ));
+                  null));
 
             Assert.That(ex.ParamName, Is.EqualTo("subjectManagementService"));
         }

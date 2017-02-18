@@ -1,8 +1,5 @@
-﻿using SchoolSystem.Data.Models.CustomModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using SchoolSystem.Data.Models.CustomModels;
 
 namespace SchoolSystem.MVP.Admin.Models
 {

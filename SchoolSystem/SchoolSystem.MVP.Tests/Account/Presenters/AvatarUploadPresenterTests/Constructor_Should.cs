@@ -15,7 +15,8 @@ namespace SchoolSystem.MVP.Tests.Account.Presenters.AvatarUploadPresenterTests
         {
             var mockedIAvatarUploadView = new Mock<IAvatarUploadView>();
 
-            Assert.That(() => new AvatarUploadPresenter(mockedIAvatarUploadView.Object, null),
+            Assert.That(
+                () => new AvatarUploadPresenter(mockedIAvatarUploadView.Object, null),
                 Throws.ArgumentNullException.With.Message.Contain("accountManagementService"));
         }
 

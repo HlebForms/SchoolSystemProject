@@ -14,7 +14,8 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
         public void Throw_When_ScheduleService_IsNull()
         {
             var mockedView = new Mock<IManagingScheduleView>();
-            //var mockedScheduleService = new Mock<IScheduleDataService>();
+
+            // var mockedScheduleService = new Mock<IScheduleDataService>();
             var mockedClassOfStudentsManagementService = new Mock<IClassOfStudentsManagementService>();
             var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
 
@@ -22,8 +23,7 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
                    mockedView.Object,
                    null,
                    mockedClassOfStudentsManagementService.Object,
-                   mockedSubjectManagementService.Object
-                ));
+                   mockedSubjectManagementService.Object));
 
             Assert.That(ex.ParamName, Is.EqualTo("scheduleService"));
         }
@@ -33,15 +33,15 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
         {
             var mockedView = new Mock<IManagingScheduleView>();
             var mockedScheduleService = new Mock<IScheduleDataService>();
-            //var mockedClassOfStudentsManagementService = new Mock<IClassOfStudentsManagementService>();
+
+            // var mockedClassOfStudentsManagementService = new Mock<IClassOfStudentsManagementService>();
             var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
 
             var ex = Assert.Throws<ArgumentNullException>(() => new ManagingSchedulePresenter(
                    mockedView.Object,
                    mockedScheduleService.Object,
                    null,
-                   mockedSubjectManagementService.Object
-                ));
+                   mockedSubjectManagementService.Object));
 
             Assert.That(ex.ParamName, Is.EqualTo("classOfStudentsManagementService"));
         }
@@ -52,14 +52,13 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
             var mockedView = new Mock<IManagingScheduleView>();
             var mockedScheduleService = new Mock<IScheduleDataService>();
             var mockedClassOfStudentsManagementService = new Mock<IClassOfStudentsManagementService>();
-            //var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
 
+            // var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
             var ex = Assert.Throws<ArgumentNullException>(() => new ManagingSchedulePresenter(
                    mockedView.Object,
                    mockedScheduleService.Object,
                    mockedClassOfStudentsManagementService.Object,
-                   null
-                ));
+                   null));
 
             Assert.That(ex.ParamName, Is.EqualTo("subjectManagementService"));
         }

@@ -28,8 +28,7 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
                     mockedView.Object,
                     mockedScheduleService.Object,
                     mockedClassOfStudentsManagementService.Object,
-                    mockedSubjectManagementService.Object
-                 );
+                    mockedSubjectManagementService.Object);
 
             mockedView.Raise(x => x.EventRemoveSubjectFromSchedule += null, args);
 

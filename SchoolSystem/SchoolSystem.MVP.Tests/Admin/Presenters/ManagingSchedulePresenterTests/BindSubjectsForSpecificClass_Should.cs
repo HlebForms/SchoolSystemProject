@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using System.Collections.Generic;
+using Moq;
 using NUnit.Framework;
 using SchoolSystem.Data.Models;
 using SchoolSystem.MVP.Admin.Models;
@@ -6,7 +7,6 @@ using SchoolSystem.MVP.Admin.Presenters;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-using System.Collections.Generic;
 
 namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
 {
@@ -30,8 +30,7 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
                     mockedView.Object,
                     mockedScheduleService.Object,
                     mockedClassOfStudentsManagementService.Object,
-                    mockedSubjectManagementService.Object
-                 );
+                    mockedSubjectManagementService.Object);
 
             var expected = new List<Subject>();
 

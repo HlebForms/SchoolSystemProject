@@ -32,8 +32,7 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.CreatingClassOfStudentsPresent
             var presenter = new CreatingClassOfStudentsPresenter(
                 mockedView.Object,
                 mockedClassOfStudentsManagementService.Object,
-                mockedSubjectManagementService.Object
-                );
+                mockedSubjectManagementService.Object);
 
             mockedView.Raise(x => x.EventGetAllSubjects += null, EventArgs.Empty);
 

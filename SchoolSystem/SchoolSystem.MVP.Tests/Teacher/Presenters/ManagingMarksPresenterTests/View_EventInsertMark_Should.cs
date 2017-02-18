@@ -29,8 +29,7 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
                mockedSubjectManagementService.Object,
                mockedClassOfStudentsManagementService.Object,
                mockedStudentManagementService.Object,
-               mockedMarkManagementService.Object
-               );
+               mockedMarkManagementService.Object);
 
             var args = new InserMarkEventArgs()
             {
@@ -42,8 +41,9 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
             mockedManagingMarksView.Raise(x => x.EventInsertMark += null, args);
 
             mockedMarkManagementService
-                .Verify(x => x.AddMark(args.StudentId, args.SubjectId, args.MarkId),
-                    Times.Once());
+                .Verify(
+                x => x.AddMark(args.StudentId, args.SubjectId, args.MarkId),
+                Times.Once());
         }
 
         [TestCase("random", 1, 1)]
@@ -66,8 +66,7 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
                mockedSubjectManagementService.Object,
                mockedClassOfStudentsManagementService.Object,
                mockedStudentManagementService.Object,
-               mockedMarkManagementService.Object
-               );
+               mockedMarkManagementService.Object);
 
             var args = new InserMarkEventArgs()
             {
@@ -79,8 +78,9 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
             mockedManagingMarksView.Raise(x => x.EventInsertMark += null, args);
 
             mockedMarkManagementService
-                .Verify(x => x.AddMark(notFromEventArgsStudentId, notFromEventArgsSubjectId, notFromEventArgsMarkId),
-                    Times.Never());
+                .Verify(
+                x => x.AddMark(notFromEventArgsStudentId, notFromEventArgsSubjectId, notFromEventArgsMarkId),
+                Times.Never());
         }
     }
 }

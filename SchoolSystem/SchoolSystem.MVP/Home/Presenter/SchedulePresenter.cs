@@ -25,13 +25,13 @@ namespace SchoolSystem.MVP.Home.Presenter
         private void BindStudentScheduleData(object sender, ScheduleEventargs e)
         {
             var dayOfWeek = DateTime.Now.DayOfWeek;
-            this.View.Model.StudentSchedule = scheduleDataService.GetStudentScheduleForTheDay(dayOfWeek, e.Username);
+            this.View.Model.StudentSchedule = this.scheduleDataService.GetStudentScheduleForTheDay(dayOfWeek, e.Username);
         }
 
         private void BindTeacherScheduleData(object sender, ScheduleEventargs e)
         {
             var dayOfWeek = DateTime.Now.DayOfWeek;
-            this.View.Model.TeacherSchedule = scheduleDataService.GetTeacherScheduleForTheDay(dayOfWeek, e.Username);
+            this.View.Model.TeacherSchedule = this.scheduleDataService.GetTeacherScheduleForTheDay(dayOfWeek, e.Username);
         }
     }
 }

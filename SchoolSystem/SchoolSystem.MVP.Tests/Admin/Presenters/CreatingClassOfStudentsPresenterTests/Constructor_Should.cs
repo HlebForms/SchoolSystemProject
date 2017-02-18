@@ -14,14 +14,15 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.CreatingClassOfStudentsPresent
         public void Throw_When_ClassOfStudentsManagementService_IsNull()
         {
             var mockedView = new Mock<ICreatingClassOfStudentsView>();
-            //var mockedClassOfStudentsManagementService = new Mock<IClassOfStudentsManagementService>();
+
+            // var mockedClassOfStudentsManagementService = new Mock<IClassOfStudentsManagementService>();
             var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
 
-            var ex = Assert.Throws<ArgumentNullException>(() => new CreatingClassOfStudentsPresenter(
+            var ex = Assert.Throws<ArgumentNullException>(
+                () => new CreatingClassOfStudentsPresenter(
                 mockedView.Object,
                 null,
-                mockedSubjectManagementService.Object
-                ));
+                mockedSubjectManagementService.Object));
 
             Assert.That(ex.ParamName, Is.EqualTo("classOfStudentsManagementService"));
         }
@@ -31,13 +32,12 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.CreatingClassOfStudentsPresent
         {
             var mockedView = new Mock<ICreatingClassOfStudentsView>();
             var mockedClassOfStudentsManagementService = new Mock<IClassOfStudentsManagementService>();
-            //var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
 
+            // var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
             var ex = Assert.Throws<ArgumentNullException>(() => new CreatingClassOfStudentsPresenter(
                 mockedView.Object,
                 mockedClassOfStudentsManagementService.Object,
-                null
-                ));
+                null));
 
             Assert.That(ex.ParamName, Is.EqualTo("subjectManagementService"));
         }

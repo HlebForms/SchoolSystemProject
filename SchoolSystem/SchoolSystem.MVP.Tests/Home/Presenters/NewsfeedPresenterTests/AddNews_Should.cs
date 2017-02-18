@@ -1,10 +1,10 @@
-﻿using Moq;
+﻿using System;
+using Moq;
 using NUnit.Framework;
 using SchoolSystem.MVP.Home.Presenter;
 using SchoolSystem.MVP.Home.Views;
 using SchoolSystem.MVP.Home.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-using System;
 
 namespace SchoolSystem.MVP.Tests.Home.Presenters.NewsfeedPresenterTests
 {

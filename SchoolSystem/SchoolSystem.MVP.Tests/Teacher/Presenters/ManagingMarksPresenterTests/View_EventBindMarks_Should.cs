@@ -38,12 +38,11 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
                 .Returns(expectedMarks);
 
             var managingMarksPrseenter = new ManagingMarksPresenter(
-                 mockedManagingMarksView.Object,
+                mockedManagingMarksView.Object,
                 mockedSubjectManagementService.Object,
                 mockedClassOfStudentsManagementService.Object,
                 mockedStudentManagementService.Object,
-                mockedMarkManagementService.Object
-                );
+                mockedMarkManagementService.Object);
 
             mockedManagingMarksView.Raise(x => x.EventBindMarks += null, EventArgs.Empty);
 

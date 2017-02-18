@@ -14,10 +14,10 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.CreatingSubjectPresenterTests
         {
             var mockedView = new Mock<ICreatingSubjectView>();
 
-            var ex = Assert.Throws<ArgumentNullException>(() => new CreatingSubjectPresenter(
+            var ex = Assert.Throws<ArgumentNullException>(
+                () => new CreatingSubjectPresenter(
                 mockedView.Object,
-                null
-                ));
+                null));
 
             Assert.That(ex.ParamName, Is.EqualTo("subjectManagementService"));
         }

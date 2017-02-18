@@ -45,10 +45,10 @@ namespace SchoolSystem.MVP.Account.Presenters
             this.emailSender = emailSender;
             this.passwordService = passwordService;
 
-            this.View.EventRegisterUser += RegisterUser;
-            this.View.EventGetClassesOfStudents += View_EventGetClassesOfStudents;
-            this.View.EventGetUserRoles += View_EventGetUserRoles;
-            this.View.EventGetAvailableSubjects += View_EventGetAvailableSubjects;
+            this.View.EventRegisterUser += this.RegisterUser;
+            this.View.EventGetClassesOfStudents += this.View_EventGetClassesOfStudents;
+            this.View.EventGetUserRoles += this.View_EventGetUserRoles;
+            this.View.EventGetAvailableSubjects += this.View_EventGetAvailableSubjects;
         }
 
         private void View_EventGetClassesOfStudents(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace SchoolSystem.MVP.Account.Presenters
 
             if (result.Succeeded)
             {
-                emailSender.SendEmail(e.Email, password);
+                this.emailSender.SendEmail(e.Email, password);
             }
 
             this.View.Model.Result = result;

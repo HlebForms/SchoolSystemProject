@@ -1,10 +1,8 @@
 ﻿using System;
-
+using Bytes2you.Validation;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-
-using Bytes2you.Validation;
 using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Admin.Presenters
@@ -17,8 +15,7 @@ namespace SchoolSystem.MVP.Admin.Presenters
         public AssignSubjectToTeacherPresenter(
             IAssignSubjectToTeacherView view,
             ITeacherManagementService teacherManagementService,
-            ISubjectManagementService subjectManagementService
-            )
+            ISubjectManagementService subjectManagementService)
             : base(view)
         {
             Guard.WhenArgument(teacherManagementService, "teacherManagementService").IsNull().Throw();
@@ -27,9 +24,9 @@ namespace SchoolSystem.MVP.Admin.Presenters
             this.teacherManagementService = teacherManagementService;
             this.subjectManagementService = subjectManagementService;
 
-            this.View.EventGetTeacher += View_EventGetTeacher;
-            this.View.EventGetSubjectsWithoutTeacher += View_EventGetSubjectsWithoutTeacher;
-            this.View.EventAssignSubjectsToTeacher += View_EventAssignSubjectsToTeacher;
+            this.View.EventGetTeacher += this.View_EventGetTeacher;
+            this.View.EventGetSubjectsWithoutTeacher += this.View_EventGetSubjectsWithoutTeacher;
+            this.View.EventAssignSubjectsToTeacher += this.View_EventAssignSubjectsToTeacher;
         }
 
         private void View_EventAssignSubjectsToTeacher(object sender, AssignSubjectsToTeacherEventArgs e)

@@ -14,7 +14,8 @@ namespace SchoolSystem.MVP.Tests.Student.Presenters.SchoolReportCardPresenterTes
         {
             var mockedSchoolReportCardView = new Mock<ISchoolReporCardView>();
 
-            Assert.That(() => new SchoolReportCardPreseneter(mockedSchoolReportCardView.Object, null),
+            Assert.That(
+                () => new SchoolReportCardPreseneter(mockedSchoolReportCardView.Object, null),
                 Throws.ArgumentNullException.With.Message.Contain("marksManagementService"));
         }
 

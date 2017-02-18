@@ -29,8 +29,7 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
                     mockedView.Object,
                     mockedScheduleService.Object,
                     mockedClassOfStudentsManagementService.Object,
-                    mockedSubjectManagementService.Object
-                 );
+                    mockedSubjectManagementService.Object);
 
             var expected = new List<ClassOfStudents>();
 

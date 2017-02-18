@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Moq;
 using NUnit.Framework;
 using SchoolSystem.Data.Models;
@@ -6,12 +7,11 @@ using SchoolSystem.MVP.Admin.Models;
 using SchoolSystem.MVP.Admin.Presenters;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.Web.Services.Contracts;
-using System.Collections.Generic;
 
 namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
 {
     [TestFixture]
-   public class BindDaysOfWeek_Should
+    public class BindDaysOfWeek_Should
     {
         [Test]
         public void Set_Model_DaysOfWeek_Property_Correctly()
@@ -29,8 +29,7 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
                     mockedView.Object,
                     mockedScheduleService.Object,
                     mockedClassOfStudentsManagementService.Object,
-                    mockedSubjectManagementService.Object
-                 );
+                    mockedSubjectManagementService.Object);
 
             var expected = new List<DaysOfWeek>();
 

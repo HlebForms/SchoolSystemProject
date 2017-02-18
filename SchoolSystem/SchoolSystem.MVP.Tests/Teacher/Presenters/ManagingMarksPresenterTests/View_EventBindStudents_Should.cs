@@ -5,8 +5,8 @@ using SchoolSystem.Data.Models.CustomModels;
 using SchoolSystem.MVP.Teacher.Models;
 using SchoolSystem.MVP.Teacher.Presenters;
 using SchoolSystem.MVP.Teacher.Views;
-using SchoolSystem.Web.Services.Contracts;
 using SchoolSystem.MVP.Teacher.Views.EventArguments;
+using SchoolSystem.Web.Services.Contracts;
 
 namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
 {
@@ -42,8 +42,7 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
                 mockedSubjectManagementService.Object,
                 mockedClassOfStudentsManagementService.Object,
                 mockedStudentManagementService.Object,
-                mockedMarkManagementService.Object
-                );
+                mockedMarkManagementService.Object);
 
             var args = new BindStudentsEventArgs()
             {

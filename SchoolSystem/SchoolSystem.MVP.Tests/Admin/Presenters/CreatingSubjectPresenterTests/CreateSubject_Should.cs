@@ -1,11 +1,11 @@
-﻿using Moq;
+﻿using System.Web;
+using Moq;
 using NUnit.Framework;
 using SchoolSystem.MVP.Admin.Models;
 using SchoolSystem.MVP.Admin.Presenters;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-using System.Web;
 
 namespace SchoolSystem.MVP.Tests.Admin.Presenters.CreatingSubjectPresenterTests
 {
@@ -29,8 +29,7 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.CreatingSubjectPresenterTests
 
             var presenter = new CreatingSubjectPresenter(
                  mockedView.Object,
-                 mockedsubjectManagementService.Object
-                 );
+                 mockedsubjectManagementService.Object);
 
             mockedView.SetupGet(x => x.Model).Returns(model);
             mockedsubjectManagementService
@@ -59,8 +58,7 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.CreatingSubjectPresenterTests
 
             var presenter = new CreatingSubjectPresenter(
                  mockedView.Object,
-                 mockedsubjectManagementService.Object
-                 );
+                 mockedsubjectManagementService.Object);
 
             var expected = true;
 

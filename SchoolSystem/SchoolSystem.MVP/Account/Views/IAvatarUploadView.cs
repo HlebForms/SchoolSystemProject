@@ -7,7 +7,7 @@ using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Account.Views
 {
-    public interface IAvatarUploadView: IView<AvatarUploadModel>
+    public interface IAvatarUploadView : IView<AvatarUploadModel>
     {
         event EventHandler<AvatarUploadEventArgs> EventUploadAvatar;
 

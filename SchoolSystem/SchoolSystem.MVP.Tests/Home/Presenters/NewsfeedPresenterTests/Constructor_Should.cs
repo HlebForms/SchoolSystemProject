@@ -14,7 +14,8 @@ namespace SchoolSystem.MVP.Tests.Home.Presenters.NewsfeedPresenterTests
         {
             var mockedNewsfeedView = new Mock<INewsfeedView>();
 
-            Assert.That(() => new NewsfeedPresenter(mockedNewsfeedView.Object, null),
+            Assert.That(
+                () => new NewsfeedPresenter(mockedNewsfeedView.Object, null),
                 Throws.ArgumentNullException.With.Message.Contains("newsDataService"));
         }
 

@@ -1,11 +1,8 @@
-﻿using System;
-
+﻿using Bytes2you.Validation;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-
 using WebFormsMvp;
-using Bytes2you.Validation;
 
 namespace SchoolSystem.MVP.Admin.Presenters
 {
@@ -18,7 +15,7 @@ namespace SchoolSystem.MVP.Admin.Presenters
             Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNull().Throw();
             
             this.subjectManagementService = subjectManagementService;
-            this.View.EventCreateSubject += CreateSubject;
+            this.View.EventCreateSubject += this.CreateSubject;
         }
 
         private void CreateSubject(object sender, CreatingSubjectEventArgs e)

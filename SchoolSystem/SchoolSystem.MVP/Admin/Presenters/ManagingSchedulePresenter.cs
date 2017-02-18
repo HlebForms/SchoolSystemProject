@@ -1,11 +1,9 @@
 ﻿using System;
-
+using Bytes2you.Validation;
 using SchoolSystem.MVP.Admin.Views;
 using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
-
 using WebFormsMvp;
-using Bytes2you.Validation;
 
 namespace SchoolSystem.MVP.Admin.Presenters
 {
@@ -19,11 +17,9 @@ namespace SchoolSystem.MVP.Admin.Presenters
             IManagingScheduleView view,
             IScheduleDataService scheduleService,
             IClassOfStudentsManagementService classOfStudentsManagementService,
-            ISubjectManagementService subjectManagementService
-            )
+            ISubjectManagementService subjectManagementService)
             : base(view)
         {
-
             Guard.WhenArgument(scheduleService, "scheduleService").IsNull().Throw();
             Guard.WhenArgument(classOfStudentsManagementService, "classOfStudentsManagementService").IsNull().Throw();
             Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNull().Throw();

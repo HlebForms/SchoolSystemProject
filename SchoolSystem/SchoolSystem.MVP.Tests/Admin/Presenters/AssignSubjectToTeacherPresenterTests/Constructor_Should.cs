@@ -14,7 +14,8 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.AssignSubjectToTeacherPresente
         public void ThrowWhen_TeacherManagementService_IsNull()
         {
             var mockedView = new Mock<IAssignSubjectToTeacherView>();
-            //var mockedTeacherManagementService = new Mock<ITeacherManagementService>();
+
+            // var mockedTeacherManagementService = new Mock<ITeacherManagementService>();
             var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
 
             var ex = Assert.Throws<ArgumentNullException>(() => new AssignSubjectToTeacherPresenter(
@@ -30,8 +31,8 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.AssignSubjectToTeacherPresente
         {
             var mockedView = new Mock<IAssignSubjectToTeacherView>();
             var mockedTeacherManagementService = new Mock<ITeacherManagementService>();
-            //var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
 
+            // var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
             var ex = Assert.Throws<ArgumentNullException>(() => new AssignSubjectToTeacherPresenter(
                 mockedView.Object,
                 mockedTeacherManagementService.Object,

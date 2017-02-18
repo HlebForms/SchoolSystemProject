@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-
 using SchoolSystem.Identity.Managers;
 using SchoolSystem.MVP.Account.Views;
 using SchoolSystem.MVP.Account.Views.EventArguments;
-
 using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Account.Presenters
@@ -14,7 +12,7 @@ namespace SchoolSystem.MVP.Account.Presenters
         public PasswordChangerPresenter(IPasswordChangeView view)
             : base(view)
         {
-            this.View.EventPasswordChange += View_EventPasswordChange;
+            this.View.EventPasswordChange += this.View_EventPasswordChange;
         }
 
         private void View_EventPasswordChange(object sender, PasswordChangeEventArgs e)

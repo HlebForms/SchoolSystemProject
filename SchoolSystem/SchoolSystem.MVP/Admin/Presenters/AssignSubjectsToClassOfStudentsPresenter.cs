@@ -1,10 +1,9 @@
 ﻿using System;
-
 using Bytes2you.Validation;
 using SchoolSystem.MVP.Admin.Views;
+using SchoolSystem.MVP.Admin.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
 using WebFormsMvp;
-using SchoolSystem.MVP.Admin.Views.EventArguments;
 
 namespace SchoolSystem.MVP.Admin.Presenters
 {
@@ -25,9 +24,9 @@ namespace SchoolSystem.MVP.Admin.Presenters
             this.classOfStudentManagementService = classOfStudentManagementService;
             this.subjectManagementService = subjectManagementService;
 
-            this.View.EventGetAllClassOfStudents += View_EventGetAllClassOfStudents;
-            this.View.EventGetAvailableSubjectsForTheClass += View_EventGetAvailableSubjectsForTheClass;
-            this.View.EventAssignSubjectsToClassOfStudents += View_EventAssignSubjectsToClassOfStudents;
+            this.View.EventGetAllClassOfStudents += this.View_EventGetAllClassOfStudents;
+            this.View.EventGetAvailableSubjectsForTheClass += this.View_EventGetAvailableSubjectsForTheClass;
+            this.View.EventAssignSubjectsToClassOfStudents += this.View_EventAssignSubjectsToClassOfStudents;
         }
 
         private void View_EventAssignSubjectsToClassOfStudents(object sender, AssignSubjectsToClassOfStudentsEventArgs e)
@@ -39,7 +38,7 @@ namespace SchoolSystem.MVP.Admin.Presenters
         private void View_EventGetAvailableSubjectsForTheClass(object sender, GetAvailableSubjectsForTheClassEventArgs e)
         {
             this.View.Model.AvailableSubjects = 
-                subjectManagementService.GetSubjectsNotYetAssignedToTheClass(e.ClassOfStudentsId);
+                this.subjectManagementService.GetSubjectsNotYetAssignedToTheClass(e.ClassOfStudentsId);
         }
 
         private void View_EventGetAllClassOfStudents(object sender, EventArgs e)

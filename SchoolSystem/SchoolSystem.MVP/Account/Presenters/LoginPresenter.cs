@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
-
 using SchoolSystem.Identity.Managers;
 using SchoolSystem.MVP.Account.Views;
 using SchoolSystem.MVP.Account.Views.EventArguments;
-
 using WebFormsMvp;
 
 namespace SchoolSystem.MVP.Account.Presenters
@@ -13,7 +11,7 @@ namespace SchoolSystem.MVP.Account.Presenters
         public LoginPresenter(ILoginView view) 
             : base(view)
         {
-            this.View.EventLoginUser += UserLogin;
+            this.View.EventLoginUser += this.UserLogin;
         }
 
         private void UserLogin(object sender, LoginPageEventtArgs e)
