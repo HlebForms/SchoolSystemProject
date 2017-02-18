@@ -9,7 +9,6 @@ using SchoolSystem.MVP.Account.Views;
 using SchoolSystem.MVP.Account.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
 using WebFormsMvp;
-using System.Collections.Generic;
 
 namespace SchoolSystem.MVP.Account.Presenters
 {

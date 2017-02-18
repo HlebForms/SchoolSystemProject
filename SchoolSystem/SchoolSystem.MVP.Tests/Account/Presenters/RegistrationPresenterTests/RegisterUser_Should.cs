@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
 using Moq;
 using NUnit.Framework;
-using SchoolSystem.Data.Models;
 using SchoolSystem.MVP.Account.Models;
 using SchoolSystem.MVP.Account.Presenters;
 using SchoolSystem.MVP.Account.Views;
+using SchoolSystem.MVP.Account.Views.EventArguments;
 using SchoolSystem.Web.Services.Contracts;
 
 namespace SchoolSystem.MVP.Tests.Account.Presenters.RegistrationPresenterTests
 {
     [TestFixture]
-    public class View_EventGetClassesOfStudents_Should
+    public class RegisterUser_Should
     {
         [Test]
-        public void BindClassOfStudents_ToModel_WhenArgumentsAreValid()
+        public void SetResult_ToModel_WithCorrectMessage_WhenEmailOfTheUserIsNotUnique()
         {
             var mockedRegisterView = new Mock<IRegisterView>();
             var mockedRegistrationService = new Mock<IRegistrationService>();
@@ -28,16 +27,12 @@ namespace SchoolSystem.MVP.Tests.Account.Presenters.RegistrationPresenterTests
                 .SetupGet(x => x.Model)
                 .Returns(new RegistrationModel());
 
-            var expectedClassOfStudents = new List<ClassOfStudents>()
-            {
-                new ClassOfStudents(),
-                new ClassOfStudents(),
-                new ClassOfStudents()
-            };
+            var email = It.IsAny<string>();
+            mockedAccountManagementService
+                .Setup(x => x.IsEmailUnique(email))
+                .Returns(false);
 
-            mockedClassOfStudentsManagementService
-                .Setup(x => x.GetAllClasses())
-                .Returns(expectedClassOfStudents);
+            var expectedResult = new IdentityResult("Има потребител с такъв имейл!");
 
             var registrationPresenter = new RegistrationPresenter(
                      mockedRegisterView.Object,
@@ -48,9 +43,14 @@ namespace SchoolSystem.MVP.Tests.Account.Presenters.RegistrationPresenterTests
                      mockedEmailSenderService.Object,
                      mockedPasswordService.Object);
 
-            mockedRegisterView.Raise(x => x.EventGetClassesOfStudents += null, EventArgs.Empty);
+            var args = new RegistrationPageEventArgs()
+            {
+                Email = email
+            };
 
-            CollectionAssert.AreEquivalent(expectedClassOfStudents, mockedRegisterView.Object.Model.ClassOfStudents);
+            mockedRegisterView.Raise(x => x.EventRegisterUser += null, args);
+
+            CollectionAssert.AreEquivalent(expectedResult.Errors, mockedRegisterView.Object.Model.Result.Errors);
         }
     }
 }
