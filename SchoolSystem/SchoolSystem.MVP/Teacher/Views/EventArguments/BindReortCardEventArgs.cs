@@ -2,7 +2,7 @@
 
 namespace SchoolSystem.MVP.Teacher.Views.EventArguments
 {
-    public class BindReortCardEventArgs : EventArgs
+    public class BindSchoolReportCardEventArgs : EventArgs
     {
         public int SubjectId { get; set; }
 

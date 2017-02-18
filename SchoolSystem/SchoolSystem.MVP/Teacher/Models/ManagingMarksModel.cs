@@ -8,7 +8,7 @@ namespace SchoolSystem.MVP.Teacher.Models
     {
         public IEnumerable<ClassOfStudents> StudentClasses { get;  set; }
 
-        public IEnumerable<SubjectBasicInfoModel> Subjects { get; set; }
+        public IEnumerable<SubjectBasicInfoModel> SubjectsForTheSpecifiedTeacher { get; set; }
 
         public IEnumerable<SchoolReportCardModel> SchoolReportCard { get; set; }
 

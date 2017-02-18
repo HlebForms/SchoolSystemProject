@@ -11,7 +11,7 @@ namespace SchoolSystem.MVP.Teacher.Views
 
         event EventHandler<BindClassesEventArgs> EventBindClasses;
 
-        event EventHandler<BindReortCardEventArgs> EventBindSchoolReportCard;
+        event EventHandler<BindSchoolReportCardEventArgs> EventBindSchoolReportCard;
 
         event EventHandler<InserMarkEventArgs> EventInsertMark;
 

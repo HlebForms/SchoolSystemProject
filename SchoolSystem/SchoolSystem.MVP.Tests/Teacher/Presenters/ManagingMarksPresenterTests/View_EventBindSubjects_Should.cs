@@ -5,16 +5,16 @@ using SchoolSystem.Data.Models.CustomModels;
 using SchoolSystem.MVP.Teacher.Models;
 using SchoolSystem.MVP.Teacher.Presenters;
 using SchoolSystem.MVP.Teacher.Views;
-using SchoolSystem.Web.Services.Contracts;
 using SchoolSystem.MVP.Teacher.Views.EventArguments;
+using SchoolSystem.Web.Services.Contracts;
 
 namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
 {
     [TestFixture]
-    public class View_EventBindStudents_Should
+    public class View_EventBindSubjects_Should
     {
         [Test]
-        public void BindStudents_ToModelCorectly()
+        public void BindSubjectsForSpecifiedTeacher_ToModel_WhenArgumentsArevalid()
         {
             var mockedManagingMarksView = new Mock<IManagingMarksView>();
             var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
@@ -22,20 +22,22 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
             var mockedMarkManagementService = new Mock<IMarksManagementService>();
             var mockedStudentManagementService = new Mock<IStudentManagementService>();
 
-            var expectedStudents = new List<StudentInfoModel>()
+            var teacherName = It.IsAny<string>();
+
+            var expectedSubjects = new List<SubjectBasicInfoModel>()
             {
-                new StudentInfoModel(),
-                new StudentInfoModel(),
-                new StudentInfoModel()
+                new SubjectBasicInfoModel(),
+                new SubjectBasicInfoModel(),
+                new SubjectBasicInfoModel()
             };
 
             mockedManagingMarksView
                 .SetupGet(x => x.Model)
                 .Returns(new ManagingMarksModel());
 
-            mockedStudentManagementService
-                .Setup(x => x.GetAllStudentsFromClass(It.IsAny<int>()))
-                .Returns(expectedStudents);
+            mockedSubjectManagementService
+                .Setup(x => x.GetSubjectsPerTeacher(teacherName))
+                .Returns(expectedSubjects);
 
             var managingMarksPrseenter = new ManagingMarksPresenter(
                  mockedManagingMarksView.Object,
@@ -45,14 +47,14 @@ namespace SchoolSystem.MVP.Tests.Teacher.Presenters.ManagingMarksPresenterTests
                 mockedMarkManagementService.Object
                 );
 
-            var args = new BindStudentsEventArgs()
+            var args = new BindSubjectsEventArgs()
             {
-                ClassId = It.IsAny<int>()
+                TecherName = teacherName
             };
 
-            mockedManagingMarksView.Raise(x => x.EventBindStudents += null, args);
+            mockedManagingMarksView.Raise(x => x.EventBindSubjectsForTheSelectedTeacher += null, args);
 
-            CollectionAssert.AreEquivalent(expectedStudents, mockedManagingMarksView.Object.Model.Students);
+            CollectionAssert.AreEquivalent(expectedSubjects, mockedManagingMarksView.Object.Model.SubjectsForTheSpecifiedTeacher);
         }
     }
 }

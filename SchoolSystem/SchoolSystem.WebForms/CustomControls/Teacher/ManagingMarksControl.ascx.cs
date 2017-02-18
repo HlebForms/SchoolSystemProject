@@ -19,7 +19,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
     {
         public event EventHandler<BindSubjectsEventArgs> EventBindSubjectsForTheSelectedTeacher;
         public event EventHandler<BindClassesEventArgs> EventBindClasses;
-        public event EventHandler<BindReortCardEventArgs> EventBindSchoolReportCard;
+        public event EventHandler<BindSchoolReportCardEventArgs> EventBindSchoolReportCard;
         public event EventHandler<InserMarkEventArgs> EventInsertMark;
         public event EventHandler<BindStudentsEventArgs> EventBindStudents;
         public event EventHandler EventBindMarks;
@@ -33,7 +33,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
                     TecherName = this.Page.User.Identity.Name
                 });
 
-                this.SubjectsDropDown.DataSource = this.Model.Subjects;
+                this.SubjectsDropDown.DataSource = this.Model.SubjectsForTheSpecifiedTeacher;
                 this.SubjectsDropDown.DataBind();
 
                 this.BindClassOfStudentsDropDown();
@@ -113,7 +113,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
             var subjectid = int.Parse(this.SubjectsDropDown.SelectedValue);
             var classOfStudentsid = int.Parse(this.ClassOfStudentsDropDown.SelectedValue);
 
-            this.EventBindSchoolReportCard(this, new BindReortCardEventArgs()
+            this.EventBindSchoolReportCard(this, new BindSchoolReportCardEventArgs()
             {
                 ClassOfStudentsId = classOfStudentsid,
                 SubjectId = subjectid

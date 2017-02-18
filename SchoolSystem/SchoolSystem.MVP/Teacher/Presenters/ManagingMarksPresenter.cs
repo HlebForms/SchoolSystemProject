@@ -55,7 +55,7 @@ namespace SchoolSystem.MVP.Teacher.Presenters
             this.marksManagementService.AddMark(e.StudentId, e.SubjectId, e.MarkId);
         }
 
-        private void View_EventBindSchoolReportCard(object sender, BindReortCardEventArgs e)
+        private void View_EventBindSchoolReportCard(object sender, BindSchoolReportCardEventArgs e)
         {
             this.View.Model.SchoolReportCard = this.marksManagementService.GetMarks(e.SubjectId, e.ClassOfStudentsId);
         }
@@ -67,7 +67,7 @@ namespace SchoolSystem.MVP.Teacher.Presenters
 
         private void View_EventBindSubjects(object sender, BindSubjectsEventArgs e)
         {
-            this.View.Model.Subjects = this.subjectManagementService.GetSubjectsPerTeacher(e.TecherName);
+            this.View.Model.SubjectsForTheSpecifiedTeacher = this.subjectManagementService.GetSubjectsPerTeacher(e.TecherName);
         }
     }
 }

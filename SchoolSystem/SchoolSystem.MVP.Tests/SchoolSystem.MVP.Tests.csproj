@@ -90,8 +90,12 @@
     <Compile Include="Student\Presenters\SchoolReportCardPresenterTests\Consturctor_Should.cs" />
     <Compile Include="Student\Presenters\SchoolReportCardPresenterTests\View_EvenGetStudentMarks_Should.cs" />
     <Compile Include="Teacher\Presenters\ManagingMarksPresenterTests\Consturctor_Should.cs" />
+    <Compile Include="Teacher\Presenters\ManagingMarksPresenterTests\View_EventBindClasses_Should.cs" />
     <Compile Include="Teacher\Presenters\ManagingMarksPresenterTests\View_EventBindMarks_Should.cs" />
+    <Compile Include="Teacher\Presenters\ManagingMarksPresenterTests\View_EventBindSchoolReportCard_Should.cs" />
     <Compile Include="Teacher\Presenters\ManagingMarksPresenterTests\View_EventBindStudents_Should.cs" />
+    <Compile Include="Teacher\Presenters\ManagingMarksPresenterTests\View_EventBindSubjects_Should.cs" />
+    <Compile Include="Teacher\Presenters\ManagingMarksPresenterTests\View_EventInsertMark_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
