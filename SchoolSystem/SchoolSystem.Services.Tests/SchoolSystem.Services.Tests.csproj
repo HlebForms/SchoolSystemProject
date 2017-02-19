@@ -62,7 +62,9 @@
     <Compile Include="AccountManagementServiceTests\IsEmailUnique_Should.cs" />
     <Compile Include="AccountManagementServiceTests\UploadAvatar_Should.cs" />
     <Compile Include="ClassOfStudentsManagemtServiceTests\AddClass_Should.cs" />
+    <Compile Include="ClassOfStudentsManagemtServiceTests\AddSubjectsToClass_Should.cs" />
     <Compile Include="ClassOfStudentsManagemtServiceTests\Constructor_Should.cs" />
+    <Compile Include="ClassOfStudentsManagemtServiceTests\GetAllClassesWithSpecifiedSubject_Should.cs" />
     <Compile Include="ClassOfStudentsManagemtServiceTests\GetAllClasses_Should.cs" />
     <Compile Include="NewsDataServiceTest\AddNews_Should.cs" />
     <Compile Include="NewsDataServiceTest\Constuctor_Should.cs" />

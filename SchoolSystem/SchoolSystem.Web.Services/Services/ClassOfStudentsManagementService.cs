@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using SchoolSystem.Web.Services.Contracts;
-using SchoolSystem.Data.Models;
-using SchoolSystem.Data.Contracts;
-
 using Bytes2you.Validation;
-using SchoolSystem.Data.Models.CustomModels;
+using SchoolSystem.Data.Contracts;
+using SchoolSystem.Data.Models;
+using SchoolSystem.Web.Services.Contracts;
 
 namespace SchoolSystem.Web.Services
 {
@@ -18,7 +15,6 @@ namespace SchoolSystem.Web.Services
         private readonly Func<IUnitOfWork> unitOfWork;
 
         public ClassOfStudentsManagementService(
-                IRepository<Subject> subjectsRepo,
                 IRepository<ClassOfStudents> classOfStudentsRepo,
                 IRepository<SubjectClassOfStudents> subjectClassOfStudnetsrepo,
                 Func<IUnitOfWork> unitOfWork)
@@ -79,6 +75,8 @@ namespace SchoolSystem.Web.Services
 
         public bool AddSubjectsToClass(int classId, IEnumerable<int> subjectIds)
         {
+            Guard.WhenArgument(subjectIds, "subjectIds").IsNull().Throw();
+
             using (var uow = this.unitOfWork())
             {
                 foreach (var subjectId in subjectIds)

@@ -164,6 +164,7 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
             var expected = scheduleService.GetSchedulePerDay(1, 1);
 
             Assert.AreEqual(actual.Count(), expected.Count());
+            CollectionAssert.AreNotEquivalent(expected, actual);
         }
 
         [Test]

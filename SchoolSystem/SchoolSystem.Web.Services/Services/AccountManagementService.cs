@@ -1,11 +1,9 @@
 ﻿using System;
-
+using System.Linq;
+using Bytes2you.Validation;
 using SchoolSystem.Data.Contracts;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Web.Services.Contracts;
-
-using Bytes2you.Validation;
-using System.Linq;
 
 namespace SchoolSystem.Web.Services
 {
