@@ -6,9 +6,9 @@ namespace SchoolSystem.Web.Services.Contracts
 {
     public interface IRegistrationService
     {
-        void CreateStudent(string studentId, int classOfStudentId);
+        void RegisterStudent(string studentId, int classOfStudentId);
 
-        void CreateTeacher(string teacherId, IEnumerable<int> subjectId);
+        void RegisterTeacher(string teacherId, IEnumerable<int> subjectId);
 
         IEnumerable<IdentityRole> GetAllUserRoles();
     }

@@ -14,14 +14,15 @@ namespace SchoolSystem.Web.Services
         private readonly IRandomProvider randomProvider;
         private readonly IList<char> characters;
         private const int passwordLength = 10;
-
+        private const int StartSymbolCode = 48;
+        private const int NumberOfLastValidSymbol = 122;
         public PasswordGeneratorService(IRandomProvider randomProvider)
         {
             Guard.WhenArgument(randomProvider, "randomProvider").IsNull().Throw();
 
             this.randomProvider = randomProvider;
 
-            this.characters = Enumerable.Range(48, 122).Select(c => (char)c).ToList();
+            this.characters = Enumerable.Range(StartSymbolCode, NumberOfLastValidSymbol - StartSymbolCode).Select(c => (char)c).ToList();
         }
 
         public string GenerateRandomPassword()

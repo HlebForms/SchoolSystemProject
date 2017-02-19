@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using SchoolSystem.Web.Services.Contracts;
-using SchoolSystem.Data.Models;
-using SchoolSystem.Data.Contracts;
-
 using Bytes2you.Validation;
+using SchoolSystem.Data.Contracts;
+using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Models.CustomModels;
+using SchoolSystem.Web.Services.Contracts;
 
 namespace SchoolSystem.Web.Services
 {
@@ -91,7 +89,6 @@ namespace SchoolSystem.Web.Services
                 s => s.Subject,
                 i => i.Subject);
         }
-
 
         public IEnumerable<SubjectBasicInfoModel> GetSubjectsPerTeacher(string teacherName)
         {

@@ -90,23 +90,23 @@ namespace SchoolSystem.MVP.Account.Presenters
 
             IdentityResult result = manager.Create(user, password);
 
-            manager.AddToRole(user.Id, e.UserType);
-
-            if (e.UserType == UserType.Teacher)
-            {
-                this.registrationService.CreateTeacher(user.Id, e.SubjectIds);
-            }
-            else if (e.UserType == UserType.Student)
-            {
-                this.registrationService.CreateStudent(user.Id, e.ClassOfSudentsId);
-            }
-            else
-            {
-                // no specific need if the user is admin
-            }
-
             if (result.Succeeded)
             {
+                manager.AddToRole(user.Id, e.UserType);
+
+                if (e.UserType == UserType.Teacher)
+                {
+                    this.registrationService.RegisterTeacher(user.Id, e.SubjectIds);
+                }
+                else if (e.UserType == UserType.Student)
+                {
+                    this.registrationService.RegisterStudent(user.Id, e.ClassOfSudentsId);
+                }
+                else
+                {
+                    // no specific need if the user is admin
+                }
+
                 this.emailSender.SendEmail(e.Email, password);
             }
 

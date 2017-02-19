@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity;
-
 using SchoolSystem.Data.Contracts;
 
 namespace SchoolSystem.Data
