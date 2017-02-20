@@ -70,10 +70,14 @@
     <Compile Include="EmailSenderServiceTests\Constructor_Should.cs" />
     <Compile Include="MarksManagementServiceTests\Constructor_Should.cs" />
     <Compile Include="MarksManagementServiceTests\GetAllMarks_Should.cs" />
+    <Compile Include="MarksManagementServiceTests\GetMarks_Should.cs" />
     <Compile Include="NewsDataServiceTest\AddNews_Should.cs" />
     <Compile Include="NewsDataServiceTest\Constuctor_Should.cs" />
     <Compile Include="NewsDataServiceTest\GetImportantNews_Should.cs" />
     <Compile Include="NewsDataServiceTest\GetNews_Should.cs" />
+    <Compile Include="PasswordGeneratorServiceTests\Constructor_Should.cs" />
+    <Compile Include="PasswordGeneratorServiceTests\GetRandomPassword_Should.cs" />
+    <Compile Include="PasswordGeneratorServiceTests\Mocks\CustomPasswordGeneratorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationServiceTests\Constructor_Should.cs" />
     <Compile Include="RegistrationServiceTests\GetAllUserRoles_Should.cs" />
@@ -102,6 +106,10 @@
     <ProjectReference Include="..\SchoolSystem.Data\SchoolSystem.Data.csproj">
       <Project>{B70B597E-506D-40A8-AA41-DB825675AEAA}</Project>
       <Name>SchoolSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchoolSystem.Web.Providers\SchoolSystem.Web.Providers.csproj">
+      <Project>{cf993672-bcfc-4c89-b19b-8b32ee4ee879}</Project>
+      <Name>SchoolSystem.Web.Providers</Name>
     </ProjectReference>
     <ProjectReference Include="..\SchoolSystem.Web.Services\SchoolSystem.Web.Services.csproj">
       <Project>{85342024-9a31-45a3-b8dc-9f7d09708bc1}</Project>
