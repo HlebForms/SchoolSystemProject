@@ -88,6 +88,8 @@
     <Compile Include="SubjectManagementServiceTests\CreateSubject_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\GetAllSubjects_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\GetSubjectsForSpecificClass_Should.cs" />
+    <Compile Include="TeacherManagementServiceTests\Constructor_Should.cs" />
+    <Compile Include="TeacherManagementServiceTests\GetAllTeachers_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
