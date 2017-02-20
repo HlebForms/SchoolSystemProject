@@ -44,8 +44,7 @@ namespace SchoolSystem.Services.Tests.MarksManagementServiceTests
             mockedSubjectStudentRepo
                   .Setup(x => x.GetFirst(It.IsAny<Expression<Func<SubjectStudent, bool>>>()))
                   .Returns((Expression<Func<SubjectStudent, bool>> predicate) =>
-                        subjectStudent.FirstOrDefault(predicate.Compile())
-                   );
+                        subjectStudent.FirstOrDefault(predicate.Compile()));
 
             service.AddMark("id1", 1, 1);
 
@@ -79,8 +78,7 @@ namespace SchoolSystem.Services.Tests.MarksManagementServiceTests
             mockedSubjectStudentRepo
                   .Setup(x => x.GetFirst(It.IsAny<Expression<Func<SubjectStudent, bool>>>()))
                   .Returns((Expression<Func<SubjectStudent, bool>> predicate) =>
-                        subjectStudent.FirstOrDefault(predicate.Compile())
-                   );
+                        subjectStudent.FirstOrDefault(predicate.Compile()));
 
             service.AddMark("id1", 1, 1);
 
@@ -116,12 +114,11 @@ namespace SchoolSystem.Services.Tests.MarksManagementServiceTests
             mockedSubjectStudentRepo
                   .Setup(x => x.GetFirst(It.IsAny<Expression<Func<SubjectStudent, bool>>>()))
                   .Returns((Expression<Func<SubjectStudent, bool>> predicate) =>
-                        subjectStudent.FirstOrDefault(predicate.Compile())
-                   );
+                        subjectStudent.FirstOrDefault(predicate.Compile()));
             mockedSubjectStudentRepo
                   .Setup(x => x.Add(It.IsAny<SubjectStudent>()))
                   .Callback((SubjectStudent predicate) =>
-                    subjectStudent.Add(predicate));
+                        subjectStudent.Add(predicate));
             
             service.AddMark("id4", 1, 1);
 
@@ -155,12 +152,10 @@ namespace SchoolSystem.Services.Tests.MarksManagementServiceTests
             mockedSubjectStudentRepo
                   .Setup(x => x.GetFirst(It.IsAny<Expression<Func<SubjectStudent, bool>>>()))
                   .Returns((Expression<Func<SubjectStudent, bool>> predicate) =>
-                        subjectStudent.FirstOrDefault(predicate.Compile())
-                   );
+                        subjectStudent.FirstOrDefault(predicate.Compile()));
             mockedSubjectStudentRepo
                   .Setup(x => x.Add(It.IsAny<SubjectStudent>()))
-                  .Callback((SubjectStudent predicate) =>
-                    subjectStudent.Add(predicate));
+                  .Callback((SubjectStudent predicate) => subjectStudent.Add(predicate));
 
             service.AddMark("id4", 1, 1);
 

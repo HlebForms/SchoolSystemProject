@@ -32,7 +32,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
 
         private void BindAvailableSubjects()
         {
-            this.EventGetAvailableSubjectsForTheClass(this, new GetAvailableSubjectsForTheClassEventArgs()
+            this.EventGetAvailableSubjectsForTheClass(this, new GetAvailableSubjectsForTheClassEventArgs
             {
                 ClassOfStudentsId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue)
             });
@@ -59,7 +59,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 return;
             }
 
-            this.EventAssignSubjectsToClassOfStudents(this, new AssignSubjectsToClassOfStudentsEventArgs()
+            this.EventAssignSubjectsToClassOfStudents(this, new AssignSubjectsToClassOfStudentsEventArgs
             {
                 ClassOfStudentsId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue),
                 SubjectIdsToBeAdded = selectedSubjectsIds

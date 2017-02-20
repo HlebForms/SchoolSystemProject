@@ -26,7 +26,7 @@ namespace SchoolSystem.WebForms.CustomControls.Account
             {
                 var owinCtx = this.Context.GetOwinContext();
 
-                this.EventPasswordChange(this, new PasswordChangeEventArgs()
+                this.EventPasswordChange(this, new PasswordChangeEventArgs
                 {
                     OwinContext = owinCtx,
                     CurrentPassword = this.CurrentPassword.Text,

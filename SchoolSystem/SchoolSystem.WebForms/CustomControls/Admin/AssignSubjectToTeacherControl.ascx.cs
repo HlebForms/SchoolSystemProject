@@ -55,7 +55,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
                 return;
             }
 
-            this.EventAssignSubjectsToTeacher(this, new AssignSubjectsToTeacherEventArgs()
+            this.EventAssignSubjectsToTeacher(this, new AssignSubjectsToTeacherEventArgs
             {
                 TeacherId = this.TeacherDropDown.SelectedValue,
                 SubjectIds = selectedSubjectsIds

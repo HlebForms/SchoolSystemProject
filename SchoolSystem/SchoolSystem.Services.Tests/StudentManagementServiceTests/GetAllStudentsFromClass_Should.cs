@@ -32,7 +32,9 @@ namespace SchoolSystem.Services.Tests.StudentManagementServiceTests
 
             var students = new List<Student>()
             {
-                student1,student2,student3
+                student1,
+                student2,
+                student3
             };
             
             mockedStudentsRepo

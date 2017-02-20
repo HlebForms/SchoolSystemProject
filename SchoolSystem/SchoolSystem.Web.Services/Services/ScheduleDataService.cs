@@ -30,8 +30,7 @@ namespace SchoolSystem.Web.Services
             IRepository<SubjectClassOfStudentsDaysOfWeek> subjectClassOfStudentsDaysOfWeekRepo,
             IRepository<DaysOfWeek> daysOfWeekRepo,
             IRepository<Student> studentRepo,
-            Func<IUnitOfWork> unitOfWork
-            )
+            Func<IUnitOfWork> unitOfWork)
         {
             Guard.WhenArgument(subjectRepo, "subjectRepo").IsNull().Throw();
             Guard.WhenArgument(userRepo, "userRepo").IsNull().Throw();
@@ -124,15 +123,14 @@ namespace SchoolSystem.Web.Services
                         },
                         x => x.SubjectClassOfStudents,
                         x => x.SubjectClassOfStudents.Subject,
-                        x => x.SubjectClassOfStudents.ClassOfStudents
-                        );
+                        x => x.SubjectClassOfStudents.ClassOfStudents);
 
             return subjects.OrderBy(x => x.StartHour);
         }
 
         public IEnumerable<DaysOfWeek> GetAllDaysOfWeek()
         {
-            return this.daysOfWeekRepo.GetAll().OrderBy(x=>x.Id);
+            return this.daysOfWeekRepo.GetAll().OrderBy(x => x.Id);
         }
 
         public IEnumerable<ManagingScheduleModel> GetSchedulePerDay(int dayOfWeekId, int classId)

@@ -42,10 +42,8 @@ namespace SchoolSystem.Services.Tests.AccountManagementServiceTests
             var mockedUserRepo = new Mock<IRepository<User>>();
             var mockedUoW = new Mock<Func<IUnitOfWork>>();
 
-            Assert.That(() =>
-            {
-                var service = new AccountManagementService(null, mockedUoW.Object);
-            }, Throws.ArgumentNullException.With.Message.Contain("userRepo"));
+            Assert.That(() => new AccountManagementService(null, mockedUoW.Object), 
+                        Throws.ArgumentNullException.With.Message.Contain("userRepo"));
         }
 
         [Test]
@@ -65,10 +63,8 @@ namespace SchoolSystem.Services.Tests.AccountManagementServiceTests
             var mockedUserRepo = new Mock<IRepository<User>>();
             var mockedUoW = new Mock<Func<IUnitOfWork>>();
 
-            Assert.That(() =>
-            {
-                var service = new AccountManagementService(mockedUserRepo.Object,null);
-            }, Throws.ArgumentNullException.With.Message.Contain("unitOfWork"));
+            Assert.That(() => new AccountManagementService(mockedUserRepo.Object, null),
+                        Throws.ArgumentNullException.With.Message.Contain("unitOfWork"));
         }
     }
 }

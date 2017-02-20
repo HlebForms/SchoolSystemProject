@@ -20,8 +20,7 @@ namespace SchoolSystem.Web.Services
         public NewsDataService(
             IRepository<Newsfeed> newsfeedRepository,
             IRepository<User> userRepo,
-            Func<IUnitOfWork> unitOfWork
-            )
+            Func<IUnitOfWork> unitOfWork)
         {
             Guard.WhenArgument(newsfeedRepository, "newsfeedRepository").IsNull().Throw();
             Guard.WhenArgument(userRepo, "userRepo").IsNull().Throw();

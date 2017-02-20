@@ -35,33 +35,31 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
                 {
                     IsImportant = false,
                     Content = "test content 1",
-                    User = new User(){AvatarPictureUrl = "test url 1"}
+                    User = new User() { AvatarPictureUrl = "test url 1" }
                 },
                 new Newsfeed()
                 {
                    IsImportant = true,
                    Content = "test content 2",
                    CreatedOn = DateTime.Now.AddDays(-1),
-                   User = new User(){AvatarPictureUrl = "test url 2"}
+                   User = new User() { AvatarPictureUrl = "test url 2" }
                 },
                 new Newsfeed()
                 {
                    IsImportant = false,
                    Content = "test content 3",
                    CreatedOn = DateTime.Now.AddDays(-2),
-                   User = new User(){AvatarPictureUrl = "test url 3"}
+                   User = new User() { AvatarPictureUrl = "test url 3" }
                 }
             };
 
             mockedNewsfeedRepository
                 .Setup(x => x.GetAll(
                     It.IsAny<Expression<Func<Newsfeed, bool>>>(),
-                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()
-                )).Returns(
-                    (Expression<Func<Newsfeed, bool>> predicate,
-                    Expression<Func<Newsfeed, NewsModel>> projection) =>
-                    expectedResult.Where(predicate.Compile()).Select(projection.Compile())
-                );
+                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()))
+                .Returns((Expression<Func<Newsfeed, bool>> predicate,
+                          Expression<Func<Newsfeed, NewsModel>> projection) =>
+                    expectedResult.Where(predicate.Compile()).Select(projection.Compile()));
 
             var actual = newsDataService.GetNews();
 
@@ -90,19 +88,16 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
                         IsImportant = false,
                         Content = "test content " + i,
                         User = new User() { AvatarPictureUrl = "test url " + i }
-                    }
-                );
+                    });
             }
 
             mockedNewsfeedRepository
                 .Setup(x => x.GetAll(
                     It.IsAny<Expression<Func<Newsfeed, bool>>>(),
-                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()
-                )).Returns(
-                    (Expression<Func<Newsfeed, bool>> predicate,
-                    Expression<Func<Newsfeed, NewsModel>> projection) =>
-                    expectedResult.Where(predicate.Compile()).Select(projection.Compile())
-                );
+                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()))
+                .Returns((Expression<Func<Newsfeed, bool>> predicate,
+                          Expression<Func<Newsfeed, NewsModel>> projection) =>
+                    expectedResult.Where(predicate.Compile()).Select(projection.Compile()));
 
             var actual = newsDataService.GetNews();
 
@@ -134,19 +129,16 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
                         IsImportant = false,
                         Content = "test content " + i,
                         User = new User() { AvatarPictureUrl = "test url " + i }
-                    }
-                );
+                    });
             }
 
             mockedNewsfeedRepository
                 .Setup(x => x.GetAll(
                     It.IsAny<Expression<Func<Newsfeed, bool>>>(),
-                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()
-                )).Returns(
-                    (Expression<Func<Newsfeed, bool>> predicate,
-                    Expression<Func<Newsfeed, NewsModel>> projection) =>
-                    expectedResult.Where(predicate.Compile()).Select(projection.Compile())
-                );
+                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()))
+                .Returns((Expression<Func<Newsfeed, bool>> predicate,
+                          Expression<Func<Newsfeed, NewsModel>> projection) =>
+                    expectedResult.Where(predicate.Compile()).Select(projection.Compile()));
 
             var actual = newsDataService.GetNews(count);
 
@@ -192,12 +184,10 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
             mockedNewsfeedRepository
                 .Setup(x => x.GetAll(
                     It.IsAny<Expression<Func<Newsfeed, bool>>>(),
-                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()
-                )).Returns(
-                    (Expression<Func<Newsfeed, bool>> predicate,
-                    Expression<Func<Newsfeed, NewsModel>> projection) =>
-                    expectedResult.Where(predicate.Compile()).Select(projection.Compile())
-                );
+                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()))
+                .Returns((Expression<Func<Newsfeed, bool>> predicate,
+                          Expression<Func<Newsfeed, NewsModel>> projection) =>
+                    expectedResult.Where(predicate.Compile()).Select(projection.Compile()));
 
             var actualResult = newsDataService.GetNews().ToList();
 
@@ -234,12 +224,10 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
             mockedNewsfeedRepository
                 .Setup(x => x.GetAll(
                     It.IsAny<Expression<Func<Newsfeed, bool>>>(),
-                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()
-                )).Returns(
-                    (Expression<Func<Newsfeed, bool>> predicate,
-                    Expression<Func<Newsfeed, NewsModel>> projection) =>
-                    mockedData.Where(predicate.Compile()).Select(projection.Compile())
-                );
+                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()))
+                .Returns((Expression<Func<Newsfeed, bool>> predicate,
+                          Expression<Func<Newsfeed, NewsModel>> projection) =>
+                    mockedData.Where(predicate.Compile()).Select(projection.Compile()));
 
             var actual = newsDataService.GetNews().First();
 
