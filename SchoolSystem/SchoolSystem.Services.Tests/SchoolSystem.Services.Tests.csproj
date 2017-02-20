@@ -78,6 +78,8 @@
     <Compile Include="ScheduleDataServiceTests\Constructor_Should.cs" />
     <Compile Include="ScheduleDataServiceTests\GetAllDaysOfWeek_Should.cs" />
     <Compile Include="ScheduleDataServiceTests\GetTodaysSchedule_Should.cs" />
+    <Compile Include="StudentManagementServiceTests\Constructor_Should.cs" />
+    <Compile Include="StudentManagementServiceTests\GetAllStudentsFromClass_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\Constructorr_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\CreateSubject_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\GetAllSubjects_Should.cs" />

@@ -22,7 +22,7 @@ namespace SchoolSystem.Web.Services
 
         public IEnumerable<StudentInfoModel> GetAllStudentsFromClass(int classId)
         {
-            return this.studentsRepo
+            var result = this.studentsRepo
                 .GetAll(x => x.ClassOfStudentsId == classId,
                 x => new StudentInfoModel()
                 {
@@ -30,6 +30,7 @@ namespace SchoolSystem.Web.Services
                     Fullname = x.User.FirstName + x.User.LastName
                 },
                 i => i.User);
+            return result;
         }
     }
 }
