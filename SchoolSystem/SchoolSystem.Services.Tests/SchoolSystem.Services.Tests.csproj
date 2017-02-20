@@ -66,6 +66,10 @@
     <Compile Include="ClassOfStudentsManagemtServiceTests\Constructor_Should.cs" />
     <Compile Include="ClassOfStudentsManagemtServiceTests\GetAllClassesWithSpecifiedSubject_Should.cs" />
     <Compile Include="ClassOfStudentsManagemtServiceTests\GetAllClasses_Should.cs" />
+    <Compile Include="MarksManagementServiceTests\AddMark_Should.cs" />
+    <Compile Include="EmailSenderServiceTests\Constructor_Should.cs" />
+    <Compile Include="MarksManagementServiceTests\Constructor_Should.cs" />
+    <Compile Include="MarksManagementServiceTests\GetAllMarks_Should.cs" />
     <Compile Include="NewsDataServiceTest\AddNews_Should.cs" />
     <Compile Include="NewsDataServiceTest\Constuctor_Should.cs" />
     <Compile Include="NewsDataServiceTest\GetImportantNews_Should.cs" />

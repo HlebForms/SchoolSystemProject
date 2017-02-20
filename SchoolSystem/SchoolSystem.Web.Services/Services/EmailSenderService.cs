@@ -1,4 +1,5 @@
-﻿using SchoolSystem.Web.Services.Contracts;
+﻿using Bytes2you.Validation;
+using SchoolSystem.Web.Services.Contracts;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
@@ -16,6 +17,7 @@ namespace SchoolSystem.Web.Services
 
         public EmailSenderService(SmtpClient client)
         {
+            Guard.WhenArgument(client, "SmtpClient").IsNull().Throw();
             this.Client = client;
         }
 

@@ -35,9 +35,9 @@ namespace SchoolSystem.Web.Services
         public void AddMark(string studentId, int subjectId, int markId)
         {
             var st = this.subjectStudenRepo
-                .GetFirst(x => x.StudentId == studentId
-                    && x.MarkId == markId
-                    && x.SubjectId == subjectId);
+                    .GetFirst(x => x.StudentId == studentId
+                        && x.MarkId == markId
+                        && x.SubjectId == subjectId);
 
             if (st == null)
             {

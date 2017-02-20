@@ -61,7 +61,7 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
         }
 
         [Test]
-        public void ReturnFalse_WhenAddingWasSuccessfull()
+        public void ReturnFalse_WhenAddingWasNotSuccessfull()
         {
             var mockedClassOfStudentsRepo = new Mock<IRepository<ClassOfStudents>>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
