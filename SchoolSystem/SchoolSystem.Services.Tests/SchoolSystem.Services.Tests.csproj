@@ -75,6 +75,10 @@
     <Compile Include="NewsDataServiceTest\GetImportantNews_Should.cs" />
     <Compile Include="NewsDataServiceTest\GetNews_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrationServiceTests\Constructor_Should.cs" />
+    <Compile Include="RegistrationServiceTests\GetAllUserRoles_Should.cs" />
+    <Compile Include="RegistrationServiceTests\RegisterStudent_Should.cs" />
+    <Compile Include="RegistrationServiceTests\RegisterTeacher_Should.cs" />
     <Compile Include="ScheduleDataServiceTests\Constructor_Should.cs" />
     <Compile Include="ScheduleDataServiceTests\GetAllDaysOfWeek_Should.cs" />
     <Compile Include="ScheduleDataServiceTests\GetTodaysSchedule_Should.cs" />
