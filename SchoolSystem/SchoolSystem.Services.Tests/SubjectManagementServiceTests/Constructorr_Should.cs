@@ -87,7 +87,7 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
             var mockedRepo = new Mock<IRepository<Subject>>().Object;
             var mockedUow = new Mock<IUnitOfWork>().Object;
 
-            Assert.That(() => new SubjectManagementService(mockedRepo, null, ()=> mockedUow),
+            Assert.That(() => new SubjectManagementService(mockedRepo, null, () => mockedUow),
                 Throws.ArgumentNullException.With.Message.Contain("subjectClassOfStudentsRepo"));
         }
     }

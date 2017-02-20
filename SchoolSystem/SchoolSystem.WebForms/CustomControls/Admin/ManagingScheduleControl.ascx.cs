@@ -77,7 +77,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
 
         private void ScheduleList_DeleteItem(int classId, int dayOfWeekId, int selectedSubjectId)
         {
-            this.EventRemoveSubjectFromSchedule(this, new RemovingSubjectFromScheduleEventArgs()
+            this.EventRemoveSubjectFromSchedule(this, new RemovingSubjectFromScheduleEventArgs
             {
                 ClassId = classId,
                 DaysOfWeekId = dayOfWeekId,
@@ -87,7 +87,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
 
         private void ScheduleList_InsertItem(int classId, int dayOfWeekId, int selectedSubjectId, DateTime sartHour, DateTime endHour)
         {
-            this.EventAddSubjectToSchedule(this, new AddingSubjectToScheduleEventArgs()
+            this.EventAddSubjectToSchedule(this, new AddingSubjectToScheduleEventArgs
             {
                 ClassId = classId,
                 DaysOfWeekId = dayOfWeekId,
@@ -104,7 +104,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
 
         public IEnumerable<Subject> PopulateSubjects()
         {
-            this.EventBitSubjectForCurrentClass(this, new BindSubjectsForClassEventArgs()
+            this.EventBitSubjectForCurrentClass(this, new BindSubjectsForClassEventArgs
             {
                 ClassId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue)
             });
@@ -124,7 +124,7 @@ namespace SchoolSystem.WebForms.CustomControls.Admin
 
         private void BindShceduleData()
         {
-            this.EventBindScheduleData(this, new ManagingScheduleEventArgs()
+            this.EventBindScheduleData(this, new ManagingScheduleEventArgs
             {
                 ClassId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue),
                 DayOfWeekId = int.Parse(this.DaysOfWeekDropDown.SelectedValue)

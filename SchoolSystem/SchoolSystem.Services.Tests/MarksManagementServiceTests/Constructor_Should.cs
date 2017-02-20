@@ -17,7 +17,6 @@ namespace SchoolSystem.Services.Tests.MarksManagementServiceTests
         [Test]
         public void Throw_When_SubjectStudentRepo_IsNull()
         {
-            //var mockedSubjectStudentRepo = new Mock<IRepository<SubjectStudent>>();
             var mockedMarksRepo = new Mock<IRepository<Mark>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
 
@@ -31,7 +30,6 @@ namespace SchoolSystem.Services.Tests.MarksManagementServiceTests
         public void Throw_When_MarksRepo_IsNull()
         {
             var mockedSubjectStudentRepo = new Mock<IRepository<SubjectStudent>>();
-            //var mockedMarksRepo = new Mock<IRepository<Mark>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
 
             var ex = Assert.Throws<ArgumentNullException>(() =>

@@ -26,7 +26,7 @@ namespace SchoolSystem.WebForms.CustomControls.Student
 
         private void BindGridView()
         {
-            this.EvenGetStudentMarks(this, new GetStudentMarksEventArgs()
+            this.EvenGetStudentMarks(this, new GetStudentMarksEventArgs
             {
                 StudentName = this.Page.User.Identity.Name
             });
@@ -56,7 +56,7 @@ namespace SchoolSystem.WebForms.CustomControls.Student
                     }
                     else
                     {
-                        this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderByDescending(x => x.SubjectName); ;
+                        this.ScoolReportCardGrid.DataSource = this.Model.StudentMarks.OrderByDescending(x => x.SubjectName);
                         this.ScoolReportCardGrid.DataBind();
                         this.ViewState["sortDirection"] = SortDirection.Ascending;
                     }

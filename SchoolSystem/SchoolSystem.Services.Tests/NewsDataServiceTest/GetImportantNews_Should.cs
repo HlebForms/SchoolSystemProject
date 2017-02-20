@@ -36,61 +36,59 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
                     IsImportant = true,
                     CreatedOn = DateTime.Now,
                     Content = "test content 1",
-                    User = new User(){AvatarPictureUrl = "test url 1"}
+                    User = new User() { AvatarPictureUrl = "test url 1" }
                 },
                 new Newsfeed()
                 {
                    IsImportant = true,
                    Content = "test content 2",
                    CreatedOn = DateTime.Now.AddDays(-1),
-                   User = new User(){AvatarPictureUrl = "test url 2"}
+                   User = new User() { AvatarPictureUrl = "test url 2" }
                 },
                 new Newsfeed()
                 {
                    IsImportant = true,
                    Content = "test content 3",
                    CreatedOn = DateTime.Now.AddDays(-2),
-                   User = new User(){AvatarPictureUrl = "test url 3"}
+                   User = new User() { AvatarPictureUrl = "test url 3" }
                 },
                 new Newsfeed()
                 {
                    IsImportant = true,
                    Content = "test content 4",
                    CreatedOn = DateTime.Now.AddDays(-3),
-                   User = new User(){AvatarPictureUrl = "test url 4"}
+                   User = new User() { AvatarPictureUrl = "test url 4" }
                 },
                 new Newsfeed()
                 {
                    IsImportant = true,
                    Content = "test content 5",
                    CreatedOn = DateTime.Now.AddDays(-4),
-                   User = new User(){AvatarPictureUrl = "test url 5"}
+                   User = new User() { AvatarPictureUrl = "test url 5" }
                 },
                 new Newsfeed()
                 {
                    IsImportant = true,
                    Content = "test content 6",
                    CreatedOn = DateTime.Now.AddDays(-5),
-                   User = new User(){AvatarPictureUrl = "test url 6"}
+                   User = new User() { AvatarPictureUrl = "test url 6" }
                 },
                 new Newsfeed()
                 {
                    IsImportant = true,
                    Content = "test content 7",
                    CreatedOn = DateTime.Now.AddDays(-6),
-                   User = new User(){AvatarPictureUrl = "test url 7"}
+                   User = new User() { AvatarPictureUrl = "test url 7" }
                 }
             };
 
             mockedNewsfeedRepository
                 .Setup(x => x.GetAll(
                     It.IsAny<Expression<Func<Newsfeed, bool>>>(),
-                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()
-                )).Returns(
-                    (Expression<Func<Newsfeed, bool>> predicate,
-                    Expression<Func<Newsfeed, NewsModel>> projection) =>
-                    expectedResult.Where(predicate.Compile()).Select(projection.Compile())
-                );
+                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()))
+                .Returns((Expression<Func<Newsfeed, bool>> predicate,
+                          Expression<Func<Newsfeed, NewsModel>> projection) =>
+                    expectedResult.Where(predicate.Compile()).Select(projection.Compile()));
 
             var actual = newsDataService.GetImportantNews();
 
@@ -158,12 +156,10 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
             mockedNewsfeedRepository
                 .Setup(x => x.GetAll(
                     It.IsAny<Expression<Func<Newsfeed, bool>>>(),
-                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()
-                )).Returns(
-                    (Expression<Func<Newsfeed, bool>> predicate,
-                    Expression<Func<Newsfeed, NewsModel>> projection) =>
-                    expectedResult.Where(predicate.Compile()).Select(projection.Compile())
-                );
+                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()))
+                .Returns((Expression<Func<Newsfeed, bool>> predicate,
+                          Expression<Func<Newsfeed, NewsModel>> projection) =>
+                    expectedResult.Where(predicate.Compile()).Select(projection.Compile()));
 
             var actualResult = newsDataService.GetImportantNews().ToList();
 
@@ -200,12 +196,10 @@ namespace SchoolSystem.Services.Tests.NewsDataServiceTest
             mockedNewsfeedRepository
                 .Setup(x => x.GetAll(
                     It.IsAny<Expression<Func<Newsfeed, bool>>>(),
-                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()
-                )).Returns(
-                    (Expression<Func<Newsfeed, bool>> predicate,
-                    Expression<Func<Newsfeed, NewsModel>> projection) =>
-                    mockedData.Where(predicate.Compile()).Select(projection.Compile())
-                );
+                    It.IsAny<Expression<Func<Newsfeed, NewsModel>>>()))
+                .Returns((Expression<Func<Newsfeed, bool>> predicate,
+                          Expression<Func<Newsfeed, NewsModel>> projection) =>
+                    mockedData.Where(predicate.Compile()).Select(projection.Compile()));
 
             var actual = newsDataService.GetImportantNews().First();
 

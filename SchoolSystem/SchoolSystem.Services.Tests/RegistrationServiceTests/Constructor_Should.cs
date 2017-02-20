@@ -19,7 +19,6 @@ namespace SchoolSystem.Services.Tests.RegistrationServiceTests
         [Test]
         public void Throw_When_userRolesRepo_IsNull()
         {
-            //var mockedUserRolesRepo = new Mock<IRepository<IdentityRole>>();
             var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
             var mockedStudentRepo = new Mock<IRepository<Student>>();
             var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
@@ -31,8 +30,7 @@ namespace SchoolSystem.Services.Tests.RegistrationServiceTests
                             mockedSubjectManagementService.Object,
                             mockedStudentRepo.Object,
                             mockedTeacherRepo.Object,
-                            mockedUnitOfWork.Object
-                        ));
+                            mockedUnitOfWork.Object));
 
             Assert.That(ex.ParamName, Is.EqualTo("userRolesRepo"));
         }
@@ -41,7 +39,6 @@ namespace SchoolSystem.Services.Tests.RegistrationServiceTests
         public void Throw_When_subjectManagementService_IsNull()
         {
             var mockedUserRolesRepo = new Mock<IRepository<IdentityRole>>();
-            //var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
             var mockedStudentRepo = new Mock<IRepository<Student>>();
             var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
@@ -52,8 +49,7 @@ namespace SchoolSystem.Services.Tests.RegistrationServiceTests
                             null,
                             mockedStudentRepo.Object,
                             mockedTeacherRepo.Object,
-                            mockedUnitOfWork.Object
-                        ));
+                            mockedUnitOfWork.Object));
 
             Assert.That(ex.ParamName, Is.EqualTo("subjectManagementService"));
         }
@@ -63,7 +59,6 @@ namespace SchoolSystem.Services.Tests.RegistrationServiceTests
         {
             var mockedUserRolesRepo = new Mock<IRepository<IdentityRole>>();
             var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
-            //var mockedStudentRepo = new Mock<IRepository<Student>>();
             var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
 
@@ -73,8 +68,7 @@ namespace SchoolSystem.Services.Tests.RegistrationServiceTests
                             mockedSubjectManagementService.Object,
                             null,
                             mockedTeacherRepo.Object,
-                            mockedUnitOfWork.Object
-                        ));
+                            mockedUnitOfWork.Object));
 
             Assert.That(ex.ParamName, Is.EqualTo("studentRepo"));
         }
@@ -85,7 +79,6 @@ namespace SchoolSystem.Services.Tests.RegistrationServiceTests
             var mockedUserRolesRepo = new Mock<IRepository<IdentityRole>>();
             var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
             var mockedStudentRepo = new Mock<IRepository<Student>>();
-            //var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
 
             var ex = Assert.Throws<ArgumentNullException>(() =>
@@ -94,8 +87,7 @@ namespace SchoolSystem.Services.Tests.RegistrationServiceTests
                             mockedSubjectManagementService.Object,
                             mockedStudentRepo.Object,
                             null,
-                            mockedUnitOfWork.Object
-                        ));
+                            mockedUnitOfWork.Object));
 
             Assert.That(ex.ParamName, Is.EqualTo("teacherRepo"));
         }
@@ -107,7 +99,6 @@ namespace SchoolSystem.Services.Tests.RegistrationServiceTests
             var mockedSubjectManagementService = new Mock<ISubjectManagementService>();
             var mockedStudentRepo = new Mock<IRepository<Student>>();
             var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
-            //var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
 
             var ex = Assert.Throws<ArgumentNullException>(() =>
                         new RegistrationService(
@@ -115,8 +106,7 @@ namespace SchoolSystem.Services.Tests.RegistrationServiceTests
                             mockedSubjectManagementService.Object,
                             mockedStudentRepo.Object,
                             mockedTeacherRepo.Object,
-                            null
-                        ));
+                            null));
 
             Assert.That(ex.ParamName, Is.EqualTo("unitOfWork"));
         }

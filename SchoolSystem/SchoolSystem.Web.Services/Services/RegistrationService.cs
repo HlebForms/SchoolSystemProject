@@ -11,7 +11,6 @@ namespace SchoolSystem.Web.Services
     public class RegistrationService : IRegistrationService
     {
         private readonly IRepository<IdentityRole> userRolesRepo;
-        //private readonly IRepository<Subject> subjectsRepo;
         private readonly IRepository<Student> studentRepo;
         private readonly IRepository<Teacher> teacherRepo;
         private readonly Func<IUnitOfWork> unitOfWork;
@@ -19,22 +18,18 @@ namespace SchoolSystem.Web.Services
 
         public RegistrationService(
             IRepository<IdentityRole> userRolesRepo,
-            //IRepository<Subject> subjectsRepo,
             ISubjectManagementService subjectManagementService,
             IRepository<Student> studentRepo,
             IRepository<Teacher> teacherRepo,
-            Func<IUnitOfWork> unitOfWork
-            )
+            Func<IUnitOfWork> unitOfWork)
         {
             Guard.WhenArgument(userRolesRepo, "userRolesRepo").IsNull().Throw();
             Guard.WhenArgument(subjectManagementService, "subjectManagementService").IsNull().Throw();
-            //Guard.WhenArgument(subjectsRepo, "subjectsRepo").IsNull().Throw();
             Guard.WhenArgument(studentRepo, "studentRepo").IsNull().Throw();
             Guard.WhenArgument(teacherRepo, "teacherRepo").IsNull().Throw();
             Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
 
             this.userRolesRepo = userRolesRepo;
-            //this.subjectsRepo = subjectsRepo;
             this.subjectManagementService = subjectManagementService;
             this.studentRepo = studentRepo;
             this.teacherRepo = teacherRepo;

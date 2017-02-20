@@ -90,7 +90,7 @@ namespace SchoolSystem.Services.Tests.AccountManagementServiceTests
             var list = new List<User>()
             {
                expecedUser,
-                new User() {UserName = "alabala" }
+                new User() { UserName = "alabala" }
             };
 
             Expression<Func<User, bool>> funcFromMethod = null;

@@ -28,7 +28,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
         {
             if (!this.IsPostBack)
             {
-                this.EventBindSubjectsForTheSelectedTeacher(this, new BindSubjectsEventArgs()
+                this.EventBindSubjectsForTheSelectedTeacher(this, new BindSubjectsEventArgs
                 {
                     TecherName = this.Page.User.Identity.Name
                 });
@@ -42,7 +42,7 @@ namespace SchoolSystem.WebForms.CustomControls.Teacher
 
         public IEnumerable<StudentInfoModel> PopulateStudentsDropDown()
         {
-            this.EventBindStudents(this, new BindStudentsEventArgs()
+            this.EventBindStudents(this, new BindStudentsEventArgs
             {
                 ClassId = int.Parse(this.ClassOfStudentsDropDown.SelectedValue)
             });

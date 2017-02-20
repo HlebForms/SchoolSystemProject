@@ -67,7 +67,6 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
         {
             var mockedSubjectRepo = new Mock<IRepository<Subject>>();
             var mockedUserRepo = new Mock<IRepository<User>>();
-            //var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
             var mockedSubjectClassOfStudentsDaysOfWeekRepo = new Mock<IRepository<SubjectClassOfStudentsDaysOfWeek>>();
             var mockedDaysOfWeekRepo = new Mock<IRepository<DaysOfWeek>>();
             var mockedStudentRepo = new Mock<IRepository<Student>>();
@@ -93,7 +92,6 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
             var mockedSubjectRepo = new Mock<IRepository<Subject>>();
             var mockedUserRepo = new Mock<IRepository<User>>();
             var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
-            //var mockedSubjectClassOfStudentsDaysOfWeekRepo = new Mock<IRepository<SubjectClassOfStudentsDaysOfWeek>>();
             var mockedDaysOfWeekRepo = new Mock<IRepository<DaysOfWeek>>();
             var mockedStudentRepo = new Mock<IRepository<Student>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
@@ -119,7 +117,6 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
             var mockedUserRepo = new Mock<IRepository<User>>();
             var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
             var mockedSubjectClassOfStudentsDaysOfWeekRepo = new Mock<IRepository<SubjectClassOfStudentsDaysOfWeek>>();
-            //var mockedDaysOfWeekRepo = new Mock<IRepository<DaysOfWeek>>();
             var mockedStudentRepo = new Mock<IRepository<Student>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
 
@@ -145,7 +142,6 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
             var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
             var mockedSubjectClassOfStudentsDaysOfWeekRepo = new Mock<IRepository<SubjectClassOfStudentsDaysOfWeek>>();
             var mockedDaysOfWeekRepo = new Mock<IRepository<DaysOfWeek>>();
-            //var mockedStudentRepo = new Mock<IRepository<Student>>();
             var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
 
             var ex = Assert.Throws<ArgumentNullException>(() =>
@@ -171,7 +167,6 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
             var mockedSubjectClassOfStudentsDaysOfWeekRepo = new Mock<IRepository<SubjectClassOfStudentsDaysOfWeek>>();
             var mockedDaysOfWeekRepo = new Mock<IRepository<DaysOfWeek>>();
             var mockedStudentRepo = new Mock<IRepository<Student>>();
-            //var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
 
             var ex = Assert.Throws<ArgumentNullException>(() =>
             {

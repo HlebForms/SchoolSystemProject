@@ -72,8 +72,8 @@ namespace SchoolSystem.Web.Services
         public IEnumerable<SubjectBasicInfoModel> GetAllSubjectsWithTeacher()
         {
             return this.subjectRepo
-              .GetAll(x => x.TeacherId != null
-              , x => new SubjectBasicInfoModel()
+              .GetAll(x => x.TeacherId != null,
+              x => new SubjectBasicInfoModel()
               {
                   Id = x.Id,
                   Name = x.Name

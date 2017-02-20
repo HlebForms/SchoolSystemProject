@@ -26,16 +26,15 @@ namespace SchoolSystem.Services.Tests.TeacherManagementServiceTests
             mockedTeachersRepo.Setup(x => x.GetAll(
                 It.IsAny<Expression<Func<Teacher, bool>>>(),
                 It.IsAny<Expression<Func<Teacher, TeacherBasicInfoModel>>>(),
-                It.IsAny<Expression<Func<Teacher, object>>[]>()
-                ));
+                It.IsAny<Expression<Func<Teacher, object>>[]>()));
 
             service.GetAllTeachers();
 
             mockedTeachersRepo.Verify(x => x.GetAll(
                 It.IsAny<Expression<Func<Teacher, bool>>>(),
                 It.IsAny<Expression<Func<Teacher, TeacherBasicInfoModel>>>(),
-                It.IsAny<Expression<Func<Teacher, object>>[]>()
-                ), Times.Once);
+                It.IsAny<Expression<Func<Teacher, object>>[]>()), 
+                Times.Once);
         }
     }
 }

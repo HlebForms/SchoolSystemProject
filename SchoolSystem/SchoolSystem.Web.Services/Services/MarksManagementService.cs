@@ -18,8 +18,7 @@ namespace SchoolSystem.Web.Services
         public MarksManagementService(
             IRepository<SubjectStudent> subjectStudenRepo,
             IRepository<Mark> marksRepo,
-            Func<IUnitOfWork> unitOfWork
-            )
+            Func<IUnitOfWork> unitOfWork)
         {
             Guard.WhenArgument(subjectStudenRepo, "subjectStudenRepo").IsNull().Throw();
             Guard.WhenArgument(marksRepo, "marksRepo").IsNull().Throw();

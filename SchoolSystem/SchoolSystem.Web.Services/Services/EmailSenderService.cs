@@ -45,7 +45,7 @@ namespace SchoolSystem.Web.Services
             var content = new StringBuilder();
             content.Append("Здравейте, <br /><br />");
             content.Append("Вече имате регистрация в училищната система. <br />");
-            content.Append("Вашият акаунт за достъп е : <b>"+receiver+"</b> <br />");
+            content.Append("Вашият акаунт за достъп е : <b>" + receiver + "</b> <br />");
             content.Append("Вашата парола е : <b>" + password + "</b> <br /><br />");
             content.Append("За по-голяма сигурност, може влезте в системата и сменете паролата си!");
 

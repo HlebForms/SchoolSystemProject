@@ -42,7 +42,7 @@ namespace SchoolSystem.WebForms.CustomControls.Account
                 string avatarStoragePath = Server.MapPath("~/Images/avatars/") + filename;
                 string userAvatarUrl = "~/Images/avatars/" + filename;
 
-                this.EventUploadAvatar(this, new AvatarUploadEventArgs()
+                this.EventUploadAvatar(this, new AvatarUploadEventArgs
                 {
                     LoggedUserUserName = loggedUserUserName,
                     PostedFile = file,
