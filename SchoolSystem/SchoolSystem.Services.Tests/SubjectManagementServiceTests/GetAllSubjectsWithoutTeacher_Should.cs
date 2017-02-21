@@ -26,8 +26,8 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
 
             var data = new List<Subject>()
             {
-                new Subject() { Id = 1, Name = "Subj1" ,Teacher = null},
-                new Subject() { Id = 1, Name = "Subj1", Teacher = new Teacher() }
+                new Subject() { Id = 1, Name = "Subj1" ,TeacherId = null},
+                new Subject() { Id = 1, Name = "Subj1", TeacherId = "teacherId" }
             };
 
             mockedSubjectRepo.Setup(x =>
@@ -56,8 +56,8 @@ namespace SchoolSystem.Services.Tests.SubjectManagementServiceTests
 
             var data = new List<Subject>()
             {
-                new Subject() { Id = 1, Name = "Subj1" ,Teacher = new Teacher()},
-                new Subject() { Id = 1, Name = "Subj1", Teacher = new Teacher() }
+                new Subject() { Id = 1, Name = "Subj1" ,TeacherId = "someid" },
+                new Subject() { Id = 1, Name = "Subj1", TeacherId = "anotherTeacherId" }
             };
 
             mockedSubjectRepo.Setup(x =>

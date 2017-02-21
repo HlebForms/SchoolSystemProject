@@ -92,12 +92,14 @@
     <Compile Include="ScheduleDataServiceTests\RemoveSubjectFromSchedule_Should.cs" />
     <Compile Include="StudentManagementServiceTests\Constructor_Should.cs" />
     <Compile Include="StudentManagementServiceTests\GetAllStudentsFromClass_Should.cs" />
+    <Compile Include="SubjectManagementServiceTests\AddSubjectsToTeacher_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\Constructorr_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\CreateSubject_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\GetAllSubjectsWithoutTeacher_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\GetAllSubjectsWithTeacher_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\GetAllSubjects_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\GetAllSubjectsAlreadyAssignedToTheClass_Should.cs" />
+    <Compile Include="SubjectManagementServiceTests\GetSubjectsNotYetAssignedToTheClass_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\GetSubjectsPerTeacher_Should.cs" />
     <Compile Include="TeacherManagementServiceTests\Constructor_Should.cs" />
     <Compile Include="TeacherManagementServiceTests\GetAllTeachers_Should.cs" />

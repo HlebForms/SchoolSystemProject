@@ -56,7 +56,7 @@ namespace SchoolSystem.Web.Services
 
         public IEnumerable<SubjectBasicInfoModel> GetAllSubjectsWithoutTeacher()
         {
-            return this.subjectRepo.GetAll(x => x.Teacher == null,
+            return this.subjectRepo.GetAll(x => x.TeacherId == null,
                 x => new SubjectBasicInfoModel()
                 {
                     Id = x.Id,
@@ -105,15 +105,8 @@ namespace SchoolSystem.Web.Services
         public IEnumerable<SubjectBasicInfoModel> GetSubjectsNotYetAssignedToTheClass(int classId)
         {
             var alreadyAssignedSubjectsIds = this.subjectClassOfStudentsRepo
-                 .GetAll(x => x.ClassOfStudentsId == classId
-                 && x.Subject.TeacherId != null,
-                 s => s.SubjectId,
-                 i => i.Subject);
-
-            if (alreadyAssignedSubjectsIds == null)
-            {
-                alreadyAssignedSubjectsIds = new List<int>();
-            }
+                 .GetAll(x => x.ClassOfStudentsId == classId,
+                 s => s.SubjectId);
 
             var result = this.subjectRepo.GetAll(x =>
             !alreadyAssignedSubjectsIds.Contains(x.Id)
@@ -130,16 +123,11 @@ namespace SchoolSystem.Web.Services
         public bool AddSubjectsToTeacher(string teacherId, IEnumerable<int> subjectIds)
         {
             Guard.WhenArgument(teacherId, "teacherId").IsNullOrEmpty().Throw();
-            Guard.WhenArgument(subjectIds, "subjectIds").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(subjectIds, "subjectIds").IsNull().Throw();
 
-            var subjects = this.subjectRepo.GetAll(x => subjectIds.Contains(x.Id), x => x);
+            var subjects = this.subjectRepo.GetAll(x => subjectIds.Contains(x.Id) && x.TeacherId == null, x => x);
 
-            if (subjects == null)
-            {
-                return false;
-            }
-
-            if (subjectIds.Count() != subjects.Count())
+            if (subjects.Count() == 0)
             {
                 return false;
             }
