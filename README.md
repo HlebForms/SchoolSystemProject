@@ -25,3 +25,9 @@ manage schedule for all classes.
 - Post Normal messages
 - See their shcedule for the day
 - Change avatar and password
+
+# Developed By
+| Name | [Student system](https://telerikacademy.com) username | [Github](https://github.com) username|
+|:----|:-----------------------|:-----------------------------|
+| Kiril Velichkov | Kiril_Velichkov | KirilVelichkov |
+| Stoyan Ruzmanov | stoyan.ruzmanov | RuzmanovDev |
