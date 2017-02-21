@@ -31,3 +31,5 @@ manage schedule for all classes.
 |:----|:-----------------------|:-----------------------------|
 | Kiril Velichkov | Kiril_Velichkov | KirilVelichkov |
 | Stoyan Ruzmanov | stoyan.ruzmanov | RuzmanovDev |
+
+[Video demo](https://www.youtube.com/watch?v=YljZXV-EHYk&feature=youtu.be)
