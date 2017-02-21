@@ -63,7 +63,7 @@ namespace SchoolSystem.MVP.Admin.Presenters
 
         private void BindScheduleData(object sender, ManagingScheduleEventArgs e)
         {
-            this.View.Model.CurrentSchedule = this.scheduleService.GetSchedulePerDay(e.DayOfWeekId, e.ClassId);
+            this.View.Model.CurrentSchedule = this.scheduleService.GetClassScheduleForTheDay(e.DayOfWeekId, e.ClassId);
         }
     }
 }

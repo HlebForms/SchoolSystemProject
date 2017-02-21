@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Bytes2you.Validation;
 using SchoolSystem.Data.Contracts;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Data.Models.CustomModels;
 using SchoolSystem.Web.Services.Contracts;
-
-using Bytes2you.Validation;
-using SchoolSystem.Data;
-using System.Data.Entity;
 
 namespace SchoolSystem.Web.Services
 {
@@ -73,7 +69,7 @@ namespace SchoolSystem.Web.Services
 
             var daySchedule = this.subjectClassOfStudentsDaysOfWeekRepo
                 .GetAll(x => x.ClassOfStudentsId == userClassOfStudentsId
-                        && x.DaysOfWeek.Id == 2,
+                        && x.DaysOfWeek.Id == (int)dayOfWeek,
                         x => new ScheduleModel()
                         {
                             SubjectId = x.SubjectId,
@@ -110,7 +106,7 @@ namespace SchoolSystem.Web.Services
 
             var subjects =
                 this.subjectClassOfStudentsDaysOfWeekRepo
-                .GetAll(x => x.DaysOfWeekId == 2 &&
+                .GetAll(x => x.DaysOfWeekId == (int)dayOfWeek &&
                         subjectIds.Contains(x.SubjectId),
                         x => new ScheduleModel
                         {
@@ -133,7 +129,7 @@ namespace SchoolSystem.Web.Services
             return this.daysOfWeekRepo.GetAll().OrderBy(x => x.Id);
         }
 
-        public IEnumerable<ManagingScheduleModel> GetSchedulePerDay(int dayOfWeekId, int classId)
+        public IEnumerable<ManagingScheduleModel> GetClassScheduleForTheDay(int dayOfWeekId, int classId)
         {
             var data = new List<ManagingScheduleModel>();
 
@@ -171,6 +167,7 @@ namespace SchoolSystem.Web.Services
                     return uow.Commit();
 
                 }
+
                 catch (Exception)
                 {
                     return false;
@@ -184,6 +181,11 @@ namespace SchoolSystem.Web.Services
                 .GetFirst(x => x.ClassOfStudentsId == classId
                                 && x.DaysOfWeekId == daysOfWeekId
                                 && x.SubjectId == subjectId);
+
+            if (entity == null)
+            {
+                return;
+            }
 
             using (var uow = this.unitOfWork())
             {

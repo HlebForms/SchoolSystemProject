@@ -1,13 +1,9 @@
-﻿using Moq;
+﻿using System;
+using Moq;
 using NUnit.Framework;
 using SchoolSystem.Data.Contracts;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Web.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
 {
@@ -35,6 +31,7 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
                     mockedStudentRepo.Object,
                     mockedUnitOfWork.Object);
             });
+
             Assert.That(ex.ParamName, Is.EqualTo("subjectRepo"));
         }
 
@@ -59,6 +56,7 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
                          mockedStudentRepo.Object,
                          mockedUnitOfWork.Object);
              });
+
             Assert.That(ex.ParamName, Is.EqualTo("userRepo"));
         }
 
@@ -83,6 +81,7 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
                         mockedStudentRepo.Object,
                         mockedUnitOfWork.Object);
             });
+
             Assert.That(ex.ParamName, Is.EqualTo("teacherRepo"));
         }
 
@@ -107,6 +106,7 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
                         mockedStudentRepo.Object,
                         mockedUnitOfWork.Object);
             });
+
             Assert.That(ex.ParamName, Is.EqualTo("subjectClassOfStudentsDaysOfWeekRepo"));
         }
 
@@ -131,6 +131,7 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
                         mockedStudentRepo.Object,
                         mockedUnitOfWork.Object);
             });
+
             Assert.That(ex.ParamName, Is.EqualTo("daysOfWeekRepo"));
         }
 
@@ -155,6 +156,7 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
                         null,
                         mockedUnitOfWork.Object);
             });
+
             Assert.That(ex.ParamName, Is.EqualTo("studentRepo"));
         }
 
@@ -179,8 +181,8 @@ namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
                         mockedStudentRepo.Object,
                         null);
             });
+
             Assert.That(ex.ParamName, Is.EqualTo("unitOfWork"));
         }
-
     }
 }

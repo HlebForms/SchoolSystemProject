@@ -83,9 +83,13 @@
     <Compile Include="RegistrationServiceTests\GetAllUserRoles_Should.cs" />
     <Compile Include="RegistrationServiceTests\RegisterStudent_Should.cs" />
     <Compile Include="RegistrationServiceTests\RegisterTeacher_Should.cs" />
+    <Compile Include="ScheduleDataServiceTests\AddSubjectToSchedule_Should.cs" />
     <Compile Include="ScheduleDataServiceTests\Constructor_Should.cs" />
     <Compile Include="ScheduleDataServiceTests\GetAllDaysOfWeek_Should.cs" />
-    <Compile Include="ScheduleDataServiceTests\GetTodaysSchedule_Should.cs" />
+    <Compile Include="ScheduleDataServiceTests\GetClassScheduleForTheDay_Should.cs" />
+    <Compile Include="ScheduleDataServiceTests\GetStudentScheduleForTheDay_Should.cs" />
+    <Compile Include="ScheduleDataServiceTests\GetTeacherScheduleForTheDay_Should.cs" />
+    <Compile Include="ScheduleDataServiceTests\RemoveSubjectFromSchedule_Should.cs" />
     <Compile Include="StudentManagementServiceTests\Constructor_Should.cs" />
     <Compile Include="StudentManagementServiceTests\GetAllStudentsFromClass_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\Constructorr_Should.cs" />

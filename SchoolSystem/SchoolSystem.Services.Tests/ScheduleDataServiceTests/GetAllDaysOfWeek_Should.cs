@@ -1,13 +1,10 @@
-﻿using Moq;
+﻿using System;
+using System.Collections.Generic;
+using Moq;
 using NUnit.Framework;
 using SchoolSystem.Data.Contracts;
 using SchoolSystem.Data.Models;
 using SchoolSystem.Web.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
 {

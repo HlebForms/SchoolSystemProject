@@ -1,0 +1,250 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using Moq;
+using NUnit.Framework;
+using SchoolSystem.Data.Contracts;
+using SchoolSystem.Data.Models;
+using SchoolSystem.Data.Models.CustomModels;
+using SchoolSystem.Web.Services;
+
+namespace SchoolSystem.Services.Tests.ScheduleDataServiceTests
+{
+    [TestFixture]
+    public class GetStudentScheduleForTheDay_Should
+    {
+        [Test]
+        public void ThrowArgumentException_WithMessageContaining_Username_WhenUserNameIsNull()
+        {
+            var mockedSubjectRepo = new Mock<IRepository<Subject>>();
+            var mockedUserRepo = new Mock<IRepository<User>>();
+            var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
+            var mockedSubjectClassOfStudentsDaysOfWeekRepo = new Mock<IRepository<SubjectClassOfStudentsDaysOfWeek>>();
+            var mockedDaysOfWeekRepo = new Mock<IRepository<DaysOfWeek>>();
+            var mockedStudentRepo = new Mock<IRepository<Student>>();
+            var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+
+            var scheduleService = new ScheduleDataService(
+                      mockedSubjectRepo.Object,
+                      mockedUserRepo.Object,
+                      mockedTeacherRepo.Object,
+                      mockedSubjectClassOfStudentsDaysOfWeekRepo.Object,
+                      mockedDaysOfWeekRepo.Object,
+                      mockedStudentRepo.Object,
+                      mockedUnitOfWork.Object);
+
+            Assert.That(
+                () => scheduleService.GetStudentScheduleForTheDay(It.IsAny<DayOfWeek>(), null),
+                Throws.ArgumentNullException.With.Message.Contain("username"));
+        }
+
+        [Test]
+        public void Throw_ArgumentException_WithMessageContaining_Username_WhenUserNameIsEmptyString()
+        {
+            var mockedSubjectRepo = new Mock<IRepository<Subject>>();
+            var mockedUserRepo = new Mock<IRepository<User>>();
+            var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
+            var mockedSubjectClassOfStudentsDaysOfWeekRepo = new Mock<IRepository<SubjectClassOfStudentsDaysOfWeek>>();
+            var mockedDaysOfWeekRepo = new Mock<IRepository<DaysOfWeek>>();
+            var mockedStudentRepo = new Mock<IRepository<Student>>();
+            var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+
+            var scheduleService = new ScheduleDataService(
+                      mockedSubjectRepo.Object,
+                      mockedUserRepo.Object,
+                      mockedTeacherRepo.Object,
+                      mockedSubjectClassOfStudentsDaysOfWeekRepo.Object,
+                      mockedDaysOfWeekRepo.Object,
+                      mockedStudentRepo.Object,
+                      mockedUnitOfWork.Object);
+
+            Assert.That(
+                () => scheduleService.GetStudentScheduleForTheDay(It.IsAny<DayOfWeek>(), string.Empty),
+                Throws.ArgumentException.With.Message.Contain("username"));
+        }
+
+        [Test]
+        public void Return_EmptyCollection_AndCallGetFirstMethodFromUserRepoOnce_WhenUserFoundIsNull()
+        {
+            var mockedSubjectRepo = new Mock<IRepository<Subject>>();
+            var mockedUserRepo = new Mock<IRepository<User>>();
+            var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
+            var mockedSubjectClassOfStudentsDaysOfWeekRepo = new Mock<IRepository<SubjectClassOfStudentsDaysOfWeek>>();
+            var mockedDaysOfWeekRepo = new Mock<IRepository<DaysOfWeek>>();
+            var mockedStudentRepo = new Mock<IRepository<Student>>();
+            var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+
+            User expectedReturnFromRepo = null;
+            mockedUserRepo
+                .Setup(x => x.GetFirst(It.IsAny<Expression<Func<User, bool>>>()))
+                .Returns(expectedReturnFromRepo);
+
+            var scheduleService = new ScheduleDataService(
+                      mockedSubjectRepo.Object,
+                      mockedUserRepo.Object,
+                      mockedTeacherRepo.Object,
+                      mockedSubjectClassOfStudentsDaysOfWeekRepo.Object,
+                      mockedDaysOfWeekRepo.Object,
+                      mockedStudentRepo.Object,
+                      mockedUnitOfWork.Object);
+
+            var result = scheduleService.GetStudentScheduleForTheDay(It.IsIn<DayOfWeek>(), "NotNullUserName");
+
+            mockedUserRepo.Verify(x => x.GetFirst(It.IsAny<Expression<Func<User, bool>>>()), Times.Once);
+            mockedStudentRepo.Verify(x => x.GetFirst(It.IsAny<Expression<Func<Student, bool>>>()), Times.Never);
+            Assert.AreEqual(0, result.Count());
+        }
+
+        [Test]
+        public void Return_EmptyCollection_AndCallGetFirstMethodFromStudentsRepoOnce_WhenUserClassOfStudentsFoundIsNull()
+        {
+            var mockedSubjectRepo = new Mock<IRepository<Subject>>();
+            var mockedUserRepo = new Mock<IRepository<User>>();
+            var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
+            var mockedSubjectClassOfStudentsDaysOfWeekRepo = new Mock<IRepository<SubjectClassOfStudentsDaysOfWeek>>();
+            var mockedDaysOfWeekRepo = new Mock<IRepository<DaysOfWeek>>();
+            var mockedStudentRepo = new Mock<IRepository<Student>>();
+            var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+
+            mockedUserRepo
+               .Setup(x => x.GetFirst(It.IsAny<Expression<Func<User, bool>>>()))
+               .Returns(new User());
+
+            Student expectedReturnFromRepo = null;
+            mockedStudentRepo
+                .Setup(x => x.GetFirst(It.IsAny<Expression<Func<Student, bool>>>()))
+                .Returns(expectedReturnFromRepo);
+
+            var scheduleService = new ScheduleDataService(
+                      mockedSubjectRepo.Object,
+                      mockedUserRepo.Object,
+                      mockedTeacherRepo.Object,
+                      mockedSubjectClassOfStudentsDaysOfWeekRepo.Object,
+                      mockedDaysOfWeekRepo.Object,
+                      mockedStudentRepo.Object,
+                      mockedUnitOfWork.Object);
+
+            var result = scheduleService.GetStudentScheduleForTheDay(It.IsIn<DayOfWeek>(), "NotNullUserName");
+
+            mockedStudentRepo.Verify(x => x.GetFirst(It.IsAny<Expression<Func<Student, bool>>>()), Times.Once);
+            Assert.AreEqual(0, result.Count());
+        }
+
+        [Test]
+        public void ReturnCorrectlyMappedData()
+        {
+            var mockedSubjectRepo = new Mock<IRepository<Subject>>();
+            var mockedUserRepo = new Mock<IRepository<User>>();
+            var mockedTeacherRepo = new Mock<IRepository<Teacher>>();
+            var mockedSubjectClassOfStudentsDaysOfWeekRepo = new Mock<IRepository<SubjectClassOfStudentsDaysOfWeek>>();
+            var mockedDaysOfWeekRepo = new Mock<IRepository<DaysOfWeek>>();
+            var mockedStudentRepo = new Mock<IRepository<Student>>();
+            var mockedUnitOfWork = new Mock<Func<IUnitOfWork>>();
+
+            var scheduleService = new ScheduleDataService(
+                      mockedSubjectRepo.Object,
+                      mockedUserRepo.Object,
+                      mockedTeacherRepo.Object,
+                      mockedSubjectClassOfStudentsDaysOfWeekRepo.Object,
+                      mockedDaysOfWeekRepo.Object,
+                      mockedStudentRepo.Object,
+                      mockedUnitOfWork.Object);
+
+            var studentUserName = "Pesho";
+            var user = new User()
+            {
+                UserName = studentUserName
+            };
+
+            mockedUserRepo
+                .Setup(x => x.GetFirst(It.IsAny<Expression<Func<User, bool>>>()))
+                .Returns(user);
+
+            var classOfStudnetsName = "ClassOfStudentsName";
+            var classOfStudents = new ClassOfStudents()
+            {
+                Id = 1,
+                Name = classOfStudnetsName
+            };
+
+            var student = new Student()
+            {
+                ClassOfStudents = classOfStudents,
+                User = user,
+                Id = user.Id,
+                ClassOfStudentsId = classOfStudents.Id
+            };
+
+            mockedStudentRepo
+                .Setup(x => x.GetFirst(It.IsAny<Expression<Func<Student, bool>>>()))
+                .Returns(student);
+
+            DayOfWeek dayOfWeek = DayOfWeek.Monday;
+            var day = new DaysOfWeek() { Id = 1, Name = dayOfWeek.ToString() };
+
+            var startHour = It.IsAny<DateTime>();
+            var endHour = It.IsAny<DateTime>();
+
+            var subjectName = "test";
+            var subjectId = 1;
+
+            var teacher = new Teacher()
+            {
+                User = new User()
+                {
+                    LastName = "TeacherLastName"
+                }
+            };
+
+            var subject = new Subject()
+            {
+                Name = subjectName,
+                Teacher = teacher,
+                Id = subjectId,
+                ImageUrl = "UrlToTheImage"
+            };
+
+            var subjectsClassOfStudnets = new SubjectClassOfStudents()
+            {
+                ClassOfStudentsId = 1,
+                Subject = subject,
+                ClassOfStudents = classOfStudents
+            };
+
+            var data = new List<SubjectClassOfStudentsDaysOfWeek>()
+            {
+                new SubjectClassOfStudentsDaysOfWeek()
+                {
+                    SubjectClassOfStudents = subjectsClassOfStudnets,
+                    StartHour = startHour,
+                    EndHour = endHour,
+                    ClassOfStudentsId = 1,
+                    DaysOfWeekId = 1,
+                    SubjectId = 1,
+                    DaysOfWeek = day
+                }
+            };
+
+            IEnumerable<ScheduleModel> expectedResult = null;
+            mockedSubjectClassOfStudentsDaysOfWeekRepo
+                .Setup(
+                x => x.GetAll(
+                It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, bool>>>(),
+                It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, ScheduleModel>>>(),
+                It.IsAny<Expression<Func<SubjectClassOfStudentsDaysOfWeek, object>>[]>()))
+            .Returns((Expression<Func<SubjectClassOfStudentsDaysOfWeek, bool>> predicate,
+                      Expression<Func<SubjectClassOfStudentsDaysOfWeek, ScheduleModel>> expression,
+                      Expression<Func<SubjectClassOfStudentsDaysOfWeek, object>>[] include) =>
+            {
+                expectedResult = data.Where(predicate.Compile()).Select(expression.Compile()).ToList();
+                return expectedResult;
+            });
+
+            // ACT
+            var result = scheduleService.GetStudentScheduleForTheDay(dayOfWeek, studentUserName);
+
+            CollectionAssert.AreEquivalent(expectedResult, result);
+        }
+    }
+}

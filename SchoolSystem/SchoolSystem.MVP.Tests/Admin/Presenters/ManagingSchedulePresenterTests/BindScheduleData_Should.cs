@@ -39,7 +39,7 @@ namespace SchoolSystem.MVP.Tests.Admin.Presenters.ManagingSchedulePresenterTests
             var expected = new List<ManagingScheduleModel>();
 
             mockedScheduleService
-               .Setup(x => x.GetSchedulePerDay(It.IsAny<int>(), It.IsAny<int>()))
+               .Setup(x => x.GetClassScheduleForTheDay(It.IsAny<int>(), It.IsAny<int>()))
                .Returns(expected);
 
             mockedView.Raise(x => x.EventBindScheduleData += null, args);

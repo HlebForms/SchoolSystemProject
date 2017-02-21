@@ -49,6 +49,7 @@ namespace SchoolSystem.Services.Tests.ClassOfStudentsManagemtServiceTests
 
             mockedSubjectClassOfStudentsRepo
                 .Verify(x => x.GetAll(It.IsAny<Expression<Func<SubjectClassOfStudents, bool>>>(), It.IsAny<Expression<Func<SubjectClassOfStudents, ClassOfStudents>>>()), Times.Once);
+
             CollectionAssert.AreEquivalent(expected, result);
         }
     }
