@@ -76,7 +76,6 @@ namespace SchoolSystem.WebForms.App_Start
                new ServicesModule(),
                new DataConfig(),
                new ProvidersModule());
-
         }
     }
 }

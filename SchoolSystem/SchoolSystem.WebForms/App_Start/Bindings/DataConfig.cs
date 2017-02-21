@@ -19,7 +19,7 @@ namespace SchoolSystem.WebForms.App_Start.Bindings
             this.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
 
             this.Bind<Func<IUnitOfWork>>().ToMethod(ctx => () => ctx.Kernel.Get<EfUnitOfWork>());
-            this.Bind<IUnitOfWork>().To<EfUnitOfWork>().InSingletonScope();
+            this.Bind<IUnitOfWork>().To<EfUnitOfWork>().InRequestScope();
         }
     }
 }

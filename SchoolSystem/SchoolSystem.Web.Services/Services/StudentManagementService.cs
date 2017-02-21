@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-
-using SchoolSystem.Web.Services.Contracts;
-using SchoolSystem.Data.Models.CustomModels;
+using Bytes2you.Validation;
 using SchoolSystem.Data.Contracts;
 using SchoolSystem.Data.Models;
-
-using Bytes2you.Validation;
+using SchoolSystem.Data.Models.CustomModels;
+using SchoolSystem.Web.Services.Contracts;
 
 namespace SchoolSystem.Web.Services
 {
@@ -30,6 +28,7 @@ namespace SchoolSystem.Web.Services
                     Fullname = x.User.FirstName + x.User.LastName
                 },
                 i => i.User);
+
             return result;
         }
     }

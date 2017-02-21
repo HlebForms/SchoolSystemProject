@@ -94,8 +94,11 @@
     <Compile Include="StudentManagementServiceTests\GetAllStudentsFromClass_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\Constructorr_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\CreateSubject_Should.cs" />
+    <Compile Include="SubjectManagementServiceTests\GetAllSubjectsWithoutTeacher_Should.cs" />
+    <Compile Include="SubjectManagementServiceTests\GetAllSubjectsWithTeacher_Should.cs" />
     <Compile Include="SubjectManagementServiceTests\GetAllSubjects_Should.cs" />
-    <Compile Include="SubjectManagementServiceTests\GetSubjectsForSpecificClass_Should.cs" />
+    <Compile Include="SubjectManagementServiceTests\GetAllSubjectsAlreadyAssignedToTheClass_Should.cs" />
+    <Compile Include="SubjectManagementServiceTests\GetSubjectsPerTeacher_Should.cs" />
     <Compile Include="TeacherManagementServiceTests\Constructor_Should.cs" />
     <Compile Include="TeacherManagementServiceTests\GetAllTeachers_Should.cs" />
   </ItemGroup>
